@@ -1,0 +1,481 @@
+// Components, functions, plugins
+import { Component, HostListener, ChangeDetectionStrategy, ChangeDetectorRef, NgModule } from '@angular/core';
+import { NavController, NavParams, LoadingController, FabContainer } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
+import { Http } from '@angular/http';
+import 'rxjs/add/operator/map';
+import { Database } from './../../providers/database/database';
+import { Localstorage } from './../../providers/localstorage/localstorage';
+
+
+@Component({
+  selector: 'page-congressionalmembers',
+  templateUrl: 'congressionalmembers.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
+})
+
+export class CongressionalMembersPage {
+
+	public CongressionalListing: any[] = [];
+	public EntryTerms: string;
+	public CongressionalChamber: string;
+
+	constructor(public navCtrl: NavController, 
+				public navParams: NavParams,
+				private storage: Storage,
+				private databaseprovider: Database,
+				private cd: ChangeDetectorRef,
+				public loadingCtrl: LoadingController,
+				private localstorage: Localstorage) {
+	}
+
+	ionViewDidLoad() {
+		console.log('ionViewDidLoad CongressionalMembersPage');
+	}
+
+	@HostListener('document:keypress', ['$event'])
+		handleKeyboardEvent(event: KeyboardEvent) { 
+		if (event.key == 'Enter') {
+			console.log('Enter key detected');
+			this.GetSearchResults();
+		}
+	}
+
+	ngOnInit() {
+
+		this.CongressionalChamber = this.localstorage.getLocalValue('CongressionalChamber');
+		// Load initial data set here
+		let loading = this.loadingCtrl.create({
+			spinner: 'crescent',
+			content: 'Please wait...'
+		});
+
+		loading.present();
+
+		// Blank and show loading info
+		this.CongressionalListing = [];
+		this.cd.markForCheck();
+		//this.imageLoaderConfig.setFallbackUrl('assets/img/personIcon.png');
+		
+		// Temporary use variables
+		var CongressionalChamber = this.localstorage.getLocalValue('CongressionalChamber');
+		var flags = "li|Alpha|" + CongressionalChamber;
+        var DisplayName = "";
+		var visDisplayPartyState = "";
+        var SpeakerDividerCharacter = "";
+		
+		// Get the data
+		this.databaseprovider.getCongressionalData(flags, "0").then(data => {
+			
+			//console.log("getSpeakerData: " + JSON.stringify(data));
+
+			if (data['length']>0) {
+				
+				for (var i = 0; i < data['length']; i++) {
+
+                    DisplayName = "";
+
+                    // Concatenate fields to build displayable name
+                    DisplayName = DisplayName + data[i].LastName;
+					
+                    if (data[i].Suffix != "") {
+                        DisplayName = DisplayName + " " + data[i].Suffix;
+                    }
+
+					DisplayName = DisplayName + ", " + data[i].FirstName;
+					
+                    if (data[i].MiddleInitial != "") {
+                        DisplayName = DisplayName + " " + data[i].MiddleInitial;
+                    }
+					
+					// Use Credentials field for Company/Association
+                    visDisplayPartyState = data[i].Party + " - " + data[i].StateFullname;
+
+					var imageAvatar = data[i].imageFilename;
+					//imageAvatar = imageAvatar.substr(0, imageAvatar.length - 3) + 'png';
+					//console.log("imageAvatar: " + imageAvatar);
+					imageAvatar = "assets/img/CongressionalMembers/" + imageAvatar;
+					console.log('imageAvatar: ' + imageAvatar);
+					
+                    if (data[i].LastName.charAt(0) != SpeakerDividerCharacter) {
+
+                        // Display the divider
+						this.CongressionalListing.push({
+							cmID: 0,
+							DisplayNameLastFirst: data[i].LastName.charAt(0),
+							DisplayCredentials: "",
+							DisplayTitle: "",
+							Affiliation: "",
+							speakerIcon: "nothing",
+							speakerAvatar: "assets/img/SpeakerDivider.png",
+							speakerClass: "",
+							navigationArrow: "nothing",
+						});
+
+						// Set the new marker point
+						SpeakerDividerCharacter = data[i].LastName.charAt(0);
+
+
+                        // Show the current record
+						this.CongressionalListing.push({
+							cmID: data[i].congressionalMemberID,
+							DisplayNameLastFirst: DisplayName,
+							DisplayCredentials: visDisplayPartyState,
+							DisplayTitle: data[i].Title,
+							Affiliation: "",
+							speakerIcon: "person",
+							speakerAvatar: imageAvatar,
+							speakerClass: "",
+							navigationArrow: "arrow-dropright",
+						});
+
+                    } else {
+
+                        // Add current record to the list
+						this.CongressionalListing.push({
+							cmID: data[i].congressionalMemberID,
+							DisplayNameLastFirst: DisplayName,
+							DisplayCredentials: visDisplayPartyState,
+							DisplayTitle: data[i].Title,
+							Affiliation: "",
+							speakerIcon: "person",
+							speakerAvatar: imageAvatar,
+							speakerClass: "",
+							navigationArrow: "arrow-dropright",
+						});
+						
+					}
+
+				}
+
+
+			} else {
+				
+                // No records to show
+				this.CongressionalListing.push({
+					cmID: 0,
+					DisplayNameLastFirst: "No records available",
+					DisplayCredentials: "",
+					DisplayTitle: "",
+					Affiliation: "",
+					speakerIcon: "",
+					speakerAvatar: "assets/img/personIcon.png",
+					speakerClass: "myLabelBold",
+					navigationArrow: "",
+				});
+
+			}
+
+			this.cd.markForCheck();
+
+			loading.dismiss();
+			
+		}).catch(function () {
+			console.log("Promise Rejected");
+		});
+		
+	}
+
+	LoadDataAlphabetical(fab: FabContainer) {
+		
+		// Close fab buttons if open
+		if (fab !== undefined) {
+			fab.close();
+		}
+		
+		// Load initial data set here
+		let loading = this.loadingCtrl.create({
+			spinner: 'crescent',
+			content: 'Please wait...'
+		});
+
+		loading.present();
+
+		// Blank and show loading info
+		this.CongressionalListing = [];
+		this.cd.markForCheck();
+		//this.imageLoaderConfig.setFallbackUrl('assets/img/personIcon.png');
+		
+		// Temporary use variables
+		var CongressionalChamber = this.localstorage.getLocalValue('CongressionalChamber');
+		var flags = "li|Alpha|" + CongressionalChamber;
+        var DisplayName = "";
+		var visDisplayPartyState = "";
+        var SpeakerDividerCharacter = "";
+		
+		// Get the data
+		this.databaseprovider.getCongressionalData(flags, "0").then(data => {
+			
+			//console.log("getSpeakerData: " + JSON.stringify(data));
+
+			if (data['length']>0) {
+				
+				for (var i = 0; i < data['length']; i++) {
+
+                    DisplayName = "";
+
+                    // Concatenate fields to build displayable name
+                    DisplayName = DisplayName + data[i].LastName;
+					
+                    if (data[i].Suffix != "") {
+                        DisplayName = DisplayName + " " + data[i].Suffix;
+                    }
+
+					DisplayName = DisplayName + ", " + data[i].FirstName;
+					
+                    if (data[i].MiddleInitial != "") {
+                        DisplayName = DisplayName + " " + data[i].MiddleInitial;
+                    }
+					
+					// Use Credentials field for Company/Association
+                    visDisplayPartyState = data[i].Party + " - " + data[i].StateFullname;
+
+					var imageAvatar = data[i].imageFilename;
+					//imageAvatar = imageAvatar.substr(0, imageAvatar.length - 3) + 'png';
+					//console.log("imageAvatar: " + imageAvatar);
+					imageAvatar = "assets/img/CongressionalMembers/" + imageAvatar;
+					console.log('imageAvatar: ' + imageAvatar);
+					
+                    if (data[i].LastName.charAt(0) != SpeakerDividerCharacter) {
+
+                        // Display the divider
+						this.CongressionalListing.push({
+							cmID: 0,
+							DisplayNameLastFirst: data[i].LastName.charAt(0),
+							DisplayCredentials: "",
+							DisplayTitle: "",
+							Affiliation: "",
+							speakerIcon: "nothing",
+							speakerAvatar: "assets/img/SpeakerDivider.png",
+							speakerClass: "",
+							navigationArrow: "nothing",
+						});
+
+						// Set the new marker point
+						SpeakerDividerCharacter = data[i].LastName.charAt(0);
+
+
+                        // Show the current record
+						this.CongressionalListing.push({
+							cmID: data[i].congressionalMemberID,
+							DisplayNameLastFirst: DisplayName,
+							DisplayCredentials: visDisplayPartyState,
+							DisplayTitle: data[i].Title,
+							Affiliation: "",
+							speakerIcon: "person",
+							speakerAvatar: imageAvatar,
+							speakerClass: "",
+							navigationArrow: "arrow-dropright",
+						});
+
+                    } else {
+
+                        // Add current record to the list
+						this.CongressionalListing.push({
+							cmID: data[i].congressionalMemberID,
+							DisplayNameLastFirst: DisplayName,
+							DisplayCredentials: visDisplayPartyState,
+							DisplayTitle: data[i].Title,
+							Affiliation: "",
+							speakerIcon: "person",
+							speakerAvatar: imageAvatar,
+							speakerClass: "",
+							navigationArrow: "arrow-dropright",
+						});
+						
+					}
+
+				}
+
+
+			} else {
+				
+                // No records to show
+				this.CongressionalListing.push({
+					cmID: 0,
+					DisplayNameLastFirst: "No records available",
+					DisplayCredentials: "",
+					DisplayTitle: "",
+					Affiliation: "",
+					speakerIcon: "",
+					speakerAvatar: "assets/img/personIcon.png",
+					speakerClass: "myLabelBold",
+					navigationArrow: "",
+				});
+
+			}
+
+			this.cd.markForCheck();
+
+			loading.dismiss();
+			
+		}).catch(function () {
+			console.log("Promise Rejected");
+		});
+
+	}
+
+	LoadDataState(fab: FabContainer) {
+		
+		// Close fab buttons if open
+		if (fab !== undefined) {
+			fab.close();
+		}
+
+		// Load initial data set here
+		let loading = this.loadingCtrl.create({
+			spinner: 'crescent',
+			content: 'Please wait...'
+		});
+
+		loading.present();
+
+		// Blank and show loading info
+		this.CongressionalListing = [];
+		this.cd.markForCheck();
+		//this.imageLoaderConfig.setFallbackUrl('assets/img/personIcon.png');
+		
+		// Temporary use variables
+		var CongressionalChamber = this.localstorage.getLocalValue('CongressionalChamber');
+		var flags = "li|State|" + CongressionalChamber;
+        var DisplayName = "";
+		var visDisplayPartyState = "";
+        var SpeakerDividerCharacter = "";
+		
+		// Get the data
+		this.databaseprovider.getCongressionalData(flags, "0").then(data => {
+			
+			//console.log("getSpeakerData: " + JSON.stringify(data));
+
+			if (data['length']>0) {
+				
+				for (var i = 0; i < data['length']; i++) {
+
+                    DisplayName = "";
+
+                    // Concatenate fields to build displayable name
+                    DisplayName = DisplayName + data[i].LastName;
+					
+                    if (data[i].Suffix != "") {
+                        DisplayName = DisplayName + " " + data[i].Suffix;
+                    }
+
+					DisplayName = DisplayName + ", " + data[i].FirstName;
+					
+                    if (data[i].MiddleInitial != "") {
+                        DisplayName = DisplayName + " " + data[i].MiddleInitial;
+                    }
+					
+					// Use Credentials field for Company/Association
+                    visDisplayPartyState = data[i].Party + " - " + data[i].StateFullname;
+
+					var imageAvatar = data[i].imageFilename;
+					//imageAvatar = imageAvatar.substr(0, imageAvatar.length - 3) + 'png';
+					//console.log("imageAvatar: " + imageAvatar);
+					imageAvatar = "assets/img/CongressionalMembers/" + imageAvatar;
+					console.log('imageAvatar: ' + imageAvatar);
+					
+                    if (data[i].StateFullname.charAt(0) != SpeakerDividerCharacter) {
+
+                        // Display the divider
+						this.CongressionalListing.push({
+							cmID: 0,
+							DisplayNameLastFirst: data[i].StateFullname.charAt(0),
+							DisplayCredentials: "",
+							DisplayTitle: "",
+							Affiliation: "",
+							speakerIcon: "nothing",
+							speakerAvatar: "assets/img/SpeakerDivider.png",
+							speakerClass: "",
+							navigationArrow: "nothing",
+						});
+
+						// Set the new marker point
+						SpeakerDividerCharacter = data[i].StateFullname.charAt(0);
+
+
+                        // Show the current record
+						this.CongressionalListing.push({
+							cmID: data[i].congressionalMemberID,
+							DisplayNameLastFirst: DisplayName,
+							DisplayCredentials: visDisplayPartyState,
+							DisplayTitle: data[i].Title,
+							Affiliation: "",
+							speakerIcon: "person",
+							speakerAvatar: imageAvatar,
+							speakerClass: "",
+							navigationArrow: "arrow-dropright",
+						});
+
+                    } else {
+
+                        // Add current record to the list
+						this.CongressionalListing.push({
+							cmID: data[i].congressionalMemberID,
+							DisplayNameLastFirst: DisplayName,
+							DisplayCredentials: visDisplayPartyState,
+							DisplayTitle: data[i].Title,
+							Affiliation: "",
+							speakerIcon: "person",
+							speakerAvatar: imageAvatar,
+							speakerClass: "",
+							navigationArrow: "arrow-dropright",
+						});
+						
+					}
+
+				}
+
+
+			} else {
+				
+                // No records to show
+				this.CongressionalListing.push({
+					cmID: 0,
+					DisplayNameLastFirst: "No records available",
+					DisplayCredentials: "",
+					DisplayTitle: "",
+					Affiliation: "",
+					speakerIcon: "",
+					speakerAvatar: "assets/img/personIcon.png",
+					speakerClass: "myLabelBold",
+					navigationArrow: "",
+				});
+
+			}
+
+			this.cd.markForCheck();
+
+			loading.dismiss();
+			
+		}).catch(function () {
+			console.log("Promise Rejected");
+		});
+
+	}
+	
+    CongressionalDetails(cmID) {
+
+		if (cmID != 0) {
+						
+			// Navigate to Speaker Details page
+			this.navCtrl.push('CongressionalDetailsPage', {cmID: cmID}, {animate: true, direction: 'forward'});
+			
+		}
+    };
+
+    GetSearchResults() {
+
+        var SearchTerms = this.EntryTerms;
+
+        if ((SearchTerms == undefined) || (SearchTerms == "")) {
+            // Do nothing or show message
+        } else {
+
+            this.localstorage.setLocalValue("SearchTerms", SearchTerms);
+			this.navCtrl.push('SearchResultsPage', {SearchTerms: SearchTerms}, {animate: true, direction: 'forward'});
+
+        }
+    };
+
+}

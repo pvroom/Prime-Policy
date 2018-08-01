@@ -1,0 +1,97 @@
+<ion-header>
+	<ion-navbar color="primary">
+		<button ion-button menuToggle>
+			<ion-icon name="menu"></ion-icon>
+		</button>
+		<ion-title>Help</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content>
+
+
+
+    <ion-card>
+        <ion-card-header style="background:#324052;color:#fff">
+			Contact Prime Policy Group
+        </ion-card-header>
+        <ion-card-content>
+	  <ion-item onclick="window.open('http://prime-policy.com/', '_system', 'location=yes'); return false;"></ion-item>
+	 
+		  <img style="width:50%" src="assets/img/prime-policy-group-logo.png">
+
+		  <ion-item class="button-bar">
+				<button ion-button icon-start class="btnHelp" onclick="mailto:pvroom@convergence-us.com">
+
+
+						<ion-icon  name="mail"></ion-icon>
+						<label>Email</label>
+				</button>
+			
+	  
+	
+		
+				<button ion-button icon-start class="btnHelp" onclick="window.open('http://prime-policy.com/', '_system', 'location=yes'); return false;">
+						<ion-icon name="globe"></ion-icon>
+						<label>Website</label>
+				</button>
+			
+	  
+	
+				<button ion-button icon-start class="btnHelp"  (click)="navToWebsite(ExhibitorWebsite)">
+						<ion-icon name="call"></ion-icon>
+						<label>Call</label>
+				</button>
+		</ion-item>
+		</ion-card-content>
+</ion-card>
+
+
+
+
+
+
+	  
+
+	<ion-card>
+			<ion-card-header style="background:#324052;color:#fff">
+					Drop us a Note
+				</ion-card-header>
+
+				<ion-card-content>			
+	<ion-item>
+        <ion-label floating>Name</ion-label>
+        <ion-input type="text"></ion-input>
+      </ion-item>
+    
+      <ion-item>
+        <ion-label floating>Email</ion-label>
+        <ion-input type="password"></ion-input>
+      </ion-item>
+    
+      <ion-item>
+      <ion-label floating>Phone</ion-label>
+      <ion-input type="text"></ion-input>
+      </ion-item>
+ 
+      <ion-item>
+    <ion-label floating>Comments</ion-label>
+    <ion-input type="text"></ion-input>
+      </ion-item>
+	</ion-card-content>	
+	</ion-card>
+	  
+
+
+
+
+      <div text-center>
+        <button ion-button style="background:#e74c3c" (click)="sendEmail()">
+          Request Assistance
+        </button>
+	  </div>
+	  
+
+
+	</ion-content>
+

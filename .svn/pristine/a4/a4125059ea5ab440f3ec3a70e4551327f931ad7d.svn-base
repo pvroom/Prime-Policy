@@ -1,0 +1,93 @@
+<ion-header>
+	<ion-navbar color="primary">
+		<button ion-button menuToggle>
+			<ion-icon name="menu"></ion-icon>
+		</button>
+		<ion-title>Help</ion-title>
+	</ion-navbar>
+</ion-header>
+
+
+<ion-content>
+
+    <ion-card>
+
+        <ion-card-header style="background:#324052;color:#fff">
+			Contact NAEYC's Help Desk
+        </ion-card-header>
+      
+        <ion-card-content>
+			<ion-item>
+				<h2>Get onsite support for the app at:</h2><br/>
+				<h4 style="font-weight:500" >NAEYC Homeroom – 2nd level, Griffin Hall, Booth #112</h4>
+      </ion-item>
+    </ion-card-content>
+    </ion-card>
+
+
+			<div id="map2" style="width:100%; height:400px;"></div>
+      
+      
+
+       
+	<ion-item>
+		<ion-icon name="calendar" item-left></ion-icon>
+		<h4>Add Session/Event</h4>
+		<p>Include item on your MyAgenda page</p>
+	</ion-item>
+    
+	<ion-item>
+		<ion-icon name="star" item-left></ion-icon>
+		<h4>Speaker/Session Evaluation</h4>
+		<p>Provide your rating of the session</p>
+	</ion-item>
+    
+	<ion-item>
+		<ion-icon name="create" item-left></ion-icon>
+		<h4>Session Notes</h4>
+		<p>Let's you take notes associated with that session</p>
+	</ion-item>
+    
+	<ion-item>
+		<ion-icon name="more" item-left></ion-icon>
+		<h4>More Menu Options</h4>
+		<p>Look here for additional app functions</p>
+	</ion-item>
+    
+	<ion-item>
+		<ion-icon name="globe" item-left></ion-icon>
+		<h4>Browse to Website</h4>
+		<p>Link to exhibitors website</p>
+	</ion-item>
+    
+	<ion-item>
+		<ion-icon name="person-add" item-left></ion-icon>
+		<h4>Add Personal Schedule Item</h4>
+		<p>Allows the inclusion of personal schedule items</p>
+	</ion-item>
+    
+	<ion-item>
+		<ion-icon name="eye" item-left></ion-icon>
+		<h4>View All</h4>
+		<p>See your entire schedule at a glance</p>
+	</ion-item>
+    
+	<ion-item>
+		<ion-icon name="list-box" item-left></ion-icon>
+		<h4>Session</h4>
+		<p>Get additional session information details</p>
+	</ion-item>
+    
+	<ion-item>
+		<ion-icon name="pin" item-left></ion-icon>
+		<h4>Exhibit Hall Booth Locator</h4>
+		<p>Map pin showing exhibitor booth location</p>
+	</ion-item>
+    
+	<ion-item>
+		<ion-icon name="document" item-left></ion-icon>
+		<h4>Handout/View PDF</h4>
+		<p>View or print a PDF handout</p>
+	</ion-item>
+    
+</ion-content>

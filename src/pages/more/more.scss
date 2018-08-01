@@ -1,0 +1,20 @@
+page-more {
+
+    #activate-div{display:none}    
+
+    .my-div{background-color:#FFF} 
+    
+    #activate-div:checked ~ label 
+    .my-div{background-color:#000}
+
+
+    #activate-div{display:none}
+
+    .my-div{background-color:#FFF} 
+    
+    #activate-div:checked + 
+    .my-div{background-color:#000}
+
+
+
+}

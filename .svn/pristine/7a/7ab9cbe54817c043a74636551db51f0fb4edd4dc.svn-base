@@ -1,0 +1,17 @@
+page-help {
+
+.btnHelp {
+width:150px;
+height:80px;
+background:#e74c3c;
+color:#fff;
+}
+
+
+.button-bar {
+    margin-left:-20px;
+}
+
+
+
+}

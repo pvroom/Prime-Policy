@@ -1,0 +1,101 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "https://github.com/an-rahulpandey/cordova-plugin-dbcopy.git",
+        "scope": null,
+        "escapedName": null,
+        "name": null,
+        "rawSpec": "https://github.com/an-rahulpandey/cordova-plugin-dbcopy.git",
+        "spec": "git+https://github.com/an-rahulpandey/cordova-plugin-dbcopy.git",
+        "type": "hosted",
+        "hosted": {
+          "type": "github",
+          "ssh": "git@github.com:an-rahulpandey/cordova-plugin-dbcopy.git",
+          "sshUrl": "git+ssh://git@github.com/an-rahulpandey/cordova-plugin-dbcopy.git",
+          "httpsUrl": "git+https://github.com/an-rahulpandey/cordova-plugin-dbcopy.git",
+          "gitUrl": "git://github.com/an-rahulpandey/cordova-plugin-dbcopy.git",
+          "shortcut": "github:an-rahulpandey/cordova-plugin-dbcopy",
+          "directUrl": "https://raw.githubusercontent.com/an-rahulpandey/cordova-plugin-dbcopy/master/package.json"
+        }
+      },
+      "C:\\SVNProjects\\cvPlanner4"
+    ]
+  ],
+  "_from": "git+https://github.com/an-rahulpandey/cordova-plugin-dbcopy.git",
+  "_id": "cordova-plugin-dbcopy@2.0.0",
+  "_inCache": true,
+  "_location": "/cordova-plugin-dbcopy",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "https://github.com/an-rahulpandey/cordova-plugin-dbcopy.git",
+    "scope": null,
+    "escapedName": null,
+    "name": null,
+    "rawSpec": "https://github.com/an-rahulpandey/cordova-plugin-dbcopy.git",
+    "spec": "git+https://github.com/an-rahulpandey/cordova-plugin-dbcopy.git",
+    "type": "hosted",
+    "hosted": {
+      "type": "github",
+      "ssh": "git@github.com:an-rahulpandey/cordova-plugin-dbcopy.git",
+      "sshUrl": "git+ssh://git@github.com/an-rahulpandey/cordova-plugin-dbcopy.git",
+      "httpsUrl": "git+https://github.com/an-rahulpandey/cordova-plugin-dbcopy.git",
+      "gitUrl": "git://github.com/an-rahulpandey/cordova-plugin-dbcopy.git",
+      "shortcut": "github:an-rahulpandey/cordova-plugin-dbcopy",
+      "directUrl": "https://raw.githubusercontent.com/an-rahulpandey/cordova-plugin-dbcopy/master/package.json"
+    }
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "git+https://github.com/an-rahulpandey/cordova-plugin-dbcopy.git#3a0afd8c616e9769bd9bb3fdcf633cd0f368c3e1",
+  "_shasum": "ffb76010efdc054ea6d4105deeef0d2b86ae0591",
+  "_shrinkwrap": null,
+  "_spec": "https://github.com/an-rahulpandey/cordova-plugin-dbcopy.git",
+  "_where": "C:\\SVNProjects\\cvPlanner4",
+  "author": {
+    "name": "Rahul Pandey"
+  },
+  "bugs": {
+    "url": "https://github.com/an-rahulpandey/cordova-plugin-dbcopy/issues"
+  },
+  "cordova": {
+    "id": "cordova-plugin-dbcopy",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "dependencies": {},
+  "description": "Cordova/Phonegap plugin to copy SQLite Database from www directory to app database directory",
+  "devDependencies": {},
+  "engines": [
+    {
+      "name": "cordova",
+      "version": ">=3.0.0"
+    }
+  ],
+  "gitHead": "3a0afd8c616e9769bd9bb3fdcf633cd0f368c3e1",
+  "homepage": "https://github.com/an-rahulpandey/cordova-plugin-dbcopy",
+  "keywords": [
+    "sqlite db copy",
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios",
+    "db copy",
+    "cordova sqlite",
+    "database copy",
+    "sqlite database copy"
+  ],
+  "license": "Apache 2.0",
+  "name": "cordova-plugin-dbcopy",
+  "optionalDependencies": {},
+  "readme": "cordova-plugin-dbcopy\r\n=====================\r\n\r\nAdd a prepopulated SQLite database in your Phonegap/Cordova Android and iOS app.\r\n### IMPORTANT UPGRADE NOTE\r\n\r\nThe location has been changed in respect with the sqlite plugin location. So from now on location will be -\r\n\r\n```\r\n       location = 0; // (Disable iCloud Backup) If set will copy the database to Library/LocalDatabase. The database will not be synced by the iCloud Backup.\r\n       or\r\n       location = 1; // If set will copy the database to Library folder instead of Documents folder.\r\n       or\r\n       location = 2; // It will copy the database in the default SQLite Database directory. This is the default location for database\r\n```\r\n**If you are upgrading an old app then please change the paramters according to above snippet.**\r\n\r\nIn the old version location was **(Do not use this as reference for current version)**- \r\n\r\n```\r\n       location = 0; // It will copy the database in the Documents directory. This is the default location for database\r\n       or\r\n       location = 1; // If set will copy the database to Library folder instead of Documents folder.\r\n       or\r\n       location = 2; // (Disable iCloud Backup) If set will copy the database to Library/LocalDatabase. The database will not be synced by the iCloud Backup.\r\n```\r\n\r\n### Note\r\n\r\nThe database file may have extensions or not for e.g the db file name would be sample.db or sample.sqlite or sample. It doesn't matter what is the file extension, just remember to use the whole filename with extensions(if having one otherwise not) as a paramter when passing to the plugin methods.\r\n\r\n### Database file location\r\n\r\nThe database file must be present inside the www folder.\r\n\r\n### Installation\r\n\r\nPlugin can be install with simple cordova plugin add command -\r\n\r\n    cordova plugin add https://github.com/an-rahulpandey/cordova-plugin-dbcopy.git\r\n\r\n\r\n### Plugin Response Success and Error\r\n\r\nPlugin send the response in following format in case of any error or success - \r\n\r\n\r\n```javascript \r\n{\r\n  message : \"message contains the response string like Invalid DB Location or DB Doesn't Exists or Db Copied Successfully\",\r\n  code: integer value such as 404, 200, 516\r\n}\r\n```\r\n \r\n Code -\r\n\r\n``` \r\n 404 - DB or Source or Destination Doesn't exists, see message string.\r\n 516 - DB Already Exists.\r\n 200 - Called Method Executed Successfully.\r\n```\r\n\r\n### Methods\r\n\r\nCurrently there are five methods supported by the plugin.\r\n\r\n**Copy**\r\n=========================================\r\n\r\nThis Method allows you the copy the database from www directory.\r\n```javascript \r\n    window.plugins.sqlDB.copy(dbname, location, success,error);\r\n```\r\n  Here -\r\n\r\n   **dbname** -> Is the name of the database you want to copy. The dbname can be filename (without extensions) or filename.db or filename.sqlite. The plugin will look for and copy the file according to the filename provided here. And the same file name should be used while opening the database via [SQLitePlugin](https://github.com/litehelpers/Cordova-sqlite-storage).\r\n\r\n   **location** -> You can pass three integer arguments here (Use 0 for Android)-\r\n\r\n ```javascript \r\n      (for ios only)\r\n       location = 0; // (Disable iCloud Backup) If set will copy the database to Library/LocalDatabase. The database will not be synced by the iCloud Backup.\r\n       or\r\n       location = 1; // If set will copy the database to Library folder instead of Documents folder.\r\n       or\r\n       location = 2; // It will copy the database in the default SQLite Database directory. This is the default location for database\r\n```\r\n\r\n   **success** -> function will be called if the db is copied sucessfully.\r\n\r\n   **error** -> function will be called if the there is some problem in copying the db or the file already exists on the location.\r\n   \r\n**Check Database Available on External Storage**\r\n===============================================\r\n```javascript \r\n    window.plugins.sqlDB.checkDbOnStorage(dbname, source, success, error);\r\n```\r\n Here - \r\n \r\n   **dbname** -> Name of the database file which is available on external or intenral storage\r\n\r\n   **source** -> Full native path for the folder in which db file is present. The \"/\" must be added at the end of path. For.eg. /sdcard/mydb/\r\n\r\n\r\n\r\n**Copy Database from Device Storage**\r\n===============================================\r\n\r\nThis is an untested version. Let me know if you have any suggestions. Also Pull Request are always welcome.\r\n```javascript \r\n    window.plugins.sqlDB.copyDbFromStorage(dbname, location, source, deleteolddb, success, error);\r\n```\r\n Here - \r\n \r\n   **dbname** -> Is the name of the database you want to copy. The dbname can be filename (without extensions) or filename.db or filename.sqlite. The plugin will look for and copy the file according to the filename provided here. And the same file name should be used while opening the database via [SQLitePlugin](https://github.com/litehelpers/Cordova-sqlite-storage).\r\n\r\n   **location** -> You can pass three integer arguments here (Use 0 for Android)-\r\n\r\n```\r\n       (for ios only)\r\n       location = 0; // (Disable iCloud Backup) If set will copy the database to Library/LocalDatabase. The database will not be synced by the iCloud Backup.\r\n       or\r\n       location = 1; // If set will copy the database to Library folder instead of Documents folder.\r\n       or\r\n       location = 2; // It will copy the database in the default SQLite Database directory. This is the default location for database\r\n```\r\n **source** -> Source File location like /sdcard/mydb/db.db. Please provide a valid existing location and the dbname should be present in the path.\r\n \r\n **deleteolddb** -> A boolean value if set to true, will delete the existing db from the local app database folder before copying the new db. Please provide proper boolean value true or false;\r\n\r\n **success** -> function will be called if the db is copied sucessfully.\r\n\r\n **error** -> function will be called if the there is some problem in copying the db or the file already exists on the location.\r\n \r\n**Copy Database To Device Storage**\r\n============================================\r\n\r\nThis is an untested version. Let me know if you have any suggestions. Also Pull Request are always welcome.\r\n```javascript \r\n    window.plugins.sqlDB.copyDbToStorage(dbname, location, destination, overwrite, success, error);\r\n```\r\n Here - \r\n \r\n **dbname** -> Is the name of the database you want to copy. The dbname can be filename (without extensions) or filename.db or filename.sqlite. The plugin will look for and copy the file according to the filename provided here. And the same file name should be used while opening the database via [SQLitePlugin](https://github.com/litehelpers/Cordova-sqlite-storage).\r\n \r\n **location** -> You can pass three integer arguments here (Use 0 for Android)-\r\n```javascript\r\n   (for ios only)\r\n   location = 0; // (Disable iCloud Backup) If set will copy the database to Library/LocalDatabase. The database will not be synced by the iCloud Backup.\r\n   or\r\n   location = 1; // If set will copy the database to Library folder instead of Documents folder.\r\n   or\r\n   location = 2; // It will copy the database in the default SQLite Database directory. This is the default location for database\r\n```\r\n   **destination** -> Destination File location like /sdcard/mydb/ Please provide a valid existing location and \"/\" should be present at the end of the path. Do not append db name in the path.\r\n   \r\n   **overwrite** -> if set to true, then will replace the file at the destination. Otherwise will throw an error, if destination file already exists.\r\n   \r\n   **success** -> function will be called if the db is copied sucessfully.\r\n   \r\n   **error** -> function will be called if the there is some problem in copying the db or the file already exists on the location.\r\n   \r\n   \r\n**Remove**\r\n==================================\r\nThis method allows you to remove the database from the apps default database storage location.\r\n\r\n```javascript \r\n    window.plugins.sqlDB.remove(dbname, location, success,error);\r\n```\r\n\r\nHere -\r\n\r\n  **dbname** -> Is the name of the database you want to remove. If the database file is having any extension, please provide that also.\r\n\r\n  **location** -> The integer value for the location of database, see the copy method for options.\r\n\r\n  **success** -> function will be called if the db is removed sucessfully.\r\n\r\n  **error** -> function will be called if the there is some problem in removing the db or the file doesn't exists on the default database storage location.\r\n\r\n###Example Usage\r\n\r\nIn your JavaScript or HTML use the following method -\r\n\r\n```javascript \r\nfunction dbcopy()\r\n{\r\n        //Database filename to be copied is demo.db\r\n\r\n        //location = 0, will copy the db to default SQLite Database Directory, /Library/LocalDatabase (Disable iCloud Backup)\r\n        window.plugins.sqlDB.copy(\"demo.db\", 0, copysuccess,copyerror);\r\n\r\n        or\r\n\r\n        //location = 1, will copy the database to /Library folder\r\n        window.plugins.sqlDB.copy(\"demo.db\", 1, copysuccess,copyerror);\r\n\r\n        or\r\n\r\n        //location = 2, will copy the database to /Documents folder \r\n        window.plugins.sqlDB.copy(\"demo.db\", 2, copysuccess,copyerror);\r\n\r\n}\r\n\r\nfunction removeDB()\r\n{\r\n      var location = 1;\r\n      window.plugins.sqlDB.remove(\"demo.db\", location, rmsuccess,rmerror);  \r\n}\r\n\r\nfunction copysuccess()\r\n{\r\n        //open db and run your queries\r\n         db = window.sqlitePlugin.openDatabase({name: \"demo.db\"});.\r\n}\r\n\r\nfunction copyerror(e)\r\n{\r\n        //db already exists or problem in copying the db file. Check the Log.\r\n        console.log(\"Error Code = \"+JSON.stringify(e));\r\n        //e.code = 516 => if db exists\r\n}\r\n```\r\n",
+  "readmeFilename": "README.md",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/an-rahulpandey/cordova-plugin-dbcopy.git"
+  },
+  "version": "2.0.0"
+}

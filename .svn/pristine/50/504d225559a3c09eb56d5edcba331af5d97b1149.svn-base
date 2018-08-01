@@ -1,0 +1,177 @@
+page-home {
+
+	
+	/* Tweak to allow fab button to have text */
+	.fab {
+		contain: layout;
+
+	}
+
+	/* Tweak to allow fab button to have text */
+    button[ion-fab] {
+        overflow: visible;
+        position: relative;
+
+        ion-label {
+            position: absolute;
+            top: -12px;
+            right: 40px;
+
+            color: #fff;
+            background-color:#4a148c;
+            line-height: 32px;
+            padding: 4px 8px;
+			border-radius: 4px;
+			box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+        }
+		
+        button {
+            position: absolute;
+            top: -12px;
+            right: 40px;
+
+            color: #fff;
+            background-color:#4a148c;
+            line-height: 32px;
+            padding: 4px 8px;
+			border-radius: 4px;
+			box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+        }
+		
+        .fabdivbutton {
+            position: absolute;
+            top: 0px;
+            right: 45px;
+
+            color: #fff;
+            background-color:#F15D22;
+            line-height: 32px;
+            padding: 4px 8px;
+			border-radius: 4px;
+			box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+        }
+
+	}
+
+  .avatar {
+    vertical-align: middle;
+    width: 40px!important;
+    height: 40px!important;
+    border-radius: 50%;
+    font-size:20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+  .style1 {
+    font-family: verdana;
+    font-size: 20px;
+}
+
+.style2 {
+    color: red;
+    text-align: center;
+}
+
+
+.opacity  {
+background: transparent!important;
+color:#fff;
+}
+
+.myFontSize26  {
+  font-size:22px!important;
+  font-weight:400;
+  color:#fff;
+}
+
+
+.steel {
+  background:rgba(63, 4, 40, 0.5)!important;
+color:#fff;
+ font-size: 1.5em;
+  }
+  
+.mutedBlue {
+	background:rgba(50, 64, 82, 1)!important;
+	color:#fff;
+	font-size: 1.5em;
+}
+
+.mutedRed {
+	background:rgba(231, 80, 60, 1)!important;
+	color:#fff;
+	font-size: 1.0em;
+}
+
+.bgPurple {
+  background: url('../assets/img/austin.jpg') no-repeat center;
+  background-size: cover;
+}
+
+.bgBlue {
+  background: url('../assets/img/bgBlue.jpg') no-repeat center;
+  background-size: cover;
+}
+
+.bgGreen {
+  background: url('../assets/img/bgGreen.jpg') no-repeat center;
+  background-size: cover;
+}
+
+.bgRed {
+  background: url('../assets/img/bgRed.jpg') no-repeat center;
+  background-size: cover;
+}
+
+.bgYellow {
+  background: url('../assets/img/bgYellow.jpg') no-repeat center;
+  background-size: cover;
+}
+
+.bgCityscape {
+  background: linear-gradient(to top left, #160f33 0%, #4a0550 100%);
+  //background: url('../assets/img/pliLogo.png') no-repeat center;
+  background-size: cover;
+  Font-size:20px;
+}
+
+
+.bgCityscape2 {
+  background: linear-gradient(to top left, #160f33 0%, #4a0550 100%);
+  //background: url('../assets/img/pliLogo.png') no-repeat center;
+  background-size: cover;
+  Font-size:20px;
+}
+
+
+
+.bgCityscape1 {
+  background: #fff;
+  //background: url('../assets/img/pliLogo.png') no-repeat center;
+  background-size: cover;
+  Font-size:20px;
+}
+
+
+.picCityscape {
+  background: url('../assets/img/aacd-2018-logo.png') no-repeat center;
+  background-size: cover;
+}
+
+}
+
+// This code is required for Angular Google Maps to function
+
+ui-gmap-google-map{
+
+    height:100%;
+    width:100%;
+    display:block;
+
+    .angular-google-map {
+        height: 100%;
+        .angular-google-map-container{
+            height: 100%;
+        }
+    }
+}

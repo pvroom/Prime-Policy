@@ -1,0 +1,14 @@
+page-issues {
+
+    ion-icon {
+        font-size: 64px;
+      }
+
+
+
+.itemHeight {
+    height:72px;
+}
+
+
+}

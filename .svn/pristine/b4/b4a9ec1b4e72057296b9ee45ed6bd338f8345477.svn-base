@@ -1,0 +1,73 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>User Account</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+
+<ion-content style="background:url(assets/img/capitol3.jpg)no-repeat center;background-size:cover;">
+
+
+	
+	<!-- Notifications -->
+
+
+			<div class="spacer" style="width: 300px; height: 3%;"></div>
+	<div style="text-align: center;" *ngIf="msgRequireLogin">
+		<div style="display: inline-block; width:75%; padding:10px; background-color:rgba(0, 0, 0, 0.514); color: rgb(255, 255, 255); text-align:center;font-size:16px;">
+			The screen you are requesting requires that you be logged into your account.&nbsp; Please log in below.
+		</div>
+	</div>
+	<div style="text-align: center;" *ngIf="msgRequireLogin2">
+		<div style="display: inline-block; width:75%; padding:10px; background-color:rgb(0, 0, 0); color: rgb(255, 255, 255); text-align:center;font-size:16px;">
+			Managing your agenda requires that you be logged into your account.&nbsp; Please log in below.
+		</div>
+	</div>
+	<div style="text-align: center;" *ngIf="msgRequireLogin3">
+		<div style="display: inline-block; width:75%; padding:10px; background-color:#740e88; color: rgb(255, 255, 255); text-align:center;font-size:16px;">
+			Your Username is the email address you gave the Prime Policy Group.&nbsp; Your password was e-mailed to that account.
+		</div>
+	</div>
+	<div style="text-align: center;" *ngIf="LogoutSection">
+		<div style="display: inline-block; width:75%; padding:10px; background-color:white; color: black; text-align:center;font-size:18px;margin-bottom:10px;">
+			You are currently signed in as <b>{{LoggedInUser}}</b>.&nbsp; If you wish to view the
+		app under a different user, then Sign Out and sign back in using those credentials.
+		</div><br/>
+		<button ion-button color=danger style="width: 75%;" (click)="LogoutUser();">Sign Out</button>
+	</div>
+	
+	<div class="spacer" style="width: 300px; height: 3%;"></div>
+
+	<div *ngIf="LoginSection">
+		<ion-list>
+				<ion-item style="width:75%; text-align:center; margin:auto;background:#740e88!important;color:#fff">
+				<ion-label style="background:#740e88!important; color:rgb(255, 255, 255)">Username</ion-label>
+				<ion-input [(ngModel)]="LoginName" style="font-size: 1.25em; background:#740e88!important;color:#fff" type="text"></ion-input>
+			</ion-item>
+
+		</ion-list>
+
+
+				  <ion-list>
+
+						<ion-item style="width:75%; text-align:center; margin:auto;background:#740e88!important;color:#fff">
+				<ion-label style="color:#fff; ">Password</ion-label>
+				<ion-input [(ngModel)]="LoginPassword" style="font-size: 1.25em; background:#740e88;color:#fff" type="password"></ion-input>
+			</ion-item>
+
+
+			<div style="text-align:center;  margin:auto">
+				<button ion-button color=danger style="width:75%; margin-top:20px" (click)="LoginUser();">Sign In</button>
+			</div>
+		</ion-list>
+	</div>
+	
+</ion-content>
+
+
+
+

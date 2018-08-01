@@ -1,0 +1,74 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{CongressionalChamber}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+
+	<!-- Floating button menu for sorting -->
+    <ion-fab bottom right #fab>
+		<button ion-fab color="secondary" ion-fab>
+			<ion-icon name="funnel"></ion-icon>
+		</button>
+		<ion-fab-list side="top">
+			<button ion-fab (click)="LoadDataAlphabetical(fab)">
+				<ion-icon name="list"></ion-icon>
+				<div class="fabdivbutton">Sort by Name</div>
+			</button>
+			<button ion-fab (click)="LoadDataState(fab)">
+				<ion-icon name="locate"></ion-icon>
+				<div class="fabdivbutton">Sort by State</div>
+			</button>
+		</ion-fab-list>
+    </ion-fab>
+
+	<ion-list id="senators-list3">
+
+		<!-- Search input -->
+		<ion-grid>
+			<ion-row>
+				<ion-col col-9>	
+
+					<ion-item class="item-input; shadow">
+						<ion-icon name="search" item-left></ion-icon>
+						<ion-input name="srchBarEntry" id="srchBarEntry" 
+						type="text" placeholder="Search" [(ngModel)]="EntryTerms"></ion-input>
+					</ion-item>
+				</ion-col>
+				<ion-col col-3>
+					<button ion-button full class="buttonPadding" (tap)="GetSearchResults()">Submit</button>
+				</ion-col>
+			</ion-row>
+		</ion-grid>
+
+		<!-- Senator listing -->
+		<ion-list>
+			<ion-item tappable (click)="CongressionalDetails(Congressional.cmID)" *ngFor="let Congressional of CongressionalListing" id="senator-list-item19">
+				<div style="float: left; padding-right: 10px;">
+					<!-- <ion-icon name="{{Congressional.speakerIcon}}"></ion-icon> -->
+					<ion-avatar item-start>
+						<img  [src]="Congressional.speakerAvatar" src="assets/img/personIcon.png" onerror="this.src='assets/img/personIcon.png'">
+						<!--<img-loader [src]="Congressional.speakerAvatar" useImg [spinner]=false></img-loader>-->
+						<!--<img src="{{Congressional.speakerAvatar}}" onerror="this.src='assets/img/personIcon.png'">-->
+					</ion-avatar>
+				</div>
+				<ion-icon item-right name="{{Congressional.navigationArrow}}"></ion-icon>
+				<h2 style="padding-top: 7px;">{{Congressional.DisplayNameLastFirst}}</h2>
+				<p>{{Congressional.DisplayTitle}}</p>
+				<p>{{Congressional.DisplayCredentials}}</p>
+			</ion-item>
+		</ion-list>
+
+	</ion-list>
+
+</ion-content>
+
+
+
+

@@ -1,0 +1,36 @@
+page-profile {
+
+    .bg-style {
+        background: #5757A0;
+    }
+
+
+	
+	.avatar {
+		vertical-align: middle;
+        width: 25vw !important;
+     	height: 25vw !important;
+		font-size: 3.5em;
+	}
+
+
+	ion-avatar img  {
+		width: 25vw !important;
+		height: 25vw !important;
+		max-width: 300px !important;
+		max-height: 300px !important;
+	}
+
+
+
+	ion-icon {
+		font-size: 50px;
+	}
+	
+	.InputBoxW {
+		background-color:#fff;
+		color: #444;
+		padding-left:10px;
+	}
+
+}

@@ -1,0 +1,105 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "cordova-plugin-safariviewcontroller",
+        "scope": null,
+        "escapedName": "cordova-plugin-safariviewcontroller",
+        "name": "cordova-plugin-safariviewcontroller",
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
+      },
+      "/Users/petervroom/demo/node_modules"
+    ]
+  ],
+  "_from": "cordova-plugin-safariviewcontroller@latest",
+  "_id": "cordova-plugin-safariviewcontroller@1.4.7",
+  "_inCache": true,
+  "_location": "/cordova-plugin-safariviewcontroller",
+  "_nodeVersion": "6.9.4",
+  "_npmOperationalInternal": {
+    "host": "packages-12-west.internal.npmjs.com",
+    "tmp": "tmp/cordova-plugin-safariviewcontroller-1.4.7.tgz_1490293652619_0.2525425946805626"
+  },
+  "_npmUser": {
+    "name": "eddyverbruggen",
+    "email": "eddyverbruggen@gmail.com"
+  },
+  "_npmVersion": "3.10.10",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "cordova-plugin-safariviewcontroller",
+    "scope": null,
+    "escapedName": "cordova-plugin-safariviewcontroller",
+    "name": "cordova-plugin-safariviewcontroller",
+    "rawSpec": "",
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-safariviewcontroller/-/cordova-plugin-safariviewcontroller-1.4.7.tgz",
+  "_shasum": "d9619d8f984a46fa20d6c3166b62f713e12b5645",
+  "_shrinkwrap": null,
+  "_spec": "cordova-plugin-safariviewcontroller",
+  "_where": "/Users/petervroom/demo/node_modules",
+  "author": {
+    "name": "Eddy Verbruggen",
+    "email": "eddyverbruggen@gmail.com",
+    "url": "https://github.com/EddyVerbruggen"
+  },
+  "bugs": {
+    "url": "https://github.com/EddyVerbruggen/cordova-plugin-safariviewcontroller/issues"
+  },
+  "cordova": {
+    "id": "cordova-plugin-safariviewcontroller",
+    "platforms": [
+      "ios"
+    ]
+  },
+  "dependencies": {},
+  "description": "Forget InAppBrowser for iOS - this is way better for displaying read-only web content in your PhoneGap app.",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "shasum": "d9619d8f984a46fa20d6c3166b62f713e12b5645",
+    "tarball": "https://registry.npmjs.org/cordova-plugin-safariviewcontroller/-/cordova-plugin-safariviewcontroller-1.4.7.tgz"
+  },
+  "engines": [
+    {
+      "name": "cordova",
+      "version": ">=3.0.0"
+    }
+  ],
+  "gitHead": "03b565938386838393041cfc5849bfcc8de5ecd7",
+  "homepage": "https://github.com/EddyVerbruggen/cordova-plugin-safariviewcontroller#readme",
+  "keywords": [
+    "InAppBrowser",
+    "InAppSafariBrowser",
+    "Safari",
+    "Safari ViewController",
+    "Chrome Custom Tabs",
+    "ecosystem:cordova",
+    "cordova-ios",
+    "cordova-android"
+  ],
+  "license": "MIT",
+  "maintainers": [
+    {
+      "name": "eddyverbruggen",
+      "email": "eddyverbruggen@gmail.com"
+    }
+  ],
+  "name": "cordova-plugin-safariviewcontroller",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EddyVerbruggen/cordova-plugin-safariviewcontroller.git"
+  },
+  "scripts": {},
+  "version": "1.4.7"
+}

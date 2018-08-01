@@ -1,0 +1,102 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Full Agenda</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+	
+	<!-- Slider ad
+	<ion-slides class="ad" autoplay="5000" loop="true" speed="3000">
+		<ion-slide >
+			<img src="assets/img/rotatingLinkAd.jpg">
+		</ion-slide>
+		<ion-slide >
+			<img src="assets/img/rotatingLinkAd.jpg">
+		</ion-slide>
+		<ion-slide >
+			<img src="assets/img/rotatingLinkAd.jpg">
+		</ion-slide>
+	</ion-slides>
+	-->
+	
+
+	<ion-list id="agendafull-list3" class="" style="margin-bottom:0;padding-top:0;padding-bottom:0">
+
+		<!-- Day 1 agenda items -->
+		<div *ngIf=Day1Show>
+			<div class="item-divider item item-stable" style="padding-left:20px; padding-top:20px">
+				<h4>{{Day1Label}}</h4>
+			</div>
+			<ion-item (click)="EventDetails(day1item.visEventID)" *ngFor="let day1item of day1Items" id="fullagenda-list-item19" >
+				<ion-icon item-left name="{{day1item.eventTypeIcon}}"></ion-icon>
+				<ion-icon item-right name="arrow-dropright"></ion-icon>
+				<h2>{{day1item.EventName}}</h2>
+				<p>{{day1item.visEventTimeframe}}</p>
+				<p>{{day1item.EventLocation}}</p>
+			</ion-item>
+		</div>
+		
+		<!-- Day 2 agenda items -->
+		<div *ngIf=Day2Show>
+			<div class="item-divider item item-stable" style="padding-left:20px; padding-top:10px">
+				<h4>{{Day2Label}}</h4>
+			</div>
+			<ion-item (click)="EventDetails(day2item.visEventID)" *ngFor="let day2item of day2Items" id="fullagenda-list-item20">
+				<ion-icon item-left name="{{day2item.eventTypeIcon}}"></ion-icon>
+				<ion-icon item-right name="arrow-dropright"></ion-icon>
+				<h2>{{day2item.EventName}}</h2>
+				<p>{{day2item.visEventTimeframe}}</p>
+				<p>{{day2item.EventLocation}}</p>
+			</ion-item>
+		</div>
+
+		<!-- Day 3 agenda items -->
+		<div *ngIf=Day3Show>
+			<div class="item-divider item item-stable" style="padding-left:20px; padding-top:10px">
+				<h4>{{Day3Label}}</h4>
+			</div>
+			<ion-item (click)="EventDetails(day3item.visEventID)" *ngFor="let day3item of day3Items" id="fullagenda-list-item21">
+				<ion-icon item-left name="{{day3item.eventTypeIcon}}"></ion-icon>
+				<ion-icon item-right name="arrow-dropright"></ion-icon>
+				<h2>{{day3item.EventName}}</h2>
+				<p>{{day3item.visEventTimeframe}}</p>
+				<p>{{day3item.EventLocation}}</p>
+			</ion-item>
+		</div>
+
+		<!-- Day 4 agenda items -->
+		<div *ngIf=Day4Show>
+			<div class="item-divider item item-stable" style="padding-left:20px; padding-top:10px">
+				<h4>{{Day4Label}}</h4>
+			</div>
+			<ion-item (click)="EventDetails(day4item.visEventID)" *ngFor="let day4item of day4Items" id="fullagenda-list-item22">
+				<ion-icon item-left name="{{day4item.eventTypeIcon}}"></ion-icon>
+				<ion-icon item-right name="arrow-dropright"></ion-icon>
+				<h2>{{day4item.EventName}}</h2>
+				<p>{{day4item.visEventTimeframe}}</p>
+				<p>{{day4item.EventLocation}}</p>
+			</ion-item>
+		</div>
+
+		<!-- Day 5 agenda items -->
+		<div *ngIf=Day5Show>
+			<div class="item-divider item item-stable" style="padding-left:20px; padding-top:10px">
+				<h4>{{Day5Label}}</h4>
+			</div>
+			<ion-item (click)="EventDetails(day5item.visEventID)" *ngFor="let day5item of day5Items" id="fullagenda-list-item22">
+				<ion-icon item-left name="{{day5item.eventTypeIcon}}"></ion-icon>
+				<ion-icon item-right name="arrow-dropright"></ion-icon>
+				<h2>{{day5item.EventName}}</h2>
+				<p>{{day5item.visEventTimeframe}}</p>
+				<p>{{day5item.EventLocation}}</p>
+			</ion-item>
+		</div>
+
+	</ion-list>
+
+</ion-content>

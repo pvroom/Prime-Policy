@@ -1,0 +1,162 @@
+<ion-header>
+	<ion-navbar color="primary">
+		<button ion-button menuToggle>
+			<ion-icon name="menu"></ion-icon>
+		</button>
+		<ion-title>Notes</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content>
+
+	<!-- Search input -->
+	<ion-grid style="margin-top:-15px">
+		<ion-row>
+			<ion-col col-9>	
+
+				<ion-item class="item-input; shadow">
+					<ion-icon name="search" item-left></ion-icon>
+					<ion-input name="srchBarEntry" id="srchBarEntry" 
+					type="text" placeholder="Search" [(ngModel)]="EntryTerms"></ion-input>
+				</ion-item>
+			</ion-col>
+			<ion-col col-3>
+				<button ion-button full class="buttonPadding" style="background:#ef6a04" (tap)="GetSearchResults()">
+					Submit
+				</button>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+
+	<ion-list id="Notes-list3">
+
+		<!-- Saturday note items -->
+		<ion-card>
+
+			<ion-card-header style="background:#740e88; color:#fff">
+				Saturday, June 9
+			</ion-card-header>
+
+			<ion-card-content>
+				<ion-item class="item-icon-left item-icon-right" (tap)="NoteDetails(noteTue.EventID)" *ngFor="let noteTue of notesTue" id="notes-list-item19">
+					<i class="icon {{notesIcon}}"></i>
+					<p>
+						{{noteTue.CourseName}}
+					</p>
+					<p>
+						{{noteTue.visEventTimeframe}}
+					</p>
+					<p>
+						{{noteTue.NoteBeginning}}
+					</p>
+					<i class="icon {{navigationRightArrow}}"></i>
+				</ion-item>
+			</ion-card-content>
+
+		</ion-card>
+
+		<!-- Sunday note items -->
+		<ion-card>
+
+			<ion-card-header style="background:#740e88; color:#fff">
+				Sunday, June 10
+			</ion-card-header>
+
+			<ion-card-content>
+				<ion-item class="item-icon-left item-icon-right" (tap)="NoteDetails(noteWed.EventID)" *ngFor="let noteWed of notesWed" id="notes-list-item19">
+					<i class="icon {{notesIcon}}"></i>
+					<p>
+						{{noteWed.CourseName}}
+					</p>
+					<p>
+						{{noteWed.visEventTimeframe}}
+					</p>
+					<p>
+						{{noteWed.NoteBeginning}}
+					</p>
+					<i class="icon {{navigationRightArrow}}"></i>
+				</ion-item>
+			</ion-card-content>
+
+		</ion-card>
+
+
+		<!-- Monday note items -->
+		<ion-card>
+
+			<ion-card-header style="background:#740e88; color:#fff">
+				Monday, June 11
+			</ion-card-header>
+
+			<ion-card-content>
+				<ion-item class="item-icon-left item-icon-right" (tap)="NoteDetails(noteThu.EventID)" *ngFor="let noteThu of notesThu" id="notes-list-item19">
+					<i class="icon {{notesIcon}}"></i>
+					<p>
+						{{noteThu.CourseName}}
+					</p>
+					<p>
+						{{noteThu.visEventTimeframe}}
+					</p>
+					<p>
+						{{noteThu.NoteBeginning}}
+					</p>
+					<i class="icon {{navigationRightArrow}}"></i>
+				</ion-item>
+			</ion-card-content>
+
+		</ion-card>
+
+
+		<!-- Tuesday note items -->
+		<ion-card>
+
+			<ion-card-header style="background:#740e88; color:#fff">
+				Tuesday, June 12
+			</ion-card-header>
+
+			<ion-card-content>
+				<ion-item class="item-icon-left item-icon-right" (tap)="NoteDetails(noteFri.EventID)" *ngFor="let noteFri of notesFri" id="notes-list-item21">
+					<i class="icon {{notesIcon}}"></i>
+					<p>
+						{{noteFri.CourseName}}
+					</p>
+					<p>
+						{{noteFri.visEventTimeframe}}
+					</p>
+					<p>
+						{{noteFri.NoteBeginning}}
+					</p>
+					<i class="icon {{navigationRightArrow}}"></i>
+				</ion-item>
+			</ion-card-content>
+
+		</ion-card>
+
+		<!-- Wednesday note items -->
+		<ion-card>
+
+			<ion-card-header style="background:#740e88; color:#fff">
+				Wednesday, June 13
+			</ion-card-header>
+
+			<ion-card-content>
+				<ion-item class="item-icon-left item-icon-right" (tap)="NoteDetails(noteSat.EventID)" *ngFor="let noteSat of notesSat" id="notes-list-item22">
+					<i class="icon {{notesIcon}}"></i>
+					<p>
+						{{noteSat.CourseName}}
+					</p>
+					<p>
+						{{noteSat.visEventTimeframe}}
+					</p>
+					<p>
+						{{noteSat.NoteBeginning}}
+					</p>
+					<i class="icon {{navigationRightArrow}}"></i>
+				</ion-item>
+			</ion-card-content>
+
+		</ion-card>
+
+	</ion-list>
+
+</ion-content>

@@ -1,0 +1,14 @@
+page-networking {
+
+	.buttonIconsL {
+		font-size:2.5em; 
+		padding-bottom:10px;
+	}
+
+	.buttonShape {
+		text-align: center; 
+		color:#fff; 
+		height:250px;
+	}
+	
+}

@@ -1,0 +1,82 @@
+{
+  "_from": "git+https://github.com/mapsplugin/cordova-plugin-googlemaps.git",
+  "_id": "cordova-plugin-googlemaps@2.2.8",
+  "_inBundle": false,
+  "_location": "/cordova-plugin-googlemaps",
+  "_phantomChildren": {
+    "sax": "1.2.4"
+  },
+  "_requested": {
+    "type": "git",
+    "raw": "https://github.com/mapsplugin/cordova-plugin-googlemaps",
+    "rawSpec": "https://github.com/mapsplugin/cordova-plugin-googlemaps",
+    "saveSpec": "git+https://github.com/mapsplugin/cordova-plugin-googlemaps.git",
+    "fetchSpec": "https://github.com/mapsplugin/cordova-plugin-googlemaps.git",
+    "gitCommittish": null
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "git+https://github.com/mapsplugin/cordova-plugin-googlemaps.git#4bc39caafe52815148892956197500bb44238ce0",
+  "_spec": "https://github.com/mapsplugin/cordova-plugin-googlemaps",
+  "_where": "/Users/petervroom/demo/node_modules",
+  "author": {
+    "name": "Masashi Katsumata, Hirbod Mirjavadi"
+  },
+  "bugs": {
+    "url": "https://github.com/mapsplugin/cordova-plugin-googlemaps/issues"
+  },
+  "bundleDependencies": false,
+  "cordova": {
+    "id": "cordova-plugin-googlemaps",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "dependencies": {
+    "xml2js": "~0.4.19"
+  },
+  "deprecated": false,
+  "description": "Google Maps native SDK for Android and iOS",
+  "engines": [
+    {
+      "name": "cordova",
+      "version": ">=7.1.0"
+    },
+    {
+      "name": "cordova-android",
+      "version": ">=5.1.0"
+    },
+    {
+      "name": "cordova-ios",
+      "version": ">=4.9.0"
+    },
+    {
+      "name": "apple-xcode",
+      "version": ">=9.0.0"
+    },
+    {
+      "name": "apple-ios",
+      "version": ">=10.0.0"
+    }
+  ],
+  "homepage": "https://github.com/mapsplugin/cordova-plugin-googlemaps",
+  "keywords": [
+    "google",
+    "maps",
+    "geo",
+    "google maps",
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios"
+  ],
+  "license": "Apache 2.0",
+  "name": "cordova-plugin-googlemaps",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mapsplugin/cordova-plugin-googlemaps.git"
+  },
+  "version": "2.2.8"
+}

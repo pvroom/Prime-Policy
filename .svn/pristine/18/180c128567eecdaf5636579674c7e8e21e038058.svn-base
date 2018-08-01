@@ -1,0 +1,94 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Meeting / Event Details</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+
+	<div style="margin:10px!important">
+		<h2>{{EventName}}</h2>
+		<p>{{DisplayEventTimeDate}}</p>
+		<p>{{DisplayEventLocation}}</p>
+	</div>
+
+	<ion-card>
+
+		<ion-card-header class="mutedBlue" *ngIf="CongressionalMemberDisplay">
+			Congressional Member
+		</ion-card-header>
+
+		<ion-card-content *ngIf="CongressionalMemberDisplay">
+
+			<ion-list id="author-list3">
+				<ion-item (click)="CongressionalMemberDetails(congressional.cmID)" *ngFor="let congressional of CongressionalMemberList" id="congressional-list-item19">
+				
+					<ion-avatar item-start>
+						<img src="{{congressional.Avatar}}" onerror="this.src='assets/img/personIcon.png'">
+					</ion-avatar>
+					<ion-icon item-right name="{{congressional.navigationArrow}}"></ion-icon>
+					<h2><b>{{congressional.DisplayNameLastFirst}}</b></h2>
+					{{congressional.DisplayPartyState}}
+				</ion-item>
+			</ion-list>
+		</ion-card-content>
+
+	</ion-card>
+
+	<ion-card *ngIf=DescriptionDisplay>
+
+		<ion-card-header class="mutedBlue">
+			<div style="color:#fff">
+				Description
+			</div>
+		</ion-card-header>
+
+		<ion-card-content>
+
+			<div [innerHTML]="sessionAbstract" class="myMarginTopBottom">
+				{{EventDetails}}
+			</div>
+		</ion-card-content>
+
+	</ion-card>
+
+	<ion-card>
+
+		<ion-card-header class="mutedBlue" *ngIf="MeetingAttendeesDisplay">
+			Meeting Attendees
+		</ion-card-header>
+
+		<ion-card-content *ngIf="MeetingAttendeesDisplay">
+
+			<ion-list id="MeetingAttendee-list3">
+				<ion-item *ngFor="let MeetingAttendee of MeetingAttendeesList" id="MeetingAttendees-list-item19">
+					<ion-avatar item-start>
+						<ion-text-avatar class="avatar" color="danger">{{MeetingAttendee.AttendeeInitials}}</ion-text-avatar>
+					</ion-avatar>
+					<h2><b>{{MeetingAttendee.DisplayNameLastFirst}}</b></h2>
+					{{MeetingAttendee.DisplayCityState}}
+				</ion-item>
+			</ion-list>
+			
+		</ion-card-content>
+
+	</ion-card>
+
+	<ion-card>
+
+		<ion-card-header class="mutedBlue">
+			Locator
+		</ion-card-header>
+
+		<ion-card-content>
+			<div id="map2" style="width:100%; height:400px;"></div>
+		</ion-card-content>
+
+	</ion-card>
+
+</ion-content>

@@ -1,0 +1,102 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Congressional Member Details</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+	<ion-grid>
+		<ion-row>
+			<ion-col col-4>
+				<img [src]="visualImageURL" onerror="this.src='assets/img/personIcon.png'"
+					style="float:left; width:70%" src="assets/img/personIcon.png" alt="Image error">
+			</ion-col>
+	
+			<ion-col col-8 class="myLabelBold" style="padding-left:0">
+					<h2>{{visualDisplayName}}</h2>
+					<h5>{{visualChamber}}<br/>
+					{{visualParty}} - {{visualState}}<br/>
+					{{visualDistrict}}<br/>
+					{{visualAddress1}}<br/>
+					{{visualAddress2}}</h5>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+
+	<ion-card>
+		<ion-card-header class="mutedBlue" >
+			Biography
+		</ion-card-header>
+		<ion-card-content [innerHTML]="BioDetails" style="margin-top:5px">
+			{{visualBiography}}
+		</ion-card-content>
+	</ion-card>
+
+	<ion-card>
+		<ion-card-header class="mutedBlue">
+			Contact Information
+		</ion-card-header>
+
+		<ion-card-content style="margin-top:5px">
+			<ion-list>
+				<button ion-item *ngIf=showContactEmail (click)="navToEmail(visEmail)">
+					<ion-icon name="mail" class="invertedRed" item-start></ion-icon>
+					{{visEmail}}
+				</button>
+				<button ion-item *ngIf=showContactPhone (click)="callPhone2(visPhone)">
+					<ion-icon name="phone-portrait" class="invertedRed" item-start></ion-icon>
+					{{visPhone}}
+				</button>
+				<button ion-item *ngIf=showContactWeb (click)="navToWeb(visWebsite)">
+					<ion-icon name="globe" class="invertedRed" item-start></ion-icon>
+					{{visWebsite}}
+				</button>
+				<button ion-item *ngIf=showContactTwitter (click)="navToWeb(visTwitter)">
+					<ion-icon name="logo-twitter" class="invertedRed" item-start></ion-icon>
+					{{visTwitter}}
+				</button>
+				<button ion-item *ngIf=showContactFacebook (click)="navToWeb(visFacebook)">
+					<ion-icon name="logo-facebook" class="invertedRed" item-start></ion-icon>
+					{{visFacebook}}
+				</button>
+			</ion-list>
+		</ion-card-content>
+	</ion-card>
+
+	<ion-card *ngIf=showSenateCommittees>
+		<ion-card-header class="mutedBlue">
+			Committees
+		</ion-card-header>
+		<ion-card-content>
+			<ion-list id="committees-list3" style="margin-top:5px">
+				<ion-item class="item-icon-left item-icon-right" 
+					*ngFor="let committee of CommitteeListing" 
+					id="committees-list-item19"
+					(click)="navToWeb(committee.CommitteeWebsite)">
+					<ion-icon item-left name="chatboxes" class="invertedRed"></ion-icon>
+					<h2 text-wrap> {{committee.DisplayCommitteeName}}</h2>
+				</ion-item>
+			</ion-list>
+		</ion-card-content>
+	</ion-card>
+
+	<ion-card>
+
+		<ion-card-header class="mutedBlue">
+			Locator
+		</ion-card-header>
+
+		<ion-card-content>
+			<div id="map2" style="width:100%; height:400px;"></div>
+		</ion-card-content>
+
+	</ion-card>
+
+</ion-content>

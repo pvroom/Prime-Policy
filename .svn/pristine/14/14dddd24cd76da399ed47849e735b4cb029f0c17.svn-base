@@ -1,0 +1,31 @@
+page-searchresults {
+
+
+.gridbg {
+  background: #2c3e50;
+}
+
+
+
+.rowSearch {
+  background: #2c3e50;
+  height:40px!important;
+  color:#fff;
+  font-size: 16px;
+  font-weight: 400;
+  padding-left:10px;
+  padding-top:7px;
+  //vertical-align: baseline (default);
+  border-style: solid;
+  border-top-width: 1px;
+  border-color: #fff;
+}
+
+
+
+.iconMed  {
+  font-size: 30px;
+  padding-left:40px;
+}
+
+}

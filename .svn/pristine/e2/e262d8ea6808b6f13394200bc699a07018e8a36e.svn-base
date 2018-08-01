@@ -1,0 +1,94 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-plugin-camera": {
+      "PACKAGE_NAME": "com.convergenceus.flyin.primepolicy"
+    },
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "com.convergenceus.flyin.primepolicy"
+    },
+    "cordova-plugin-email": {
+      "PACKAGE_NAME": "com.convergenceus.flyin.primepolicy"
+    },
+    "cordova-plugin-file": {
+      "PACKAGE_NAME": "com.convergenceus.flyin.primepolicy"
+    },
+    "cordova-plugin-file-opener2": {
+      "PACKAGE_NAME": "com.convergenceus.flyin.primepolicy"
+    },
+    "cordova-plugin-geolocation": {
+      "PACKAGE_NAME": "com.convergenceus.flyin.primepolicy"
+    },
+    "cordova-plugin-googlemaps": {
+      "API_KEY_FOR_ANDROID": "AIzaSyBBOZQqb05tjRHef4M8UHC9xJZmkBv_apk",
+      "PLAY_SERVICES_VERSION": "11.8.0",
+      "ANDROID_SUPPORT_V4_VERSION": "24.1.0",
+      "PACKAGE_NAME": "com.convergenceus.flyin.primepolicy"
+    },
+    "cordova-plugin-inappbrowser": {
+      "PACKAGE_NAME": "com.convergenceus.flyin.primepolicy"
+    },
+    "cordova-plugin-ionic": {
+      "APP_ID": "4a3d0162",
+      "CHANNEL_NAME": "Production",
+      "WARN_DEBUG": "true",
+      "UPDATE_API": "https://api.ionicjs.com",
+      "UPDATE_METHOD": "none",
+      "MAX_STORE": "2",
+      "PACKAGE_NAME": "com.convergenceus.flyin.primepolicy"
+    },
+    "cordova-plugin-ionic-webview": {
+      "PACKAGE_NAME": "com.convergenceus.flyin.primepolicy"
+    },
+    "cordova-plugin-native-spinner": {
+      "PACKAGE_NAME": "com.convergenceus.flyin.primepolicy"
+    },
+    "cordova-plugin-safariviewcontroller": {
+      "PACKAGE_NAME": "com.convergenceus.flyin.primepolicy"
+    },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "com.convergenceus.flyin.primepolicy"
+    },
+    "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "com.convergenceus.flyin.primepolicy"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "com.convergenceus.flyin.primepolicy"
+    },
+    "cordova-plugin-x-toast": {
+      "PACKAGE_NAME": "com.convergenceus.flyin.primepolicy"
+    },
+    "cordova-sqlite-ext": {
+      "PACKAGE_NAME": "com.convergenceus.flyin.primepolicy"
+    }
+  },
+  "dependent_plugins": {
+    "cordova-plugin-actionsheet": {
+      "PACKAGE_NAME": "com.convergenceus.flyin.primepolicy"
+    },
+    "cordova-plugin-app-event": {
+      "PACKAGE_NAME": "com.convergenceus.flyin.primepolicy"
+    },
+    "cordova-plugin-calendar": {
+      "PACKAGE_NAME": "com.convergenceus.flyin.primepolicy"
+    },
+    "cordova-plugin-contacts": {
+      "PACKAGE_NAME": "com.convergenceus.flyin.primepolicy"
+    },
+    "cordova-plugin-dbcopy": {
+      "PACKAGE_NAME": "com.convergenceus.flyin.primepolicy"
+    },
+    "cordova-promise-polyfill": {
+      "PACKAGE_NAME": "com.convergenceus.flyin.primepolicy"
+    },
+    "cordova-sms-plugin": {
+      "PACKAGE_NAME": "com.convergenceus.flyin.primepolicy"
+    }
+  }
+}

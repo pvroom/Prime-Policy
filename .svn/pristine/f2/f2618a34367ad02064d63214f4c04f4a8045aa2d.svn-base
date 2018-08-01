@@ -1,0 +1,43 @@
+page-meetingdetails {
+
+	.SessionStatusRed {
+		color: red;
+	}
+	
+	.SessionStatusNormal {
+	}
+
+
+
+	.cardHeader {
+    background:#740e88,; 
+    color:#fff;
+}
+
+	.myHeader   {
+		background-color:#740e88 !important;
+		height:25px;
+		color:#ffffff !important;
+		font-weight: bold!important;
+		padding-left:10px!important;
+		padding-top:3px;
+		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)!important;
+	}
+	
+	ul {
+		padding: 0px;
+	  
+		&.rating li {
+		  padding: 5px 10px !important;
+		  background: none;
+		  color: #ffb400;
+	  
+		  ion-icon {
+			font-size: 30px;
+		  }
+		}
+	  }
+
+
+
+}

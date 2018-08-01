@@ -1,0 +1,92 @@
+<ion-header>
+	<ion-navbar color="primary">
+		<button ion-button menuToggle>
+			<ion-icon name="menu"></ion-icon>
+		</button>
+		<ion-title>Program</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content style="margin:0!important; background:#740e88">
+
+	<!-- Search input 
+	<div class="list marginTB0">
+		<div class="item item-input">
+			<i class="icon {{tabSearch}} iconSize"></i>
+			<input id="srchBarEntry" type="text" placeholder="Search" ngModel="search.EntryTerms">
+			<button class="button button-small blue" ngClick="GetSearchResults()">
+				Submit
+			</button>
+		</div>
+	</div>
+	-->
+
+	
+	<!-- 
+			<ion-grid>
+					<ion-row>
+						<ion-col >
+					  <ion-icon name="ios-checkmark-circle" color=danger item-start></ion-icon>
+					  <p style="font-size:16px;color:#fff">Step 1: Login to populate your registered sessions.</p>
+					</ion-col>
+
+				</ion-row>
+
+				<ion-row>
+					  <ion-col>
+					  <ion-icon name="ios-checkmark-circle" color=danger item-start></ion-icon>
+					<p style="font-size:16px;color:#fff">Step 2: Add new sessions from the sections below.</p>
+					  </ion-col>
+					
+				
+				</ion-row>
+				</ion-grid>
+	-->
+
+
+			<ion-grid style="margin:0!important; padding:0!important">
+			<ion-row>
+			  <ion-col col-12 style="margin:0!important; padding:0!important">
+					<button ion-item no-lines class="buttonsize" (click)="DisplayListing('SearchbyTopic')" id="program-list-item1">
+							<ion-icon class="buttonIconTop" name="search"></ion-icon>
+							<h2>Search by Topic</h2>
+						</button>
+			</ion-col>
+		</ion-row>
+
+		<ion-row>
+			  <ion-col col-12 style="margin:0!important; padding:0!important">
+					<button ion-item no-lines class="buttonsize1" (click)="DisplayListing('Lectures')" id="program-list-item3">
+							<ion-icon class="buttonIconTop" name="list"></ion-icon>
+							<h2>Sessions by Day</h2>
+						</button>
+			
+			</ion-col>
+			</ion-row>
+
+
+			<ion-row>
+			  <ion-col col-12 style="margin:0!important; padding:0!important">
+					<button ion-item no-lines class="buttonsize2" (click)="DisplayListing('Receptions')" id="program-list-item5">
+						<ion-icon class="buttonIconTop" name="people"></ion-icon>
+							<h2>Receptions/Events</h2>
+						</button>
+					
+			  </ion-col>
+			</ion-row>
+
+			<ion-row>
+			  <ion-col col-12 style="margin:0!important; padding:0!important">
+				  
+					<button ion-item no-lines class="buttonsize3" (click)="DisplayListing('Speakers')" id="program-list-item2">
+							<ion-icon class="buttonIconTop" name="mic"></ion-icon>
+							<h2>Speakers</h2>
+						</button>
+			
+			</ion-col>
+			</ion-row>
+			</ion-grid>
+
+		</ion-content>
+
+

@@ -1,0 +1,389 @@
+// Components, functions, plugins
+import { Component, ChangeDetectionStrategy, ChangeDetectorRef, NgModule } from '@angular/core';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
+import { Http } from '@angular/http';
+import 'rxjs/add/operator/map';
+import { Database } from './../../providers/database/database';
+import { Localstorage } from './../../providers/localstorage/localstorage';
+
+// Pages
+import { MeetingDetailsPage } from '../meetingdetails/meetingdetails';
+
+declare var dateFormat: any;
+
+@IonicPage()
+@Component({
+  selector: 'page-searchresults',
+  templateUrl: 'searchresults.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
+})
+
+export class SearchResultsPage {
+
+	public Meetings: any[] = [];
+	public Senators: any[] = [];
+	public Representatives: any[] = [];
+	
+    public MeetingsShow = false;
+    public SenatorsShow = false;
+    public HouseShow = false;
+	
+    public visHeaderMeetings: string;
+    public visHeaderSenators: string;
+    public visHeaderHouse: string;
+	
+	constructor(public navCtrl: NavController, 
+				public navParams: NavParams,
+				private storage: Storage,
+				private databaseprovider: Database,
+				private cd: ChangeDetectorRef,
+				public loadingCtrl: LoadingController,
+				private localstorage: Localstorage) {
+	}
+
+	ionViewDidLoad() {
+		console.log('ionViewDidLoad: SearchResultsPage');
+	}
+
+	ionViewDidEnter() {
+		console.log('ionViewDidEnter: SearchResultsPage');
+		
+		// Load / refresh data when coming to this page
+		this.LoadData();
+	}
+
+	LoadData() {
+
+		// Load initial data set here
+
+		//let loading = this.loadingCtrl.create({
+		//	spinner: 'crescent',
+		//	content: 'Loading results...'
+		//});
+
+		//loading.present();
+
+		// Blank and show loading info
+		this.Meetings = [];
+		this.Senators = [];
+		this.Representatives = [];
+		
+        this.MeetingsShow = false;
+        this.SenatorsShow = false;
+        this.HouseShow = false;
+
+		this.cd.markForCheck();
+		
+        // Set default labels for headers
+        this.visHeaderMeetings = "+ Meetings [0]";
+        this.visHeaderSenators = "+ Senators [0]";
+        this.visHeaderHouse = "+ Representatives [0]";
+
+		// Temporary use variables
+		var flags;
+		var DisplayLocation = "";
+		var dbEventDateTime;
+		var SQLDate;
+		var DisplayDateTime;
+		var AgendaButtonText;
+		var visEventName;
+		var visEventLocation;
+		var visDisplayPartyState;
+		var visDisplayPartyStateDistrict;
+		var ButtonStyle = "";
+		var visEventNote = "";
+        var MeetingsCount = 0;
+        var SenatorsCount = 0;
+        var HouseCount = 0;
+		var whereClause = '';
+        var DisplayName = "";
+		
+        // Get search terms
+        var searchtermEntry = this.localstorage.getLocalValue("SearchTerms");
+        var searchTerms = searchtermEntry.split(' ');
+		
+        // ---------
+        // Meetings
+        // ---------
+
+		flags = "sr|0|0|0|0|0|0|0|0|0|0|" + searchtermEntry;
+		
+		this.databaseprovider.getAgendaData(flags, "0").then(data => {
+			
+			console.log("getAgendaData: " + JSON.stringify(data));
+
+            // Process returned records to display
+            this.Meetings = [];
+
+            MeetingsCount = data['length'];
+            this.localstorage.setLocalValue('MeetingsCount', MeetingsCount);
+
+            if (this.MeetingsShow == false) {
+                this.visHeaderMeetings = "+ Meetings [" + MeetingsCount + "]";
+            } else {
+                this.visHeaderMeetings = "- Meetings [" + MeetingsCount + "]";
+            }
+
+            if (data['length'] > 0) {
+								
+                for (var i = 0; i < data['length']; i++) {
+					
+                    dbEventDateTime = data[i].StartDateTime;
+                    dbEventDateTime = dbEventDateTime.replace(/-/g, '/');
+                    dbEventDateTime = dbEventDateTime.replace(/T/g, ' ');
+                    SQLDate = new Date(dbEventDateTime);
+                    DisplayDateTime = dateFormat(SQLDate, "mm/dd h:MMtt");
+
+                    // Display end time
+                    dbEventDateTime = data[i].EndDateTime;
+                    dbEventDateTime = dbEventDateTime.replace(/-/g, '/');
+                    dbEventDateTime = dbEventDateTime.replace(/T/g, ' ');
+                    SQLDate = new Date(dbEventDateTime);
+                    DisplayDateTime = DisplayDateTime + " to " + dateFormat(SQLDate, "h:MMtt");
+
+					if ((data[i].MeetingTitle === undefined) || (data[i].MeetingTitle === "") || (data[i].MeetingTitle === null)) {
+						visEventName = "Meeting with ";
+						visEventName = visEventName + data[i].FirstName + " " + data[0].LastName;
+						visEventName = visEventName + " (" + data[i].Party.charAt(0) + " - " + data[i].State + ")";
+					} else {
+						visEventName = data[i].EventName;
+					}
+					
+					
+					if ((data[i].Location === undefined) || (data[i].Location === "") || (data[i].Location === null)) {
+						visEventLocation = data[i].Address;
+					} else {
+						visEventLocation = data[i].Location;
+					}
+
+                    this.Meetings.push({
+                        EventID: data[i].meetingID,
+                        DisplayEventName: visEventName,
+                        DisplayEventTimeDateLocation: visEventLocation,
+                        navigationRightArrow: "arrow-dropright"
+                    });
+                }
+            } else {
+                this.Meetings.push({
+                    EventID: "0",
+                    DisplayEventName: "No matching Meetings found",
+                    DisplayEventTimeDateLocation: "",
+                    navigationRightArrow: ""
+                });
+
+            }
+
+			this.cd.markForCheck();
+
+			// -------------
+			// Senators
+			// -------------
+
+			flags = "sr|Alpha|Senate|" + searchtermEntry + "|0";
+
+			this.databaseprovider.getCongressionalData(flags, "0").then(data => {
+				
+				console.log("getCongressionalData, Senate: " + JSON.stringify(data));
+
+				// Process returned records to display
+				this.Senators = [];
+
+				SenatorsCount = data['length'];
+				this.localstorage.setLocalValue('SenatorsCount', SenatorsCount);
+
+				if (this.SenatorsShow == false) {
+					this.visHeaderSenators = "+ Senators [" + SenatorsCount + "]";
+				} else {
+					this.visHeaderSenators = "- Senators [" + SenatorsCount + "]";
+				}
+
+				if (data['length'] > 0) {
+					for (var i = 0; i < data['length']; i++) {
+						
+						DisplayName = "";
+
+						// Concatenate fields to build displayable name
+						DisplayName = DisplayName + data[i].LastName;
+						
+						if (data[i].Suffix != "" && data[i].Suffix != null) {
+							DisplayName = DisplayName + " " + data[i].Suffix;
+						}
+
+						DisplayName = DisplayName + ", " + data[i].FirstName;
+						
+						if (data[i].MiddleInitial != "" && data[i].MiddleInitial != null) {
+							DisplayName = DisplayName + " " + data[i].MiddleInitial;
+						}
+						
+						if (data[i].CongressionalMember == "1") {
+							visDisplayPartyState = data[i].Party + " - " + data[i].State;
+						} else {
+							visDisplayPartyState = "Representing: " + data[i].CongressionalMemberName;
+						}
+
+						this.Senators.push({
+							cmID: data[i].congressionalMemberID,
+							DisplayNameLastFirst: DisplayName,
+							DisplayPartyState: visDisplayPartyState,
+							navigationRightArrow: "arrow-dropright"
+						});
+					}
+				} else {
+					this.Senators.push({
+						cmID: "0",
+						DisplayNameLastFirst: "No matching Senators found",
+						DisplayPartyState: "",
+						navigationRightArrow: ""
+					});
+
+				}
+
+				this.cd.markForCheck();
+
+				// ---------
+				// House
+				// ---------
+
+				flags = "sr|Alpha|House of Representatives|" + searchtermEntry + "|0";
+
+				this.databaseprovider.getCongressionalData(flags, "0").then(data => {
+					
+					console.log("getCongressionalData, Reps: " + JSON.stringify(data));
+
+					// Process returned records to display
+					this.Representatives = [];
+
+					HouseCount = data['length'];
+					this.localstorage.setLocalValue('HouseCount', HouseCount);
+
+					if (this.HouseShow == false) {
+						this.visHeaderHouse = "+ Representatives [" + HouseCount + "]";
+					} else {
+						this.visHeaderHouse = "- Representatives [" + HouseCount + "]";
+					}
+
+					if (data['length'] > 0) {
+						for (var i = 0; i < data['length']; i++) {
+							
+							DisplayName = "";
+
+							// Concatenate fields to build displayable name
+							DisplayName = DisplayName + data[i].LastName;
+							
+							if (data[i].Suffix != "" && data[i].Suffix != null) {
+								DisplayName = DisplayName + " " + data[i].Suffix;
+							}
+
+							DisplayName = DisplayName + ", " + data[i].FirstName;
+							
+							if (data[i].MiddleInitial != "" && data[i].MiddleInitial != null) {
+								DisplayName = DisplayName + " " + data[i].MiddleInitial;
+							}
+							
+							if (data[i].CongressionalMember == "1") {
+								visDisplayPartyStateDistrict = data[i].Party + " - " + data[i].State + " - " + data[i].District;
+							} else {
+								visDisplayPartyStateDistrict = "Representing: " + data[i].CongressionalMemberName;
+							}
+
+							this.Representatives.push({
+								cmID: data[i].congressionalMemberID,
+								DisplayNameLastFirst: DisplayName,
+								DisplayPartyStateDistrict: visDisplayPartyStateDistrict,
+								navigationRightArrow: "arrow-dropright"
+							});
+						}
+					} else {
+						this.Representatives.push({
+							cmID: "0",
+							DisplayNameLastFirst: "No matching Representatives found",
+							DisplayPartyStateDistrict: "",
+							navigationRightArrow: ""
+						});
+
+					}
+					
+					this.cd.markForCheck();
+
+
+
+				}).catch(function () {
+					console.log("House Promise Rejected");
+				});
+				
+			}).catch(function () {
+				console.log("Senators Promise Rejected");
+			});
+						
+		}).catch(function () {
+			console.log("Meetings Promise Rejected");
+		});
+
+	}
+
+    ShowHideResults(SectionName) {
+		
+        switch (SectionName) {
+            case "Meetings":
+                this.MeetingsShow = !this.MeetingsShow;
+                break;
+            case "Senators":
+                this.SenatorsShow = !this.SenatorsShow;
+                break;
+            case "House":
+                this.HouseShow = !this.HouseShow;
+                break;
+        }
+
+        // Refresh headers
+        this.RefreshHeaderCounts();
+		
+    };
+
+    CongressionalDetails(cmID) {
+		
+        if (cmID != 0) {
+			this.navCtrl.push('CongressionalDetailsPage', {cmID: cmID}, {animate: true, direction: 'forward'});
+        }
+    };
+
+    MeetingDetails(EventID) {
+		
+        if (EventID != 0) {
+			// Set EventID to LocalStorage
+			this.localstorage.setLocalValue('EventID', EventID);
+
+			// Navigate to Education Details page
+			this.navCtrl.push(MeetingDetailsPage, {EventID: EventID}, {animate: true, direction: 'forward'});
+        }
+
+    };
+
+
+    RefreshHeaderCounts() {
+		
+        // Refresh counters on header bars
+        var MeetingsCount = this.localstorage.getLocalValue('MeetingsCount');
+        var SenatorsCount = this.localstorage.getLocalValue('SenatorsCount');
+        var HouseCount = this.localstorage.getLocalValue('HouseCount');
+
+
+        if (this.MeetingsShow === false) {
+            this.visHeaderMeetings = "+ Meetings [" + MeetingsCount + "]";
+        } else {
+            this.visHeaderMeetings = "- Meetings [" + MeetingsCount + "]";
+        }
+        if (this.SenatorsShow === false) {
+            this.visHeaderSenators = "+ Senators [" + SenatorsCount + "]";
+        } else {
+            this.visHeaderSenators = "- Senators [" + SenatorsCount + "]";
+        }
+        if (this.HouseShow === false) {
+            this.visHeaderHouse = "+ Representatives [" + HouseCount + "]";
+        } else {
+            this.visHeaderHouse = "- Representatives [" + HouseCount + "]";
+        }
+    };
+
+}

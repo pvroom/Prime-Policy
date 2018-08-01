@@ -1,0 +1,116 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "cordova-promise-polyfill@~0.0.2",
+        "scope": null,
+        "escapedName": "cordova-promise-polyfill",
+        "name": "cordova-promise-polyfill",
+        "rawSpec": "~0.0.2",
+        "spec": ">=0.0.2 <0.1.0",
+        "type": "range"
+      },
+      "C:\\SVNProjects\\NAEYC_PLI"
+    ]
+  ],
+  "_from": "cordova-promise-polyfill@>=0.0.2 <0.1.0",
+  "_id": "cordova-promise-polyfill@0.0.2",
+  "_inCache": true,
+  "_location": "/cordova-promise-polyfill",
+  "_nodeVersion": "7.3.0",
+  "_npmOperationalInternal": {
+    "host": "packages-18-east.internal.npmjs.com",
+    "tmp": "tmp/cordova-promise-polyfill-0.0.2.tgz_1482683572976_0.3272981287445873"
+  },
+  "_npmUser": {
+    "name": "ratson",
+    "email": "npm@ratson.name"
+  },
+  "_npmVersion": "4.1.1",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "cordova-promise-polyfill@~0.0.2",
+    "scope": null,
+    "escapedName": "cordova-promise-polyfill",
+    "name": "cordova-promise-polyfill",
+    "rawSpec": "~0.0.2",
+    "spec": ">=0.0.2 <0.1.0",
+    "type": "range"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/cordova-promise-polyfill/-/cordova-promise-polyfill-0.0.2.tgz",
+  "_shasum": "6bb7a949c56a7c318e7f554e6338c8f863e505a8",
+  "_shrinkwrap": null,
+  "_spec": "cordova-promise-polyfill@~0.0.2",
+  "_where": "C:\\SVNProjects\\NAEYC_PLI",
+  "author": {
+    "name": "Ratson"
+  },
+  "bugs": {
+    "url": "https://github.com/rehy/cordova-promise-polyfill/issues"
+  },
+  "cordova": {
+    "id": "cordova-promise-polyfill",
+    "platforms": [
+      "android",
+      "ios",
+      "amazon-fireos",
+      "wp8"
+    ]
+  },
+  "dependencies": {},
+  "description": "This is a polyfill of the ES6 Promise for Cordova.",
+  "devDependencies": {
+    "cpy-cli": "^1.0.1",
+    "promise-polyfill": "^6.0.2",
+    "sync-package-version": "^0.0.3"
+  },
+  "directories": {},
+  "dist": {
+    "shasum": "6bb7a949c56a7c318e7f554e6338c8f863e505a8",
+    "tarball": "https://registry.npmjs.org/cordova-promise-polyfill/-/cordova-promise-polyfill-0.0.2.tgz"
+  },
+  "files": [
+    "*.js",
+    "*.md",
+    "*.xml",
+    "LICENSE",
+    "src",
+    "www"
+  ],
+  "gitHead": "0bb383103eccd4c3a3b4aa1305768885d5bbbc59",
+  "homepage": "https://github.com/rehy/cordova-promise-polyfill#readme",
+  "keywords": [
+    "cordova",
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios",
+    "cordova-windows",
+    "cordova-wp8",
+    "promise",
+    "polyfill",
+    "es6-promise"
+  ],
+  "license": "MIT",
+  "maintainers": [
+    {
+      "name": "ratson",
+      "email": "npm@ratson.name"
+    }
+  ],
+  "name": "cordova-promise-polyfill",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rehy/cordova-promise-polyfill.git"
+  },
+  "scripts": {
+    "prepublish": "cpy ./node_modules/promise-polyfill/promise.min.js www",
+    "version": "sync-package-version --cordova-plugin"
+  },
+  "version": "0.0.2"
+}

@@ -1,0 +1,434 @@
+// Components, functions, plugins
+import { Injectable } from '@angular/core';
+import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
+import { Platform, AlertController } from 'ionic-angular';
+import { Http } from '@angular/http';
+import 'rxjs/add/operator/catch';
+import { Localstorage } from './../../providers/localstorage/localstorage';
+
+declare var formatTime: any;
+declare var dateFormat: any;
+
+// ------------------------
+// Index to functions
+// 
+// Agenda			1875
+// Database Stats	2492
+// Evaluations		478
+// Messaging		3122
+// Misc				2171
+// Notes			2327
+// Program Guide	958
+// Settings			886
+// Speakers			1478
+// 
+// ------------------------
+
+
+// Global URL and conference year referenceused for all AJAX-to-MySQL calls
+var APIURLReference: string = "https://primepolicy.convergence-us.com/flyinPlanner.php?";
+
+@Injectable()
+export class Database {
+
+	/* Setup page variables */
+	public DevicePlatform: string;
+    private storage: SQLite;
+    private isOpen: boolean;
+	private db: SQLiteObject;
+	 
+    public constructor(public pltfrm: Platform, 
+						public httpCall: Http,
+						public alertCtrl: AlertController,
+						private sqlite: SQLite,
+						private localstorage: Localstorage) {
+
+    }
+
+	// -----------------------------------
+	// 
+	// Evaluation Database Functions
+	// 
+	// -----------------------------------
+	public getEvaluationData(flags, AttendeeID) {
+
+		console.log("flags passed: " + flags);
+
+		var flagValues = flags.split("|");
+		var listingType = flagValues[0];
+		var EventID = flagValues[1];    
+		var EvalType = flagValues[2];
+		var SQLquery = "";
+		var Q11 = "";
+		var Q12 = "";
+		var Q21 = "";
+		var Q22 = "";
+		var Q23 = "";
+		var Q24 = "";
+		var Q25 = "";
+		var Q26 = "";
+		var Q31 = "";
+		var Q32 = "";
+		var Q33 = "";
+		var Q41 = "";
+		var Q1 = "";
+		var Q2 = "";
+		var Q3 = "";
+		var Q4 = "";
+		var Q5 = "";
+		var Q5C = "";
+		var Q6 = "";
+		var Q7 = "";
+		var Q7C = "";
+		var Q8 = "";
+		var Q9 = "";
+		var Q10 = "";
+		var Q10C = "";
+		var Q11C = "";
+		var LastUpdated = "";    
+		
+		// Perform query against server-based MySQL database
+		var url = APIURLReference + "action=evalquery&flags=" + flags + "&AttendeeID=" + AttendeeID;
+		
+		return new Promise(resolve => {
+			this.httpCall.get(url).subscribe(
+				response => {resolve(response.json());
+				},
+				err => {
+					if (err.status == "412") {
+						console.log("App and API versions don't match.");
+						var emptyJSONArray = {};
+						resolve(emptyJSONArray);
+					} else {
+						console.log(err.status);
+						console.log("API Error: ", err);
+					}
+				}
+			);
+		});
+						
+    }
+
+	// -----------------------------------
+	// 
+	// Settings Database Functions
+	// 
+	// -----------------------------------
+	public getSettingsData(flags, AttendeeID) {
+
+		console.log("flags passed: " + flags);
+							
+		// Perform query against server-based MySQL database
+		var url = APIURLReference + "action=settings&flags=" + flags + "&AttendeeID=" + AttendeeID;
+
+		return new Promise(resolve => {
+			this.httpCall.get(url).subscribe(
+				response => {resolve(response.json());
+				},
+				err => {
+					if (err.status == "412") {
+						console.log("App and API versions don't match.");
+						var emptyJSONArray = {};
+						resolve(emptyJSONArray);
+					} else {
+						console.log(err.status);
+						console.log("API Error: ", err);
+					}
+				}
+			);
+		});
+			
+    }
+
+	// -----------------------------------
+	// 
+	// Program Guide Database Functions
+	// 
+	// -----------------------------------
+	public getLecturesByDay(dayID, listingType, AttendeeID) {
+
+		console.log("dayID passed: " + dayID);
+		console.log("listingType passed: " + listingType);
+		
+		var selectedDate = dayID;    
+
+		// Perform query against server-based MySQL database
+		var flags = dayID + "|" + listingType;
+		var url = APIURLReference + "action=programdays&flags=" + flags + "&AttendeeID=" + AttendeeID;
+
+		return new Promise(resolve => {
+			this.httpCall.get(url).subscribe(
+				response => {resolve(response.json());
+				},
+				err => {
+					if (err.status == "412") {
+						console.log("App and API versions don't match.");
+						var emptyJSONArray = {};
+						resolve(emptyJSONArray);
+					} else {
+						console.log(err.status);
+						console.log("API Error: ", err);
+					}
+				}
+			);
+		});
+			
+	}
+
+	public getLectureData(flags, AttendeeID) {
+
+		console.log("Database: getLectureData: flags passed: " + flags);
+		var SQLquery = "";
+		
+		// Perform query against server-based MySQL database
+		var url = APIURLReference + "action=lecturequery&flags=" + flags + "&AttendeeID=" + AttendeeID;
+
+		return new Promise(resolve => {
+			this.httpCall.get(url).subscribe(
+				response => {resolve(response.json());
+				},
+				err => {
+					if (err.status == "412") {
+						console.log("App and API versions don't match.");
+						var emptyJSONArray = {};
+						resolve(emptyJSONArray);
+					} else {
+						console.log(err.status);
+						console.log("API Error: ", err);
+					}
+				}
+			);
+		});
+			
+    }
+	
+	// -----------------------------------
+	// 
+	// Congressional Member Database Functions
+	// 
+	// -----------------------------------
+	public getCongressionalData(flags, AttendeeID) {
+
+		console.log("getCongressionalData: flags passed: " + flags);
+		var SQLquery = "";
+				
+		// Perform query against server-based MySQL database
+		var url = APIURLReference + "action=cmquery&flags=" + flags + "&AttendeeID=" + AttendeeID;
+
+		return new Promise(resolve => {
+			this.httpCall.get(url).subscribe(
+				response => {
+					console.log("Database: Congressional Member data: " + JSON.stringify(response.json()));
+					resolve(response.json());
+				},
+				err => {
+					if (err.status == "412") {
+						console.log("App and API versions don't match.");
+						var emptyJSONArray = {};
+						resolve(emptyJSONArray);
+					} else {
+						console.log(err.status);
+						console.log("API Error: ", err);
+					}
+				}
+			);
+		});
+			
+    }
+
+
+	// -----------------------------------
+	// 
+	// Agenda Database Functions
+	// 
+	// -----------------------------------
+	public getAgendaData(flags, AttendeeID) {
+
+		console.log("Database: flags passed: " + flags);
+		console.log("Database: AttendeeID passed: " + AttendeeID);
+
+		var re = /\'/gi; 
+
+		var flagValues = flags.split("|");
+		var listingType = flagValues[0];
+		var selectedDay = flagValues[1];
+		var EventID = flagValues[2];
+		var EventStartTime = flagValues[3];
+		var EventEndTime = flagValues[4];
+		var EventLocation = flagValues[5];
+		//EventLocation = EventLocation.replace(re, "''");
+		var EventName = flagValues[6];
+		//EventName = EventName.replace(re, "''");
+		var EventDate = flagValues[7];
+		var AAOID = flagValues[8];
+		var LastUpdated = flagValues[9];
+		var EventDescription = flagValues[10];
+		//EventDescription = EventDescription.replace(re, "''");
+		var SQLquery = "";
+
+		
+		// Perform query against server-based MySQL database
+		var url = APIURLReference + "action=agendaquery&flags=" + flags + "&AttendeeID=" + AttendeeID;
+		console.log('Database: URL call: ' + url);
+		
+		return new Promise(resolve => {
+			this.httpCall.get(url).subscribe(
+				response => {resolve(response.json());
+				},
+				err => {
+					if (err.status == "412") {
+						console.log("App and API versions don't match.");
+						var emptyJSONArray = {};
+						resolve(emptyJSONArray);
+					} else {
+						console.log(err.status);
+						console.log("API Error: ", err);
+					}
+				}
+			);
+		});
+			
+	}
+
+	public getSearchData(flags, AttendeeID) {
+
+		console.log("flags passed: " + flags);
+		console.log("AttendeeID passed: " + AttendeeID);
+		
+		var searchTerms = flags || '';
+		
+		// Perform query against server-based MySQL database
+		var url = APIURLReference + "action=searchquery&flags=" + flags + "&AttendeeID=" + AttendeeID;
+
+		return new Promise(resolve => {
+			this.httpCall.get(url).subscribe(
+				response => {resolve(response.json());
+				},
+				err => {
+					if (err.status == "412") {
+						console.log("App and API versions don't match.");
+						var emptyJSONArray = {};
+						resolve(emptyJSONArray);
+					} else {
+						console.log(err.status);
+						console.log("API Error: ", err);
+					}
+				}
+			);
+		});
+			
+	}
+
+	public getNotesData(flags, AttendeeID) {
+
+		console.log("flags passed: " + flags);
+		console.log("AttendeeID passed: " + AttendeeID);
+
+		var flagValues = flags.split("|");
+		var selectedDay = flagValues[0];    
+		var listingType = flagValues[1];
+		var EventID = flagValues[2];    
+		var NoteID = flagValues[3];    
+		var NoteText = flagValues[4];    
+		var LastUpdated = flagValues[5];    
+		var SQLquery = "";
+		
+		// Perform query against server-based MySQL database
+		var url = APIURLReference + "action=notesquery&flags=" + flags + "&AttendeeID=" + AttendeeID;
+
+		return new Promise(resolve => {
+			this.httpCall.get(url).subscribe(
+				response => {resolve(response.json());
+				},
+				err => {
+					if (err.status == "412") {
+						console.log("App and API versions don't match.");
+						var emptyJSONArray = {};
+						resolve(emptyJSONArray);
+					} else {
+						console.log(err.status);
+						console.log("API Error: ", err);
+					}
+				}
+			);
+		});
+			
+	}
+
+	public getDatabaseStats(flags, AttendeeID) {
+
+		console.log("flags passed: " + flags);
+		console.log("AttendeeID passed: " + AttendeeID);
+
+		var flagValues = flags.split("|");
+		var listingType = flagValues[0];
+		var listingParameter = flagValues[1];
+		var listingValue = flagValues[2];
+		var AttendeeProfileTitle = flagValues[3];
+		var AttendeeProfileOrganization = flagValues[4];
+		
+		// Perform query against server-based MySQL database
+		var url = APIURLReference + "action=statsquery&flags=" + flags + "&AttendeeID=" + AttendeeID;
+
+		return new Promise(resolve => {
+			this.httpCall.get(url).subscribe(
+				response => {resolve(response.json());
+				},
+				err => {
+					if (err.status == "412") {
+						console.log("App and API versions don't match.");
+						var emptyJSONArray = {};
+						resolve(emptyJSONArray);
+					} else {
+						console.log(err.status);
+						console.log("API Error: ", err);
+					}
+				}
+			);
+		});
+			
+	}
+
+	// -----------------------------------
+	// 
+	// Messaging Functions
+	// 
+	// -----------------------------------
+	public getMessagingData(flags, AttendeeID) {
+
+		console.log("flags passed: " + flags);
+		console.log("AttendeeID passed: " + AttendeeID);
+
+		var flagValues = flags.split("|");
+		var listingType = flagValues[0];
+		var sortingType = flagValues[1];
+		var receiverID = flagValues[2];
+		var pnTitle = flagValues[3];
+		var pnMessage = flagValues[4];
+		var DateTimeReceived = flagValues[5];
+		
+		// Perform query against server-based MySQL database
+		var url = APIURLReference + "action=msgquery&flags=" + flags + "&AttendeeID=" + AttendeeID;
+
+		return new Promise(resolve => {
+			this.httpCall.get(url).subscribe(
+				response => {
+					console.log('msgquery response: ' + JSON.stringify(response.json()));
+					resolve(response.json());
+				},
+				err => {
+					if (err.status == "412") {
+						console.log("App and API versions don't match.");
+						var emptyJSONArray = {};
+						resolve(emptyJSONArray);
+					} else {
+						console.log(err.status);
+						console.log("API Error: ", err);
+					}
+				}
+			);
+		});
+			
+	}
+	
+}

@@ -1,0 +1,30 @@
+<ion-header>
+
+	<ion-navbar color="primary">
+		<ion-title>Social Media Link Entry</ion-title>
+	</ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+		<ion-label>Enter or update the link to your {{typeOfSocialMedia}} social media profile:</ion-label>
+		<ion-textarea (input)='SocialMediaURLEntry = $event.target.value' name="SocialMediaURLEntry" [value]="SocialMediaURLEntry" placeholder="i.e. {{typeOfSampleSocialMedia}}"></ion-textarea>
+
+		<ion-grid>
+			<ion-row>
+				<ion-col col-6 >
+					<button ion-button full (click)="closeModal('Save')">
+						Save
+					</button>
+				</ion-col>
+				<ion-col col-6 >
+					<button ion-button full (click)="closeModal('Cancel')">
+						Cancel
+					</button>
+				</ion-col>
+			</ion-row>
+		</ion-grid>
+
+</ion-content>

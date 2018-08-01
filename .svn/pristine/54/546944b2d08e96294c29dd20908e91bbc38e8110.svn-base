@@ -1,0 +1,34 @@
+<ion-header>
+
+	<ion-navbar color="primary">
+		<ion-title>Send a Message to Prime</ion-title>
+	</ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+		<ion-textarea 
+			(input)='SMSMessageEntry = $event.target.value' 
+			name="SMSMessageEntry" 
+			[value]="SMSMessageEntry" 
+			placeholder="Enter a message..."
+			style="height:150px;"></ion-textarea>
+
+		<ion-grid>
+			<ion-row>
+				<ion-col col-6 >
+					<button ion-button full (click)="closeModal('Send')">
+						Send
+					</button>
+				</ion-col>
+				<ion-col col-6 >
+					<button ion-button full (click)="closeModal('Cancel')">
+						Cancel
+					</button>
+				</ion-col>
+			</ion-row>
+		</ion-grid>
+
+</ion-content>

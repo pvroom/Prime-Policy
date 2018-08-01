@@ -1,0 +1,62 @@
+<ion-header>
+	<ion-navbar color="primary">
+		<button ion-button menuToggle>
+			<ion-icon name="menu"></ion-icon>
+		</button>
+		<ion-title>More</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content>
+
+	<ion-list>
+	
+		<button ion-item (click)="NavToPage('NotesPage')">Notes
+			<ion-icon item-start name="create"></ion-icon>
+		</button>
+
+		<!-- 
+		<button ion-item (click)="NavToPage('EventSurvey')">Event Survey
+			<ion-icon item-start name="checkbox"></ion-icon>
+		</button>
+	-->
+
+
+
+
+		<button ion-item (click)="NavToPage('MyAgenda')">MyAgenda
+			<ion-icon item-start name="calendar"></ion-icon>
+		</button>
+
+		<button ion-item (click)="NavToPage('MyAgendaFull')">Agenda All
+			<ion-icon item-start name="calendar"></ion-icon>
+		</button>
+
+
+		<button ion-item (click)="NavToPage('ConferenceCityPage')">Event Details
+				<ion-icon item-start name="list-box"></ion-icon>
+			</button>
+
+			<button ion-item (click)="NavToPage('AttendeesPage')">Attendees
+					<ion-icon item-start name="contacts"></ion-icon>
+				</button>
+
+
+			<button ion-item (click)="NavToPage('HelpPage')">Help
+					<ion-icon item-start name="help"></ion-icon>
+				</button>
+
+
+		<button ion-item (click)="NavToPage('DatabasePage')">Database Stats
+			<ion-icon item-start name="stats"></ion-icon>
+		</button>
+
+		<!-- Used for setting up floor plan markers during development; Not used for production
+		<button ion-item (click)="NavToPage('FloorplanMappingPage')">Floorplan Mapping
+			<ion-icon item-start name="stats"></ion-icon>
+		</button>
+		-->
+		
+	</ion-list>
+
+</ion-content>

@@ -1,0 +1,72 @@
+<ion-header>
+    <ion-navbar color="primary">
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+			</button>
+			<ion-title>
+					Database Stats
+				</ion-title>
+			</ion-navbar>
+			</ion-header>
+
+
+<ion-content padding>
+
+	<div>
+		If you see N/A for any entry, then you need to be logged in to see that value.<br/>
+		Application version 4.1.0.0005
+	</div>
+
+	<ion-list id="databasestat-list3">
+		<ion-item class="item-icon-left item-icon-right" *ngFor="let databasestat of DatabaseStatsListing" id="databasestat-list-item19">
+			<div>
+				<div class="row">
+					<div class="col">
+						<div style="float: left; padding-right: 10px;">
+							<ion-icon name="document"></ion-icon>
+						</div>
+						<div class="col">
+							<p class="myLabelBold">
+								{{databasestat.DatabaseTable}}
+							</p>
+						</div>
+						<div style="float: right">
+							{{databasestat.DatabaseRecords}}
+						</div>
+					</div>
+				</div>
+			</div>
+		</ion-item>
+	</ion-list>
+
+	<div style="text-align:center">
+		<ion-row>
+			<ion-col>
+				<button ion-button outline [color]="btnEmail" (tap)="ResetAutoSync()">
+					<div>
+						<ion-icon name="refresh"></ion-icon>
+						<label>Reset AutoSync</label>
+					</div>
+				</button>
+			</ion-col>
+			<ion-col>
+				<button ion-button outline [color]="btnEmail" (tap)="ManualSync()">
+					<div>
+						<ion-icon name="refresh"></ion-icon>
+						<label>Manual Sync</label>
+					</div>
+				</button>
+			</ion-col>
+		</ion-row>
+
+		<ion-row>
+			<ion-col>
+				<ion-label><b>Last Sync: {{LastAutoSync}} UTC</b></ion-label>
+			</ion-col>
+			<ion-col>
+				<ion-label><b>&nbsp;</b></ion-label>
+			</ion-col>
+		</ion-row>
+	</div>
+
+</ion-content>

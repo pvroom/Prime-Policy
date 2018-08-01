@@ -1,0 +1,162 @@
+<ion-header>
+	<ion-navbar color="primary">
+		<button ion-button menuToggle>
+			<ion-icon name="menu"></ion-icon>
+		</button>
+		<ion-title>Notes</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content>
+
+	<!-- Search input -->
+	<ion-grid style="margin-top:-15px">
+		<ion-row>
+			<ion-col col-9>	
+
+				<ion-item class="item-input; shadow">
+					<ion-icon name="search" item-left></ion-icon>
+					<ion-input name="srchBarEntry" id="srchBarEntry" 
+					type="text" placeholder="Search" [(ngModel)]="EntryTerms"></ion-input>
+				</ion-item>
+			</ion-col>
+			<ion-col col-3>
+				<button ion-button full class="buttonPadding" style="background:#e74c3c" (tap)="GetSearchResults()">
+					Submit
+				</button>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+
+	<ion-list id="Notes-list3">
+
+		<!-- Day 1 note items -->
+		<ion-card *ngIf=Day1Show>
+
+			<ion-card-header class="mutedBlue">
+				{{Day1Label}}
+			</ion-card-header>
+
+			<ion-card-content>
+				<ion-item class="item-icon-left item-icon-right" (tap)="NoteDetails(day1item.EventID)" *ngFor="let day1item of day1Items" id="notes-list-item19">
+					<i class="icon {{notesIcon}}"></i>
+					<p>
+						{{day1item.CourseName}}
+					</p>
+					<p>
+						{{day1item.visEventTimeframe}}
+					</p>
+					<p>
+						{{day1item.NoteBeginning}}
+					</p>
+					<i class="icon {{navigationRightArrow}}"></i>
+				</ion-item>
+			</ion-card-content>
+
+		</ion-card>
+
+		<!-- Day 2 note items -->
+		<ion-card *ngIf=Day2Show>
+
+			<ion-card-header  class="mutedBlue">
+				{{Day2Label}}
+			</ion-card-header>
+
+			<ion-card-content>
+				<ion-item class="item-icon-left item-icon-right" (tap)="NoteDetails(day2item.EventID)" *ngFor="let day2item of day2Items" id="notes-list-item19">
+					<i class="icon {{notesIcon}}"></i>
+					<p>
+						{{day2item.CourseName}}
+					</p>
+					<p>
+						{{day2item.visEventTimeframe}}
+					</p>
+					<p>
+						{{day2item.NoteBeginning}}
+					</p>
+					<i class="icon {{navigationRightArrow}}"></i>
+				</ion-item>
+			</ion-card-content>
+
+		</ion-card>
+
+
+		<!-- Day 3 note items -->
+		<ion-card *ngIf=Day3Show>
+
+			<ion-card-header class="mutedBlue">
+				{{Day3Label}}
+			</ion-card-header>
+
+			<ion-card-content>
+				<ion-item class="item-icon-left item-icon-right" (tap)="NoteDetails(day3item.EventID)" *ngFor="let day3item of day3Items" id="notes-list-item19">
+					<i class="icon {{notesIcon}}"></i>
+					<p>
+						{{day3item.CourseName}}
+					</p>
+					<p>
+						{{day3item.visEventTimeframe}}
+					</p>
+					<p>
+						{{day3item.NoteBeginning}}
+					</p>
+					<i class="icon {{navigationRightArrow}}"></i>
+				</ion-item>
+			</ion-card-content>
+
+		</ion-card>
+
+
+		<!-- Day 4 note items -->
+		<ion-card *ngIf=Day4Show>
+
+			<ion-card-header class="mutedBlue">
+				{{Day4Label}}
+			</ion-card-header>
+
+			<ion-card-content>
+				<ion-item class="item-icon-left item-icon-right" (tap)="NoteDetails(day4item.EventID)" *ngFor="let day4item of day4Items" id="notes-list-item21">
+					<i class="icon {{notesIcon}}"></i>
+					<p>
+						{{day4item.CourseName}}
+					</p>
+					<p>
+						{{day4item.visEventTimeframe}}
+					</p>
+					<p>
+						{{day4item.NoteBeginning}}
+					</p>
+					<i class="icon {{navigationRightArrow}}"></i>
+				</ion-item>
+			</ion-card-content>
+
+		</ion-card>
+
+		<!-- Day 5 note items -->
+		<ion-card *ngIf=Day5Show>
+
+			<ion-card-header class="mutedBlue">
+				{{Day5Label}}
+			</ion-card-header>
+
+			<ion-card-content>
+				<ion-item class="item-icon-left item-icon-right" (tap)="NoteDetails(day5item.EventID)" *ngFor="let day5item of day5Items" id="notes-list-item22">
+					<i class="icon {{notesIcon}}"></i>
+					<p>
+						{{day5item.CourseName}}
+					</p>
+					<p>
+						{{day5item.visEventTimeframe}}
+					</p>
+					<p>
+						{{day5item.NoteBeginning}}
+					</p>
+					<i class="icon {{navigationRightArrow}}"></i>
+				</ion-item>
+			</ion-card-content>
+
+		</ion-card>
+
+	</ion-list>
+
+</ion-content>

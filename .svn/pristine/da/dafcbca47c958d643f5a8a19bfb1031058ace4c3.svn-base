@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "290203431586",
+    "firebase_url": "https://aacd-mobile-2018.firebaseio.com",
+    "project_id": "aacd-mobile-2018",
+    "storage_bucket": "aacd-mobile-2018.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:290203431586:android:944e8b080260c1d3",
+        "android_client_info": {
+          "package_name": "com.convergenceus.pli.naeyc"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "290203431586-md6ak7pmsqtdqotakn5qe3stari80231.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBdMTdf7T1fYi329HnEpwlNCj8ctin7Hu4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

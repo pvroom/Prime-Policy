@@ -1,0 +1,59 @@
+<ion-header>
+
+	<ion-navbar color="primary">
+		<ion-title>Add a Profile Image</ion-title>
+	</ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+		<!-- Posting picture attachment -->
+		<img class="center" [src]="_DomSanitizer.bypassSecurityTrustUrl(ProfileImageAttachment)" onerror="this.src='assets/img/missing-image.png'">
+
+		<!-- Button controls -->
+		<ion-grid *ngIf=deviceButtons>
+			<ion-row>
+				<ion-col col-3 >
+					<button ion-button full (click)="closeModal('Cancel')">
+						Cancel
+					</button>
+				</ion-col>
+				<ion-col col-3 >
+					<button ion-button full (click)="addGalleryImage()">
+						Gallery
+					</button>
+				</ion-col>
+				<ion-col col-3 >
+					<button ion-button full (click)="addCameraImage()">
+						Camera
+					</button>
+				</ion-col>
+				<ion-col col-3 >
+					<button ion-button full (click)="closeModal('Save')">
+						Save
+					</button>
+				</ion-col>
+			</ion-row>
+		</ion-grid>
+
+		<ion-grid *ngIf=browserButtons>
+			<ion-row>
+				<ion-col col-3 >
+					<button ion-button full (click)="closeModal('Cancel')">
+						Cancel
+					</button>
+				</ion-col>
+				<ion-col col-6 >
+					<p style="text-align:center;">Please use the mobile app to upload an image</p>
+				</ion-col>
+				<ion-col col-3 >
+					<button ion-button full (click)="closeModal('Save')">
+						Save
+					</button>
+				</ion-col>
+			</ion-row>
+		</ion-grid>
+		
+</ion-content>

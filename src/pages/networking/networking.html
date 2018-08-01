@@ -1,0 +1,65 @@
+<ion-header>
+	<ion-navbar color="primary">
+		<button ion-button menuToggle>
+			<ion-icon name="menu"></ion-icon>
+		</button>
+		<ion-title>Networking</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content style="margin:0!important; background:#740e88">
+
+	<ion-grid style="margin:0!important; padding:0!important">
+	
+		<ion-row>
+			<ion-col col-6 style="margin:0!important; padding:0!important">
+				<button ion-item no-lines class="buttonShape" style="background:#740e88;" (click)="NavigateTo('Attendees')" id="program-list-item1">
+					<ion-icon name="contacts" class="buttonIconsL"></ion-icon>
+					<h2>Attendees</h2>
+				</button>
+			</ion-col>
+
+			<ion-col col-6 style="margin:0!important; padding:0!important">
+				<button ion-item no-lines class="buttonShape" style="background:#4a148c;"  (click)="NavigateTo('Conversations')" id="program-list-item3">
+					<ion-icon name="chatbubbles" class="buttonIconsL"></ion-icon>
+					<h2>Conversations</h2>
+					<p *ngIf=NewMessagesIndicator style="color:#fff;">{{NewMessagesCounter}} New Messages</p>
+				</button>
+			</ion-col>
+		</ion-row>
+		
+		<ion-row>
+			<ion-col col-6 style="margin:0!important; padding:0!important">
+				<button ion-item no-lines class="buttonShape" style="background:#F15D22;" (click)="NavigateTo('MyProfile')" id="program-list-item5">
+					<ion-icon name="contact" class="buttonIconsL"></ion-icon>
+					<h2>My Profile</h2>
+				</button>
+			</ion-col>
+			
+			<ion-col col-6 style="margin:0!important; padding:0!important">
+				<button ion-item no-lines class="buttonShape" style="background:#3f0541;" (click)="NavigateTo('Notifications')" id="program-list-item2">
+					<ion-icon name="alert" class="buttonIconsL"></ion-icon>
+					<h2>Notifications</h2>
+				</button>
+			</ion-col>
+		</ion-row>
+		
+		<ion-row>
+			<ion-col col-6 style="margin:0!important; padding:0!important">
+				<button ion-item no-lines class="buttonShape" style="background:#740e88;" (click)="NavigateTo('ActivityFeed')" id="program-list-item5">
+					<ion-icon name="chatboxes" class="buttonIconsL"></ion-icon>
+					<h2>Activities Feed</h2>
+				</button>
+			</ion-col>
+			
+			<ion-col col-6 style="margin:0!important; padding:0!important">
+				<button ion-item no-lines class="buttonShape" style="background:#4a148c;" (click)="NavigateTo('SocialMedia')" id="program-list-item2">
+					<ion-icon name="text" class="buttonIconsL"></ion-icon>
+					<h2>Social Media</h2>
+				</button>
+			</ion-col>
+		</ion-row>
+			
+	</ion-grid>
+
+</ion-content>

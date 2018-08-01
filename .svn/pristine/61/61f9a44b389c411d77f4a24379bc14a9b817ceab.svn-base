@@ -1,0 +1,100 @@
+<ion-header>
+	<ion-navbar color="primary">
+		<button ion-button menuToggle>
+			<ion-icon name="menu"></ion-icon>
+		</button>
+		<ion-title>Search Results</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+		<p class="myLabelPadding">
+			Search results are grouped below with number of results in each header.  Expand a group to see details.
+		</p>
+
+
+		<div class="card">
+			<div class="rowSearch item-divider item LegendHeader myMarginZero2" (click)="ShowHideResults('Lectures')">
+				{{visHeaderLW}}
+			</div>
+			<div *ngIf="LWShow">
+				<ion-item (click)="EventDetails(sessionLW.EventID)" *ngFor="let sessionLW of sessionLW" id="lecture-list-item19">
+					<ion-icon item-right name="arrow-dropright"></ion-icon>
+					<h2>{{sessionLW.DisplayEventName}}</h2>
+					<p>{{sessionLW.DisplayEventTimeDateLocation}}</p>
+					<p>{{sessionLW.SpeakerDisplayName}}</p>
+				</ion-item>
+			</div>
+		</div>
+
+		<!--
+		<div class="card">
+			<div class="rowSearch item-divider item LegendHeader myMarginZero2" (click)="ShowHideResults('Participation')">
+				{{visHeaderPart}}
+			</div>
+			<div *ngIf="PartShow">
+				<ion-item (click)="EventDetails(sessionPart.EventID)" *ngFor="let sessionPart of sessionPart" id="participation-list-item19">
+					<ion-icon item-right name="arrow-dropright"></ion-icon>
+					<h2>{{sessionPart.DisplayEventName}}</h2>
+					<p>{{sessionPart.DisplayEventTimeDateLocation}}</p>
+					<p>{{sessionPart.SpeakerDisplayName}}</p>
+				</ion-item>
+			</div>
+		</div>
+		-->
+
+		<div class="card">
+			<div class="rowSearch item-divider item LegendHeader myMarginZero2" (click)="ShowHideResults('OtherEvents')">
+				{{visHeaderOE}}
+			</div>
+			<div *ngIf="OtherShow">
+				<ion-item (click)="EventDetails(sessionOE.EventID)" *ngFor="let sessionOE of sessionOE" id="other-list-item19">
+					<ion-icon item-right name="arrow-dropright"></ion-icon>
+					<h2>{{sessionOE.DisplayEventName}}</h2>
+					<p>{{sessionOE.DisplayEventTimeDateLocation}}</p>
+					<p>{{sessionOE.SpeakerDisplayName}}</p>
+				</ion-item>
+			</div>
+		</div>
+
+		<div class="card">
+			<div class="rowSearch item-divider item LegendHeader myMarginZero2" (click)="ShowHideResults('Speakers')">
+				{{visHeaderSpkr}}
+			</div>
+			<div *ngIf="SpeakerShow">
+				<ion-item (click)="SpeakerDetails(Speaker.SpeakerID)" *ngFor="let Speaker of Speakers" id="speaker-list-item19">
+					<ion-icon item-right name="arrow-dropright"></ion-icon>
+					<h2>{{Speaker.DisplayNameLastFirst}}</h2>
+					<p>{{Speaker.Affiliation}}</p>
+				</ion-item>
+			</div>
+		</div>
+
+		<div class="card">
+			<div class="rowSearch item-divider item myMarginZero2" (click)="ShowHideResults('Exhibitors')">
+				{{visHeaderExh}}
+			</div>
+			<div *ngIf="ExhibitorShow">
+				<ion-item (click)="ExhibitorDetails(Exhibitor.ExhibitorID)" *ngFor="let Exhibitor of Exhibitors" id="Exhibitor-list-item19">
+					<ion-icon item-right name="arrow-dropright"></ion-icon>
+					<h2>{{Exhibitor.DisplayCompanyName}}</h2>
+					<p>{{Exhibitor.BoothNumber}}</p>
+				</ion-item>
+			</div>
+		</div>
+		
+		<div class="card">
+			<div class="rowSearch item-divider item myMarginZero2" (click)="ShowHideResults('Attendees')">
+				{{visHeaderAtt}}
+			</div>
+			<div *ngIf="AttendeeShow">
+				<ion-item (click)="AttendeeDetails(Attendee.AttendeeID)" *ngFor="let Attendee of Attendees" id="Attendee-list-item19">
+					<ion-icon item-right name="arrow-dropright"></ion-icon>
+					<h2>{{Attendee.DisplayName}}</h2>
+					<p>{{Attendee.DisplayTitle}}</p>
+					<p>{{Attendee.DisplayCompany}}</p>
+				</ion-item>
+			</div>
+		</div>
+

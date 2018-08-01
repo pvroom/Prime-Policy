@@ -1,0 +1,56 @@
+<ion-header>
+	<ion-navbar color="primary">
+		<button ion-button menuToggle>
+			<ion-icon name="menu"></ion-icon>
+		</button>
+		<ion-title>Search Results</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+	<p class="myLabelPadding">
+		Search results are grouped below with number of results in each header.  Expand a group to see details.
+	</p>
+
+
+	<div class="card">
+		<div class="rowSearch item-divider item LegendHeader myMarginZero2" (click)="ShowHideResults('Meetings')">
+			{{visHeaderMeetings}}
+		</div>
+		<div *ngIf="MeetingsShow">
+			<ion-item (click)="MeetingDetails(meeting.EventID)" *ngFor="let meeting of Meetings" id="Meetings-list-item19">
+				<ion-icon item-right name="arrow-dropright"></ion-icon>
+				<h2>{{meeting.DisplayEventName}}</h2>
+				<p>{{meeting.DisplayEventTimeDateLocation}}</p>
+			</ion-item>
+		</div>
+	</div>
+
+	<div class="card">
+		<div class="rowSearch item-divider item LegendHeader myMarginZero2" (click)="ShowHideResults('Senators')">
+			{{visHeaderSenators}}
+		</div>
+		<div *ngIf="SenatorsShow">
+			<ion-item (click)="CongressionalDetails(senator.cmID)" *ngFor="let senator of Senators" id="senator-list-item19">
+				<ion-icon item-right name="{{senator.navigationRightArrow}}"></ion-icon>
+				<h2>{{senator.DisplayNameLastFirst}}</h2>
+				<p>{{senator.DisplayPartyState}}</p>
+			</ion-item>
+		</div>
+	</div>
+
+	<div class="card">
+		<div class="rowSearch item-divider item LegendHeader myMarginZero2" (click)="ShowHideResults('House')">
+			{{visHeaderHouse}}
+		</div>
+		<div *ngIf="HouseShow">
+			<ion-item (click)="CongressionalDetails(representative.cmID)" *ngFor="let representative of Representatives" id="House-list-item19">
+				<ion-icon item-right name="{{representative.navigationRightArrow}}"></ion-icon>
+				<h2>{{representative.DisplayNameLastFirst}}</h2>
+				<p>{{representative.DisplayPartyStateDistrict}}</p>
+			</ion-item>
+		</div>
+	</div>
+
+</ion-content>

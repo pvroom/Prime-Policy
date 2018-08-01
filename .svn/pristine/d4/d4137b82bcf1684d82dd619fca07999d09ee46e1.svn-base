@@ -1,0 +1,70 @@
+<ion-header>
+	<ion-navbar color="primary">
+		<button ion-button menuToggle>
+			<ion-icon name="menu"></ion-icon>
+		</button>
+		<ion-title>Search by Topic</ion-title>
+	</ion-navbar>
+</ion-header>
+<ion-content>
+
+	<div class="myPaddingLR" style="padding-top:10px!important; padding-bottom:10px!important">
+		<h2>Topic Search</h2>
+		<h6>Find courses tagged by specific topics by choosing one from the dropdown below.</h6>
+	</div>
+
+
+
+	<ion-item>
+		<label class="item item-select" id="searchByTopic-select1"></label>
+		
+		<ion-select name="Topics" style="background:#710080; color:#fff; width:100%"[(ngModel)]="TopicSearchChoice" (ionChange)="SearchTopics($event)">
+
+			<ion-option value='Select a topic...' selected>Select a topic...</ion-option>
+			<ion-option value='Accreditation of Early Learning Programs'>Accreditation of Early Learning Programs</ion-option>
+			<ion-option value='Accreditation of Higher Education Programs'>Accreditation of Higher Education Programs</ion-option>
+			<ion-option value='Advocacy/Public Policy'>Advocacy/Public Policy</ion-option>
+			<ion-option value='Assessment of Young Children (developmental screening, diagnostic evaluation, classroom-based assessment)'>Assessment of Young Children</ion-option>
+			<ion-option value='Children with Disabilities/Early Intervention'>Children with Disabilities/Early Intervention</ion-option>
+			<ion-option value='Cognitive Development'>Cognitive Development</ion-option>
+			<ion-option value='Community Partnerships'>Community Partnerships</ion-option>
+			<ion-option value='Curriculum-Theories &amp; Approaches'>Curriculum-Theories & Approaches</ion-option>
+			<ion-option value='Diversity &amp; Equity'>Diversity & Equity</ion-option>
+			<ion-option value='Educator/Teacher Preparation'>Educator/Teacher Preparation</ion-option>
+			<ion-option value='Family Engagement &amp; Support'>Family Engagement & Support</ion-option>
+			<ion-option value='Featured Session'>Featured Session</ion-option>
+			<ion-option value='Guidance/Discipline/Challenging Behaviors'>Guidance/Discipline/Challenging Behaviors</ion-option>
+			<ion-option value='Health &amp; Safety'>Health & Safety</ion-option>
+			<ion-option value='Language &amp; Literacy'>Language & Literacy</ion-option>
+			<ion-option value='Learning Environment'>Learning Environment</ion-option>
+			<ion-option value='Mathematics'>Mathematics</ion-option>
+			<ion-option value='NAEYC Activities'>NAEYC Activities</ion-option>
+			<ion-option value='Physical Development'>Physical Development</ion-option>
+			<ion-option value='Play'>Play</ion-option>
+			<ion-option value='Professional Development Systems'>Professional Development Systems</ion-option>
+			<ion-option value='Professionalism, Leadership &amp; Ethics'>Professionalism, Leadership & Ethics</ion-option>
+			<ion-option value='Program Administration &amp; Financial Management'>Program Administration & Financial Management</ion-option>
+			<ion-option value='Program Quality, Evaluation, &amp; Accountability'>Program Quality, Evaluation, & Accountability</ion-option>
+			<ion-option value='Quality Initiatives-QRIS, Compensation &amp; Licensing'>Quality Initiatives-QRIS, Compensation &amp; Licensing</ion-option>
+			<ion-option value='Research'>Research</ion-option>
+			<ion-option value='Science/Environment/Nature Education'>Science/Environment/Nature Education</ion-option>
+			<ion-option value='Social/Emotional Development'>Social/Emotional Development</ion-option>
+			<ion-option value='Standards-Early Learning/Content Standards, Common Core Standards'>Standards-Early Learning/Content Standards, Common Core Standards</ion-option>
+			<ion-option value='Technical Assistance (Coaching, Mentoring, Consultation)'>Technical Assistance (Coaching, Mentoring, Consultation)</ion-option>
+			<ion-option value='Technology &amp; Digital Media'>Technology &amp; Digital Media</ion-option>
+			<ion-option value='Training &amp; Professional Development Programs'>Training & Professional Development Programs</ion-option>
+
+		</ion-select>
+	</ion-item>
+
+	<ion-list class="myLabelBold" style="max-width:100%" id="topic-list3">
+		<ion-item text-wrap (click)="EventDetails(session.EventID)" *ngFor="let session of sessions" id="topics-list-item19">
+			<ion-icon item-right name="arrow-dropright"></ion-icon>
+			<h2>{{session.DisplayEventName}}</h2>
+			<p>{{session.DisplayEventTimeDateLocation}}</p>
+			<p>{{session.SpeakerDisplayName}}</p>
+		</ion-item>
+	</ion-list>
+
+</ion-content>
+

@@ -1,0 +1,51 @@
+<ion-header>
+	<ion-navbar color="primary">
+		<button ion-button menuToggle>
+			<ion-icon name="menu"></ion-icon>
+		</button>
+		<ion-title>Notes</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content>
+
+
+		<ion-card>
+
+				<ion-card-header style="background:#740e88; color:#fff">
+				{{DisplayEventName}}
+				{{SpeakerDisplayName}}
+				</ion-card-header>
+			  
+				<ion-card-content>
+						<ion-textarea (input)='NoteDetails = $event.target.value' name="NoteDetails" [value]="NoteDetails" placeholder="Enter notes..."></ion-textarea>
+				</ion-card-content>
+			  
+			  </ion-card>
+
+
+		<ion-grid>
+			<ion-row>
+				<ion-col col-3 >
+					<button ion-button full color=danger (click)="SaveNote()">
+						Save
+					</button>
+				</ion-col>
+				<ion-col col-3 >
+					<button ion-button full color=danger (click)="CancelNote()">
+						Cancel
+					</button>
+				</ion-col>
+			</ion-row>
+		</ion-grid>
+
+	<div style='display:none'>
+		{{AttendeeID}}
+		{{EventID}}
+		{{NoteID}}
+		{{NoteStatus}}
+	</div>
+
+
+	
+</ion-content>

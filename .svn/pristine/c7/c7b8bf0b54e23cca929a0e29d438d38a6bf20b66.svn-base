@@ -1,0 +1,1328 @@
+// http://ionicframework.com/docs/v2/theming/
+
+
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+
+
+.modal-wrapper {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.activeHighlight {
+  background: map-get($colors,primary);
+}
+
+ion-menu{
+ ion-content{
+  background-color:transparent !important;
+ }
+}
+
+
+
+.myTextMarginTop  {
+    margin-top:3px!important;
+}
+
+
+.myHeight10  {
+    height:10px!important;
+    font-size:12px!important;
+    padding:0;
+}
+
+
+.myHeight20  {
+    height:20px!important;
+}
+
+
+.myHeight30  {
+    height:30px!important;
+
+}
+
+.myHeight62  {
+    height:62px!important;
+}
+
+
+
+.myFontSize  {
+    font-size:10px!important
+}
+
+
+.myFontSize12  {
+    font-size:12px!important
+}
+
+
+.myTextGray  {
+    color:#333!important;
+    border-style:solid;
+    border-width:1px;
+    border-color:#333;
+}
+
+.myTextWhite  {
+    color:#fff!important;
+}
+
+
+.myTransparentBG  {
+    background-color:transparent!important;
+}
+
+
+
+.myBlueColor1  {
+    color:#335A9A!important;
+}
+
+#3b5998
+
+.myBGColorBlue {
+    background-color:#335A9A!important;
+    color:#fff!important;
+}
+
+
+
+.myPaddingZero  {
+    padding:0,0,0,0!important;
+}
+
+
+.myIconRight5  {
+    position: absolute;
+    right:5px;
+}
+
+.myIconRight10  {
+    position: absolute;
+    right: 10px;
+}
+
+
+.myBorderLeft  {
+    border-left-style:solid !important;
+    border-left-color:#335A9A !important;
+    border-left-width:2px!important;
+}
+
+
+.myBGColorGray {
+    background:#eee!important;
+    color:#fff!important;
+}
+
+
+.myCardTest  {
+    Height:80px!important;
+}
+
+.myBGColorRed {
+    background:#800000!important;
+    color:#fff!important;
+}
+
+.myBGColorBlack {
+    background:#000000!important;
+    color:#fff!important;
+}
+
+
+.myInput  {
+    height:18px!important;
+}
+
+.myHeight20  {
+    height:20px!important;
+}
+
+
+.myHeight40  {
+    height:40px!important;
+}
+
+.myHeight122  {
+    height:122px!important;
+}
+
+.myHeight10  {
+    height:10px!important;
+}
+
+.myGridRowHeight30  {
+    height:30px!important;
+}
+
+.myGridRowHeight25  {
+    height:25px!important;
+}
+
+
+.myGridRowHeight20  {
+    height:20px!important;
+}
+
+
+.myMarginTB  {
+    margin-top:0;
+    margin-bottom:0;
+}
+
+
+.myIconWhite1  {
+    color:#fff!important;
+}
+
+
+
+
+#map1 {
+  height: 100%;
+}
+
+
+
+.scroll {
+    height: 100%;
+}
+
+.map_canvas {
+    height: 100%;
+    width: 100%;
+}
+
+
+
+
+.bold {
+  font-weight: bold;
+}
+
+.custom {
+  background-color:#2b3e50!important; /* This sets the background color*/
+ }
+
+/*Set the background to transparent for ion-item*/
+.custom .item {
+  background-color: transparent;
+  border:none;   /*Removes all borders*/
+  border-top: px solid;   /*Top Border for each menu item*/
+  border-bottom:px solid;   /*Bottom border for each menu item*/
+  border-color: #b3e505;   /*Sets colors for top and bottom border*/
+  color: #2b3e50!important;    /*Text color for each item*/
+}
+
+/*Changes the border for the last item*/
+.custom .item:last-child {
+  border-bottom: 1px solid #666;
+}
+
+.custom .item-complex .item-content, .dark .item-radio .item-content {
+  background-color: transparent;
+}
+
+/*Just makes the type white*/
+.custom h2,
+.custom h3,
+.custom p,
+.custom a {
+  color: #fff;  /*Text color for each item, overrides the color property above*/
+}
+
+
+
+
+.bgColor1  {
+    background-color:#491C33;
+    color:#fff;
+}
+
+
+.textGold  {
+  color: #F9BF81
+}
+
+
+
+/*Map*/
+.scroll {
+    height: 100%;
+}
+
+#map {
+    width: 100%;
+    height: 100%;
+}
+
+
+/*POPUPS*/
+
+.popup {
+}
+
+.popup-head {
+  background-color :#491c33;
+}
+
+.popup-title {
+  background-color :#491c33;
+color:#fff
+}
+
+.popup-body {
+    background-color :#491c33;
+    color:#333
+}
+
+.popup-buttons .button {
+    background-color :#8d265a;
+
+}
+.popup-buttons .button.activated {
+  background-color :#491c33;
+
+}
+
+body.internalPage{height: 99.5%;}
+
+/* BACKGROUND COLORS */
+
+
+
+
+.myOrangeColor1  {
+    background-color:#8d265a !important;
+    color:#fff!important;
+}
+
+
+.myRedColor  {
+    background-color:FireBrick !important;
+    color:#ffffff !important;
+    border-radius:0!important;
+}
+
+.myBlueColor  {
+    background-color:RoyalBlue!important;
+    color:#ffffff !important;
+    border-radius:0!important;
+}
+
+.myGreenColor  {
+    background-color:green !important;
+    color:#ffffff !important;
+    border-radius:0!important;
+
+}
+
+.myPurpleColor  {
+    background-color:purple !important;
+    color:#ffffff !important;
+    border-radius:0!important;
+}
+
+.mySkyBlueColor  {
+    background-color:SkyBlue !important;
+    color:#ffffff !important;
+    border-radius:0!important;
+}
+
+.myDarkBlueColor  {
+    background-color:MidnightBlue!important;
+    color:#ffffff !important;
+    border-radius:0!important;
+}
+
+.myOrangeColor  {
+    background-color:#8d265a !important;
+    color:#ffffff !important;
+    border-radius:0!important;
+}
+
+.blue  {
+background:#4A148C!important;
+color:#fff;
+margin-right:10px;
+border-radius: 0;
+}
+
+.bgColor  {
+    background-color:#800000;
+    color:#fff;
+}
+
+.transparent  {
+background: rgba(0, 0, 0, 0.2)!important;
+    color:#fff;
+}
+
+.opacity  {
+    background: rgba(0, 0, 0, 0.4)!important;
+    color:#fff;
+    font-weight:bold;
+    font-size:18px;
+}
+
+.opacity1  {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.myOpacity3  {
+    background-color: rgba(0,0,0,0.4);
+    color: #fff!important;
+}
+
+.myBlackBG  {
+    background-color:#eee;
+    color: #fff!important;
+}
+
+
+.myOpacity1  {
+    background-color: rgba(0,0,0,0.1)!important;
+    color: #fff!important;
+}
+
+
+.backgroundNone {
+    background:none;
+}
+
+/*BORDERS*/
+
+.myBorder  {
+    border: 1px solid #333!important
+}
+
+.myBorder1  {
+    border: 1px solid #333 !important;
+}
+
+.myBorderRadZero  {
+    border-radius:0!important;
+}
+
+.myWhiteLines  {
+    border-color:1px solid white!important;
+}
+
+.myBorderRed  {
+    border-color:#800000!important;
+}
+
+.myBorderDark  {
+
+    border-style:solid!important;
+    border-width:1px!important;
+    border-color:#333!important;
+}
+
+
+/* BUTTONS */
+
+.myButtom100  {
+    width:100%!important;
+}
+
+.myButtonAdd  {
+    background-color:#800000!important;
+}
+
+.myButtonGroup  {
+    background-color:#f27d0c !important;
+    color:#ffffff;
+}
+
+.myButtonOutline  {
+    background-color:#eeeeee!important;
+    color:#333!important;
+    margin:0,0,0,0 !important;
+    padding:0,0,0,0 !important;
+    border:solid #333 1px!important;
+}
+
+.myButtonOutline:Hover   {
+    -webkit-transition-duration:0.4s!important; /* Safari */
+    transition-duration: 0.4s!important;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    background-color:#005b96 !important;
+    font-weight:bold!important;
+    color:#fff !important;
+}
+
+.myButtonBorder  {
+    color:#333 !important;
+}
+
+.myButtonBorder:Hover   {
+    -webkit-transition-duration:0.4s!important; /* Safari */
+    transition-duration: 0.4s!important;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    background-color:#f27d0c !important;
+    font-weight:bold!important;
+    color:#fff !important;
+}
+
+.myButtonBlue  {
+    background-color:#113743!important;
+    color:#fff;
+    height:30px;
+    border-style:solid !important;
+    border-color:#113743!important;
+    border-width:1px;
+}
+
+
+
+.myButtonColor  {
+    background-color:#8d265a!important;
+    color:#fff;
+    border-radius:0!important;
+}
+
+.myButtonColor:Hover   {
+    -webkit-transition-duration:0.4s!important; /* Safari */
+    transition-duration: 0.4s!important;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    background-color:#8d265a !important;
+    font-weight:bold!important;
+    color:#fff !important;
+    border-radius:0!important;
+}
+
+.myMenuButton  {
+    background-color:#8d265a !important;
+    color:#ffffff!important;
+    padding-right:10px!important;
+    padding-left:10px!important;
+    border:transparent !important;
+    width:80px!important;
+}
+
+.myButton 	{
+    background-color:#8d265a !important;
+    color:#fff !important;
+    opacity:1!important;
+    border-radius:0!important;
+}
+
+.myButtonTextColor  {
+    color:#fff !important;
+    background-color:transparent !important;
+    margin-top:0 !important;
+    margin-right:0 !important;
+    margin-bottom:0!important;
+    margin-left:0!important;
+    Padding:0,0,0,0 !important;
+}
+
+.myButtonTextColor  {
+    color:#fff !important;
+}
+
+.myButtonWidth  {
+    width:90%;
+}
+
+.myButShadHov  {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    background-color: #8d265a !important;
+    color:#fff !important;
+}
+
+.myButtonPressed  {
+  background-color: #8d265a !important;
+  color:#fff !important;
+  box-shadow: 0 5px #666 !important;
+  transform: translateY(4px)!important;
+}
+
+.myButton:Hover   {
+    -webkit-transition-duration:0.4s!important; /* Safari */
+    transition-duration: 0.4s!important;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    background-color:#8d265a !important;
+    font-weight:bold!important;
+    color:#fff !important;
+}
+
+.myButtonDenim  {
+    background-color:#fff!important;
+    color:#8d265a!important;
+    border-radius:0!important;
+    z-index:8!important;
+}
+
+.myButtonDenim:Hover  {
+    background-color:#8d265a!important;
+    color:#fff!important;
+    -webkit-transition-duration:0.4s!important; /* Safari */
+    transition-duration: 0.4s!important;
+    cursor: pointer;
+}
+
+.myButtonCoffee  {
+    background-color:#757676!important;
+    color:#fff!important;
+    border-radius:0!important;
+    z-index:8!important;
+}
+
+.myButtonCoffee1  {
+    background-color:#757676!important;
+    color:#fff!important;
+}
+
+
+/*CELLS*/
+
+.myCellHeight  {
+    height:200px!important;
+}
+
+.myCellHeight  {
+    height:24px !important;
+}
+
+.myCellHeight25  {
+    height:25px !important;
+}
+
+/*
+
+.list .item.item-accordion {
+  line-height: 38px;
+  padding-top: 0;
+  padding-bottom: 0;
+  transition: 0.09s all linear;
+}
+.list .item.item-accordion.ng-hide {
+  line-height: 0px;
+}
+.list .item.item-accordion.ng-hide-add,
+.list .item.item-accordion.ng-hide-remove {
+  display: block !important;
+}
+
+.wrapping-list .item-content, .wrapping-list .item {
+    overflow: initial;
+    white-space: initial;
+}
+
+*/
+
+/* CHECKBOXES */
+
+.myCheckBox {
+    background-color:#8d265a !important;
+    height:35px!important;
+    padding-top:6px!important;
+    padding-bottom:0!important;
+    font-size:14px!important;
+    color:#fff;
+
+}
+
+/*
+.ionic .checkbox input:before,
+.ionic .checkbox-icon:before {
+  background: #800000 !important;    /* use your color hex instead of #333
+  border-color: #333 !important;
+}
+and for active state:
+
+.ionic .checkbox input:checked:before,
+.ionic .checkbox input:checked + .checkbox-icon:before {
+  background: #800000 !important;
+}
+
+*/
+
+
+/*CONTAINER*/
+
+.htmlContainer   {
+	height:1000px!important;
+}
+
+
+/* FIXED DATE HEADER */
+
+.myDivFixedX  {
+    position:fixed !important;
+    top:45px!important;
+    left:0 !important;
+    right:0 !important;
+    border-radius:0!important;
+    z-index:8!important;
+}
+
+.myDivFixed1X  {
+    position:fixed !important;
+    top:92px!important;
+    left:0 !important;
+    right:0 !important;
+    border-radius:0!important;
+    z-index:8!important;
+}
+
+/*FIXED FOOTER*/
+
+.myFooterFixed   {
+    position:fixed!important;
+	bottom:0!important;
+    left:0 !important;
+    right:0 !important;
+	z-index:3!important;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+/* FONT SIZE/COLOR/WEIGHT */
+
+.myBold  {
+    font-weight:bold!important;
+}
+
+.myText12  {
+    font-size:12px !important;
+}
+
+.myFontSize16  {
+    font-size:16px!important;
+    font-weight:bold!important;
+    color:#000;
+}
+
+.myFontSize  {
+    font-size:20px!important;
+    font-weight:bold!important;
+    color:#333;
+}
+
+.myFontSize22  {
+    font-size:22px!important;
+    font-weight:bold!important;
+    color:#000;
+}
+
+.myFontSize18  {
+    font-size:18px!important;
+    font-weight:normal!important;
+    color:#000;
+}
+
+
+.myFontSize30  {
+    font-size:30px!important;
+    font-weight:normal!important;
+    color:#757676;
+}
+
+.myOrangeText  {
+    color:#333!important;
+    font-weight:bold!important;
+    border-style: solid!important;
+    border-width: 1px!important;
+}
+
+.colororange  {
+    color:#8d265a;
+}
+
+.textRed  {
+    color:#800000;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.text  {
+
+   color:#fff!important;
+    font-weight:bold;
+    padding-top:20px;
+}
+
+.myTextBlack  {
+    color:#333!important;
+    font-weight:bold!important;
+}
+
+.myTextWhite  {
+    color: #fff!important;
+}
+
+.myTextRed  {
+    color:#800000!important;
+}
+
+/* FOOTERS */
+
+.myBotBar   {
+    background-color:#8d265a !important;
+    color:#ffffff !important;
+}
+
+.myFooterButton  {
+    background-color:#8d265a !important;
+    color:#ffffff!important;
+    border-color:#ffffff !important;
+}
+
+
+
+
+/* HEADERS */
+
+
+
+
+/* HEIGHT/WIDTH*/
+
+.height20  {
+    height:25px;
+}
+
+.height  {
+    height:63px;
+}
+
+
+
+
+
+/* ICONS */
+
+.myArrowIcon  {
+    color:#491c33;
+}
+
+.iconColor  {
+    color:#8d265a !important;
+}
+
+.iconBorder  {
+    color:#f27d0c !important;border-style:solid!important;
+    border-width:1px!important;
+    border-color:#f27d0c!important;
+    border-radius:0!important;
+}
+
+.iconColorBlue  {
+    color:#113743!important;
+    color:#ffffff !important;
+}
+
+.iconSize  {
+  font-size:30px;
+  color:#666;
+}
+
+.myIconWhite   {
+    background-color:#8d265a !important;
+    color:#fff!important;
+}
+
+/*LABELS*/
+
+.myLightLabel  {
+    background-color:#eee !important;
+    text-align:center;
+    color:#333 !important;
+    font-size:14px!important;
+}
+
+.myTransLabel  {
+    background-color:#757676 !important;
+    text-align:center;
+    color:#fff !important;
+    font-size:14px!important;
+}
+
+.myTransLabel1  {
+    background-color:#8d265a!important;
+    text-align:center;
+    color:#fff !important;
+    font-size:14px!important;
+    border-top-style:solid!important;
+    border-width:1px!important;
+    border-color:#fff!important
+}
+
+/*
+.Label_with_BG  {
+    display: block !important;
+    height: 200px !important;
+    color: #fff !important;
+    font-size: 30px !important;
+    background: url(http://t0.gstatic.com/images?q=tbn:ANd9GcRz1LsM2owW22uAyzALILjlxvUfl2eLOHMqFAXQFXrNl_D28SgfxQ);
+    background-size: cover !important;
+}
+
+*/
+
+.myGrayLabel  {
+    background-color:#eeeeee!important;
+    padding-left:5px;
+    font-size:12px!important;
+
+}
+
+.myLabelHeight  {
+    height:30px !important;
+    padding-top:4px;
+    font-size:16px;
+}
+
+.myLabelPadding   {
+    padding:10px !important;
+}
+
+.myCardLabel  {
+    font-size:18px !important;
+    text-align:center !important;
+    margin-top:6px !important;
+}
+
+
+.myLabelTopMargin   {
+    margin-top:10px;
+}
+
+.myCaption   {
+    color:#ffffff;
+    Background-color:#113743!important;
+    Margin:0px !important;
+    padding-top:1 !important;
+    padding-right:1 !important;
+    padding-bottom:1 !important;
+    padding-left:6 !important;
+    font-size:14px;
+    border-width:0;
+}
+
+
+/*MARGINS*/
+
+.marginLR  {
+    margin-left:15px!important;
+    margin-right:15px!important;
+}
+
+.myMarginBottom15  {
+    margin-bottom:15px!important;
+}
+
+
+
+
+
+/*MODALS*/
+
+.myModalMargin  {
+    margin-bottom:300px!important;
+    margin-left:35px;
+    margin-right:35px;
+    background-color:#113743!important;
+}
+
+.myModalText  {
+	font-size:large!important;
+}
+
+
+.swiper-pagination.swiper-pagination-clickable { display: none; }
+
+
+.box{
+ height: auto;
+ margin:auto!important;
+}
+
+
+ion-slides{
+ height:12.5vmin !important;
+ width:100vmin !important;
+ margin:auto!important;
+}
+
+$base-color: #c24;
+$num-colors: 10;
+
+@for $i from 0 to $num-colors {
+    .bgColor_#{$i} {
+      background-color: adjust-hue($base-color, 360deg / $num-colors * $i);
+    }
+}
+
+
+
+.wineDivider  {
+    background-color:#8d265a!important;
+    color:#fff!important;
+    font-size:125%!important;
+    font-weight:bold!important;
+    text-align:center;
+    padding-top:4px!important;
+    margin-top:-15px!important;
+    margin-bottom:-15px!important;
+    width:100%!important;
+}
+
+
+.myWebkit   {
+-webkit-transform: translateZ(0);
+}
+
+.myLabelLRMargin  {
+    margin-top:8px;
+    Margin-left:15px;
+    margin-right:15px;
+}
+
+.myMarginLeft1  {
+    margin-left:0!important;
+}
+
+
+.myMarginLeft10  {
+    margin-left:10px!important;
+}
+
+.myBadgeBlue  {
+    background-color:#113743!important;
+}
+
+
+
+
+
+
+/*TABS*/
+
+.myTabsLabel  {
+    margin-top:10px;
+    padding-right:7px;
+    padding-left:7px;
+}
+
+.myFooterTabs  {
+    width:100%!important;
+    background-color:#8d265a !important;
+    color:#fff!important;
+}
+
+/*MAP*/
+
+.myGoogleMap  {
+    width:100%;
+    height:300px;
+    margin-bottom:0;
+    top:0;
+}
+
+.myHeight  {
+    height:200px!important;
+    margin-bottom:35px!important;
+
+}
+
+.myHeightHtml {
+    height:100%!important;
+    width:100%!important;
+}
+
+.myHeightAbstract  {
+    height:100%!important;
+    width:100%!important;
+}
+
+/*SCROLLING*/
+
+.scrolling-content {
+   overflow-y: auto!important;
+    overflow-x: hidden!important;
+   -webkit-overflow-scrolling: touch!important;
+   height:100%!important; /*A value other than height:auto needs to be set*/
+}
+
+/*SHADOW*/
+
+.myShadowBox  {
+     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.myChartLabel   {
+    color:#333!important;
+    margin-top:10px;
+    padding-right:7px;
+    padding-left:7px;
+}
+
+/*MARGINS*/
+
+
+.myMarginLeft  {
+    margin-left:6px!important;
+}
+
+.myMarginTopBottom  {
+margin-top:7px;
+margin-bottom:7px;
+}
+
+.myMarginTop  {
+    margin-top:-125px!important;
+}
+
+.myMarginTop1  {
+    margin-top:25px!important;
+}
+
+.topMargin  {
+    margin-top:10px !important;
+}
+
+.myMarginBottom  {
+    margin-bottom:150px!important;
+}
+
+.myMarginLeftRight  {
+margin-left:0!important;
+margin-right:0!important;
+}
+
+.myPageMarginTop70  {
+    margin-top:70px !important;
+    margin-right:0!important;
+    margin-bottom:0!important;
+    margin-left:0!important;
+}
+
+.myMarginBottom40  {
+    margin-top:0!important;
+    margin-right:0!important;
+    margin-bottom:40px!important;
+    margin-left:0!important;
+}
+
+.myPageMarginTop40   {
+    margin-top:80px !important
+}
+
+.myMarginTop350   {
+    margin-top:350px !important
+}
+
+.myPageMarginTop20   {
+    Margin-top:20px !important
+}
+
+.myBottomMargin30   {
+    margin-bottom:30px !important;
+}
+
+.myNegativeTopMargin-60   {
+    margin-top:-60px !important;
+}
+
+.cardMargin1  {
+    margin-top:0!important;
+    margin-right:0!important;
+    margin-bottom:0!important;
+    margin-left:0!important;
+    padding:0,0,0,0 !important;
+}
+
+.cardMargin2  {
+    margin-right:15px;
+    margin-left:15px;
+}
+
+.myMarginTopBottom  {
+    margin-top:10px !important;
+    margin-bottom:10px !important;
+}
+
+.cardMarginAll  {
+    margin:0 !important;
+    padding:0 !important;
+}
+
+.myBottomMargin  {
+    margin-bottom:50px!important;
+}
+
+.cardMargin   {
+    margin-top:0 !important;
+    margin-right:0 !important;
+    margin-bottom:50px!important;
+    margin-left:0!important;
+}
+
+.myCard  {
+    margin:5px;
+}
+
+.myMarginLeft  {
+margin-left:5px;
+}
+
+.marginLR  {
+margin-left:7px;
+margin-right:7px;
+}
+
+.marginZero  {
+    margin:0,0,0,0;
+}
+
+/*PADDING*/
+
+.myPaddingZero   {
+padding:0!important;
+}
+
+.myPaddingTopBottom  {
+    padding-top:1px!important;
+    padding-bottom:1px!important;
+}
+
+.myPaddingTopBottom6  {
+    padding-top:6px!important;
+    padding-bottom:6px!important;
+}
+
+
+.myPaddingLeft  {
+    padding-left:5px !important;
+}
+
+.myPaddingLR  {
+    padding-left:15px !important;
+    padding-right:15px !important;
+}
+
+.myPaddingLeft10  {
+    padding-left:10px !important;
+}
+
+/*PAGES*/
+
+.myMarginZero  {
+   	margin-top:0 !important;
+    margin-right:0 !important;
+    margin-bottom:0!important;
+    margin-left:0!important;
+    padding-top:0 !important;
+    padding-right:0 !important;
+    padding-bottom:0 !important;
+    padding-left:0 !important;
+}
+
+.myMarginList  {
+   	margin-top:0 !important;
+    margin-right:0 !important;
+    margin-bottom:45px!important;
+    margin-left:0!important;
+    padding-top:0 !important;
+    padding-right:0 !important;
+    padding-bottom:0 !important;
+    padding-left:0 !important;
+}
+
+
+.myMarginLectures  {
+   	margin-top:45px !important;
+    margin-right:0 !important;
+    margin-bottom:45px!important;
+    margin-left:0!important;
+    padding-top:0 !important;
+    padding-right:0 !important;
+    padding-bottom:0 !important;
+    padding-left:0 !important;
+}
+
+
+/*BOX SHADOW
+
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)!important;
+*/
+
+
+
+/* SIDE-MENU*/
+
+$SIDEMENU_TOP: #ff4b1f;
+$SIDEMENU_BOTTOM: #ff9068;
+$SIDEMENU_TRANSPARENCY: rgba(255,255,255,0.4);
+
+.side-menu-item{
+    background:none;
+    color:white;
+    font-weight:600;
+        font-size:18px;
+    border:0px;
+    .item-content{
+        background:none;
+        &.activated{
+            background: $SIDEMENU_TRANSPARENCY;
+        }
+    }
+    &.active-page-highlight{
+        .item-content{
+            background: $SIDEMENU_TRANSPARENCY;
+        }
+    }
+}
+
+.side-menu-gradient{
+    background: -webkit-linear-gradient(left top, $SIDEMENU_TOP, $SIDEMENU_BOTTOM);
+    background: -o-linear-gradient(bottom right, $SIDEMENU_TOP, $SIDEMENU_BOTTOM);
+    background: -moz-linear-gradient(bottom right, $SIDEMENU_TOP, $SIDEMENU_BOTTOM);
+    background: linear-gradient(to bottom right, $SIDEMENU_TOP, $SIDEMENU_BOTTOM);
+}
+
+.profile-image{
+    img{
+        border-radius:50%;
+        margin:10px;
+        border: 4px solid $SIDEMENU_TRANSPARENCY;
+        -webkit-box-shadow: 0px 0px 142px -37px rgba(0,0,0,0.75);
+        -moz-box-shadow: 0px 0px 142px -37px rgba(0,0,0,0.75);
+        box-shadow: 0px 0px 142px -37px rgba(0,0,0,0.75);
+    }
+}
+
+.item.my-class { background-color:rgba(0,0,0,0); }
+
+/*Z-INDEX*/
+
+.myZIndex  {
+    z-index:10!important;
+}
+
+.nothing  {
+    background-color:#8d265a!important;
+    width:100%!important;
+    z-index:-1!important;
+}

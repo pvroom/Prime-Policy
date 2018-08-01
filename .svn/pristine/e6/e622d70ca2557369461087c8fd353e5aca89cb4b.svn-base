@@ -1,0 +1,121 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Personal Agenda Item</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+
+<ion-card>
+		<ion-card-content>
+
+	<ion-list>
+			<ion-card-header style="background:#740e88;color:#fff">
+					Event Title
+				</ion-card-header>
+
+		<ion-item>
+			<ion-input type="text" placeholder="Enter personal event title" (input)='agendaItempersonalEventName = $event.target.value' name="agendaItempersonalEventName" [value]="agendaItempersonalEventName" id="agendaItempersonalEventName"></ion-input>
+		</ion-item>
+
+		<ion-card-header style="background:#740e88;color:#fff">
+				Location
+			</ion-card-header>
+            
+		<ion-item>
+			<ion-input type="text" placeholder="Enter a location" (input)='agendaItempersonalEventLocation = $event.target.value' name="agendaItempersonalEventLocation" [value]="agendaItempersonalEventLocation" id="agendaItempersonalEventLocation"></ion-input>
+		</ion-item>
+
+		<ion-card-header style="background:#740e88;color:#fff">
+				Date and Time of the Event
+			</ion-card-header>
+
+		<div>
+
+			<ion-grid>
+				<ion-row>
+					<ion-col col-4>     
+						<p>Date</p>
+						<ion-item>
+							<ion-datetime 
+								displayFormat="MM/DD/YYYY" 
+								min="2018-06-09" 
+								max="2018-06-13" 
+								name="agendaItempersonalDate" 
+								[(ngModel)]="agendaItempersonalDate" 
+								id="agendaItempersonalDate"></ion-datetime>
+						</ion-item>
+					</ion-col>
+
+					<ion-col col-4>                 
+						<p>Start Time</p>
+						<ion-item>
+							<ion-datetime 
+								displayFormat="HH:mm" 
+								min="07:00" 
+								max="23:30" 
+								name="agendaItempersonalStartTime" 
+								[(ngModel)]="agendaItempersonalStartTime" 
+								id="agendaItempersonalStartTime"></ion-datetime>
+						</ion-item>
+					</ion-col>
+
+					<ion-col col-4>
+						<p>End Time</p>
+						<ion-item>
+							<ion-datetime 
+								displayFormat="HH:mm" 
+								min="07:00" 
+								max="23:30" 
+								name="agendaItempersonalEndTime" 
+								[(ngModel)]="agendaItempersonalEndTime" 
+								id="agendaItempersonalEndTime"></ion-datetime>
+						</ion-item>
+					</ion-col>
+				</ion-row>
+			</ion-grid>
+
+			<ion-card-header style="background:#740e88;color:#fff">
+				Description
+			</ion-card-header>
+
+			<ion-grid>
+				<ion-row>
+					<ion-col col-12>
+						<ion-textarea placeholder="Enter description or notes about this personal event" 
+						(input)='agendaItempersonalEventDescription = $event.target.value' 
+							name="agendaItempersonalEventDescription" 
+							[value]="agendaItempersonalEventDescription" 
+							id="agendaItempersonalEventDescription"></ion-textarea>
+					</ion-col>
+				</ion-row>
+			</ion-grid>
+
+			<ion-grid>
+				<ion-row>
+					<ion-col col-6>
+						<button ion-button full style="background:#F15D22; color:#fff" (click)="SaveAgendaItem()">
+							Save
+						</button>
+					</ion-col>
+					<ion-col col-6>
+						<button ion-button full style="background:#F15D22; color:#fff" *ngIf="btnDelete" (click)="DeleteAgendaItem(agendaItemid)">
+							Delete
+						</button>
+					</ion-col>
+				</ion-row>
+			</ion-grid>
+
+		</div>
+		
+	</ion-list>
+</ion-card-content>
+</ion-card>
+
+</ion-content>
+
+
