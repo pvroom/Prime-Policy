@@ -17,17 +17,6 @@
 		<p>{{DisplayEventLocation}}</p>
 	</div>
 
-	<div class="button-bar" style="margin:10px!important">
-
-		<button ion-button outline color=danger  *ngIf="btnNotes" (click)="navToNotes(EventID)">
-			<div>
-				<ion-icon name="create"></ion-icon>
-				<label>Notes</label>
-			</div>
-		</button>
-
-	</div>
-
 	<ion-card>
 
 		<ion-card-header class="mutedBlue" *ngIf="CongressionalMemberDisplay">

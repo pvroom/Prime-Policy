@@ -214,7 +214,6 @@ export class HomePage {
 		var visEventName;
 		var visEventLocation;
 		var visAvatar;
-		var eventAvatar;
 		var maxRecs;
 
 		// Reset mass variables
@@ -247,7 +246,6 @@ export class HomePage {
 					//	maxRecs = DefaultAgendaRows;
 					//} else {
 						maxRecs = data['length'];
-						console.log('Records: ' + maxRecs);
 					//}
 					
 					for (var i = 0; i < maxRecs; i++) {
@@ -266,13 +264,10 @@ export class HomePage {
 							
 							var eventTitle = data[i].EventName.toLowerCase();
 							
-							visAvatar = false;
 							if (eventTitle.includes("breakfast") || eventTitle.includes("dinner") || eventTitle.includes("lunch") || eventTitle.includes("reception")) {
 								eventIcon = "restaurant";
-								eventAvatar = "";
 							} else {
 								eventIcon = "time";
-								eventAvatar = "";
 							}
 							
 						} else {
@@ -289,11 +284,10 @@ export class HomePage {
 							}
 
 							if (data[i].imageFilename != '' && data[i].imageFilename != null && data[i].imageFilename != undefined) {
-								eventAvatar = "assets/img/CongressionalMembers/" + data[i].imageFilename;
+								eventIcon = "assets/img/CongressionalMembers/" + data[i].imageFilename;
 								visAvatar = true;
 							} else {
 								eventIcon = "list-box";
-								eventAvatar = "";
 								visAvatar = false;
 							}
 						}
@@ -305,7 +299,7 @@ export class HomePage {
 							EventLocation: visEventLocation,
 							eventTypeIcon: eventIcon,
 							visAvatar: visAvatar,
-							ContactAvatar: eventAvatar
+							ContactAvatar: eventIcon
 						});
 
 						/*
