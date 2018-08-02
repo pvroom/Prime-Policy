@@ -12,6 +12,7 @@ import * as L from "leaflet";
 
 declare var dateFormat: any;
 
+@IonicPage()
 @Component({
   selector: 'page-congressionaldetails',
   templateUrl: 'congressionaldetails.html',
@@ -59,23 +60,9 @@ export class CongressionalDetailsPage {
 	}
 
 	ionViewDidLoad() {
-		console.log('ionViewDidLoad CongressionalDetailsPage');
+		console.log('ionViewDidLoad SpeakersPage');
 	}
-	
-	//ionViewWillLeave() {
-	//	console.log('ionViewWillLeave CongressionalDetailsPage');
-	//	console.log('ionViewWillLeave: Remove map: ' + this.myMap);
-	//	console.log(this.myMap);
-	//	if (this.myMap != undefined || this.myMap != null) {
-	//		this.myMap.off();
-	//		this.myMap.remove();
-	//	}
-	//}
-	
-	ionViewCanLeave(){
-		document.getElementById("map2").outerHTML = "";
-	}
-	
+
     navToWeb(WebsiteURL) {
 
         if (WebsiteURL === undefined) {
@@ -275,16 +262,12 @@ export class CongressionalDetailsPage {
 				
 				console.log('FPM: Starting leaflet');
 				// Simple coordinate system mapping
-
-				console.log('FPM: Initialize map');
-				//if (this.myMap == undefined || this.myMap == null) {
-					this.myMap = L.map('map2', {
-						crs: L.CRS.Simple,
-						minZoom: -2,
-						maxZoom: 2,
-						zoomControl: false
-					});
-				//}
+				this.myMap = L.map('map2', {
+					crs: L.CRS.Simple,
+					minZoom: -2,
+					maxZoom: 2,
+					zoomControl: false
+				});
 				console.log('FPM: Set myMap variable');
 				var bounds = L.latLngBounds([0, 0], [1000, 2000]);
 				console.log('FPM: Set bounds variable');
@@ -329,8 +312,8 @@ export class CongressionalDetailsPage {
 
 			//loading.dismiss();
 			
-		}).catch(error => {
-			console.log("Congressional Data Promise Rejected: " + error);
+		}).catch(function () {
+			console.log("Congressional Data Promise Rejected");
 		});
 		
 	}
