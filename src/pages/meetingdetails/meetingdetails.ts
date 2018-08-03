@@ -273,9 +273,9 @@ export class MeetingDetailsPage {
 					console.log('Simple coordinate system mapping');
                     this.myMap = L.map('map2', {
                         crs: L.CRS.Simple,
-                        minZoom: -2,
-                        maxZoom: 0,
-                        zoomControl: true
+                        minZoom: -8,
+						maxZoom: -1,
+				        zoomControl: true
                     });
 
 					var bounds = L.latLngBounds([0, 0], [1000, 2000]);

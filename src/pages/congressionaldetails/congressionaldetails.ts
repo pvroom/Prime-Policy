@@ -280,8 +280,8 @@ export class CongressionalDetailsPage {
 				//if (this.myMap == undefined || this.myMap == null) {
 					this.myMap = L.map('map2', {
 						crs: L.CRS.Simple,
-						minZoom: -2,
-						maxZoom: 2,
+						minZoom: -8,
+						maxZoom: -1,
 						zoomControl: false
 					});
 				//}

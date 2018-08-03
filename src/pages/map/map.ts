@@ -32,8 +32,8 @@ export class MapPage {
 		// -----------------
 		this.myMap2 = L.map('mapLevel2', {
 			crs: L.CRS.Simple,
-			minZoom: -1,
-			maxZoom: 1,
+			minZoom: -8,
+			maxZoom: -1,
 			zoomControl: true
 		});
 
@@ -50,8 +50,8 @@ export class MapPage {
 		// -----------------
 		this.myMap3 = L.map('mapLevel3', {
 			crs: L.CRS.Simple,
-			minZoom: -1,
-			maxZoom: 1,
+			minZoom: -8,
+			maxZoom: -1,
 			zoomControl: true
 		});
 
@@ -68,8 +68,8 @@ export class MapPage {
 		// -----------------
 		this.myMap4 = L.map('mapLevel4', {
 			crs: L.CRS.Simple,
-			minZoom: -1,
-			maxZoom: 1,
+			minZoom: -8,
+			maxZoom: -1,
 			zoomControl: true
 		});
 
