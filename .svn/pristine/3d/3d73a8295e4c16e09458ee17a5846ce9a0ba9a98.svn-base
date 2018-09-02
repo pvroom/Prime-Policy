@@ -140,4 +140,5 @@
         <variable name="MIN_BACKGROUND_DURATION" value="30" />
     </plugin>
     <plugin name="onesignal-cordova-plugin" spec="^2.4.1" />
+    <plugin name="cordova-plugin-network-information" spec="^2.0.1" />
 </widget>

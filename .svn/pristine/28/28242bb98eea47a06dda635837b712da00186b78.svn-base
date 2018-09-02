@@ -51,7 +51,7 @@
 		<div class="row">
 			<div class="col">
 				<ion-list no-lines>
-					<ion-item (click)="NavigateToAuthenticatedPage('MyAgenda')">
+					<ion-item class="mutedRed" (click)="NavigateToAuthenticatedPage('MyAgenda')" style="width:110%; margin-left:-10px; margin-right:-10px; margin-top:-10px">
 						Upcoming Agenda
 						<ion-icon name="calendar" item-left></ion-icon>
 					</ion-item>

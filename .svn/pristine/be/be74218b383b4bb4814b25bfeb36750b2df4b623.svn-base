@@ -8,8 +8,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { Database } from "../providers/database/database";
 import { Localstorage } from '../providers/localstorage/localstorage';
 import { OneSignal } from '@ionic-native/onesignal';
-//import { Network } from '@ionic-native/network';
-//import { NetworkProvider } from '../providers/network/network';
+import { Network } from '@ionic-native/network';
+import { NetworkProvider } from '../providers/network/network';
 
 // Pages
 import { HomePage } from '../pages/home/home';
@@ -62,8 +62,6 @@ export class MyApp {
 		public menuCtrl: MenuController,
 		private cd: ChangeDetectorRef,
 		private databaseprovider: Database,
-		//public networkStatus: NetworkProvider,
-		//public network: Network,
 		private localstorage: Localstorage) {
 
 
@@ -234,23 +232,20 @@ export class MyApp {
 			}
 		
 			// Network connectivity monitoring
-			/*
-			this.networkStatus.initializeNetworkEvents();
-			console.log('AppComponents: Current network status '+this.networkStatus.getNetworkType());
+			this.networkProvider.initializeNetworkEvents();
 
 			// Offline event
 			this.events.subscribe('network:offline', () => {
-				this.localstorage.setLocalValue('NetworkConnectivity', this.networkStatus.getNetworkType());
-				console.log('network:offline ==> '+this.networkStatus.getNetworkType());    
+				this.localstorage.setLocalValue('NetworkConnectivity', this.network.type);
+				console.log('network:offline ==> '+this.network.type);    
 			});
 
 			// Online event
 			this.events.subscribe('network:online', () => {
-				this.localstorage.setLocalValue('NetworkConnectivity', this.networkStatus.getNetworkType());
-				console.log('network:online ==> '+this.networkStatus.getNetworkType());        
+				this.localstorage.setLocalValue('NetworkConnectivity', this.network.type);
+				console.log('network:online ==> '+this.network.type);        
 			});
-			*/
-		
+
 			// Refresh dashboard
 			this.LoadDashboard();
 

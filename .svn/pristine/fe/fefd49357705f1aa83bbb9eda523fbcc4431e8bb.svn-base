@@ -473,7 +473,6 @@ export class HomePage {
 					
 					// Reset AutoSync when entering the Home page (either from fresh start
 					// or coming back within the same instance of the app)
-					console.log('Home: Stop/Start AutoSync');
 					this.stopAutoSync2();
 					this.startAutoSync2();
 					
@@ -543,7 +542,6 @@ export class HomePage {
 	
 	stopAutoSync2() {
 
-		console.log('Home: Stop AutoSync check');
 		if (this.subscription != null) {
 			console.log('Home: Stop AutoSync');
 			this.subscription.unsubscribe();

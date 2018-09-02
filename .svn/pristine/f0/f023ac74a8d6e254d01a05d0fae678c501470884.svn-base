@@ -21,18 +21,18 @@ import { ChartsModule } from 'ng2-charts';
 import { IonAlphaScrollModule } from 'ionic2-alpha-scroll';
 import { CallNumber } from '@ionic-native/call-number';
 import { SMS } from '@ionic-native/sms';
-//import { Network } from '@ionic-native/network'
 
 // Providers
 import { Database } from '../providers/database/database';
 import { Localstorage } from '../providers/localstorage/localstorage';
 import { Synchronization } from '../providers/synchronization/synchronization';
 import { RelativeTime } from '../pipes/relative-time';
-//import { NetworkProvider } from '../providers/network/network';
+import { NetworkProvider } from '../providers/network/network';
 
 // File Transfer and Navigation
 import { FileUploadModule } from 'ng2-file-upload';
 import { FileTransfer, FileTransferObject } from '@ionic-native/file-transfer'; 
+import { File } from '@ionic-native/file';
 
 // Pages
 import { ConferenceCityPage } from '../pages/conferencecity/conferencecity';
@@ -143,9 +143,9 @@ import { SurveyPage } from '../pages/survey/survey';
 	Database,
 	FileTransfer, 
 	FileTransferObject, 
+	File,
 	Localstorage,
-	//Network,
-    //NetworkProvider,
+    NetworkProvider,
 	OneSignal,
 	SMS,
 	StatusBar,

@@ -9,7 +9,7 @@ import { Database } from "../providers/database/database";
 import { Localstorage } from '../providers/localstorage/localstorage';
 import { OneSignal } from '@ionic-native/onesignal';
 //import { Network } from '@ionic-native/network';
-//import { NetworkProvider } from '../providers/network/network';
+import { NetworkProvider } from '../providers/network/network';
 
 // Pages
 import { HomePage } from '../pages/home/home';
@@ -62,7 +62,7 @@ export class MyApp {
 		public menuCtrl: MenuController,
 		private cd: ChangeDetectorRef,
 		private databaseprovider: Database,
-		//public networkStatus: NetworkProvider,
+		public networkStatus: NetworkProvider,
 		//public network: Network,
 		private localstorage: Localstorage) {
 
@@ -234,7 +234,6 @@ export class MyApp {
 			}
 		
 			// Network connectivity monitoring
-			/*
 			this.networkStatus.initializeNetworkEvents();
 			console.log('AppComponents: Current network status '+this.networkStatus.getNetworkType());
 
@@ -249,8 +248,7 @@ export class MyApp {
 				this.localstorage.setLocalValue('NetworkConnectivity', this.networkStatus.getNetworkType());
 				console.log('network:online ==> '+this.networkStatus.getNetworkType());        
 			});
-			*/
-		
+
 			// Refresh dashboard
 			this.LoadDashboard();
 
