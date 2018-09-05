@@ -11,3 +11,4 @@ import { IssuesPage } from './issues';
   ],
 })
 export class IssuesPageModule {}
+

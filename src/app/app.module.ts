@@ -128,7 +128,7 @@ import { SurveyPage } from '../pages/survey/survey';
     NotesPage,
 	NotesDetailsPage,
     SurveyPage,
-    IssuesPage,
+   IssuesPage,
     NotificationsPage,
 	NetworkingPage,
 	ProfilePage,
