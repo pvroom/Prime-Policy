@@ -32,9 +32,7 @@ var APIURLReference: string = "https://primepolicy.convergence-us.com/flyinPlann
 export class Database {
 
 	/* Setup page variables */
-	public DevicePlatform: string;
     private storage: SQLite;
-    private isOpen: boolean;
 	private db: SQLiteObject;
 	 
     public constructor(public pltfrm: Platform, 
@@ -43,217 +41,8 @@ export class Database {
 						private sqlite: SQLite,
 						private localstorage: Localstorage) {
 
-    }
-
-	// -----------------------------------
-	// 
-	// Evaluation Database Functions
-	// 
-	// -----------------------------------
-	public getEvaluationData(flags, AttendeeID) {
-
-		console.log("flags passed: " + flags);
-
-		var flagValues = flags.split("|");
-		var listingType = flagValues[0];
-		var EventID = flagValues[1];    
-		var EvalType = flagValues[2];
-		var SQLquery = "";
-		var Q11 = "";
-		var Q12 = "";
-		var Q21 = "";
-		var Q22 = "";
-		var Q23 = "";
-		var Q24 = "";
-		var Q25 = "";
-		var Q26 = "";
-		var Q31 = "";
-		var Q32 = "";
-		var Q33 = "";
-		var Q41 = "";
-		var Q1 = "";
-		var Q2 = "";
-		var Q3 = "";
-		var Q4 = "";
-		var Q5 = "";
-		var Q5C = "";
-		var Q6 = "";
-		var Q7 = "";
-		var Q7C = "";
-		var Q8 = "";
-		var Q9 = "";
-		var Q10 = "";
-		var Q10C = "";
-		var Q11C = "";
-		var LastUpdated = "";    
-		
-		// Perform query against server-based MySQL database
-		var url = APIURLReference + "action=evalquery&flags=" + flags + "&AttendeeID=" + AttendeeID;
-		
-		return new Promise(resolve => {
-			this.httpCall.get(url).subscribe(
-				response => {resolve(response.json());
-				},
-				err => {
-					switch(err.status) {
-						case 412:
-							console.log("App and API versions don't match.");
-							var emptyJSONArray = {};
-							resolve(emptyJSONArray);
-							break;
-						case 0:
-							console.log("No Internet conenction to server / server unreachable.");
-							var emptyJSONArray = {};
-							resolve(emptyJSONArray);
-							break;
-						case 500:
-							console.log("Problem in server API code.");
-							var emptyJSONArray = {};
-							resolve(emptyJSONArray);
-							break;
-						default:
-							console.log(err.status);
-							console.log("API Error: ", err);
-							break;
-					}
-				}
-			);
-		});
-						
-    }
-
-	// -----------------------------------
-	// 
-	// Settings Database Functions
-	// 
-	// -----------------------------------
-	public getSettingsData(flags, AttendeeID) {
-
-		console.log("flags passed: " + flags);
-							
-		// Perform query against server-based MySQL database
-		var url = APIURLReference + "action=settings&flags=" + flags + "&AttendeeID=" + AttendeeID;
-
-		return new Promise(resolve => {
-			this.httpCall.get(url).subscribe(
-				response => {resolve(response.json());
-				},
-				err => {
-					switch(err.status) {
-						case 412:
-							console.log("App and API versions don't match.");
-							var emptyJSONArray = {};
-							resolve(emptyJSONArray);
-							break;
-						case 0:
-							console.log("No Internet conenction to server / server unreachable.");
-							var emptyJSONArray = {};
-							resolve(emptyJSONArray);
-							break;
-						case 500:
-							console.log("Problem in server API code.");
-							var emptyJSONArray = {};
-							resolve(emptyJSONArray);
-							break;
-						default:
-							console.log(err.status);
-							console.log("API Error: ", err);
-							break;
-					}
-				}
-			);
-		});
-			
-    }
-
-	// -----------------------------------
-	// 
-	// Program Guide Database Functions
-	// 
-	// -----------------------------------
-	public getLecturesByDay(dayID, listingType, AttendeeID) {
-
-		console.log("dayID passed: " + dayID);
-		console.log("listingType passed: " + listingType);
-		
-		var selectedDate = dayID;    
-
-		// Perform query against server-based MySQL database
-		var flags = dayID + "|" + listingType;
-		var url = APIURLReference + "action=programdays&flags=" + flags + "&AttendeeID=" + AttendeeID;
-
-		return new Promise(resolve => {
-			this.httpCall.get(url).subscribe(
-				response => {resolve(response.json());
-				},
-				err => {
-					switch(err.status) {
-						case 412:
-							console.log("App and API versions don't match.");
-							var emptyJSONArray = {};
-							resolve(emptyJSONArray);
-							break;
-						case 0:
-							console.log("No Internet conenction to server / server unreachable.");
-							var emptyJSONArray = {};
-							resolve(emptyJSONArray);
-							break;
-						case 500:
-							console.log("Problem in server API code.");
-							var emptyJSONArray = {};
-							resolve(emptyJSONArray);
-							break;
-						default:
-							console.log(err.status);
-							console.log("API Error: ", err);
-							break;
-					}
-				}
-			);
-		});
-			
 	}
 
-	public getLectureData(flags, AttendeeID) {
-
-		console.log("Database: getLectureData: flags passed: " + flags);
-		var SQLquery = "";
-		
-		// Perform query against server-based MySQL database
-		var url = APIURLReference + "action=lecturequery&flags=" + flags + "&AttendeeID=" + AttendeeID;
-
-		return new Promise(resolve => {
-			this.httpCall.get(url).subscribe(
-				response => {resolve(response.json());
-				},
-				err => {
-					switch(err.status) {
-						case 412:
-							console.log("App and API versions don't match.");
-							var emptyJSONArray = {};
-							resolve(emptyJSONArray);
-							break;
-						case 0:
-							console.log("No Internet conenction to server / server unreachable.");
-							var emptyJSONArray = {};
-							resolve(emptyJSONArray);
-							break;
-						case 500:
-							console.log("Problem in server API code.");
-							var emptyJSONArray = {};
-							resolve(emptyJSONArray);
-							break;
-						default:
-							console.log(err.status);
-							console.log("API Error: ", err);
-							break;
-					}
-				}
-			);
-		});
-			
-    }
-	
 	// -----------------------------------
 	// 
 	// Congressional Member Database Functions
@@ -263,42 +52,187 @@ export class Database {
 
 		console.log("getCongressionalData: flags passed: " + flags);
 		var SQLquery = "";
-				
-		// Perform query against server-based MySQL database
-		var url = APIURLReference + "action=cmquery&flags=" + flags + "&AttendeeID=" + AttendeeID;
+		var DevicePlatform = this.localstorage.getLocalValue('DevicePlatform');
+		
+		if (DevicePlatform == "iOS" || DevicePlatform == "Android") {
+			
+			console.log('getCongressionalData: Pull data from SQLite');
+			var flagValues = flags.split("|");		// Split concatenated values
+			var listingType = flagValues[0];			// Listing Type
+			var sortOrder = flagValues[1];    		// Specific date of sessions
+			var chamberID = flagValues[2];    		// Output sort order
+			var QueryParam = flagValues[3];			// Specific course ID
+			var congressionalMemberID = flagValues[4];			// Search parameters
 
-		return new Promise(resolve => {
-			this.httpCall.get(url).subscribe(
-				response => {
-					console.log("Database: Congressional Member data: " + JSON.stringify(response.json()));
-					resolve(response.json());
-				},
-				err => {
-					switch(err.status) {
-						case 412:
+			if (listingType == "li" || listingType == "sr") {	// List of speakers
+			
+				// Split search terms by space to create WHERE clause
+				SQLquery = "SELECT DISTINCT cm.congressionalMemberID, cm.FirstName, cm.LastName, cm.MiddleInitial, ";
+				SQLquery = SQLquery + "cm.Suffix, cm.Party, cm.State, ls.StateFullname, cm.imageFilename, '1' AS CongressionalMember, ";
+				SQLquery = SQLquery + "cm.District, CAST(cm.District AS UNSIGNED) AS SortNum ";
+				SQLquery = SQLquery + "FROM congressional_members cm ";
+				SQLquery = SQLquery + "INNER JOIN lookup_state ls ON ls.StateLetter = cm.State ";
+				SQLquery = SQLquery + "WHERE cm.ActiveYN = 'Y' ";
+				SQLquery = SQLquery + "AND Chamber = '" + chamberID + "' ";
+
+				if (listingType == "sr") {		// If searching, then add where clause criteria
+					// Split search terms by space to create WHERE clause
+					var whereClause = 'WHERE (';
+					var searchTerms = QueryParam.split(" ");
+					
+					for (var i = 0; i < searchTerms.length; i++){
+						whereClause = whereClause + 'cm.SearchField LIKE "%' + searchTerms[i] + '%" AND ';
+					}
+					// Remove last AND from where clause
+					whereClause = whereClause.substring(0, whereClause.length-5);        
+					whereClause = whereClause + ') ';
+					SQLquery = SQLquery + whereClause ;
+				}
+				if (sortOrder == "Alpha") {
+					SQLquery = SQLquery + "ORDER BY LastName, FirstName";
+				}
+				if (sortOrder == "State") {
+					if (chamberID == "Senate") {
+						SQLquery = SQLquery + "ORDER BY StateFullname, LastName, FirstName";
+					} else {
+						SQLquery = SQLquery + "ORDER BY StateFullname, SortNum, LastName, FirstName";
+					}
+				}
+			}
+
+			if (listingType == "dt") {	// Details of Congressional Member
+				SQLquery = "SELECT DISTINCT cm.congressionalMemberID, cm.FirstName, cm.LastName, cm.MiddleInitial, ";
+				SQLquery = SQLquery + "cm.Suffix, cm.Party, ls.StateFullname, cm.imageFilename, cm.Chamber, cm.District, cm.Bio, cm.Website, ";
+				SQLquery = SQLquery + "cm.Email, cm.Phone, cm.Address, cm.City, cm.AddressState, cm.Zipcode, cm.TwitterAccount, cm.FacebookURL, ";
+				SQLquery = SQLquery + "fm.mapX AS OfficeX, fm.mapY AS OfficeY, fm.RoomID AS RoomNumber ";
+				SQLquery = SQLquery + "FROM congressional_members cm ";
+				SQLquery = SQLquery + "INNER JOIN lookup_state ls ON ls.StateLetter = cm.State ";
+				SQLquery = SQLquery + "LEFT OUTER JOIN floorplan_mapping fm ON fm.mappingID = cm.mappingID ";
+				SQLquery = SQLquery + "WHERE cm.ActiveYN = 'Y' ";
+				SQLquery = SQLquery + "AND cm.congressionalMemberID = " + congressionalMemberID + " ";
+			}
+
+			if (listingType == "cl") {	// Committee listing for specific congressional member
+				SQLquery = "SELECT c.CommitteeName, c.Website ";
+				SQLquery = SQLquery + "FROM lookup_committees c ";
+				SQLquery = SQLquery + "INNER JOIN congressional_members_committees cmc ON cmc.committeeID = c.committeeID ";
+				SQLquery = SQLquery + "WHERE cmc.congressionalMemberID = " + congressionalMemberID + " ";
+				SQLquery = SQLquery + "AND c.ActiveYN = 'Y' ";
+				SQLquery = SQLquery + "ORDER BY c.CommitteeName";
+			}
+			
+			if (listingType == "cd") {	// List of congressional members for specific meeting
+				SQLquery = "SELECT cm.* ";
+				SQLquery = SQLquery + "FROM congressional_members cm ";
+				SQLquery = SQLquery + "INNER JOIN meetings m ON m.congressionalMemberID = cm.congressionalMemberID ";
+				SQLquery = SQLquery + "WHERE m.meetingID = " + congressionalMemberID + " ";
+				SQLquery = SQLquery + "ORDER BY cm.LastName, cm.FirstName";
+			}
+
+			console.log("Congressional Members Query: " + SQLquery);
+
+			// Perform query against local SQLite database
+			return new Promise(resolve => {
+				
+				this.sqlite.create({name: 'flyinPlanner.db', location: 'default', createFromLocation: 1}).then((db: SQLiteObject) => {
+
+					console.log('Database: Opened DB for congressional members query');
+					
+					this.db = db;
+					
+					console.log('Database: Set congressional members query db variable');
+					
+					this.db.executeSql(SQLquery, {}).then((data) => {
+						console.log('Database: congressional members query: ' + JSON.stringify(data));
+						console.log('Database: congressional members query rows: ' + data.rows.length);
+						let DatabaseResponse = [];
+						if(data.rows.length > 0) {
+							for(let i = 0; i < data.rows.length; i++) {
+								if (listingType == "li" || listingType == "sr") {
+									DatabaseResponse.push({
+										congressionalMemberID: data.rows.item(i).congressionalMemberID,
+										LastName: data.rows.item(i).LastName,
+										FirstName: data.rows.item(i).FirstName,
+										MiddleInitial: data.rows.item(i).MiddleInitial,
+										Suffix: data.rows.item(i).Suffix,
+										Party: data.rows.item(i).Party,
+										State: data.rows.item(i).State,
+										District: data.rows.item(i).District,
+										StateFullname: data.rows.item(i).StateFullname,
+										imageFilename: data.rows.item(i).imageFilename,
+										CongressionalMember: data.rows.item(i).CongressionalMember
+									});
+								}
+								if (listingType == "dt") {
+									DatabaseResponse.push({
+										congressionalMemberID: data.rows.item(i).congressionalMemberID,
+										LastName: data.rows.item(i).LastName,
+										FirstName: data.rows.item(i).FirstName,
+										MiddleInitial: data.rows.item(i).MiddleInitial,
+										Suffix: data.rows.item(i).Suffix,
+										Party: data.rows.item(i).Party,
+										Chamber: data.rows.item(i).Chamber,
+										StateFullname: data.rows.item(i).StateFullname,
+										imageFilename: data.rows.item(i).imageFilename,
+										District: data.rows.item(i).District,
+										Bio: data.rows.item(i).Bio,
+										Website: data.rows.item(i).Website,
+										Email: data.rows.item(i).Email,
+										Phone: data.rows.item(i).Phone,
+										Address: data.rows.item(i).Address,
+										City: data.rows.item(i).City,
+										AddressState: data.rows.item(i).AddressState,
+										Zipcode: data.rows.item(i).Zipcode,
+										TwitterAccount: data.rows.item(i).TwitterAccount,
+										FacebookURL: data.rows.item(i).FacebookURL,
+										OfficeX: data.rows.item(i).OfficeX,
+										OfficeY: data.rows.item(i).OfficeY,
+										RoomNumber: data.rows.item(i).RoomNumber
+									});
+								}
+								if (listingType == "cl") {
+									DatabaseResponse.push({
+										CommitteeName: data.rows.item(i).CommitteeName,
+										Website: data.rows.item(i).Website,
+									});
+								}
+							}
+						}
+						resolve(DatabaseResponse);
+					})
+					.catch(e => console.log('Database: congressional members query error: ' + JSON.stringify(e)))
+				});
+				console.log('Database: congressional members query complete');
+
+			});
+
+			
+		} else {
+			
+			console.log('getCongressionalData: Pull data from MySQL');
+
+			// Perform query against server-based MySQL database
+			var url = APIURLReference + "action=cmquery&flags=" + flags + "&AttendeeID=" + AttendeeID;
+
+			return new Promise(resolve => {
+				this.httpCall.get(url).subscribe(
+					response => {
+						console.log("Database: Congressional Member data: " + JSON.stringify(response.json()));
+						resolve(response.json());
+					},
+					err => {
+						if (err.status == "412") {
 							console.log("App and API versions don't match.");
 							var emptyJSONArray = {};
 							resolve(emptyJSONArray);
-							break;
-						case 0:
-							console.log("No Internet conenction to server / server unreachable.");
-							var emptyJSONArray = {};
-							resolve(emptyJSONArray);
-							break;
-						case 500:
-							console.log("Problem in server API code.");
-							var emptyJSONArray = {};
-							resolve(emptyJSONArray);
-							break;
-						default:
+						} else {
 							console.log(err.status);
 							console.log("API Error: ", err);
-							break;
+						}
 					}
-				}
-			);
-		});
-			
+				);
+			});
+		}	
     }
 
 
@@ -309,63 +243,480 @@ export class Database {
 	// -----------------------------------
 	public getAgendaData(flags, AttendeeID) {
 
-		console.log("Database: flags passed: " + flags);
-		console.log("Database: AttendeeID passed: " + AttendeeID);
+		console.log("getAgendaData: flags passed: " + flags);
+		console.log("getAgendaData: AttendeeID passed: " + AttendeeID);
 
-		var re = /\'/gi; 
-
-		var flagValues = flags.split("|");
-		var listingType = flagValues[0];
-		var selectedDay = flagValues[1];
-		var EventID = flagValues[2];
-		var EventStartTime = flagValues[3];
-		var EventEndTime = flagValues[4];
-		var EventLocation = flagValues[5];
-		//EventLocation = EventLocation.replace(re, "''");
-		var EventName = flagValues[6];
-		//EventName = EventName.replace(re, "''");
-		var EventDate = flagValues[7];
-		var AAOID = flagValues[8];
-		var LastUpdated = flagValues[9];
-		var EventDescription = flagValues[10];
-		//EventDescription = EventDescription.replace(re, "''");
-		var SQLquery = "";
-
+		var DevicePlatform = this.localstorage.getLocalValue('DevicePlatform');
 		
-		// Perform query against server-based MySQL database
-		var url = APIURLReference + "action=agendaquery&flags=" + flags + "&AttendeeID=" + AttendeeID;
-		console.log('Database: URL call: ' + url);
-		
-		return new Promise(resolve => {
-			this.httpCall.get(url).subscribe(
-				response => {resolve(response.json());
-				},
-				err => {
-					switch(err.status) {
-						case 412:
+		if (DevicePlatform == "iOS" || DevicePlatform == "Android") {
+			
+			console.log('getAgendaData: Pull data from SQLite');
+			var re = /\'/gi; 
+
+			var flagValues = flags.split("|");		// Split concatenated values
+			var listingType = flagValues[0];
+			var selectedDay = flagValues[1];
+			var EventID = flagValues[2];
+			var EventStartTime = flagValues[3];
+			var EventEndTime = flagValues[4];
+			var EventLocation = flagValues[5];
+			//EventLocation = EventLocation.replace(re, "''");
+			var EventName = flagValues[6];
+			//EventName = EventName.replace(re, "''");
+			var EventDate = flagValues[7];
+			var AAOID = flagValues[8];
+			var LastUpdated = flagValues[9];
+			var EventDescription = flagValues[10];
+			var QueryParam = flagValues[11];
+			//EventDescription = EventDescription.replace(re, "''");
+			var SQLquery = "";
+			var SQLDate;
+			var DisplayDateTime;
+			var dbEventDateTime;
+			var visStartTime;
+			var visEndTime;
+
+			if (listingType == "li") {	// List of speakers
+			
+				// Split search terms by space to create WHERE clause
+				SQLquery = "SELECT DISTINCT m.*, con.FirstName, con.LastName, con.Party, con.State, con.Address, con.imageFilename ";
+				SQLquery = SQLquery + "FROM meetings m ";
+				SQLquery = SQLquery + "INNER JOIN meetings_clients mc ON mc.meetingID = m.meetingID ";
+				SQLquery = SQLquery + "LEFT OUTER JOIN congressional_members con ON m.congressionalMemberID = con.congressionalMemberID ";
+				SQLquery = SQLquery + "INNER JOIN clients_members cm ON cm.clientmemberID = mc.clientmemberID ";
+				SQLquery = SQLquery + "INNER JOIN clients c ON cm.clientID = c.clientID ";
+				SQLquery = SQLquery + "INNER JOIN flyins f ON c.clientID = f.clientID ";
+				SQLquery = SQLquery + "WHERE m.flID = ( ";
+				SQLquery = SQLquery + "SELECT f.flID ";
+				SQLquery = SQLquery + "FROM clients_members cm ";
+				SQLquery = SQLquery + "INNER JOIN clients c ON cm.clientID = c.clientID ";
+				SQLquery = SQLquery + "INNER JOIN flyins f ON f.clientID = c.clientID ";
+				SQLquery = SQLquery + "WHERE cm.clientmemberID = " + AttendeeID + ") ";
+				SQLquery = SQLquery + "AND strftime('%Y',StartDateTime) = strftime('%Y','now') ";
+				SQLquery = SQLquery + "AND EndDateTime>= DATE('now') ";
+				SQLquery = SQLquery + "AND m.DeletedYN = 'N' ";
+				SQLquery = SQLquery + "AND c.DeletedYN = 'N' ";
+				SQLquery = SQLquery + "AND cm.DeletedYN = 'N' ";
+				SQLquery = SQLquery + "AND f.DeletedYN = 'N' ";
+				SQLquery = SQLquery + "AND mc.clientmemberID = " + AttendeeID + " ";
+				SQLquery = SQLquery + "AND DATE(m.StartDateTime) = '" + selectedDay + "' ";
+				SQLquery = SQLquery + "ORDER BY m.StartDateTime ";
+
+			}
+
+			if (listingType == "li2") {
+
+				SQLquery = "SELECT DISTINCT m.meetingID, m.flID, m.StartDateTime, m.EndDateTime, m.MeetingType, m.MeetingTitle, m.EventDescription, m.Location, m.ActiveYN, m.CancelledYN, ";
+				SQLquery = SQLquery + "(SELECT con1.congressionalMemberID ";
+				SQLquery = SQLquery + "FROM congressional_members con1 ";
+				SQLquery = SQLquery + "INNER JOIN meetings_congressionals mc1 ON mc1.congressionalMemberID = con1.congressionalMemberID ";
+				SQLquery = SQLquery + "WHERE mc1.meetingID = m.meetingID) AS congressionalMemberID, ";
+				SQLquery = SQLquery + "(SELECT con1.FirstName ";
+				SQLquery = SQLquery + "FROM congressional_members con1 ";
+				SQLquery = SQLquery + "INNER JOIN meetings_congressionals mc1 ON mc1.congressionalMemberID = con1.congressionalMemberID ";
+				SQLquery = SQLquery + "WHERE mc1.meetingID = m.meetingID) AS FirstName, ";
+				SQLquery = SQLquery + "(SELECT con1.LastName ";
+				SQLquery = SQLquery + "FROM congressional_members con1 ";
+				SQLquery = SQLquery + "INNER JOIN meetings_congressionals mc1 ON mc1.congressionalMemberID = con1.congressionalMemberID ";
+				SQLquery = SQLquery + "WHERE mc1.meetingID = m.meetingID) AS LastName, ";
+				SQLquery = SQLquery + "(SELECT con1.Party ";
+				SQLquery = SQLquery + "FROM congressional_members con1 ";
+				SQLquery = SQLquery + "INNER JOIN meetings_congressionals mc1 ON mc1.congressionalMemberID = con1.congressionalMemberID ";
+				SQLquery = SQLquery + "WHERE mc1.meetingID = m.meetingID) AS Party, ";
+				SQLquery = SQLquery + "(SELECT con1.State ";
+				SQLquery = SQLquery + "FROM congressional_members con1 ";
+				SQLquery = SQLquery + "INNER JOIN meetings_congressionals mc1 ON mc1.congressionalMemberID = con1.congressionalMemberID ";
+				SQLquery = SQLquery + "WHERE mc1.meetingID = m.meetingID) AS State, ";
+				SQLquery = SQLquery + "(SELECT con1.Address ";
+				SQLquery = SQLquery + "FROM congressional_members con1 ";
+				SQLquery = SQLquery + "INNER JOIN meetings_congressionals mc1 ON mc1.congressionalMemberID = con1.congressionalMemberID ";
+				SQLquery = SQLquery + "WHERE mc1.meetingID = m.meetingID) AS Address, ";
+				SQLquery = SQLquery + "(SELECT con1.imageFilename ";
+				SQLquery = SQLquery + "FROM congressional_members con1 ";
+				SQLquery = SQLquery + "INNER JOIN meetings_congressionals mc1 ON mc1.congressionalMemberID = con1.congressionalMemberID ";
+				SQLquery = SQLquery + "WHERE mc1.meetingID = m.meetingID ";
+				SQLquery = SQLquery + "UNION ";
+				SQLquery = SQLquery + "SELECT cm2.imageFilename ";
+				SQLquery = SQLquery + "FROM meetings_congressionals mc2 ";
+				SQLquery = SQLquery + "INNER JOIN congressional_members_staff cms2 ON cms2.cmsID = mc2.cmsID ";
+				SQLquery = SQLquery + "INNER JOIN congressional_members cm2 ON cm2.congressionalMemberID = cms2.congressionalMemberID ";
+				SQLquery = SQLquery + "WHERE mc2.meetingID = m.meetingID ";
+				SQLquery = SQLquery + "LIMIT 1) AS imageFilename ";
+				SQLquery = SQLquery + "FROM meetings m ";
+				SQLquery = SQLquery + "INNER JOIN meetings_clients mc ON mc.meetingID = m.meetingID ";
+				//SQLquery = SQLquery + "LEFT OUTER JOIN congressional_members con ON m.congressionalMemberID = con.congressionalMemberID ";
+				SQLquery = SQLquery + "INNER JOIN clients_members cm ON cm.clientmemberID = mc.clientmemberID ";
+				SQLquery = SQLquery + "INNER JOIN clients c ON cm.clientID = c.clientID ";
+				SQLquery = SQLquery + "INNER JOIN flyins f ON c.clientID = f.clientID ";
+				SQLquery = SQLquery + "WHERE m.flID = ( ";
+				SQLquery = SQLquery + "SELECT f.flID ";
+				SQLquery = SQLquery + "FROM clients_members cm ";
+				SQLquery = SQLquery + "INNER JOIN clients c ON cm.clientID = c.clientID ";
+				SQLquery = SQLquery + "INNER JOIN flyins f ON f.clientID = c.clientID ";
+				SQLquery = SQLquery + "WHERE cm.clientmemberID = " + AttendeeID + ") ";
+				SQLquery = SQLquery + "AND strftime('%Y',StartDateTime) = strftime('%Y','now') ";
+				SQLquery = SQLquery + "AND EndDateTime>= DATE('now') ";
+				SQLquery = SQLquery + "AND mc.clientmemberID = " + AttendeeID + " ";
+				SQLquery = SQLquery + "AND m.DeletedYN = 'N' ";
+				SQLquery = SQLquery + "AND c.DeletedYN = 'N' ";
+				SQLquery = SQLquery + "AND cm.DeletedYN = 'N' ";
+				SQLquery = SQLquery + "AND f.DeletedYN = 'N' ";
+				SQLquery = SQLquery + "ORDER BY m.StartDateTime ";
+
+			}
+			
+			if (listingType == "sr") {	// List of speakers
+			
+				SQLquery = "SELECT DISTINCT m.*, cm.FirstName, cm.LastName, cm.Party, cm.State, cm.Address ";
+				SQLquery = SQLquery + "FROM meetings m ";
+				SQLquery = SQLquery + "INNER JOIN meetings_clients mc ON m.meetingID = mc.meetingID ";
+				SQLquery = SQLquery + "INNER JOIN meetings_congressionals mcon ON mcon.meetingID = m.meetingID ";
+				SQLquery = SQLquery + "LEFT OUTER JOIN congressional_members cm ON m.congressionalMemberID = cm.congressionalMemberID ";
+				SQLquery = SQLquery + "WHERE mc.clientmemberID = 1 ";
+				SQLquery = SQLquery + "AND mcon.congressionalMemberID IN ( ";
+				SQLquery = SQLquery + "SELECT DISTINCT cm.congressionalMemberID ";
+				SQLquery = SQLquery + "FROM congressional_members cm ";
+				SQLquery = SQLquery + "WHERE cm.ActiveYN = 'Y' ";
+				SQLquery = SQLquery + whereClause;
+				SQLquery = SQLquery + ") ";
+				SQLquery = SQLquery + "AND m.DeletedYN = 'N' ";
+
+				// Split search terms by space to create WHERE clause
+				var whereClause = 'WHERE (';
+				var searchTerms = QueryParam.split(" ");
+				
+				for (var i = 0; i < searchTerms.length; i++){
+					whereClause = whereClause + 'SearchField LIKE "%' + searchTerms[i] + '%" AND ';
+				}
+				// Remove last AND from where clause
+				whereClause = whereClause.substring(0, whereClause.length-5);        
+				whereClause = whereClause + ') ';
+				SQLquery = SQLquery + whereClause ;
+
+				SQLquery = SQLquery + "ORDER BY m.StartDateTime ";
+				
+			}
+
+			if (listingType == "dt") {	// Details of Congressional Member
+
+				SQLquery = "SELECT DISTINCT m.*, cm.FirstName, cm.LastName, cm.Party, cm.State, ";
+				SQLquery = SQLquery + "cm.Address, cm.City, cm.AddressState, cm.Zipcode, cm.imageFilename, ";
+
+				SQLquery = SQLquery + "(SELECT DISTINCT fm.mapX ";
+				SQLquery = SQLquery + "FROM meetings_congressionals mc ";
+				SQLquery = SQLquery + "INNER JOIN congressional_members cm ON mc.congressionalMemberID = cm.congressionalMemberID ";
+				SQLquery = SQLquery + "LEFT OUTER JOIN floorplan_mapping fm ON fm.mappingID = cm.mappingID  ";
+				SQLquery = SQLquery + "WHERE mc.meetingID = m.meetingID ";
+				SQLquery = SQLquery + "AND mc.congressionalMemberID != 0 ";
+				SQLquery = SQLquery + "UNION ";
+				SQLquery = SQLquery + "SELECT DISTINCT fm.mapX ";
+				SQLquery = SQLquery + "FROM meetings_congressionals mc ";
+				SQLquery = SQLquery + "INNER JOIN congressional_members_staff cms ON mc.cmsID = cms.cmsID ";
+				SQLquery = SQLquery + "INNER JOIN congressional_members cm ON cms.congressionalMemberID = cm.congressionalMemberID ";
+				SQLquery = SQLquery + "LEFT OUTER JOIN floorplan_mapping fm ON fm.mappingID = cm.mappingID  ";
+				SQLquery = SQLquery + "WHERE mc.meetingID = m.meetingID ";
+				SQLquery = SQLquery + "AND mc.congressionalMemberID = 0) AS OfficeX, ";
+
+				SQLquery = SQLquery + "(SELECT DISTINCT fm.mapY ";
+				SQLquery = SQLquery + "FROM meetings_congressionals mc ";
+				SQLquery = SQLquery + "INNER JOIN congressional_members cm ON mc.congressionalMemberID = cm.congressionalMemberID ";
+				SQLquery = SQLquery + "LEFT OUTER JOIN floorplan_mapping fm ON fm.mappingID = cm.mappingID  ";
+				SQLquery = SQLquery + "WHERE mc.meetingID = m.meetingID ";
+				SQLquery = SQLquery + "AND mc.congressionalMemberID != 0 ";
+				SQLquery = SQLquery + "UNION ";
+				SQLquery = SQLquery + "SELECT DISTINCT fm.mapY ";
+				SQLquery = SQLquery + "FROM meetings_congressionals mc ";
+				SQLquery = SQLquery + "INNER JOIN congressional_members_staff cms ON mc.cmsID = cms.cmsID ";
+				SQLquery = SQLquery + "INNER JOIN congressional_members cm ON cms.congressionalMemberID = cm.congressionalMemberID ";
+				SQLquery = SQLquery + "LEFT OUTER JOIN floorplan_mapping fm ON fm.mappingID = cm.mappingID  ";
+				SQLquery = SQLquery + "WHERE mc.meetingID = m.meetingID ";
+				SQLquery = SQLquery + "AND mc.congressionalMemberID = 0) AS OfficeY, ";
+
+				SQLquery = SQLquery + "(SELECT DISTINCT fm.RoomID ";
+				SQLquery = SQLquery + "FROM meetings_congressionals mc ";
+				SQLquery = SQLquery + "INNER JOIN congressional_members cm ON mc.congressionalMemberID = cm.congressionalMemberID ";
+				SQLquery = SQLquery + "LEFT OUTER JOIN floorplan_mapping fm ON fm.mappingID = cm.mappingID  ";
+				SQLquery = SQLquery + "WHERE mc.meetingID = m.meetingID ";
+				SQLquery = SQLquery + "AND mc.congressionalMemberID != 0 ";
+				SQLquery = SQLquery + "UNION ";
+				SQLquery = SQLquery + "SELECT DISTINCT fm.RoomID ";
+				SQLquery = SQLquery + "FROM meetings_congressionals mc ";
+				SQLquery = SQLquery + "INNER JOIN congressional_members_staff cms ON mc.cmsID = cms.cmsID ";
+				SQLquery = SQLquery + "INNER JOIN congressional_members cm ON cms.congressionalMemberID = cm.congressionalMemberID ";
+				SQLquery = SQLquery + "LEFT OUTER JOIN floorplan_mapping fm ON fm.mappingID = cm.mappingID  ";
+				SQLquery = SQLquery + "WHERE mc.meetingID = m.meetingID ";
+				SQLquery = SQLquery + "AND mc.congressionalMemberID = 0) AS RoomNumber, ";
+
+				SQLquery = SQLquery + "(SELECT DISTINCT cm.Chamber ";
+				SQLquery = SQLquery + "FROM meetings_congressionals mc ";
+				SQLquery = SQLquery + "INNER JOIN congressional_members cm ON mc.congressionalMemberID = cm.congressionalMemberID ";
+				SQLquery = SQLquery + "LEFT OUTER JOIN floorplan_mapping fm ON fm.mappingID = cm.mappingID  ";
+				SQLquery = SQLquery + "WHERE mc.meetingID = m.meetingID ";
+				SQLquery = SQLquery + "AND mc.congressionalMemberID != 0 ";
+				SQLquery = SQLquery + "UNION ";
+				SQLquery = SQLquery + "SELECT DISTINCT cm.Chamber ";
+				SQLquery = SQLquery + "FROM meetings_congressionals mc ";
+				SQLquery = SQLquery + "INNER JOIN congressional_members_staff cms ON mc.cmsID = cms.cmsID ";
+				SQLquery = SQLquery + "INNER JOIN congressional_members cm ON cms.congressionalMemberID = cm.congressionalMemberID ";
+				SQLquery = SQLquery + "LEFT OUTER JOIN floorplan_mapping fm ON fm.mappingID = cm.mappingID  ";
+				SQLquery = SQLquery + "WHERE mc.meetingID = m.meetingID) AS Chamber ";
+
+				SQLquery = SQLquery + "FROM meetings m ";
+				SQLquery = SQLquery + "INNER JOIN meetings_clients mc ON m.meetingID = mc.meetingID ";
+				SQLquery = SQLquery + "LEFT OUTER JOIN congressional_members cm ON m.congressionalMemberID = cm.congressionalMemberID ";
+				SQLquery = SQLquery + "LEFT OUTER JOIN floorplan_mapping fm ON fm.mappingID = cm.mappingID ";
+				SQLquery = SQLquery + "WHERE m.meetingID = " + EventID + " ";
+			}
+
+			if (listingType == "ma") {	// Committee listing for specific congressional member
+				SQLquery = "SELECT cm.clientmemberID, cm.LastName, cm.FirstName, cm.City, cm.State  ";
+				SQLquery = SQLquery + "FROM clients_members cm  ";
+				SQLquery = SQLquery + "INNER JOIN flyins f ON f.clientID = cm.clientID  ";
+				SQLquery = SQLquery + "INNER JOIN meetings m ON m.flID = f.flID ";
+				SQLquery = SQLquery + "INNER JOIN meetings_clients mc ON mc.meetingID = m.meetingID AND mc.clientmemberID = cm.clientmemberID ";
+				SQLquery = SQLquery + "WHERE m.meetingID = " + EventID + " ";
+				SQLquery = SQLquery + "AND m.DeletedYN = 'N' ";
+				SQLquery = SQLquery + "AND cm.DeletedYN = 'N' ";
+				SQLquery = SQLquery + "AND f.DeletedYN = 'N' ";
+				SQLquery = SQLquery + "ORDER BY cm.LastName, cm.FirstName ";
+			}
+			
+			if (listingType == "cs") {	// List of congressional members for specific meeting
+				SQLquery = "SELECT cm.congressionalMemberID, '0' AS staffID, cm.FirstName, cm.LastName, cm.MiddleInitial, ";
+				SQLquery = SQLquery + "cm.Suffix, cm.Party, cm.State, cm.imageFilename, '1' AS CongressionalMember, ";
+				SQLquery = SQLquery + "'' AS CongressionalMemberName, ";
+				SQLquery = SQLquery + "CASE cm.Chamber ";
+				SQLquery = SQLquery + "  WHEN 'Senate' THEN 'Senator' ";
+				SQLquery = SQLquery + "  ELSE 'Representative' ";
+				SQLquery = SQLquery + "  END AS Title, ";
+				SQLquery = SQLquery + "'0' AS RepresentingType, ";
+				SQLquery = SQLquery + "cm.congressionalMemberID AS RepresentingID, ";
+				SQLquery = SQLquery + "'0' AS RepresentingLastName, ";
+				SQLquery = SQLquery + "cm.State AS RepresentingState ";
+				SQLquery = SQLquery + "FROM congressional_members cm ";
+				SQLquery = SQLquery + "INNER JOIN meetings_congressionals mc ON mc.congressionalMemberID = cm.congressionalMemberID ";
+				SQLquery = SQLquery + "INNER JOIN meetings m ON m.meetingID = mc.meetingID ";
+				SQLquery = SQLquery + "WHERE m.meetingID = " + EventID + " ";
+				SQLquery = SQLquery + "AND m.DeletedYN = 'N' ";
+				SQLquery = SQLquery + "UNION ";
+				SQLquery = SQLquery + "SELECT '0' AS congressionalMemberID, cm.cmsID AS staffID, cm.FirstName, cm.LastName, '' AS MiddleInitial, ";
+				SQLquery = SQLquery + "'' AS Suffix, '' AS Party, '' AS State, '' AS imageFilename, '0' AS CongressionalMember, ";
+				SQLquery = SQLquery + "'' AS CongressionalMemberName, cm.Title, ";
+				SQLquery = SQLquery + "(SELECT CASE cm2.Chamber ";
+				SQLquery = SQLquery + "  WHEN 'Senate' THEN 'Senator' ";
+				SQLquery = SQLquery + "  ELSE 'Representative' ";
+				SQLquery = SQLquery + "  END AS Title ";
+				SQLquery = SQLquery + "FROM congressional_members cm2 ";
+				SQLquery = SQLquery + "INNER JOIN congressional_members_staff cms2 ON cms2.congressionalMemberID = cm2.congressionalMemberID ";
+				SQLquery = SQLquery + "WHERE cms2.cmsID = cm.cmsID) AS RepresentingType, ";
+				SQLquery = SQLquery + "(SELECT cm3.congressionalMemberID ";
+				SQLquery = SQLquery + "FROM congressional_members cm3 ";
+				SQLquery = SQLquery + "INNER JOIN congressional_members_staff cms3 ON cms3.congressionalMemberID = cm3.congressionalMemberID ";
+				SQLquery = SQLquery + "WHERE cms3.cmsID = cm.cmsID) AS RepresentingID, ";
+				SQLquery = SQLquery + "(SELECT cm4.LastName ";
+				SQLquery = SQLquery + "FROM congressional_members cm4 ";
+				SQLquery = SQLquery + "INNER JOIN congressional_members_staff cms4 ON cms4.congressionalMemberID = cm4.congressionalMemberID ";
+				SQLquery = SQLquery + "WHERE cms4.cmsID = cm.cmsID) AS RepresentingLastName, ";
+				SQLquery = SQLquery + "(SELECT cm1.State ";
+				SQLquery = SQLquery + "FROM congressional_members cm1 ";
+				SQLquery = SQLquery + "INNER JOIN congressional_members_staff cms1 ON cms1.congressionalMemberID = cm1.congressionalMemberID ";
+				SQLquery = SQLquery + "WHERE cms1.cmsID = cm.cmsID) AS RepresentingState ";
+				SQLquery = SQLquery + "FROM congressional_members_staff cm ";
+				SQLquery = SQLquery + "INNER JOIN meetings_congressionals mc ON mc.cmsID = cm.cmsID ";
+				SQLquery = SQLquery + "INNER JOIN meetings m ON m.meetingID = mc.meetingID ";
+				SQLquery = SQLquery + "WHERE m.meetingID = " + EventID + " ";
+				SQLquery = SQLquery + "AND m.DeletedYN = 'N' ";
+				SQLquery = SQLquery + "ORDER BY LastName, FirstName  ";
+			}
+
+			console.log("getAgendaData Query: " + SQLquery);
+
+			// Perform query against local SQLite database
+			return new Promise(resolve => {
+				
+				this.sqlite.create({name: 'flyinPlanner.db', location: 'default', createFromLocation: 1}).then((db: SQLiteObject) => {
+
+					console.log('Database: Opened DB for getAgendaData query');
+					
+					this.db = db;
+					
+					console.log('Database: Set getAgendaData query db variable');
+					
+					this.db.executeSql(SQLquery, {}).then((data) => {
+						console.log('Database: getAgendaData query: ' + JSON.stringify(data));
+						console.log('Database: getAgendaData query rows: ' + data.rows.length);
+						let DatabaseResponse = [];
+						if(data.rows.length > 0) {
+							for(let i = 0; i < data.rows.length; i++) {
+								if (listingType == "li" || listingType == "li2") {
+									
+									dbEventDateTime = data.rows.item(i).StartDateTime;
+									dbEventDateTime = dbEventDateTime.replace(/-/g, '/');
+									dbEventDateTime = dbEventDateTime.replace(/T/g, ' ');
+									SQLDate = new Date(dbEventDateTime);
+									visStartTime = dateFormat(SQLDate, "HH:MM:ss");
+									
+									dbEventDateTime = data.rows.item(i).EndDateTime;
+									dbEventDateTime = dbEventDateTime.replace(/-/g, '/');
+									dbEventDateTime = dbEventDateTime.replace(/T/g, ' ');
+									SQLDate = new Date(dbEventDateTime);
+									visEndTime =  dateFormat(SQLDate, "HH:MM:ss");
+									
+									dbEventDateTime = data.rows.item(i).StartDateTime;
+									dbEventDateTime = dbEventDateTime.replace(/-/g, '/');
+									dbEventDateTime = dbEventDateTime.replace(/T/g, ' ');
+									SQLDate = new Date(dbEventDateTime);
+									DisplayDateTime = dateFormat(SQLDate, "yyyy-mm-dd");
+									
+									DatabaseResponse.push({
+										itID: data.rows.item(i).meetingID,
+										EventID: data.rows.item(i).meetingID,
+										mtgID: 0,
+										EventStartTime: visStartTime,
+										EventEndTime: visEndTime,
+										EventLocation: data.rows.item(i).Location,
+										EventName: data.rows.item(i).MeetingTitle,
+										EventDate: DisplayDateTime,
+										congressionalMemberID: data.rows.item(i).congressionalMemberID,
+										FirstName: data.rows.item(i).FirstName,
+										LastName: data.rows.item(i).LastName,
+										Party: data.rows.item(i).Party,
+										State: data.rows.item(i).State,
+										Address: data.rows.item(i).Address,
+										imageFilename: data.rows.item(i).imageFilename
+									});
+									
+								}
+								if (listingType == "sr") {
+									
+									DatabaseResponse.push({
+										meetingID: data.rows.item(i).meetingID,
+										StartDateTime: data.rows.item(i).StartDateTime,
+										EndDateTime: data.rows.item(i).EndDateTime,
+										Location: data.rows.item(i).Location,
+										MeetingTitle: data.rows.item(i).MeetingTitle,
+										FirstName: data.rows.item(i).FirstName,
+										LastName: data.rows.item(i).LastName,
+										Party: data.rows.item(i).Party,
+										State: data.rows.item(i).State,
+										Address: data.rows.item(i).Address,
+										SQLquery: SQLquery
+									});
+									
+								}
+								if (listingType == "dt") {
+									
+									dbEventDateTime = data.rows.item(i).StartDateTime;
+									dbEventDateTime = dbEventDateTime.replace(/-/g, '/');
+									dbEventDateTime = dbEventDateTime.replace(/T/g, ' ');
+									SQLDate = new Date(dbEventDateTime);
+									visStartTime = dateFormat(SQLDate, "HH:MM:ss");
+									
+									dbEventDateTime = data.rows.item(i).EndDateTime;
+									dbEventDateTime = dbEventDateTime.replace(/-/g, '/');
+									dbEventDateTime = dbEventDateTime.replace(/T/g, ' ');
+									SQLDate = new Date(dbEventDateTime);
+									visEndTime =  dateFormat(SQLDate, "HH:MM:ss");
+									
+									dbEventDateTime = data.rows.item(i).StartDateTime;
+									dbEventDateTime = dbEventDateTime.replace(/-/g, '/');
+									dbEventDateTime = dbEventDateTime.replace(/T/g, ' ');
+									SQLDate = new Date(dbEventDateTime);
+									DisplayDateTime = dateFormat(SQLDate, "yyyy-mm-dd");
+									
+									DatabaseResponse.push({
+										itID: data.rows.item(i).meetingID,
+										EventID: data.rows.item(i).meetingID,
+										mtgID: 0,
+										StartDateTime: data.rows.item(i).StartDateTime,
+										EndDateTime: data.rows.item(i).EndDateTime,
+										EventStartTime: visStartTime,
+										EventEndTime: visEndTime,
+										EventLocation: data.rows.item(i).Location,
+										EventDescription: data.rows.item(i).EventDescription,
+										MeetingType: data.rows.item(i).MeetingType,
+										EventName: data.rows.item(i).MeetingTitle,
+										EventDate: DisplayDateTime,
+										congressionalMemberID: data.rows.item(i).congressionalMemberID,
+										FirstName: data.rows.item(i).FirstName,
+										LastName: data.rows.item(i).LastName,
+										Party: data.rows.item(i).Party,
+										State: data.rows.item(i).State,
+										Address: data.rows.item(i).Address,
+										imageFilename: data.rows.item(i).imageFilename,
+										OfficeX: data.rows.item(i).OfficeX,
+										OfficeY: data.rows.item(i).OfficeY,
+										RoomNumber: data.rows.item(i).RoomNumber,
+										Chamber: data.rows.item(i).Chamber
+									});
+									
+								}
+								if (listingType == "ma") {
+									
+									DatabaseResponse.push({
+										cmID: data.rows.item(i).cmID,
+										LastName: data.rows.item(i).LastName,
+										FirstName: data.rows.item(i).FirstName,
+										City: data.rows.item(i).City,
+										State: data.rows.item(i).State
+									});
+									
+								}
+								if (listingType == "cs") {
+									
+									DatabaseResponse.push({
+										congressionalMemberID: data.rows.item(i).congressionalMemberID,
+										staffID: data.rows.item(i).staffID,
+										LastName: data.rows.item(i).LastName,
+										FirstName: data.rows.item(i).FirstName,
+										MiddleInitial: data.rows.item(i).MiddleInitial,
+										Suffix: data.rows.item(i).Suffix,
+										Party: data.rows.item(i).Party,
+										State: data.rows.item(i).State,
+										imageFilename: data.rows.item(i).imageFilename,
+										CongressionalMember: data.rows.item(i).CongressionalMember,
+										CongressionalMemberName: data.rows.item(i).CongressionalMemberName,
+										Title: data.rows.item(i).Title,
+										RepresentingType: data.rows.item(i).RepresentingType,
+										RepresentingLastName: data.rows.item(i).RepresentingLastName
+									});
+									
+								}
+							}
+						}
+						resolve(DatabaseResponse);
+					})
+					.catch(e => console.log('Database: getAgendaData query error: ' + JSON.stringify(e)))
+				});
+				console.log('Database: getAgendaData query complete');
+
+			});
+
+			
+		} else {
+			
+			// Perform query against server-based MySQL database
+			var url = APIURLReference + "action=agendaquery&flags=" + flags + "&AttendeeID=" + AttendeeID;
+			console.log('Database: URL call: ' + url);
+			
+			return new Promise(resolve => {
+				this.httpCall.get(url).subscribe(
+					response => {resolve(response.json());
+					},
+					err => {
+						if (err.status == "412") {
 							console.log("App and API versions don't match.");
 							var emptyJSONArray = {};
 							resolve(emptyJSONArray);
-							break;
-						case 0:
-							console.log("No Internet conenction to server / server unreachable.");
-							var emptyJSONArray = {};
-							resolve(emptyJSONArray);
-							break;
-						case 500:
-							console.log("Problem in server API code.");
-							var emptyJSONArray = {};
-							resolve(emptyJSONArray);
-							break;
-						default:
+						} else {
 							console.log(err.status);
 							console.log("API Error: ", err);
-							break;
+						}
 					}
-				}
-			);
-		});
+				);
+			});
 			
+		}	
 	}
 
 	public getSearchData(flags, AttendeeID) {
@@ -383,26 +734,13 @@ export class Database {
 				response => {resolve(response.json());
 				},
 				err => {
-					switch(err.status) {
-						case 412:
-							console.log("App and API versions don't match.");
-							var emptyJSONArray = {};
-							resolve(emptyJSONArray);
-							break;
-						case 0:
-							console.log("No Internet conenction to server / server unreachable.");
-							var emptyJSONArray = {};
-							resolve(emptyJSONArray);
-							break;
-						case 500:
-							console.log("Problem in server API code.");
-							var emptyJSONArray = {};
-							resolve(emptyJSONArray);
-							break;
-						default:
-							console.log(err.status);
-							console.log("API Error: ", err);
-							break;
+					if (err.status == "412") {
+						console.log("App and API versions don't match.");
+						var emptyJSONArray = {};
+						resolve(emptyJSONArray);
+					} else {
+						console.log(err.status);
+						console.log("API Error: ", err);
 					}
 				}
 			);
@@ -432,26 +770,13 @@ export class Database {
 				response => {resolve(response.json());
 				},
 				err => {
-					switch(err.status) {
-						case 412:
-							console.log("App and API versions don't match.");
-							var emptyJSONArray = {};
-							resolve(emptyJSONArray);
-							break;
-						case 0:
-							console.log("No Internet conenction to server / server unreachable.");
-							var emptyJSONArray = {};
-							resolve(emptyJSONArray);
-							break;
-						case 500:
-							console.log("Problem in server API code.");
-							var emptyJSONArray = {};
-							resolve(emptyJSONArray);
-							break;
-						default:
-							console.log(err.status);
-							console.log("API Error: ", err);
-							break;
+					if (err.status == "412") {
+						console.log("App and API versions don't match.");
+						var emptyJSONArray = {};
+						resolve(emptyJSONArray);
+					} else {
+						console.log(err.status);
+						console.log("API Error: ", err);
 					}
 				}
 			);
@@ -479,26 +804,13 @@ export class Database {
 				response => {resolve(response.json());
 				},
 				err => {
-					switch(err.status) {
-						case 412:
-							console.log("App and API versions don't match.");
-							var emptyJSONArray = {};
-							resolve(emptyJSONArray);
-							break;
-						case 0:
-							console.log("No Internet conenction to server / server unreachable.");
-							var emptyJSONArray = {};
-							resolve(emptyJSONArray);
-							break;
-						case 500:
-							console.log("Problem in server API code.");
-							var emptyJSONArray = {};
-							resolve(emptyJSONArray);
-							break;
-						default:
-							console.log(err.status);
-							console.log("API Error: ", err);
-							break;
+					if (err.status == "412") {
+						console.log("App and API versions don't match.");
+						var emptyJSONArray = {};
+						resolve(emptyJSONArray);
+					} else {
+						console.log(err.status);
+						console.log("API Error: ", err);
 					}
 				}
 			);
@@ -534,26 +846,13 @@ export class Database {
 					resolve(response.json());
 				},
 				err => {
-					switch(err.status) {
-						case 412:
-							console.log("App and API versions don't match.");
-							var emptyJSONArray = {};
-							resolve(emptyJSONArray);
-							break;
-						case 0:
-							console.log("No Internet conenction to server / server unreachable.");
-							var emptyJSONArray = {};
-							resolve(emptyJSONArray);
-							break;
-						case 500:
-							console.log("Problem in server API code.");
-							var emptyJSONArray = {};
-							resolve(emptyJSONArray);
-							break;
-						default:
-							console.log(err.status);
-							console.log("API Error: ", err);
-							break;
+					if (err.status == "412") {
+						console.log("App and API versions don't match.");
+						var emptyJSONArray = {};
+						resolve(emptyJSONArray);
+					} else {
+						console.log(err.status);
+						console.log("API Error: ", err);
 					}
 				}
 			);
