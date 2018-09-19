@@ -19,7 +19,7 @@
     "@asymmetrik/ngx-leaflet": "^3.0.2",
     "@ionic-native/call-number": "^4.9.0",
     "@ionic-native/camera": "^4.7.0",
-    "@ionic-native/core": "^4.14.0",
+    "@ionic-native/core": "^4.2.0",
     "@ionic-native/file": "^4.12.2",
     "@ionic-native/file-transfer": "^4.9.0",
     "@ionic-native/google-maps": "^4.8.2",
