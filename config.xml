@@ -123,7 +123,7 @@
     <plugin name="cordova-plugin-statusbar" spec="^2.4.1" />
     <plugin name="onesignal-cordova-plugin" spec="^2.4.1" />
     <plugin name="cordova-plugin-ionic" spec="^5.2.4">
-        <variable name="APP_ID" value=" af841d4c" />
+        <variable name="APP_ID" value="da0f9f9a" />
         <variable name="CHANNEL_NAME" value="Production" />
         <variable name="UPDATE_METHOD" value="background" />
         <variable name="MAX_STORE" value="2" />
