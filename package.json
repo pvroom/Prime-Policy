@@ -126,16 +126,15 @@
       "cordova-android-support-gradle-release": {
         "ANDROID_SUPPORT_VERSION": "27.+"
       },
+      "cordova-plugin-ionic-webview": {},
       "cordova-plugin-ionic": {
-        "APP_ID": "da0f9f9a",
-        "CHANNEL_NAME": "Master",
+        "APP_ID": " af841d4c",
+        "CHANNEL_NAME": "Production",
         "UPDATE_METHOD": "background",
-        "WARN_DEBUG": "true",
-        "UPDATE_API": "https://api.ionicjs.com",
         "MAX_STORE": "2",
+        "UPDATE_API": "https://api.ionicjs.com",
         "MIN_BACKGROUND_DURATION": "30"
-      },
-      "cordova-plugin-ionic-webview": {}
+      }
     },
     "platforms": [
       "ios",
