@@ -572,19 +572,15 @@ export class HomePage {
 		this.subscription = Observable.interval(30000).subscribe(x => {
 		
 			// Previously successful sync time
-			var LastSync3 = this.localstorage.getLocalValue('LastSync');
-			if (LastSync3 == '' || LastSync3 === null) {
-				LastSync3 = '2018-09-01 00:00:01';
+			var LastSync = this.localstorage.getLocalValue('LastSync');
+			if (LastSync == '' || LastSync === null) {
+				LastSync = '2018-09-01 00:00:01';
 			}
-			var LastSync2 = new Date(LastSync3).toUTCString();
-			var LastSync = dateFormat(LastSync2, "UTC:yyyy-mm-dd'T'HH:MM:ss'Z'");
 			
 			// Current sync time in UTC
-			var ThisSync2 = new Date().toUTCString();
-			var ThisSync = dateFormat(ThisSync2, "UTC:yyyy-mm-dd'T'HH:MM:ss'Z'");
-
+			var ThisSync = new Date().toUTCString();
+			
 			console.log('Home: AutoSync event: ' + this.i);
-			console.log('Sync period: ' + LastSync + ' to ' + ThisSync);
 			this.i++;
 			
 			// Call AutoSync service in providers
