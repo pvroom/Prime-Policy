@@ -1,8 +1,8 @@
 {
   "name": "primepolicyflyin",
+  "app_id": "da0f9f9a",
+  "type": "ionic-angular",
   "integrations": {
     "cordova": {}
-  },
-  "type": "ionic-angular",
-  "pro_id": "da0f9f9a"
+  }
 }
