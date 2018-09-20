@@ -63,7 +63,7 @@ import { SurveyPage } from '../pages/survey/survey';
 // Temporary Support Pages
 //import { FloorplanMappingPage } from '../pages/floorplanmapping/floorplanmapping';
 
-Pro.init('af841d4c', {
+Pro.init('da0f9f9a', {
   appVersion: '4.2.2'
 })
 

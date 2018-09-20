@@ -127,7 +127,7 @@
         "ANDROID_SUPPORT_VERSION": "27.+"
       },
       "cordova-plugin-ionic": {
-        "APP_ID": "af841d4c",
+        "APP_ID": "da0f9f9a",
         "CHANNEL_NAME": "Production",
         "UPDATE_METHOD": "background",
         "WARN_DEBUG": "true",
