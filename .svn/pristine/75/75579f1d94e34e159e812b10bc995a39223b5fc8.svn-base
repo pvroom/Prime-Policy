@@ -223,7 +223,6 @@ export class HomePage {
 						console.log('Checking for offline banner...');
 						self.imageExists(imageUrl, function(exists) {
 							BannerOffline = exists;
-							var FlyinBanner = self.localstorage.getLocalValue("FlyinBanner");
 							console.log('RESULT: url=' + imageUrl + ', exists=' + exists);
 							if (BannerOffline == 'true') {
 								self.appBanner = 'assets/img/FlyinBanners/' + FlyinBanner;
@@ -233,7 +232,6 @@ export class HomePage {
 								console.log('Checking for online banner...');
 								self.imageExists(imageUrl2, function(exists) {
 									BannerOnline = exists;
-									var FlyinBanner = self.localstorage.getLocalValue("FlyinBanner");
 									console.log('RESULT: url=' + imageUrl2 + ', exists=' + exists);
 							
 									// Based on available banner images, prioritize the online

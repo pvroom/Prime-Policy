@@ -223,34 +223,28 @@ export class HomePage {
 						console.log('Checking for offline banner...');
 						self.imageExists(imageUrl, function(exists) {
 							BannerOffline = exists;
-							var FlyinBanner = self.localstorage.getLocalValue("FlyinBanner");
 							console.log('RESULT: url=' + imageUrl + ', exists=' + exists);
-							if (BannerOffline == 'true') {
-								self.appBanner = 'assets/img/FlyinBanners/' + FlyinBanner;
-							} else {
-								// Check for version on server
-								var imageUrl2 = 'https://primepolicy.convergence-us.com/AdminGateway/images/FlyinBanners/' + FlyinBanner;
-								console.log('Checking for online banner...');
-								self.imageExists(imageUrl2, function(exists) {
-									BannerOnline = exists;
-									var FlyinBanner = self.localstorage.getLocalValue("FlyinBanner");
-									console.log('RESULT: url=' + imageUrl2 + ', exists=' + exists);
-							
-									// Based on available banner images, prioritize the online
-									// version over the offline version.  When none are available
-									// then use the default banner
-									if (BannerOnline == 'true' && BannerOffline == 'false') {
-										var randNum = Math.floor((Math.random() * 100) + 1);
-										self.appBanner = 'https://primepolicy.convergence-us.com/AdminGateway/images/FlyinBanners/' + FlyinBanner + '?rnd=' + randNum;
-									}
-									//if (BannerOffline == 'true') {
-									//	self.appBanner = 'assets/img/FlyinBanners/' + FlyinBanner;
-									//}
-									if (BannerOnline == 'false' && BannerOffline == 'false') {
-										self.appBanner = 'assets/img/FlyinBanners/PPGBanner.png';
-									}
-								});
-							}
+							// Check for version on server
+							var imageUrl2 = 'https://primepolicy.convergence-us.com/AdminGateway/images/FlyinBanners/' + FlyinBanner;
+							console.log('Checking for online banner...');
+							self.imageExists(imageUrl2, function(exists) {
+								BannerOnline = exists;
+								console.log('RESULT: url=' + imageUrl2 + ', exists=' + exists);
+						
+								// Based on available banner images, prioritize the online
+								// version over the offline version.  When none are available
+								// then use the default banner
+								if (BannerOnline == 'true') {
+									var randNum = Math.floor((Math.random() * 100) + 1);
+									self.appBanner = 'https://primepolicy.convergence-us.com/AdminGateway/images/FlyinBanners/' + FlyinBanner + '?rnd=' + randNum;
+								}
+								if (BannerOnline == 'false' && BannerOffline == 'true') {
+									self.appBanner = 'assets/img/FlyinBanners/' + FlyinBanner;
+								}
+								if (BannerOnline == 'false' && BannerOffline == 'false') {
+									self.appBanner = 'assets/img/FlyinBanners/PPGBanner.png';
+								}
+							});
 						});
 					}
 				}
@@ -508,33 +502,7 @@ export class HomePage {
 			this.cd.markForCheck();
 
 		}
-		
-		// iOS Date Testing
-		/*
-		console.log('Home: Date Testing');
-
-		var ThisSync2 = new Date().toUTCString();
-		console.log('Home: ThisSync2: ' + ThisSync2);
-		var ThisSync = dateFormat(ThisSync2, "UTC:yyyy-mm-dd'T'HH:MM:ss'Z'");
-		console.log('Home: ThisSync: ' + ThisSync);
-		
-		var LastSync6 = '2018-09-01T00:00:01Z';
-		console.log('Home: LastSync6: ' + LastSync6);
-		var LastSync5 = new Date(LastSync6).toUTCString();
-		console.log('Home: LastSync5: ' + LastSync5);
-		var LastSync4 = dateFormat(LastSync5, "UTC:yyyy-mm-dd'T'HH:MM:ss'Z'");
-		console.log('Home: LastSync4: ' + LastSync4);
-
-		var LastSync3 = '2018-09-01T00:00:01Z';
-		console.log('Home: LastSync3: ' + LastSync3);
-		var LastSync2 = new Date(LastSync3).toUTCString();
-		console.log('Home: LastSync2: ' + LastSync2);
-		var LastSync = dateFormat(LastSync2, "UTC:yyyy-mm-dd'T'HH:MM:ss'Z'");
-		console.log('Home: LastSync: ' + LastSync);
-
-		console.log('Home: Date Testing Complete');
-		*/
-		
+			
 	}
 	
 	ionViewDidEnter() {
@@ -591,7 +559,7 @@ export class HomePage {
 				
 				// Reset AutoSync and then disable this section of code by setting 
 				// the localstorage value to 1
-				this.localstorage.setLocalValue('LastSync', '2018-09-01T00:00:01Z');		
+				this.localstorage.setLocalValue('LastSync', '2018-09-01 00:00:01');		
 				this.localstorage.setLocalValue('AutoSyncReset', '1');		
 			
 			//}
@@ -616,7 +584,7 @@ export class HomePage {
 			// Previously successful sync time
 			var LastSync3 = this.localstorage.getLocalValue('LastSync');
 			if (LastSync3 == '' || LastSync3 === null) {
-				LastSync3 = '2018-09-01T00:00:01Z';
+				LastSync3 = '2018-09-01 00:00:01';
 			}
 			var LastSync2 = new Date(LastSync3).toUTCString();
 			var LastSync = dateFormat(LastSync2, "UTC:yyyy-mm-dd'T'HH:MM:ss'Z'");

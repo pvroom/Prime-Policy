@@ -41,13 +41,11 @@
     "cordova-android": "^7.1.1",
     "cordova-android-support-gradle-release": "^1.4.4",
     "cordova-ios": "^4.5.5",
-    "cordova-plugin-compat": "^1.2.0",
     "cordova-plugin-dbcopy": "^2.0.0",
     "cordova-plugin-device": "^2.0.2",
     "cordova-plugin-email": "1.2.7",
     "cordova-plugin-file": "^6.0.1",
     "cordova-plugin-file-transfer": "^1.7.1",
-    "cordova-plugin-geolocation": "^4.0.1",
     "cordova-plugin-inappbrowser": "^3.0.0",
     "cordova-plugin-ionic": "^5.2.4",
     "cordova-plugin-ionic-webview": "^2.1.4",
@@ -89,8 +87,7 @@
     "tslint": "^5.10.0",
     "typescript": "^2.6.2",
     "wrappy": "^1.0.2",
-    "zone.js": "^0.8.20",
-    "de.appplant.cordova.plugin.printer": "0.7.3"
+    "zone.js": "^0.8.20"
   },
   "devDependencies": {
     "@ionic/app-scripts": "^3.2.0",
@@ -137,8 +134,8 @@
       }
     },
     "platforms": [
-      "android",
-      "ios"
+      "ios",
+      "android"
     ]
   }
 }

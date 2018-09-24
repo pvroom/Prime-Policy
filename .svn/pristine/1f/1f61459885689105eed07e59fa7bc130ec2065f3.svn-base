@@ -45,9 +45,8 @@
 		</ion-fab-list>
     </ion-fab>
 
-	<!-- <img src="{{appBanner}}" style="margin-left:15px"> -->
-	<!-- <img style="width:100%" src="assets/img/homeinstead.png"> -->
-	<img src="{{appBanner}}">
+	<img style="width:100%" src="assets/img/homeinstead.png">
+
 
 
 	<div *ngIf=UserLoggedIn>

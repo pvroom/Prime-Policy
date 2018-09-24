@@ -223,34 +223,28 @@ export class HomePage {
 						console.log('Checking for offline banner...');
 						self.imageExists(imageUrl, function(exists) {
 							BannerOffline = exists;
-							var FlyinBanner = self.localstorage.getLocalValue("FlyinBanner");
 							console.log('RESULT: url=' + imageUrl + ', exists=' + exists);
-							if (BannerOffline == 'true') {
-								self.appBanner = 'assets/img/FlyinBanners/' + FlyinBanner;
-							} else {
-								// Check for version on server
-								var imageUrl2 = 'https://primepolicy.convergence-us.com/AdminGateway/images/FlyinBanners/' + FlyinBanner;
-								console.log('Checking for online banner...');
-								self.imageExists(imageUrl2, function(exists) {
-									BannerOnline = exists;
-									var FlyinBanner = self.localstorage.getLocalValue("FlyinBanner");
-									console.log('RESULT: url=' + imageUrl2 + ', exists=' + exists);
-							
-									// Based on available banner images, prioritize the online
-									// version over the offline version.  When none are available
-									// then use the default banner
-									if (BannerOnline == 'true' && BannerOffline == 'false') {
-										var randNum = Math.floor((Math.random() * 100) + 1);
-										self.appBanner = 'https://primepolicy.convergence-us.com/AdminGateway/images/FlyinBanners/' + FlyinBanner + '?rnd=' + randNum;
-									}
-									//if (BannerOffline == 'true') {
-									//	self.appBanner = 'assets/img/FlyinBanners/' + FlyinBanner;
-									//}
-									if (BannerOnline == 'false' && BannerOffline == 'false') {
-										self.appBanner = 'assets/img/FlyinBanners/PPGBanner.png';
-									}
-								});
-							}
+							// Check for version on server
+							var imageUrl2 = 'https://primepolicy.convergence-us.com/AdminGateway/images/FlyinBanners/' + FlyinBanner;
+							console.log('Checking for online banner...');
+							self.imageExists(imageUrl2, function(exists) {
+								BannerOnline = exists;
+								console.log('RESULT: url=' + imageUrl2 + ', exists=' + exists);
+						
+								// Based on available banner images, prioritize the online
+								// version over the offline version.  When none are available
+								// then use the default banner
+								if (BannerOnline == 'true') {
+									var randNum = Math.floor((Math.random() * 100) + 1);
+									self.appBanner = 'https://primepolicy.convergence-us.com/AdminGateway/images/FlyinBanners/' + FlyinBanner + '?rnd=' + randNum;
+								}
+								if (BannerOnline == 'false' && BannerOffline == 'true') {
+									self.appBanner = 'assets/img/FlyinBanners/' + FlyinBanner;
+								}
+								if (BannerOnline == 'false' && BannerOffline == 'false') {
+									self.appBanner = 'assets/img/FlyinBanners/PPGBanner.png';
+								}
+							});
 						});
 					}
 				}
