@@ -130,7 +130,7 @@
       "cordova-plugin-ionic": {
         "APP_ID": "da0f9f9a",
         "CHANNEL_NAME": "Production",
-        "UPDATE_METHOD": "background",
+        "UPDATE_METHOD": "auto",
         "MAX_STORE": "2",
         "UPDATE_API": "https://api.ionicjs.com",
         "MIN_BACKGROUND_DURATION": "30"
