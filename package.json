@@ -1,6 +1,6 @@
 {
   "name": "primepolicyflyin",
-  "version": "4.2.2",
+  "version": "4.2.3",
   "author": "Convergence",
   "description": "Mobile agenda planner for Prime Policy Group",
   "homepage": "http://convergence-us.com/",
@@ -60,6 +60,7 @@
     "cordova-promise-polyfill": "0.0.2",
     "cordova-sqlite-ext": "^2.2.0",
     "date-fns": "^1.29.0",
+    "de.appplant.cordova.plugin.printer": "0.7.3",
     "fs-extra": "^6.0.1",
     "hoek": "^5.0.4",
     "i": "^0.3.6",
@@ -89,8 +90,7 @@
     "tslint": "^5.10.0",
     "typescript": "^2.6.2",
     "wrappy": "^1.0.2",
-    "zone.js": "^0.8.20",
-    "de.appplant.cordova.plugin.printer": "0.7.3"
+    "zone.js": "^0.8.20"
   },
   "devDependencies": {
     "@ionic/app-scripts": "^3.2.0",

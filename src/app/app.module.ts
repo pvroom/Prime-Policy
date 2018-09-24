@@ -64,7 +64,7 @@ import { SurveyPage } from '../pages/survey/survey';
 //import { FloorplanMappingPage } from '../pages/floorplanmapping/floorplanmapping';
 
 Pro.init('da0f9f9a', {
-  appVersion: '4.2.2'
+  appVersion: '4.2.3'
 })
 
 @Injectable()
