@@ -20,7 +20,7 @@ import { Ionic2RatingModule } from 'ionic2-rating';
 import { IonicImageLoader } from 'ionic-image-loader';
 import { ChartsModule } from 'ng2-charts';
 import { IonAlphaScrollModule } from 'ionic2-alpha-scroll';
-import { CallNumber } from '@ionic-native/call-number';
+//import { CallNumber } from '@ionic-native/call-number';
 import { SMS } from '@ionic-native/sms';
 //import { Network } from '@ionic-native/network'
 
@@ -164,7 +164,7 @@ export class MyErrorHandler implements ErrorHandler {
 
   providers: [
 	Camera,
-	CallNumber,
+	//CallNumber,
 	Database,
 	FileTransfer, 
 	FileTransferObject, 
