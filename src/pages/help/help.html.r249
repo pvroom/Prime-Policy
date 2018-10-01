@@ -90,8 +90,21 @@
 </ion-content>
 
 <ion-footer no-border>
-	<ion-toolbar style="margin-top:30px">
-		<p>Deploy Version: 3.67</p>
-	</ion-toolbar>
+	<ion-grid style="padding:20px; margin:0">
+		<ion-row>
+			<ion-col style="padding:0">
+				<p>Deploy Version: 3.65</p>
+				<p style="margin-top: -13px;">Device Type: {{DeviceType}}</p>
+			</ion-col>
+			<ion-col style="padding:0">
+				<p>Member ID: {{ClientMemberID}}</p>
+				<p style="margin-top: -13px;">Fly-in ID: {{flID}}</p>
+			</ion-col>
+			<ion-col style="padding:0">
+				<p>Banner ID: {{FlyinBanner}}</p>
+				<p style="margin-top: -13px;">Last Sync: {{LSync}}</p>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
 </ion-footer>
 

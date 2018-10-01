@@ -82,7 +82,7 @@ export class HomePage {
 				public pltfrm: Platform,
 				private sqlite: SQLite,
 				private modal: ModalController,
-				//private callNumber: CallNumber,
+				private callNumber: CallNumber,
 				public events: Events,
 				private sms: SMS,
 				private localstorage: Localstorage) {
