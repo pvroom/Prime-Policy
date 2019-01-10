@@ -1,0 +1,158 @@
+<ion-header>
+	<ion-navbar color="primary">
+		<button ion-button icon-only menuToggle>
+			<ion-icon name="menu"></ion-icon>
+		</button>
+		<ion-title>
+			Prime Policy Group Fly-in
+		</ion-title>
+		<ion-buttons end>
+	
+			<button style="background:transparent!important">
+				<ion-avatar>
+					<ion-text-avatar class="avatar" color="secondary" style="z-index: 10;" (click)="AvatarNavigation()">{{AttendeeInitials}}
+						<ion-icon right name="{{LogInOutIcon}}" color="light" style="z-index: 1000;">
+						</ion-icon>
+					</ion-text-avatar>
+				</ion-avatar>
+			</button>
+
+		</ion-buttons>
+
+	</ion-navbar>
+</ion-header>
+
+<ion-content class="mutedBlue">
+
+	<!-- Floating button menu -->
+    <ion-fab bottom right #fab>
+		<button ion-fab color="secondary" ion-fab>
+			<ion-icon name="md-add"></ion-icon>
+		</button>
+		<ion-fab-list side="top">
+			<button *ngIf=DisplayFABSMS ion-fab (click)="TextPrimePolicy(fab)">
+				<ion-icon name="chatboxes"></ion-icon>
+				<div class="fabdivbutton">Text Prime</div>
+			</button>
+			<button *ngIf=DisplayFABCall ion-fab (click)="CallPrimePolicy(fab)">
+				<ion-icon name="call"></ion-icon>
+				<div class="fabdivbutton">Call Prime</div>
+			</button>
+			<button ion-fab (click)="AppHelp(fab)">
+				<ion-icon name="md-help"></ion-icon>
+				<div class="fabdivbutton">App Help</div>
+			</button>
+		</ion-fab-list>
+    </ion-fab>
+
+	<!-- <img src="{{appBanner}}" style="margin-left:15px"> -->
+	<!-- <img style="width:100%" src="assets/img/homeinstead.png"> -->
+	<img src="{{appBanner}}">
+
+
+	<ion-list *ngIf=UserLoggedIn no-lines>
+					<ion-item (click)="NavigateToAuthenticatedPage('MyAgenda')">
+						<h2>Upcoming Agenda</h2>
+						<ion-icon name="calendar" item-left></ion-icon>
+					</ion-item>
+					</ion-list>
+
+					<ion-list no-lines>
+					<ion-item text-wrap color="primary"
+						(click)="EventDetails(upcomingAgenda.visEventID)" 
+						*ngFor="let upcomingAgenda of upcomingAgendaItems" 
+						id="upcomingAgenda-list-item19" >
+
+
+
+		<!--<ion-icon *ngIf=!upcomingAgenda.visAvatar name="{{upcomingAgenda.eventTypeIcon}}" item-start></ion-icon>-->
+		<ion-avatar *ngIf=upcomingAgenda.visAvatar item-start>
+				<img [src]="upcomingAgenda.ContactAvatar" >
+			</ion-avatar>
+			
+			<p class="myBold" style="color: white">
+				{{upcomingAgenda.EventName}}
+
+			<p text-wrap style="color: white">
+				{{upcomingAgenda.visEventTimeframe}}
+				</p>
+				
+				<p text-wrap style="color: white">
+				{{upcomingAgenda.EventLocation}}
+			</p>
+	
+		</ion-item>
+	</ion-list>
+
+
+
+
+
+
+
+
+
+
+
+
+
+					<!--
+					<ion-item class="mutedRed" style="width:110%;margin-left:-10px; margin-top:10px">
+						Next Meeting Contact
+						<ion-icon name="contact" item-left></ion-icon>
+					</ion-item>
+					<ion-item style="border-color: rgba(0, 0, 0, 0);background-color: rgba(0, 0, 0, 0);color: white; margin-left:-10px" 
+						(click)="CongressionalDetails(upcomingContact.cmID)" 
+						*ngFor="let upcomingContact of upcomingContacts" 
+						id="upcomingContact-list-item19" >
+						<div>
+							<div class="row">
+								<div class="col">
+									<div style="float: left; padding-right: 10px;">
+										<ion-avatar item-start>
+											<img  [src]="upcomingContact.ContactAvatar" src="assets/img/personIcon.png" onerror="this.src='assets/img/personIcon.png'">
+										</ion-avatar>
+									</div>
+									<div>
+										<p style="color: white;font-weight:bold">
+											{{upcomingContact.visContactName}}
+										</p>
+										<p style="color: white;">
+											{{upcomingContact.visAffiliation}}
+										</p>
+									</div>
+									<div style="float: right; color: white;">
+										<ion-icon name="{{upcomingContact.navigationArrow}}"></ion-icon>
+									</div>
+								</div>
+							</div>
+						</div>
+					</ion-item>
+					-->
+
+					<div *ngIf=!UserLoggedIn>
+							<ion-item no-lines style="border-color: rgba(0, 0, 0, 0);background-color: rgba(0, 0, 0, 0);color: white; padding-bottom:-30px; margin-bottom:-30px;" 
+								id="NotLoggedIn-list-item19" >
+								<div>
+									<div class="row">
+										<div class="col">
+											<div>
+												<h2 style="color: white">
+													In order to utilize this app, you need:<br/>
+												</h2>
+													<ul>
+														<li>a verified email address</li>
+														<li>a password from Convergence</li>
+														<li>to be registered for a fly-in event</li>
+													</ul>
+												<h2 style="color: white;">
+													Log in using the button at the upper right.
+												</h2>
+											</div>
+										</div>
+									</div>
+								</div>
+							</ion-item>
+						</div>
+						
+					</ion-content>
