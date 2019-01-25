@@ -15,43 +15,40 @@
 		</ion-card-header>
 		<ion-card-content>
 
+			<ion-grid>
+				<ion-row>
+					<ion-col>
+							<img style="width:30%; margin:auto" src="assets/img/prime-policy-group-logo.png">
+					</ion-col>
+				</ion-row>
 
-				<ion-grid>
-						<ion-row>
-							<ion-col>
-									<img style="width:30%; margin:auto" src="assets/img/primelogo.png">
-								</ion-col>
-								</ion-row>
+				<ion-row>	
+					<ion-col>
+						<button ion-button full icon-start class="btnHelp" (click)="navToEmail('pvroom@convergence-us.com')">
+							<ion-icon  name="mail"></ion-icon>
+							<label>Email</label>
+						</button>
+					</ion-col>
 
-								<ion-row>	
-										<ion-col>
-												<button ion-button full icon-start class="btnHelp" (click)="navToEmail('pvroom@convergence-us.com')">
-														<ion-icon  name="mail"></ion-icon>
-														<label>Email</label>
-													</button>
-												</ion-col>
-
-												<ion-col>
-														<button ion-button full icon-start class="btnHelp" onclick="window.open('http://prime-policy.com/', '_system', 'location=yes'); return false;">
-															<ion-icon name="globe"></ion-icon>
-															<label>Website</label>
-														</button>
-										
-													</ion-col>
-										
-													<ion-col>
-														<button ion-button full icon-start class="btnHelp" (click)="callPhone3('703-635-7801')">
-															<ion-icon name="call"></ion-icon>
-															<label>Call</label>
-														</button>
-												
-										
-												</ion-col>
-											</ion-row>
-												</ion-grid>
-										
-												</ion-card-content>
-											</ion-card>										
+					<ion-col>
+						<button ion-button full icon-start class="btnHelp" onclick="window.open('http://prime-policy.com/', '_system', 'location=yes'); return false;">
+							<ion-icon name="globe"></ion-icon>
+							<label>Website</label>
+						</button>
+			
+					</ion-col>
+				
+					<ion-col>
+						<button ion-button full icon-start class="btnHelp" (click)="callPhone3('703-635-7801')">
+							<ion-icon name="call"></ion-icon>
+							<label>Call</label>
+						</button>
+					</ion-col>
+				</ion-row>
+			</ion-grid>
+							
+		</ion-card-content>
+	</ion-card>										
 
 
 	<ion-card>
@@ -110,7 +107,7 @@
 	<ion-grid style="padding:20px; margin:0">
 		<ion-row>
 			<ion-col style="padding:0">
-				<p>Deploy Version: 3.71</p>
+				<p>Deploy Version: 3.72</p>
 				<p style="margin-top: -13px;">Device Type: {{DeviceType}}</p>
 			</ion-col>
 			<ion-col style="padding:0">
