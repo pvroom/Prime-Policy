@@ -31,8 +31,8 @@ export class MapPage {
 		// -----------------
 		this.myMap2 = L.map('mapLevel2', {
 			crs: L.CRS.Simple,
-			minZoom: -1,
-			maxZoom: -1,
+			minZoom: 0,
+			maxZoom: 4,
 			zoomControl: true
 		});
 
@@ -49,9 +49,9 @@ export class MapPage {
 		// -----------------
 		this.myMap3 = L.map('mapLevel3', {
 			crs: L.CRS.Simple,
-			minZoom: -1,
-			maxZoom: -1,
-			zoomControl: true
+			minZoom: 0,
+			maxZoom: 4,
+			zoomControl: false
 		});
 
 		var bounds = L.latLngBounds([0, 0], [1200, 1700]);    // Normally 1000, 1000; stretched to 2000,1000 for AACD 2017
@@ -67,8 +67,8 @@ export class MapPage {
 		// -----------------
 		this.myMap4 = L.map('mapLevel4', {
 			crs: L.CRS.Simple,
-			minZoom: -1,
-			maxZoom: -1,
+			minZoom: 0,
+			maxZoom: 4,
 			zoomControl: true
 		});
 
