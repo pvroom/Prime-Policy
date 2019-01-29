@@ -80,11 +80,11 @@ export class MyApp {
 		  { title: 'Senators', icon: 'people', component: CongressionalMembersPage, naventry: 'Senators' },
 		  { title: 'Representatives', icon: 'people', component: CongressionalMembersPage, naventry: 'Representatives' },
 		  { title: 'Fly-in Materials', icon: 'folder-open', component: IssuesPage, naventry: 'Issues' },
-		  { title: 'Maps', icon: 'map', component: MapPage, naventry: 'Map' },
+		  { title: 'Maps', icon: 'map', component: MapPage, naventry: 'Maps' },
 		  { title: 'Washington DC', icon: 'compass', component: ConferenceCityPage, naventry: 'ConferenceCity' },
 		  { title: 'Help', icon: 'help-circle', component: HelpPage, naventry: 'Help' },
 		  { title: 'Notes', icon: 'create', component: NotesPage, naventry: 'Notes' },
-		  //{ title: 'Survey', icon: 'list-box', component: SurveyPage, naventry: 'Survey' },
+		  { title: 'Survey', icon: 'list-box', component: SurveyPage, naventry: 'Survey' },
 		  //{ title: 'Floorplan Mapping', icon: 'create', component: FloorplanMappingPage, naventry: 'FloorplanMapping' },
 		  //{ title: 'About', icon: 'log-in', component: LoginPage, naventry: 'Login' }
 		  //{ title: 'More', icon: 'log-in', component: MorePage, naventry: 'More' }

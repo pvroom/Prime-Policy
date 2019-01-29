@@ -27,7 +27,7 @@ export class MapPage {
 		
 		
 		// -----------------
-		// Show Second Floor
+		// Show US Capitol Campus
 		// -----------------
 		this.myMap2 = L.map('mapLevel2', {
 			crs: L.CRS.Simple,
@@ -45,7 +45,7 @@ export class MapPage {
 		this.myMap2.setMaxBounds(bounds);
 		
 		// -----------------
-		// Show Third Floor
+		// Show House
 		// -----------------
 		this.myMap3 = L.map('mapLevel3', {
 			crs: L.CRS.Simple,
@@ -63,7 +63,7 @@ export class MapPage {
 		this.myMap3.setMaxBounds(bounds);
 
 		// -----------------
-		// Show Fourth Floor
+		// Show Senate
 		// -----------------
 		this.myMap4 = L.map('mapLevel4', {
 			crs: L.CRS.Simple,
