@@ -1334,38 +1334,4 @@ export class Database {
 		}	
     }
 
-	// -----------------------------------
-	// 
-	// Survey Functions
-	// 
-	// -----------------------------------
-	public sendSurveyData(flags, AttendeeID) {
-
-		console.log("sendSurveyData: flags passed: " + flags);
-			
-		// Perform query against server-based MySQL database
-		var url = APIURLReference + "action=srvyquery&flags=" + flags + "&AttendeeID=" + AttendeeID;
-		console.log(url);
-		
-		return new Promise(resolve => {
-			this.httpCall.get(url).subscribe(
-				response => {
-					console.log("Database: sendSurveyData data: " + JSON.stringify(response.json()));
-					resolve(response.json());
-				},
-				err => {
-					if (err.status == "412") {
-						console.log("App and API versions don't match.");
-						var emptyJSONArray = {};
-						resolve(emptyJSONArray);
-					} else {
-						console.log(err.status);
-						console.log("API Error: ", err);
-					}
-				}
-			);
-		});
-
-	}
-	
 }

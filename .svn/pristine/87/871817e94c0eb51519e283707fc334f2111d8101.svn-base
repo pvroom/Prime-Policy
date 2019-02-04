@@ -25,7 +25,6 @@ import { MyAgendaFull } from '../pages/myagendafull/myagendafull';
 import { IssuesPage } from '../pages/issues/issues';
 import { NotificationsPage } from '../pages/notifications/notifications'; 
 import { SurveyPage } from '../pages/survey/survey'; 
-import { MeetingDetailsPage } from '../pages/meetingdetails/meetingdetails'; 
 
 // Temporary Support Pages
 //import { FloorplanMappingPage } from '../pages/floorplanmapping/floorplanmapping';
@@ -85,9 +84,7 @@ export class MyApp {
 		  { title: 'Washington DC', icon: 'compass', component: ConferenceCityPage, naventry: 'ConferenceCity' },
 		  { title: 'Help', icon: 'help-circle', component: HelpPage, naventry: 'Help' },
 		  { title: 'Notes', icon: 'create', component: NotesPage, naventry: 'Notes' },
-		  { title: 'Meeting Report', icon: 'list-box', component: SurveyPage, naventry: 'Survey' },
-		  //{ title: 'Push', icon: 'list-box', component: PushPage, naventry: 'Push Notifications' },
-		  //{ title: 'Notifications', icon: 'list-box', component: NotificationsPage, naventry: 'Notifications' },
+		  { title: 'Survey', icon: 'list-box', component: SurveyPage, naventry: 'Survey' },
 		  //{ title: 'Floorplan Mapping', icon: 'create', component: FloorplanMappingPage, naventry: 'FloorplanMapping' },
 		  //{ title: 'About', icon: 'log-in', component: LoginPage, naventry: 'Login' }
 		  //{ title: 'More', icon: 'log-in', component: MorePage, naventry: 'More' }
@@ -554,7 +551,7 @@ export class MyApp {
 					this.localstorage.setLocalValue('LoginWarning', '1');
 					this.navCtrl.push(LoginPage, {}, {animate: true, direction: 'forward'});
 					break;
-				case "Maps":
+				case "Map":
 					this.localstorage.setLocalValue('LoginWarning', '1');
 					this.navCtrl.push(LoginPage, {}, {animate: true, direction: 'forward'});
 					break;
@@ -573,10 +570,6 @@ export class MyApp {
 					break;
 				case "Representatives":
 					this.localstorage.setLocalValue('CongressionalChamber', 'House of Representatives');
-					this.localstorage.setLocalValue('LoginWarning', '1');
-					this.navCtrl.push(LoginPage, {}, {animate: true, direction: 'forward'});
-					break;
-				case "Notifications":
 					this.localstorage.setLocalValue('LoginWarning', '1');
 					this.navCtrl.push(LoginPage, {}, {animate: true, direction: 'forward'});
 					break;
