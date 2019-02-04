@@ -87,7 +87,7 @@ export class MyApp {
 		  { title: 'Notes', icon: 'create', component: NotesPage, naventry: 'Notes' },
 		  { title: 'Meeting Report', icon: 'list-box', component: SurveyPage, naventry: 'Survey' },
 		  //{ title: 'Push', icon: 'list-box', component: PushPage, naventry: 'Push Notifications' },
-		  //{ title: 'Notifications', icon: 'list-box', component: NotificationsPage, naventry: 'Notifications' },
+		  { title: 'Push Notifications', icon: 'list-box', component: NotificationsPage, naventry: 'Notifications' },
 		  //{ title: 'Floorplan Mapping', icon: 'create', component: FloorplanMappingPage, naventry: 'FloorplanMapping' },
 		  //{ title: 'About', icon: 'log-in', component: LoginPage, naventry: 'Login' }
 		  //{ title: 'More', icon: 'log-in', component: MorePage, naventry: 'More' }
