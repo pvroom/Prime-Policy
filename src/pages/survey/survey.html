@@ -7,7 +7,8 @@
     </ion-navbar>
   </ion-header>
   
-<ion-content mode="ios">
+<ion-content>
+
 
 	<ion-list radio-group [(ngModel)]="SurveyQ1" name="SurveyQ1" (ionChange)="mcqAnswer($event)">
 		<ion-card>
@@ -18,23 +19,30 @@
 
 			<ion-item>
 				<ion-label>Supports</ion-label>
-				<ion-radio value="Supports"></ion-radio>
+				<ion-radio color="secondary" value="Supports"></ion-radio>
 			</ion-item>
 
 			<ion-item>
 				<ion-label>Leaning Support</ion-label>
-				<ion-radio value="Leaning Support"></ion-radio>
+				<ion-radio color="secondary" value="Leaning Support"></ion-radio>
 			</ion-item>
 
 			<ion-item>
 				<ion-label>Opposes</ion-label>
-				<ion-radio value="Opposes"></ion-radio>
+				<ion-radio color="secondary" value="Opposes"></ion-radio>
 			</ion-item>
 
 			<ion-item>
 				<ion-label>Leaning Opposed</ion-label>
-				<ion-radio value="Leaning Opposed" [disabled]="isDisabled"></ion-radio>>
+				<ion-radio color="secondary" value="Leaning Opposed" [disabled]="isDisabled"></ion-radio>
 			</ion-item>
+
+
+			<ion-item>
+			<ion-label>Test</ion-label>
+			<ion-radio mode="md"  value="1"></ion-radio>
+			</ion-item>
+
 
 		</ion-card>
 	</ion-list>
@@ -49,12 +57,12 @@
 
 			<ion-item>
 				<ion-label>Yes</ion-label>
-				<ion-radio checked="false" value="Yes"></ion-radio>
+				<ion-radio mode="md" checked="false" value="Yes"></ion-radio>
 			</ion-item>
 
 			<ion-item>
 				<ion-label>No</ion-label>
-				<ion-radio checked="false" value="No"></ion-radio>
+				<ion-radio mode="md" checked="false" value="No"></ion-radio>
 			</ion-item>
 			
 		</ion-card>
@@ -70,12 +78,12 @@
 
 			<ion-item>
 				<ion-label>Yes</ion-label>
-				<ion-radio checked="false" value="Yes"></ion-radio>
+				<ion-radio mode="md" checked="false" value="Yes"></ion-radio>
 			</ion-item>
 
 			<ion-item>
 				<ion-label>No</ion-label>
-				<ion-radio checked="false" value="No"></ion-radio>
+				<ion-radio mode="md" checked="false" value="No"></ion-radio>
 			</ion-item>
 
 		</ion-card>
@@ -91,12 +99,12 @@
 
 			<ion-item>
 				<ion-label>Yes</ion-label>
-				<ion-radio checked="false" value="Yes"></ion-radio>
+				<ion-radio mode="md" checked="false" value="Yes"></ion-radio>
 			</ion-item>
 
 			<ion-item>
 				<ion-label>No</ion-label>
-				<ion-radio checked="false" value="No"></ion-radio>
+				<ion-radio mode="md" checked="false" value="No"></ion-radio>
 			</ion-item>
 
 		</ion-card>
