@@ -55,11 +55,9 @@ export class MyApp {
 	// Testing staff Fly-ins dropdown
 	public staffFlyins: any[] = [];
 	public staffFlyinsDropdown = false;
-	public selectedFlyin: string;
 	
 	constructor(
 		public pltfrm: Platform,
-		//public navCtrl: NavController,
 		private statusBar: StatusBar,
 		public loadingCtrl: LoadingController,
 		public storage: Storage,
@@ -105,18 +103,12 @@ export class MyApp {
 		// refresh side menu dashboard
 		this.events.subscribe('user:Status', (LoginType) => {
 			console.log('AppComponents: User has ', LoginType);
-			if (LoginType == 'Logged In') {
+			if (LoginType=='Logged In') {
 				this.LoadDashboard();
-			}
-			if (LoginType == 'Logged Out') {
-				this.staffFlyinsDropdown = false;
 			}
 		});
 
 	}
-
-
-
 
 	SetFlyin(eventData) {
 		
@@ -151,9 +143,6 @@ export class MyApp {
 				// Trigger update on Home page
 				this.events.publish('user:Staff', 'Updated Dropdown');
 				
-				// Redirect to Home back as root page
-				this.navCtrl.setRoot(HomePage);
-				
 			}
 						
 		}).catch(function () {
@@ -163,8 +152,6 @@ export class MyApp {
 		loading.dismiss();
 
 	}
-
-	
 	
 	LoadDashboard() {
 		
@@ -182,8 +169,6 @@ export class MyApp {
 		// Get the data
 		var AttendeeID = this.localstorage.getLocalValue('AttendeeID');
 		var DevPlatform = this.localstorage.getLocalValue('DevicePlatform');
-		var CurrentFlyinID = this.localstorage.getLocalValue("FlyinMeetingID");
-
 		visAvatar = true;
 		
 		if (AttendeeID != '' && AttendeeID != null) {
@@ -215,14 +200,7 @@ export class MyApp {
 								flyinID: dataSF[i].flID
 							});
 
-							// Set current selection for dropdown
-							if (dataSF[i].flID == CurrentFlyinID) {
-								this.selectedFlyin = this.staffFlyins[i];
-							}
-							
 						}
-						
-						
 
 
 					} else {
@@ -230,7 +208,7 @@ export class MyApp {
 						this.staffFlyins = [];
 
 						this.staffFlyins.push({
-							DisplayName: "Not assigned a fly-in",
+							DisplayName: "No assigned a fly-in",
 							flyinID: "0"
 						});
 
@@ -247,7 +225,7 @@ export class MyApp {
 			}
 			
 			// Agenda details
-			flags = "li2|0|0|0|0|0|0|0|0|0|0|0|" + CurrentFlyinID;
+			flags = "li2|0";
 			
 			this.databaseprovider.getAgendaData(flags, AttendeeID).then(data => {
 				

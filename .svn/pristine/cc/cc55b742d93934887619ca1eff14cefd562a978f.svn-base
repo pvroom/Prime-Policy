@@ -292,7 +292,7 @@ export class Database {
 
 				SQLquery = SQLquery + "UNION ";
 
-				// Regular client member agenda items
+				// Regualr client member agenda items
 				SQLquery = SQLquery + "SELECT DISTINCT m.meetingID, m.meetingID AS EventID, '0' AS mtgID, StartDateTime, EndDateTime, Location, EventDescription, MeetingTitle, ";
 				SQLquery = SQLquery + "con.FirstName, con.LastName, con.Nickname, con.Party, con.State, con.Address, con.imageFilename ";
 				SQLquery = SQLquery + "FROM meetings m ";
@@ -318,12 +318,11 @@ export class Database {
 				SQLquery = SQLquery + "FROM meetings m ";
 				SQLquery = SQLquery + "INNER JOIN meetings_clients mc ON mc.meetingID = m.meetingID ";
 				SQLquery = SQLquery + "LEFT OUTER JOIN congressional_members con ON m.congressionalMemberID = con.congressionalMemberID ";
-				//SQLquery = SQLquery + "INNER JOIN flyins_staff fs ON fs.staffID = mc.clientmemberID ";
-				SQLquery = SQLquery + "WHERE m.ActiveYN = 'Y' ";
+				SQLquery = SQLquery + "INNER JOIN flyins_staff fs ON fs.staffID = mc.clientmemberID ";
+				SQLquery = SQLquery + "WHERE m.DeletedYN = 'N' ";
 				SQLquery = SQLquery + "AND m.CancelledYN = 'N' ";
-				SQLquery = SQLquery + "AND mc.ActiveYN = 'Y' ";
-				SQLquery = SQLquery + "AND mc.clientmemberID = " + AttendeeID + " ";
-				//SQLquery = SQLquery + "AND fs.flID = " + flID + " ";
+				SQLquery = SQLquery + "AND mc.DeletedYN = 'N' ";
+				SQLquery = SQLquery + "AND fs.staffID = " + AttendeeID + " ";
 				SQLquery = SQLquery + "AND DATE(m.StartDateTime) = '" + selectedDay + "' ";
 
 				SQLquery = SQLquery + "ORDER BY StartDateTime ";
@@ -1490,7 +1489,7 @@ export class Database {
 			if (listingType == "li") {	// List of Documents
 			
 				// Validate query
-				SQLquery = "SELECT DISTINCT fmTitle, fmFilename ";
+				SQLquery = "SELECT * ";
 				SQLquery = SQLquery + "FROM flyins_material ";
 				SQLquery = SQLquery + "WHERE flID = " + FlyinID + " ";
 				SQLquery = SQLquery + "AND fmActiveYN = 'Y'";
@@ -1513,8 +1512,8 @@ export class Database {
 						if(data.rows.length > 0) {
 							for(let i = 0; i < data.rows.length; i++) {
 								DatabaseResponse.push({
-									//fmID: data.rows.item(i).fmID,
-									//flID: data.rows.item(i).flID,
+									fmID: data.rows.item(i).fmID,
+									flID: data.rows.item(i).flID,
 									fmTitle: data.rows.item(i).fmTitle,
 									fmFilename: data.rows.item(i).fmFilename
 								});

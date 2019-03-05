@@ -270,7 +270,6 @@ export class Database {
 			var LastUpdated = flagValues[9];
 			var EventDescription = flagValues[10];
 			var QueryParam = flagValues[11];
-			var FlyinID = flagValues[12];
 			//EventDescription = EventDescription.replace(re, "''");
 			var SQLquery = "";
 			var SQLDate;
@@ -282,7 +281,6 @@ export class Database {
 
 			if (listingType == "li") {	// List of events
 			
-				// Personal agenda items
 				SQLquery = "SELECT DISTINCT itID AS meetingID, EventID, mtgID, Date_Start || ' ' || Time_Start AS StartDateTime, Date_End || ' ' || Time_End AS EndDateTime, Location, Description AS EventDescription, ";
 				SQLquery = SQLquery + "SUBJECT AS MeetingTitle, ";
 				SQLquery = SQLquery + "'' AS FirstName, '' AS LastName, '' AS Nickname, '' AS Party, '' AS State, '' AS Address, '' AS imageFilename ";
@@ -292,9 +290,9 @@ export class Database {
 
 				SQLquery = SQLquery + "UNION ";
 
-				// Regular client member agenda items
 				SQLquery = SQLquery + "SELECT DISTINCT m.meetingID, m.meetingID AS EventID, '0' AS mtgID, StartDateTime, EndDateTime, Location, EventDescription, MeetingTitle, ";
 				SQLquery = SQLquery + "con.FirstName, con.LastName, con.Nickname, con.Party, con.State, con.Address, con.imageFilename ";
+				//SQLquery = "SELECT DISTINCT m.*, con.FirstName, con.LastName, con.Nickname, con.Party, con.State, con.Address, con.imageFilename ";
 				SQLquery = SQLquery + "FROM meetings m ";
 				SQLquery = SQLquery + "INNER JOIN meetings_clients mc ON mc.meetingID = m.meetingID ";
 				SQLquery = SQLquery + "LEFT OUTER JOIN congressional_members con ON m.congressionalMemberID = con.congressionalMemberID ";
@@ -309,30 +307,12 @@ export class Database {
 				SQLquery = SQLquery + "AND f.DeletedYN = 'N' ";
 				SQLquery = SQLquery + "AND mc.clientmemberID = " + AttendeeID + " ";
 				SQLquery = SQLquery + "AND DATE(m.StartDateTime) = '" + selectedDay + "' ";
-				
-				SQLquery = SQLquery + "UNION ";
-
-				// Staff member agenda items
-				SQLquery = SQLquery + "SELECT DISTINCT m.meetingID, m.meetingID AS EventID, '0' AS mtgID, StartDateTime, EndDateTime, Location, EventDescription, MeetingTitle, ";
-				SQLquery = SQLquery + "con.FirstName, con.LastName, con.Nickname, con.Party, con.State, con.Address, con.imageFilename ";
-				SQLquery = SQLquery + "FROM meetings m ";
-				SQLquery = SQLquery + "INNER JOIN meetings_clients mc ON mc.meetingID = m.meetingID ";
-				SQLquery = SQLquery + "LEFT OUTER JOIN congressional_members con ON m.congressionalMemberID = con.congressionalMemberID ";
-				//SQLquery = SQLquery + "INNER JOIN flyins_staff fs ON fs.staffID = mc.clientmemberID ";
-				SQLquery = SQLquery + "WHERE m.ActiveYN = 'Y' ";
-				SQLquery = SQLquery + "AND m.CancelledYN = 'N' ";
-				SQLquery = SQLquery + "AND mc.ActiveYN = 'Y' ";
-				SQLquery = SQLquery + "AND mc.clientmemberID = " + AttendeeID + " ";
-				//SQLquery = SQLquery + "AND fs.flID = " + flID + " ";
-				SQLquery = SQLquery + "AND DATE(m.StartDateTime) = '" + selectedDay + "' ";
-
-				SQLquery = SQLquery + "ORDER BY StartDateTime ";
+				SQLquery = SQLquery + "ORDER BY m.StartDateTime ";
 
 			}
 
 			if (listingType == "li2") {
 
-				// Personal agenda items
 				SQLquery = "SELECT DISTINCT itID AS meetingID, '0' AS flID, EventID, mtgID, Date_Start || ' ' || Time_Start AS StartDateTime, Date_End || ' ' || Time_End AS EndDateTime, ";
 				SQLquery = SQLquery + "'Other' AS MeetingType, SUBJECT AS MeetingTitle, Description AS EventDescription, Location, ";
 				SQLquery = SQLquery + "'Y' AS ActiveYN, 'N' AS CancelledYN, ";
@@ -343,7 +323,6 @@ export class Database {
 
 				SQLquery = SQLquery + "UNION ";
 
-				// Meetings where client members are attending
 				SQLquery = SQLquery + "SELECT DISTINCT m.meetingID, m.flID, m.meetingID AS EventID, '0' AS mtgID, m.StartDateTime, ";
 				SQLquery = SQLquery + "m.EndDateTime, m.MeetingType, m.MeetingTitle, m.EventDescription, m.Location, m.ActiveYN, m.CancelledYN, ";
 				//SQLquery = "SELECT DISTINCT m.meetingID, m.flID, m.StartDateTime, m.EndDateTime, m.MeetingType, m.MeetingTitle, m.EventDescription, m.Location, m.ActiveYN, m.CancelledYN, ";
@@ -409,69 +388,8 @@ export class Database {
 				SQLquery = SQLquery + "AND m.CancelledYN = 'N' ";
 				SQLquery = SQLquery + "AND c.DeletedYN = 'N' ";
 				SQLquery = SQLquery + "AND cm.DeletedYN = 'N' ";
-				SQLquery = SQLquery + "AND mc.DeletedYN = 'N' ";
 				SQLquery = SQLquery + "AND f.DeletedYN = 'N' ";
 				SQLquery = SQLquery + "AND f.ActiveYN = 'Y' ";
-				
-				SQLquery = SQLquery + "UNION ";
-
-				// Meetings where staff members are attending
-				SQLquery = SQLquery + "SELECT DISTINCT m.meetingID, m.flID, m.meetingID AS EventID, '0' AS mtgID, m.StartDateTime, ";
-				SQLquery = SQLquery + "m.EndDateTime, m.MeetingType, m.MeetingTitle, m.EventDescription, m.Location, m.ActiveYN, m.CancelledYN, ";
-				//SQLquery = "SELECT DISTINCT m.meetingID, m.flID, m.StartDateTime, m.EndDateTime, m.MeetingType, m.MeetingTitle, m.EventDescription, m.Location, m.ActiveYN, m.CancelledYN, ";
-				SQLquery = SQLquery + "(SELECT con1.congressionalMemberID ";
-				SQLquery = SQLquery + "FROM congressional_members con1 ";
-				SQLquery = SQLquery + "INNER JOIN meetings_congressionals mc1 ON mc1.congressionalMemberID = con1.congressionalMemberID ";
-				SQLquery = SQLquery + "WHERE mc1.meetingID = m.meetingID) AS congressionalMemberID, ";
-				SQLquery = SQLquery + "(SELECT con1.FirstName ";
-				SQLquery = SQLquery + "FROM congressional_members con1 ";
-				SQLquery = SQLquery + "INNER JOIN meetings_congressionals mc1 ON mc1.congressionalMemberID = con1.congressionalMemberID ";
-				SQLquery = SQLquery + "WHERE mc1.meetingID = m.meetingID) AS FirstName, ";
-				SQLquery = SQLquery + "(SELECT con1.LastName ";
-				SQLquery = SQLquery + "FROM congressional_members con1 ";
-				SQLquery = SQLquery + "INNER JOIN meetings_congressionals mc1 ON mc1.congressionalMemberID = con1.congressionalMemberID ";
-				SQLquery = SQLquery + "WHERE mc1.meetingID = m.meetingID) AS LastName, ";
-				SQLquery = SQLquery + "(SELECT con1.Nickname ";
-				SQLquery = SQLquery + "FROM congressional_members con1 ";
-				SQLquery = SQLquery + "INNER JOIN meetings_congressionals mc1 ON mc1.congressionalMemberID = con1.congressionalMemberID ";
-				SQLquery = SQLquery + "WHERE mc1.meetingID = m.meetingID) AS Nickname, ";
-				SQLquery = SQLquery + "(SELECT con1.Party ";
-				SQLquery = SQLquery + "FROM congressional_members con1 ";
-				SQLquery = SQLquery + "INNER JOIN meetings_congressionals mc1 ON mc1.congressionalMemberID = con1.congressionalMemberID ";
-				SQLquery = SQLquery + "WHERE mc1.meetingID = m.meetingID) AS Party, ";
-				SQLquery = SQLquery + "(SELECT con1.State ";
-				SQLquery = SQLquery + "FROM congressional_members con1 ";
-				SQLquery = SQLquery + "INNER JOIN meetings_congressionals mc1 ON mc1.congressionalMemberID = con1.congressionalMemberID ";
-				SQLquery = SQLquery + "WHERE mc1.meetingID = m.meetingID) AS State, ";
-				SQLquery = SQLquery + "(SELECT con1.Address ";
-				SQLquery = SQLquery + "FROM congressional_members con1 ";
-				SQLquery = SQLquery + "INNER JOIN meetings_congressionals mc1 ON mc1.congressionalMemberID = con1.congressionalMemberID ";
-				SQLquery = SQLquery + "WHERE mc1.meetingID = m.meetingID) AS Address, ";
-				SQLquery = SQLquery + "(SELECT con1.imageFilename ";
-				SQLquery = SQLquery + "FROM congressional_members con1 ";
-				SQLquery = SQLquery + "INNER JOIN meetings_congressionals mc1 ON mc1.congressionalMemberID = con1.congressionalMemberID ";
-				SQLquery = SQLquery + "WHERE mc1.meetingID = m.meetingID ";
-				SQLquery = SQLquery + "UNION ";
-				SQLquery = SQLquery + "SELECT cm2.imageFilename ";
-				SQLquery = SQLquery + "FROM meetings_congressionals mc2 ";
-				SQLquery = SQLquery + "INNER JOIN congressional_members_staff cms2 ON cms2.cmsID = mc2.cmsID ";
-				SQLquery = SQLquery + "INNER JOIN congressional_members cm2 ON cm2.congressionalMemberID = cms2.congressionalMemberID ";
-				SQLquery = SQLquery + "WHERE mc2.meetingID = m.meetingID ";
-				SQLquery = SQLquery + "LIMIT 1) AS imageFilename ";
-				SQLquery = SQLquery + "FROM meetings m ";
-				SQLquery = SQLquery + "INNER JOIN meetings_clients mc ON mc.meetingID = m.meetingID ";
-				SQLquery = SQLquery + "INNER JOIN staff s ON s.staffID = mc.clientmemberID ";
-				SQLquery = SQLquery + "INNER JOIN flyins f ON m.flID = f.flID ";
-				SQLquery = SQLquery + "WHERE mc.clientmemberID = " + AttendeeID + " ";
-				SQLquery = SQLquery + "AND m.flID = " + flID + " ";
-				SQLquery = SQLquery + "AND m.DeletedYN = 'N' ";
-				SQLquery = SQLquery + "AND m.CancelledYN = 'N' ";
-				SQLquery = SQLquery + "AND mc.DeletedYN = 'N' ";
-				SQLquery = SQLquery + "AND s.DeletedYN = 'N' ";
-				SQLquery = SQLquery + "AND s.ActiveYN = 'Y' ";
-				SQLquery = SQLquery + "AND f.ActiveYN = 'Y' ";
-				SQLquery = SQLquery + "AND f.DeletedYN = 'N' ";
-				
 				SQLquery = SQLquery + "ORDER BY StartDateTime ";
 
 			}
@@ -578,8 +496,8 @@ export class Database {
 				SQLquery = SQLquery + "WHERE m.meetingID = " + EventID + " ";
 			}
 
-			if (listingType == "ma") {	// Client Member and Staff attendees
-				SQLquery = "SELECT DISTINCT cm.clientmemberID AS cmID, cm.LastName, cm.FirstName, cm.City, cm.State, '0' AS LoginType  ";
+			if (listingType == "ma") {	// Client Member attendees
+				SQLquery = "SELECT DISTINCT cm.clientmemberID, cm.LastName, cm.FirstName, cm.City, cm.State  ";
 				SQLquery = SQLquery + "FROM clients_members cm  ";
 				SQLquery = SQLquery + "INNER JOIN flyins f ON f.clientID = cm.clientID  ";
 				SQLquery = SQLquery + "INNER JOIN meetings m ON m.flID = f.flID ";
@@ -588,18 +506,7 @@ export class Database {
 				SQLquery = SQLquery + "AND m.DeletedYN = 'N' ";
 				SQLquery = SQLquery + "AND cm.DeletedYN = 'N' ";
 				SQLquery = SQLquery + "AND f.DeletedYN = 'N' ";
-				SQLquery = SQLquery + "UNION ";
-				SQLquery = SQLquery + "SELECT DISTINCT s.staffID AS cmID, s.LastName, s.FirstName, 'Washington' AS City, 'DC' AS State, '1' AS LoginType ";
-				SQLquery = SQLquery + "FROM staff s ";
-				SQLquery = SQLquery + "INNER JOIN flyins_staff fs ON fs.staffID = s.staffID ";
-				SQLquery = SQLquery + "INNER JOIN flyins f ON f.flID = fs.flID ";
-				SQLquery = SQLquery + "INNER JOIN meetings m ON m.flID = f.flID ";
-				SQLquery = SQLquery + "INNER JOIN meetings_clients mc ON mc.meetingID = m.meetingID AND mc.clientmemberID = s.staffID ";
-				SQLquery = SQLquery + "WHERE m.meetingID = " + EventID + " ";
-				SQLquery = SQLquery + "AND m.DeletedYN = 'N' ";
-				SQLquery = SQLquery + "AND s.DeletedYN = 'N' ";
-				SQLquery = SQLquery + "AND f.DeletedYN = 'N' ";			
-				SQLquery = SQLquery + "ORDER BY LastName, FirstName ";
+				SQLquery = SQLquery + "ORDER BY cm.LastName, cm.FirstName ";
 			}
 			
 			if (listingType == "cs") {	// List of congressional members for specific meeting
@@ -853,8 +760,7 @@ export class Database {
 										LastName: data.rows.item(i).LastName,
 										FirstName: data.rows.item(i).FirstName,
 										City: data.rows.item(i).City,
-										State: data.rows.item(i).State,
-										LoginType: data.rows.item(i).LoginType
+										State: data.rows.item(i).State
 									});
 									resolve(DatabaseResponse);
 									
@@ -1490,7 +1396,7 @@ export class Database {
 			if (listingType == "li") {	// List of Documents
 			
 				// Validate query
-				SQLquery = "SELECT DISTINCT fmTitle, fmFilename ";
+				SQLquery = "SELECT * ";
 				SQLquery = SQLquery + "FROM flyins_material ";
 				SQLquery = SQLquery + "WHERE flID = " + FlyinID + " ";
 				SQLquery = SQLquery + "AND fmActiveYN = 'Y'";
@@ -1513,8 +1419,8 @@ export class Database {
 						if(data.rows.length > 0) {
 							for(let i = 0; i < data.rows.length; i++) {
 								DatabaseResponse.push({
-									//fmID: data.rows.item(i).fmID,
-									//flID: data.rows.item(i).flID,
+									fmID: data.rows.item(i).fmID,
+									flID: data.rows.item(i).flID,
 									fmTitle: data.rows.item(i).fmTitle,
 									fmFilename: data.rows.item(i).fmFilename
 								});

@@ -79,10 +79,10 @@ export class Synchronization {
 				this.db.executeSql(SQLSelectQuery, <any>{}).then((dataS) => {
 					console.log('DBCallQuery Return: ' + JSON.stringify(dataS));
 					if (dataS.rows.length > 0) {
-						//console.log('DBCallQuery: ' + SQLUpdateQuery);
+						console.log('DBCallQuery: ' + SQLUpdateQuery);
 						resolve(SQLUpdateQuery);
 					} else {
-						//console.log('DBCallQuery: ' + SQLInsertQuery);
+						console.log('DBCallQuery: ' + SQLInsertQuery);
 						resolve(SQLInsertQuery);
 					}
 				})
@@ -236,6 +236,7 @@ export class Synchronization {
 							// Execute the custom SQL query to insert or update a record in the local database
 							this.DBCallQuery(SQLQuerySelect, SQLQueryInsert, SQLQueryUpdate, SQLQueryDelete).then(DBCallOutput => {
 								console.log('DBCallOutput: ' + DBCallOutput);
+								console.log('DBCallQuery output: ' + DBCallOutput);
 								this.DBCallQuery2(DBCallOutput);
 							})
 						}

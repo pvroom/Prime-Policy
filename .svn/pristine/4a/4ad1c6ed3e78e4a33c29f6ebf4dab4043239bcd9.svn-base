@@ -50,7 +50,7 @@
 	<img src="{{appBanner}}">
 
 
-	<ion-list *ngIf=UserLoggedIn>
+	<ion-list *ngIf=UserLoggedIn no-lines>
 					<ion-item style="background:transparent; color:#fff" (click)="NavigateToAuthenticatedPage('MyAgenda')">
 						<h2>Upcoming Agenda</h2>
 						<ion-icon name="calendar" item-left></ion-icon>

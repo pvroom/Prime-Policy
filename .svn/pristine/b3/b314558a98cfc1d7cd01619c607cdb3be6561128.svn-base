@@ -228,15 +228,13 @@ export class HomePage {
 			//this.LoggedInUser = LoginName;
 			this.AttendeeInitials = LoginNameInitials;
 			var FlyinBanner = this.localstorage.getLocalValue("FlyinBanner");
-			console.log('ionViewWillEnter, FlyinBanner: ' + FlyinBanner);
-			console.log('ionViewWillEnter, FlyinBanner length: ' + FlyinBanner.length);
 			
 			if (DevPlatform == 'iOS' || DevPlatform == 'Android') {
 				if (FlyinBanner == null) {
 					this.appBanner = 'assets/img/FlyinBanners/default.png';
 					this.cd.markForCheck();
 				} else {
-					if (FlyinBanner.length==0 || FlyinBanner == 'null') {
+					if (FlyinBanner.length==0) {
 						this.appBanner = 'assets/img/FlyinBanners/default.png';
 					} else {
 						this.appBanner = 'assets/img/FlyinBanners/' + FlyinBanner;
@@ -439,15 +437,13 @@ export class HomePage {
 			//this.LoggedInUser = LoginName;
 			this.AttendeeInitials = LoginNameInitials;
 			var FlyinBanner = this.localstorage.getLocalValue("FlyinBanner");
-			console.log('ReLoadHome, FlyinBanner: ' + FlyinBanner);
-			console.log('ReLoadHome, FlyinBanner length: ' + FlyinBanner.length);
 			
 			if (DevPlatform == 'iOS' || DevPlatform == 'Android') {
 				if (FlyinBanner == null) {
 					this.appBanner = 'assets/img/FlyinBanners/default.png';
 					this.cd.markForCheck();
 				} else {
-					if (FlyinBanner.length==0 || FlyinBanner == 'null') {
+					if (FlyinBanner.length==0) {
 						this.appBanner = 'assets/img/FlyinBanners/default.png';
 					} else {
 						this.appBanner = 'assets/img/FlyinBanners/' + FlyinBanner;
@@ -723,7 +719,7 @@ export class HomePage {
 
 			console.log('Home: Attendee logged in, dashboard data loading...');
 			
-			flags = "li2|0|0|0|0|0|0|0|0|0|0|0|" + flyinID;
+			flags = "li2|0";
 			
 			this.databaseprovider.getAgendaData(flags, AttendeeID).then(data => {
 				
