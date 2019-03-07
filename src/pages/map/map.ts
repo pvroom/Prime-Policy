@@ -31,7 +31,7 @@ export class MapPage {
 		// -----------------
 		this.myMap2 = L.map('mapLevel2', {
 			crs: L.CRS.Simple,
-			minZoom: 0,
+			minZoom: -4,
 			maxZoom: 4,
 			zoomControl: true
 		});
