@@ -246,8 +246,6 @@ export class MyApp {
 				
 			}
 			
-
-
 			// Agenda details
 			flags = "li2|0|0|0|0|0|0|0|0|0|0|0|" + CurrentFlyinID;
 			
@@ -440,10 +438,6 @@ export class MyApp {
 				console.log('AppComponents: Running in a browser');
 				
 			}
-
-
-
-
 		
 			// Network connectivity monitoring
 			/*
