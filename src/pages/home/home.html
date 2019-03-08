@@ -52,12 +52,12 @@
 
 	<ion-list *ngIf=UserLoggedIn>
 					<ion-item style="background:transparent; color:#fff" (click)="NavigateToAuthenticatedPage('MyAgenda')">
-						<h2>Upcoming Agenda</h2>
+						<h2>UPCOMING AGENDA</h2>
 						<ion-icon name="calendar" item-left></ion-icon>
 					</ion-item>
 					</ion-list>
 
-					<ion-list no-lines>
+					<ion-list no-lines style="margin-top:-15px">
 					<ion-item text-wrap color="primary"
 						(click)="EventDetails(upcomingAgenda.visEventID)" 
 						*ngFor="let upcomingAgenda of upcomingAgendaItems" 

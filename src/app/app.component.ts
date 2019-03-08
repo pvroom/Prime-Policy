@@ -90,7 +90,7 @@ export class MyApp {
 		  { title: 'Washington DC', icon: 'compass', component: ConferenceCityPage, naventry: 'ConferenceCity' },
 		  { title: 'Help', icon: 'help-circle', component: HelpPage, naventry: 'Help' },
 		  { title: 'Notes', icon: 'create', component: NotesPage, naventry: 'Notes' },
-		  { title: 'Feedback', icon: 'list-box', component: SurveyPage, naventry: 'Feedback' },
+		  { title: 'Feedback', icon: 'clipboard', component: SurveyPage, naventry: 'Feedback' },
 		  //{ title: 'Push', icon: 'list-box', component: PushPage, naventry: 'Push Notifications' },
 		  { title: 'Push Notifications', icon: 'notifications', component: NotificationsPage, naventry: 'Notifications' },
 		  //{ title: 'Floorplan Mapping', icon: 'create', component: FloorplanMappingPage, naventry: 'FloorplanMapping' },
