@@ -21,20 +21,12 @@
 					</ion-row>
 				</ion-grid>
 
-
-
 				<ion-list no-lines>
 
 				<ion-item style="background:#e74c3c;color:#fff" *ngIf="staffFlyinsDropdown">
 						<ion-label style="color:#fff">Fly-ins</ion-label>
 
-<<<<<<< .mine
-					<ion-select class="full-width-select" [(ngModel)]="selectedFlyin" (ionChange)="SetFlyin($event)">
-						 <ion-option  *ngFor="let flyin of staffFlyins let i=index" [value]="flyin">{{flyin.DisplayName}}</ion-option>
-||||||| .r379
-					<ion-select class="full-width-select" [(ngModel)]="selectedFlyin" (ionChange)="SetFlyin($event)">
-						 <ion-option *ngFor="let flyin of staffFlyins let i=index" [value]="flyin">{{flyin.DisplayName}}</ion-option>
-=======
+
 					<ion-select class="full-width-select" #selectFlyin 
 						[(ngModel)]="selectedFlyin.flyinID" 
 						(ionChange)="SetFlyin($event)"
@@ -43,7 +35,6 @@
 						name="selectedFlyin" >
 						 <ion-option *ngFor="let flyin of staffFlyins let i=index" [value]="flyin.flyinID">{{flyin.DisplayName}}</ion-option>
 						 <!--<ion-option *ngFor="let flyin of staffFlyins" [value]="flyin.flyinID">{{flyin.DisplayName}}</ion-option>-->
->>>>>>> .r380
 					</ion-select>
 				</ion-item>
 				
