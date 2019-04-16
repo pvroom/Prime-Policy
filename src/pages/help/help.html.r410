@@ -1,0 +1,110 @@
+<ion-header>
+	<ion-navbar color="primary">
+		<button ion-button menuToggle>
+			<ion-icon name="menu"></ion-icon>
+		</button>
+		<ion-title>Help</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content>
+
+	<ion-card>
+		<ion-card-header style="background:#324052;color:#fff">
+			Contact Prime Policy Group
+		</ion-card-header>
+		<ion-card-content>
+
+			<ion-grid>
+				<ion-row>
+					<ion-col>
+							<img style="width:30%; margin:auto" src="assets/img/prime-policy-group-logo.png">
+					</ion-col>
+				</ion-row>
+
+				<ion-row>	
+					<ion-col>
+						<button ion-button full icon-start class="btnHelp" (click)="navToEmail('Jacob.Beaver@prime-policy.com')">
+							<ion-icon  name="mail"></ion-icon>
+							<label>Email</label>
+						</button>
+					</ion-col>
+
+					<ion-col>
+						<button ion-button full icon-start class="btnHelp" onclick="window.open('http://prime-policy.com/', '_system', 'location=yes'); return false;">
+							<ion-icon name="globe"></ion-icon>
+							<label>Website</label>
+						</button>
+			
+					</ion-col>
+				
+					<ion-col>
+						<button ion-button full icon-start class="btnHelp" (click)="callPhone3('703-635-7801')">
+							<ion-icon name="call"></ion-icon>
+							<label>Call</label>
+						</button>
+					</ion-col>
+				</ion-row>
+			</ion-grid>
+							
+		</ion-card-content>
+	</ion-card>										
+
+
+	<ion-card>
+		<ion-card-header style="background:#324052;color:#fff">
+			Help Request
+		</ion-card-header>
+
+		<ion-card-content>			
+			<ion-item>
+				<ion-label floating>Name</ion-label>
+				<ion-input	type="text" 
+							(input)='hcfSenderName = $event.target.value' 
+							name="hcfSenderName" 
+							[value]="hcfSenderName" 
+							id="hcfSenderName"></ion-input>
+			</ion-item>
+
+			<ion-item>
+				<ion-label floating>Email</ion-label>
+				<ion-input	type="text" 
+							(input)='hcfSenderEmail = $event.target.value' 
+							name="hcfSenderEmail" 
+							[value]="hcfSenderEmail" 
+							id="hcfSenderEmail"></ion-input>
+			</ion-item>
+
+			<ion-item>
+				<ion-label floating>Phone</ion-label>
+				<ion-input	type="text" 
+							(input)='hcfSenderPhone = $event.target.value' 
+							name="hcfSenderPhone" 
+							[value]="hcfSenderPhone" 
+							id="hcfSenderPhone"></ion-input>
+			</ion-item>
+
+			<ion-item>
+				<ion-label floating>Comments</ion-label>
+				<ion-input	type="text" 
+							(input)='hcfSenderComments = $event.target.value' 
+							name="hcfSenderComments" 
+							[value]="hcfSenderComments" 
+							id="hcfSenderComments"></ion-input>
+			</ion-item>
+
+			<div text-center style="margin-top:15px">
+				<button ion-button style="background:#e74c3c" (click)="sendEmail()">
+					Request Assistance
+				</button>
+			</div>
+		</ion-card-content>	
+	</ion-card>
+	
+</ion-content>
+
+<ion-footer no-border style="background:#eee!important; padding-left:10px; padding-right:10px;font-size:10px ">
+<p>Deploy Version: 3.93 / Device Type: {{DeviceType}} / Member ID: {{ClientMemberID}} / 
+Fly-in ID: {{flID}} / Banner ID: {{FlyinBanner}} / Last Sync: {{LSync}} / Push ID: {{PushID}}</p>
+</ion-footer>
+
