@@ -468,7 +468,7 @@ export class MyApp {
 									iconSet = true;
 								}
 								
-								if (iconSet == fales) {
+								if (iconSet == false) {
 									if (DevPlatform == 'iOS') {
 										eventAvatar = "assets/img/ios-time.png";
 									} else {
