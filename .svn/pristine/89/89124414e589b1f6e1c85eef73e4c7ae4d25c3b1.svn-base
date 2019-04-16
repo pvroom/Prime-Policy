@@ -1,0 +1,185 @@
+// Components, functions, plugins
+import { Component, ChangeDetectionStrategy, ChangeDetectorRef, NgModule } from '@angular/core';
+import { IonicPage, NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
+import 'rxjs/add/operator/map';
+import { Database } from './../../providers/database/database';
+import { Localstorage } from './../../providers/localstorage/localstorage';
+
+// Pages
+import { HomePage } from '../home/home';
+
+declare var formatTime: any;
+declare var dateFormat: any;
+
+@IonicPage()
+@Component({
+  selector: 'page-survey',
+  templateUrl: 'survey.html',
+})
+export class SurveyPage {
+
+	// Eval question variables
+	public SurveyQ1: string;
+	public SurveyQ2: string;
+	public SurveyQ3: string;
+	public SurveyQ4: string;
+	public SurveyQ5: string;
+	public SurveyQ6: string;
+	
+	// Set number of questions here
+	public: NumberOfQuestions: number = 5;
+	
+	constructor(public navCtrl: NavController, 
+				public navParams: NavParams, 
+				private nav: NavController,
+				public cd: ChangeDetectorRef,
+				private storage: Storage,
+				public loadingCtrl: LoadingController,
+				private alertCtrl: AlertController,
+				private databaseprovider: Database,
+				private localstorage: Localstorage) {
+
+	}
+
+	mcqAnswer(value){
+	   console.log(value);
+	}
+
+	ionViewDidLoad() {
+		
+		console.log('ionViewDidLoad SurveyPage');
+		
+		this.SurveyQ1 = "";
+		this.SurveyQ2 = "";
+		this.SurveyQ3 = "";
+		this.SurveyQ4 = "";
+		this.SurveyQ5 = "";
+		this.SurveyQ6 = "";
+		
+		this.cd.markForCheck();
+	}
+
+	SubmitSurvey() {
+		
+        console.log('Save survey...');
+
+		// Saving progress
+		let saving = this.loadingCtrl.create({
+			spinner: 'crescent',
+			content: 'Saving...'
+		});
+
+		// Alert for successful save
+		let savealert = this.alertCtrl.create({
+			title: 'Survey',
+			subTitle: 'Survey data has been submitted.',
+			buttons: ['Ok']
+		});
+
+		// Alert for failed save
+		let failalert = this.alertCtrl.create({
+			title: 'Survey Entry',
+			subTitle: 'Unable to submit your Survey at this time - please try again in a little bit.',
+			buttons: ['Ok']
+		});
+
+		// Alert for required fields
+		let requiredalert = this.alertCtrl.create({
+			title: 'Survey Entry',
+			subTitle: 'All questions are required to be completed before submitting.',
+			buttons: ['Ok']
+		});
+
+		// Show saving progress
+		saving.present();
+
+		var Q1 = this.SurveyQ1;
+		var Q2 = this.SurveyQ2;
+		var Q3 = this.SurveyQ3;
+		var Q4 = this.SurveyQ4;
+		var Q5 = this.SurveyQ5;
+		var Q6 = this.SurveyQ6;
+		
+		var EventID = this.localstorage.getLocalValue('EventID');
+		var FlyinID = this.localstorage.getLocalValue('FlyinMeetingID');
+		var AttendeeID = this.localstorage.getLocalValue('AttendeeID');
+		var flags;
+
+        // Validation checks
+        var ValidationPass = true;
+
+        if ((this.NumberOfQuestions >= 1) && (this.SurveyQ1 == null || this.SurveyQ1 == "")) {
+            ValidationPass = false;
+        }
+        if ((this.NumberOfQuestions >= 2) && (this.SurveyQ2 == null || this.SurveyQ2 == "")) {
+            ValidationPass = false;
+        }
+        if ((this.NumberOfQuestions >= 3) && (this.SurveyQ3 == null || this.SurveyQ3 == "")) {
+            ValidationPass = false;
+        }
+        if ((this.NumberOfQuestions >= 4) && (this.SurveyQ4 == null || this.SurveyQ4 == "")) {
+            ValidationPass = false;
+        }
+        if ((this.NumberOfQuestions >= 5) && (this.SurveyQ5 == null || this.SurveyQ5 == "")) {
+            ValidationPass = false;
+        }
+        if ((this.NumberOfQuestions >= 6) && (this.SurveyQ6 == null || this.SurveyQ6 == "")) {
+            ValidationPass = false;
+        }
+		
+        if (ValidationPass == false) {
+			
+			saving.dismiss();
+			requiredalert.present();
+
+        } else {
+
+			// Send survey data via email to jacob.beaver@prime-policy.com
+
+			flags = "sv|" + FlyinID;
+			flags = flags + "|" + this.EventID;
+			flags = flags + "|" + this.SurveyQ1;
+			flags = flags + "|" + this.SurveyQ2;
+			flags = flags + "|" + this.SurveyQ3;
+			flags = flags + "|" + this.SurveyQ4;
+			flags = flags + "|" + this.SurveyQ5;
+			flags = flags + "|" + this.SurveyQ6;
+			
+			this.databaseprovider.sendSurveyData(flags, AttendeeID).then(data => {
+				
+				if (data['length']>0) {
+					
+					if (data[0].svStatus == "Success") {
+						// Saved
+						saving.dismiss();
+						savealert.present();
+						this.navCtrl.setRoot(HomePage);
+					} else {
+						// Not saved
+						saving.dismiss();
+						failalert.present();
+					}
+					
+				} else {
+					
+					// Not saved
+					saving.dismiss();
+					failalert.present();
+					
+				}
+				
+			}).catch(function () {
+				console.log("Survey: Promise Rejected");
+			});
+
+        }
+		
+	}
+
+}
+
+
+
+
+

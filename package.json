@@ -1,6 +1,10 @@
 {
   "name": "primepolicyflyin",
+<<<<<<< HEAD
   "version": "4.2.9",
+=======
+  "version": "4.2.10",
+>>>>>>> 30a45641bd4b9baf360d9709fdf0363c2f62c55d
   "author": "Convergence",
   "description": "Mobile agenda planner for Prime Policy Group",
   "homepage": "http://convergence-us.com/",

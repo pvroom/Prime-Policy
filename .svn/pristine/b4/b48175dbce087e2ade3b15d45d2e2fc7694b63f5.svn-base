@@ -1,0 +1,184 @@
+<ion-header>
+    <ion-navbar color="primary">
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>Feedback</ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+<ion-content>
+
+
+	<ion-list radio-group [(ngModel)]="SurveyQ1" name="SurveyQ1" (ionChange)="mcqAnswer($event)">
+		<ion-card>
+		
+			<ion-item text-wrap style="background:#2c3e50; color:#fff">
+				1. Will the member cosponsor the Digital Coast Act upon its introduction?
+			</ion-item>
+
+			<ion-item>
+				<ion-label>Yes</ion-label>
+				<ion-radio mode="md"  color="secondary" checked="false" value="Yes"></ion-radio>
+			</ion-item>
+
+			<ion-item>
+					<ion-label>Likely to support</ion-label>
+					<ion-radio mode="md"  color="secondary" checked="false" value="Likely"></ion-radio>
+				</ion-item>
+
+			<ion-item>
+				<ion-label>No</ion-label>
+				<ion-radio mode="md"  color="secondary" checked="false" value="No"></ion-radio>
+			</ion-item>
+
+			<ion-item>
+					<ion-label>Unclear</ion-label>
+					<ion-radio mode="md"  color="secondary" checked="false" value="Unclear"></ion-radio>
+				</ion-item>
+
+<!--
+			<ion-item>
+				<ion-label>Opposes</ion-label>
+				<ion-radio mode="md" color="secondary" value="1"></ion-radio>
+			</ion-item>
+
+			<ion-item>
+				<ion-label>Leaning Opposed</ion-label>
+				<ion-radio mode="md" color="secondary" value="1"> [disabled]="isDisabled"></ion-radio>
+			</ion-item>
+-->
+
+		</ion-card>
+	</ion-list>
+        
+  
+	<ion-list radio-group [(ngModel)]="SurveyQ2" name="SurveyQ2" (ionChange)="mcqAnswer($event)">
+		<ion-card>
+
+			<ion-item text-wrap style="background:#2c3e50; color:#fff">
+				2. Will the member support MAPPS appropriations request of at least $39.1 million in USGS funding for the 3DEP program?
+			</ion-item>
+
+			<ion-item>
+					<ion-label>Yes</ion-label>
+					<ion-radio mode="md"  color="secondary" checked="false" value="Yes"></ion-radio>
+				</ion-item>
+	
+				<ion-item>
+						<ion-label>Likely to support</ion-label>
+						<ion-radio mode="md"  color="secondary" checked="false" value="Likely"></ion-radio>
+					</ion-item>
+	
+				<ion-item>
+					<ion-label>No</ion-label>
+					<ion-radio mode="md"  color="secondary" checked="false" value="No"></ion-radio>
+				</ion-item>
+	
+				<ion-item>
+						<ion-label>Unclear</ion-label>
+						<ion-radio mode="md"  color="secondary" checked="false" value="Unclear"></ion-radio>
+					</ion-item>
+			
+		</ion-card>
+	</ion-list>
+              
+
+	<ion-list radio-group [(ngModel)]="SurveyQ3" name="SurveyQ3" (ionChange)="mcqAnswer($event)">
+		<ion-card>
+		
+			<ion-item text-wrap style="background:#2c3e50; color:#fff">
+				3. Will the member support MAPPS appropriations request for full funding for NAIP at the congressionally authorized level of $23 million?
+			</ion-item>
+
+			<ion-item>
+					<ion-label>Yes</ion-label>
+					<ion-radio mode="md"  color="secondary" checked="false" value="Yes"></ion-radio>
+				</ion-item>
+	
+				<ion-item>
+						<ion-label>Likely to support</ion-label>
+						<ion-radio mode="md"  color="secondary" checked="false" value="Likely"></ion-radio>
+					</ion-item>
+	
+				<ion-item>
+					<ion-label>No</ion-label>
+					<ion-radio mode="md"  color="secondary" checked="false" value="No"></ion-radio>
+				</ion-item>
+	
+				<ion-item>
+						<ion-label>Unclear</ion-label>
+						<ion-radio mode="md"  color="secondary" checked="false" value="Unclear"></ion-radio>
+					</ion-item>
+
+		</ion-card>
+	</ion-list>
+
+
+<!--
+
+	<ion-list radio-group [(ngModel)]="SurveyQ4" name="SurveyQ4" (ionChange)="mcqAnswer($event)">
+		<ion-card>
+
+			<ion-item text-wrap style="background:#2c3e50; color:#fff">
+				4. Have they been visited by others on the issue?
+			</ion-item>
+
+			<ion-item>
+				<ion-label>Yes</ion-label>
+				<ion-radio mode="md" color="secondary" checked="false" value="Yes"></ion-radio>
+			</ion-item>
+
+			<ion-item>
+				<ion-label>No</ion-label>
+				<ion-radio mode="md" color="secondary" checked="false" value="No"></ion-radio>
+			</ion-item>
+
+		</ion-card>
+	</ion-list>
+
+
+	<ion-list>
+
+		<ion-card>
+			<ion-item text-wrap style="background:#2c3e50; color:#fff">
+				5. Provide the names of the staff that attended and their positions.
+			</ion-item>
+			<ion-card-content>
+				<ion-textarea (input)='SurveyQ5 = $event.target.value' 
+					name="SurveyQ5"
+					[value]="SurveyQ5" 
+					id="SurveyQ5"
+					placeholder="Enter text" rows="4"></ion-textarea>
+			</ion-card-content>
+		</ion-card>
+
+-->
+
+
+<ion-list>
+		<ion-card>
+			<ion-item text-wrap style="background:#2c3e50; color:#fff">
+				4. Please include any additional information you gleaned from the meeting.
+			</ion-item>
+			<ion-card-content>
+				<ion-textarea autocomplete="true" autocorrect="on" (input)='SurveyQ6 = $event.target.value' 
+					name="SurveyQ6"
+					[value]="SurveyQ6" 
+					id="SurveyQ6"
+					placeholder="Enter text" rows="4"></ion-textarea>
+			</ion-card-content>
+		</ion-card>
+
+	</ion-list>
+
+	<div text-center>
+		<button ion-button style="background:#e74c3c" (click)="SubmitSurvey()">
+			SUBMIT
+		</button>
+	</div>
+
+	<div class="spacer" style="width:320px; height: 16px;"></div>
+ 
+</ion-content>
+  
