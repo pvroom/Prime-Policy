@@ -1,0 +1,112 @@
+// Ionic Variables and Theming. For more info, please see:
+// http://ionicframework.com/docs/v2/theming/
+$font-path: "../assets/fonts";
+
+@import "ionic.globals";
+
+
+// Shared Variables
+// --------------------------------------------------
+// To customize the look and feel of this app, you can override
+// the Sass variables found in Ionic's source scss files.
+// To view all the possible Ionic variables, see:
+// http://ionicframework.com/docs/v2/theming/overriding-ionic-variables/
+
+$text-color:        #000;
+$background-color:  #fff;
+$borderColor:       #DDD;
+$textColor:         #666;
+
+
+// Named Color Variables
+// --------------------------------------------------
+// Named colors makes it easy to reuse colors on various components.
+// It's highly recommended to change the default colors
+// to match your app's branding. Ionic uses a Sass map of
+// colors so you can add, rename and remove colors as needed.
+// The "primary" color is the only required color in the map. #263238
+
+$colors: (
+  //primary:    #488aff, #764880, #7B1FA2, #F15D22, #740e88
+  //primary:    #740e88,
+  primary:		#2c3e50,
+  secondary:  #e74c3c,
+  danger:     #3498db,
+  light:      #ecf0f1,
+  dark:       #222,
+  favorite:   #3d5afe,
+blue:       #5757A0,
+gray:       #bac7d8,
+green:      #33cd5f,
+yellow:     #ffc900,
+);
+
+
+// App iOS Variables
+// --------------------------------------------------
+// iOS only Sass variables can go here
+
+
+
+
+$radio-md-color-on: #e74c3c;
+$radio-md-icon-width:24px;
+$radio-md-icon-height:24px;
+
+
+
+
+
+// App Material Design Variables
+// --------------------------------------------------
+// Material Design only Sass variables can go here
+
+
+
+//Make status bar text white
+$toolbar-md-title-text-color: white;
+$toolbar-ios-title-text-color: white;
+
+
+
+
+// App Windows Variables
+// --------------------------------------------------
+// Windows only Sass variables can go here
+
+
+
+
+// App Theme
+// --------------------------------------------------
+// Ionic apps can have different themes applied, which can
+// then be future customized. This import comes last
+// so that the above variables are used and Ionic's
+// default are overridden.
+
+@import "ionic.theme.default";
+
+
+// Ionicons
+// --------------------------------------------------
+// The premium icon font for Ionic. For more info, please see:
+// http://ionicframework.com/docs/v2/ionicons/
+
+
+$ionicons-font-path: "../assets/fonts";
+
+@import "ionic.ionicons";
+
+
+// Fonts
+// --------------------------------------------------
+
+@import "roboto";
+@import "noto-sans";
+
+
+
+//Select Dropdown Component
+
+$select-ios-icon-color: #fff!important;
+$select-md-icon-color: #fff!important;

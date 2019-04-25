@@ -80,52 +80,25 @@ export class MyApp {
 		this.initializeApp();
 				
 		// used for an example of ngFor and navigation
-		var eventID = this.localstorage.getLocalValue("FlyinMeetingID");
-		
-		if (eventID == '24') {
-			
-			this.pages = [
-			  { title: 'Home', icon: 'home', component: HomePage, naventry: 'Home' },
-			  { title: 'My Agenda', icon: 'calendar', component: MyAgenda, naventry: 'MyAgenda' },
-			  { title: 'Senators', icon: 'people', component: CongressionalMembersPage, naventry: 'Senators' },
-			  { title: 'Representatives', icon: 'people', component: CongressionalMembersPage, naventry: 'Representatives' },
-			  { title: 'Bus-in Materials', icon: 'folder-open', component: IssuesPage, naventry: 'Issues' },
-			  { title: 'Maps', icon: 'map', component: MapPage, naventry: 'Maps' },
-			  { title: 'Washington DC', icon: 'compass', component: ConferenceCityPage, naventry: 'ConferenceCity' },
-			  { title: 'Help', icon: 'help-circle', component: HelpPage, naventry: 'Help' },
-			  { title: 'Notes', icon: 'create', component: NotesPage, naventry: 'Notes' },
-			  //{ title: 'Feedback', icon: 'clipboard', component: SurveyPage, naventry: 'Feedback' },
-			  //{ title: 'Push', icon: 'list-box', component: PushPage, naventry: 'Push Notifications' },
-			  { title: 'Push Notifications', icon: 'notifications', component: NotificationsPage, naventry: 'Notifications' },
-			  //{ title: 'Floorplan Mapping', icon: 'create', component: FloorplanMappingPage, naventry: 'FloorplanMapping' },
-			  //{ title: 'About', icon: 'log-in', component: LoginPage, naventry: 'Login' }
-			  //{ title: 'More', icon: 'log-in', component: MorePage, naventry: 'More' }
+		this.pages = [
+		  { title: 'Home', icon: 'home', component: HomePage, naventry: 'Home' },
+		  { title: 'My Agenda', icon: 'calendar', component: MyAgenda, naventry: 'MyAgenda' },
+		  { title: 'Senators', icon: 'people', component: CongressionalMembersPage, naventry: 'Senators' },
+		  { title: 'Representatives', icon: 'people', component: CongressionalMembersPage, naventry: 'Representatives' },
+		  { title: 'Fly-in Materials', icon: 'folder-open', component: IssuesPage, naventry: 'Issues' },
+		  { title: 'Maps', icon: 'map', component: MapPage, naventry: 'Maps' },
+		  { title: 'Washington DC', icon: 'compass', component: ConferenceCityPage, naventry: 'ConferenceCity' },
+		  { title: 'Help', icon: 'help-circle', component: HelpPage, naventry: 'Help' },
+		  { title: 'Notes', icon: 'create', component: NotesPage, naventry: 'Notes' },
+		  //{ title: 'Feedback', icon: 'clipboard', component: SurveyPage, naventry: 'Feedback' },
+		  //{ title: 'Push', icon: 'list-box', component: PushPage, naventry: 'Push Notifications' },
+		  { title: 'Push Notifications', icon: 'notifications', component: NotificationsPage, naventry: 'Notifications' },
+		  //{ title: 'Floorplan Mapping', icon: 'create', component: FloorplanMappingPage, naventry: 'FloorplanMapping' },
+		  //{ title: 'About', icon: 'log-in', component: LoginPage, naventry: 'Login' }
+		  //{ title: 'More', icon: 'log-in', component: MorePage, naventry: 'More' }
 
-			];
+		];
 
-		} else {
-
-			this.pages = [
-			  { title: 'Home', icon: 'home', component: HomePage, naventry: 'Home' },
-			  { title: 'My Agenda', icon: 'calendar', component: MyAgenda, naventry: 'MyAgenda' },
-			  { title: 'Senators', icon: 'people', component: CongressionalMembersPage, naventry: 'Senators' },
-			  { title: 'Representatives', icon: 'people', component: CongressionalMembersPage, naventry: 'Representatives' },
-			  { title: 'Fly-in Materials', icon: 'folder-open', component: IssuesPage, naventry: 'Issues' },
-			  { title: 'Maps', icon: 'map', component: MapPage, naventry: 'Maps' },
-			  { title: 'Washington DC', icon: 'compass', component: ConferenceCityPage, naventry: 'ConferenceCity' },
-			  { title: 'Help', icon: 'help-circle', component: HelpPage, naventry: 'Help' },
-			  { title: 'Notes', icon: 'create', component: NotesPage, naventry: 'Notes' },
-			  //{ title: 'Feedback', icon: 'clipboard', component: SurveyPage, naventry: 'Feedback' },
-			  //{ title: 'Push', icon: 'list-box', component: PushPage, naventry: 'Push Notifications' },
-			  { title: 'Push Notifications', icon: 'notifications', component: NotificationsPage, naventry: 'Notifications' },
-			  //{ title: 'Floorplan Mapping', icon: 'create', component: FloorplanMappingPage, naventry: 'FloorplanMapping' },
-			  //{ title: 'About', icon: 'log-in', component: LoginPage, naventry: 'Login' }
-			  //{ title: 'More', icon: 'log-in', component: MorePage, naventry: 'More' }
-
-			];
-
-		}
-		
 		this.activePage = this.pages[0];
 
 		// Listen for login/logout events and 
