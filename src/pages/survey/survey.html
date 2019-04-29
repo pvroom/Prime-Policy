@@ -9,6 +9,139 @@
   
 <ion-content>
 
+	
+
+	<div padding>
+		<ion-segment [(ngModel)]="congress">
+			<ion-segment-button value="house" style="background:#e74c3c; color:#fff">
+				House
+			</ion-segment-button>
+			<ion-segment-button value="senate" style="background:#e74c3c; color:#fff">
+				Senate
+			</ion-segment-button>
+		</ion-segment>
+	</div>
+	
+	<div [ngSwitch]="congress">
+
+				<ion-list *ngSwitchCase="'house'" radio-group [(ngModel)]="SurveyQ2" name="SurveyQ2" (ionChange)="mcqAnswer($event)">
+					<ion-card>
+
+
+				<ion-item text-wrap style="background:#2c3e50; color:#fff">
+				1. Will the Representative cosponsor the STOP Act – HR 2218?
+				</ion-item>
+	
+				<ion-item>
+						<ion-label>Yes</ion-label>
+						<ion-radio mode="md"  color="secondary" checked="false" value="Yes"></ion-radio>
+					</ion-item>
+		
+					<ion-item>
+						<ion-label>Leans Yes</ion-label>
+						<ion-radio mode="md"  color="secondary" checked="false" value="Leans Yes"></ion-radio>
+					</ion-item>
+		
+					<ion-item>
+						<ion-label>Neutral</ion-label>
+						<ion-radio mode="md"  color="secondary" checked="false" value="Likely"></ion-radio>
+					</ion-item>
+		
+					<ion-item>
+						<ion-label>Leans No</ion-label>
+						<ion-radio mode="md"  color="secondary" checked="false" value="Leans No"></ion-radio>
+					</ion-item>
+
+					<ion-item>
+						<ion-label>No</ion-label>
+						<ion-radio mode="md"  color="secondary" checked="false" value="No"></ion-radio>
+					</ion-item>
+					
+			</ion-card>
+			
+			<ion-card>
+				<ion-item text-wrap style="background:#2c3e50; color:#fff">
+					2. Please provide any additional highlights from this meeting, and/or detail specific follow-up information requested by the office.
+				</ion-item>
+				<ion-card-content>
+					<ion-textarea (input)='SurveyQ3 = $event.target.value' 
+						name="SurveyQ3"
+						[value]="SurveyQ3" 
+						id="SurveyQ3"
+						autocomplete="true" 
+						autocorrect="on" 
+						placeholder="Enter text" rows="4"></ion-textarea>
+				</ion-card-content>
+			</ion-card>
+
+
+
+		</ion-list>
+	
+
+
+
+	
+			<ion-list *ngSwitchCase="'senate'" radio-group [(ngModel)]="SurveyQ4" name="SurveyQ4" (ionChange)="mcqAnswer($event)">
+				<ion-card>
+		
+					<ion-item text-wrap style="background:#2c3e50; color:#fff">
+					1. Will the Senator cosponsor the STOP Act?
+					</ion-item>
+		
+					<ion-item>
+						<ion-label>Yes</ion-label>
+						<ion-radio mode="md"  color="secondary" checked="false" value="Yes"></ion-radio>
+					</ion-item>
+		
+					<ion-item>
+						<ion-label>Leans Yes</ion-label>
+						<ion-radio mode="md"  color="secondary" checked="false" value="Leans Yes"></ion-radio>
+					</ion-item>
+		
+					<ion-item>
+						<ion-label>Neutral</ion-label>
+						<ion-radio mode="md"  color="secondary" checked="false" value="Likely"></ion-radio>
+					</ion-item>
+		
+					<ion-item>
+						<ion-label>Leans No</ion-label>
+						<ion-radio mode="md"  color="secondary" checked="false" value="Leans No"></ion-radio>
+					</ion-item>
+
+					<ion-item>
+						<ion-label>No</ion-label>
+						<ion-radio mode="md"  color="secondary" checked="false" value="No"></ion-radio>
+					</ion-item>
+					
+						
+				</ion-card>
+	
+
+
+			<ion-card>
+				<ion-item text-wrap style="background:#2c3e50; color:#fff">
+					2. Please provide any additional highlights from this meetings, and/or detail specific follow-up information requested by the office.
+				</ion-item>
+				<ion-card-content>
+					<ion-textarea (input)='SurveyQ5 = $event.target.value' 
+						name="SurveyQ5"
+						[value]="SurveyQ5" 
+						id="SurveyQ5"
+						autocomplete="true" 
+						autocorrect="on" 
+						placeholder="Enter text" rows="4"></ion-textarea>
+				</ion-card-content>
+			</ion-card>
+
+		</ion-list>
+
+
+
+
+
+
+			<!--
 
 	<ion-list radio-group [(ngModel)]="SurveyQ1" name="SurveyQ1" (ionChange)="mcqAnswer($event)">
 		<ion-card>
@@ -161,5 +294,14 @@
 
 	<div class="spacer" style="width:320px; height: 16px;"></div>
  
-</ion-content>
+
+
+
+	
+									
+
+
+
+
+
   
