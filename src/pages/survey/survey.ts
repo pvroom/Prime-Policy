@@ -20,15 +20,15 @@ declare var dateFormat: any;
 export class SurveyPage {
 
 	// Eval question variables
-	public SurveyQ1: string;
+	//public SurveyQ1: string;
 	public SurveyQ2: string;
 	public SurveyQ3: string;
 	public SurveyQ4: string;
 	public SurveyQ5: string;
-	public SurveyQ6: string;
+	//public SurveyQ6: string;
 	
 	// Set number of questions here
-	public NumberOfQuestions: number = 5;
+	public NumberOfQuestions: number = 2;
 	
 	constructor(public navCtrl: NavController, 
 				public navParams: NavParams, 
@@ -50,12 +50,12 @@ export class SurveyPage {
 		
 		console.log('ionViewDidLoad SurveyPage');
 		
-		this.SurveyQ1 = "";
+		//this.SurveyQ1 = "";
 		this.SurveyQ2 = "";
 		this.SurveyQ3 = "";
 		this.SurveyQ4 = "";
 		this.SurveyQ5 = "";
-		this.SurveyQ6 = "";
+		//this.SurveyQ6 = "";
 		
 		this.cd.markForCheck();
 	}
@@ -94,12 +94,12 @@ export class SurveyPage {
 		// Show saving progress
 		saving.present();
 
-		var Q1 = this.SurveyQ1;
+		//var Q1 = this.SurveyQ1;
 		var Q2 = this.SurveyQ2;
 		var Q3 = this.SurveyQ3;
 		var Q4 = this.SurveyQ4;
 		var Q5 = this.SurveyQ5;
-		var Q6 = this.SurveyQ6;
+		//var Q6 = this.SurveyQ6;
 		
 		var EventID = this.localstorage.getLocalValue('EventID');
 		var FlyinID = this.localstorage.getLocalValue('FlyinMeetingID');
@@ -109,9 +109,9 @@ export class SurveyPage {
         // Validation checks
         var ValidationPass = true;
 
-        if ((this.NumberOfQuestions >= 1) && (this.SurveyQ1 == null || this.SurveyQ1 == "")) {
-            ValidationPass = false;
-        }
+       // if ((this.NumberOfQuestions >= 1) && (this.SurveyQ1 == null || this.SurveyQ1 == "")) {
+        //    ValidationPass = false;
+       // }
         if ((this.NumberOfQuestions >= 2) && (this.SurveyQ2 == null || this.SurveyQ2 == "")) {
             ValidationPass = false;
         }
@@ -124,9 +124,9 @@ export class SurveyPage {
         if ((this.NumberOfQuestions >= 5) && (this.SurveyQ5 == null || this.SurveyQ5 == "")) {
             ValidationPass = false;
         }
-        if ((this.NumberOfQuestions >= 6) && (this.SurveyQ6 == null || this.SurveyQ6 == "")) {
-            ValidationPass = false;
-        }
+       // if ((this.NumberOfQuestions >= 6) && (this.SurveyQ6 == null || this.SurveyQ6 == "")) {
+        //   ValidationPass = false;
+      //  }
 		
         if (ValidationPass == false) {
 			
@@ -139,12 +139,12 @@ export class SurveyPage {
 
 			flags = "sv|" + FlyinID;
 			flags = flags + "|" + EventID;
-			flags = flags + "|" + this.SurveyQ1;
+			//flags = flags + "|" + this.SurveyQ1;
 			flags = flags + "|" + this.SurveyQ2;
 			flags = flags + "|" + this.SurveyQ3;
 			flags = flags + "|" + this.SurveyQ4;
 			flags = flags + "|" + this.SurveyQ5;
-			flags = flags + "|" + this.SurveyQ6;
+			//flags = flags + "|" + this.SurveyQ6;
 			
 			this.databaseprovider.sendSurveyData(flags, AttendeeID).then(data => {
 				
