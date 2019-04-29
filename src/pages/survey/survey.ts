@@ -23,8 +23,8 @@ export class SurveyPage {
 	//public SurveyQ1: string;
 	public SurveyQ2: string;
 	public SurveyQ3: string;
-	public SurveyQ4: string;
-	public SurveyQ5: string;
+	//public SurveyQ4: string;
+//	public SurveyQ5: string;
 	//public SurveyQ6: string;
 	
 	// Set number of questions here
@@ -53,8 +53,8 @@ export class SurveyPage {
 		//this.SurveyQ1 = "";
 		this.SurveyQ2 = "";
 		this.SurveyQ3 = "";
-		this.SurveyQ4 = "";
-		this.SurveyQ5 = "";
+		//this.SurveyQ4 = "";
+		//this.SurveyQ5 = "";
 		//this.SurveyQ6 = "";
 		
 		this.cd.markForCheck();
@@ -97,8 +97,8 @@ export class SurveyPage {
 		//var Q1 = this.SurveyQ1;
 		var Q2 = this.SurveyQ2;
 		var Q3 = this.SurveyQ3;
-		var Q4 = this.SurveyQ4;
-		var Q5 = this.SurveyQ5;
+		//var Q4 = this.SurveyQ4;
+		//var Q5 = this.SurveyQ5;
 		//var Q6 = this.SurveyQ6;
 		
 		var EventID = this.localstorage.getLocalValue('EventID');
@@ -117,12 +117,12 @@ export class SurveyPage {
         }
         if ((this.NumberOfQuestions >= 3) && (this.SurveyQ3 == null || this.SurveyQ3 == "")) {
             ValidationPass = false;
-        }
-        if ((this.NumberOfQuestions >= 4) && (this.SurveyQ4 == null || this.SurveyQ4 == "")) {
-            ValidationPass = false;
-        }
-        if ((this.NumberOfQuestions >= 5) && (this.SurveyQ5 == null || this.SurveyQ5 == "")) {
-            ValidationPass = false;
+      //  }
+        //if ((this.NumberOfQuestions >= 4) && (this.SurveyQ4 == null || this.SurveyQ4 == "")) {
+          //  ValidationPass = false;
+       // }
+       // if ((this.NumberOfQuestions >= 5) && (this.SurveyQ5 == null || this.SurveyQ5 == "")) {
+         //   ValidationPass = false;
         }
        // if ((this.NumberOfQuestions >= 6) && (this.SurveyQ6 == null || this.SurveyQ6 == "")) {
         //   ValidationPass = false;
@@ -142,8 +142,8 @@ export class SurveyPage {
 			//flags = flags + "|" + this.SurveyQ1;
 			flags = flags + "|" + this.SurveyQ2;
 			flags = flags + "|" + this.SurveyQ3;
-			flags = flags + "|" + this.SurveyQ4;
-			flags = flags + "|" + this.SurveyQ5;
+			//flags = flags + "|" + this.SurveyQ4;
+			//flags = flags + "|" + this.SurveyQ5;
 			//flags = flags + "|" + this.SurveyQ6;
 			
 			this.databaseprovider.sendSurveyData(flags, AttendeeID).then(data => {
