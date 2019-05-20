@@ -1,0 +1,523 @@
+<ion-header>
+    <ion-navbar color="primary">
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>Feedback</ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+<ion-content>
+
+
+<ion-card>
+<ion-card-header>
+
+		1.	How satisfied were you overall with IMPACT Washington, D.C. 2019?  
+		(1 = not satisfied; 10 = very satisfied)
+		Additional comments
+		
+</ion-card-header>
+<ion-card-content>
+		<ion-item>
+				<ion-range [(ngModel)]="brightness" color="secondary" pin="true" step="1" min="1" max="10" step="1" snaps="true" >
+					<ion-label range-left>1</ion-label>
+					<ion-label range-right>10</ion-label>
+			
+				</ion-range>
+			</ion-item>
+			
+</ion-card-content>
+</ion-card>
+
+
+
+<ion-card>
+		<ion-card-header>
+		
+				3.	Please rate your level of satisfaction regarding the IMPACT App.
+				(1 = not satisfied; 10 = very satisfied)
+				Additional comments
+				
+				
+		</ion-card-header>
+		<ion-card-content>
+				<ion-item>
+						<ion-range [(ngModel)]="brightness" color="secondary" pin="true" step="1" min="1" max="10" step="1" snaps="true" >
+							<ion-label range-left>1</ion-label>
+							<ion-label range-right>10</ion-label>
+					
+						</ion-range>
+					</ion-item>
+					
+		</ion-card-content>
+		</ion-card>
+
+		<ion-card>
+				<ion-card-header>
+				
+						4.	How did you feel about the Executive/ Issue Briefs? 
+						(1 = not helpful; 10 = very helpful)
+						Additional comments
+						
+						
+						
+				</ion-card-header>
+				<ion-card-content>
+						<ion-item>
+								<ion-range [(ngModel)]="brightness" color="secondary" pin="true" step="1" min="1" max="10" step="1" snaps="true" >
+									<ion-label range-left>1</ion-label>
+									<ion-label range-right>10</ion-label>
+							
+								</ion-range>
+							</ion-item>
+							
+				</ion-card-content>
+				</ion-card>
+
+
+				<ion-card>
+						<ion-card-header>
+						
+								5.	How satisfied were you with Administration/Congressional group meetings?
+								(1 = not satisfied; 10 = very satisfied)
+								Additional comments
+								
+								
+								
+								
+						</ion-card-header>
+						<ion-card-content>
+								<ion-item>
+										<ion-range [(ngModel)]="brightness" color="secondary" pin="true" step="1" min="1" max="10" step="1" snaps="true" >
+											<ion-label range-left>1</ion-label>
+											<ion-label range-right>10</ion-label>
+									
+										</ion-range>
+									</ion-item>
+									
+						</ion-card-content>
+						</ion-card>
+
+
+
+						<ion-card>
+								<ion-card-header>
+								
+										6.	How satisfied were you with your individual meetings? 
+										(1 = not satisfied; 10 = very satisfied)
+										Additional comments
+										
+										
+										
+										
+										
+								</ion-card-header>
+								<ion-card-content>
+										<ion-item>
+												<ion-range [(ngModel)]="brightness" color="secondary" pin="true" step="1" min="1" max="10" step="1" snaps="true" >
+													<ion-label range-left>1</ion-label>
+													<ion-label range-right>10</ion-label>
+											
+												</ion-range>
+											</ion-item>
+											
+								</ion-card-content>
+								</ion-card>
+
+
+
+								<ion-card>
+										<ion-card-header>
+										
+												7.	How satisfied were you with staff and logistics?
+												(1 = not satisfied; 10 = very satisfied)
+											 Additional comments
+											 
+												
+												
+												
+												
+												
+										</ion-card-header>
+										<ion-card-content>
+												<ion-item>
+														<ion-range [(ngModel)]="brightness" color="secondary" pin="true" step="1" min="1" max="10" step="1" snaps="true" >
+															<ion-label range-left>1</ion-label>
+															<ion-label range-right>10</ion-label>
+													
+														</ion-range>
+													</ion-item>
+													
+										</ion-card-content>
+										</ion-card>
+
+
+										<ion-card>
+												<ion-card-header>
+												
+														8.	Please rate the ease of event registration
+														(1=difficult 10=easy)
+														Additional comments
+														
+												</ion-card-header>
+												<ion-card-content>
+														<ion-item>
+																<ion-range [(ngModel)]="brightness" color="secondary" pin="true" step="1" min="1" max="10" step="1" snaps="true" >
+																	<ion-label range-left>1</ion-label>
+																	<ion-label range-right>10</ion-label>
+															
+																</ion-range>
+															</ion-item>
+															
+												</ion-card-content>
+												</ion-card>
+		
+
+
+												<ion-card>
+														<ion-card-header>
+														
+																9.	How did you feel about the time that was required to attend IMPACT?
+																Just right 
+																Required too much time 
+																Didn't require much of my time
+																Additional comments
+																																
+																
+														</ion-card-header>
+														<ion-card-content>
+																<ion-item>
+																		<ion-range [(ngModel)]="brightness" color="secondary" pin="true" step="1" min="1" max="10" step="1" snaps="true" >
+																			<ion-label range-left>1</ion-label>
+																			<ion-label range-right>10</ion-label>
+																	
+																		</ion-range>
+																	</ion-item>
+																	
+														</ion-card-content>
+														</ion-card>
+
+
+
+
+
+
+
+
+<!-- NSTA Bus-in Questions -->
+<div *ngIf=NSTABusin>
+
+	<div padding>
+		<ion-segment [(ngModel)]="congress">
+			<ion-segment-button value="house" style="background:#e74c3c; color:#fff">
+				House
+			</ion-segment-button>
+			<ion-segment-button value="senate" style="background:#2c3e50; color:#fff">
+				Senate
+			</ion-segment-button>
+		</ion-segment>
+	</div>
+	
+	<div [ngSwitch]="congress">
+
+		<div *ngSwitchCase="'house'" >
+			<ion-list radio-group [(ngModel)]="SurveyQ1" name="SurveyQ1" (ionChange)="mcqAnswer($event)">
+				<ion-card>
+
+
+					<ion-item text-wrap style="background:#2c3e50; color:#fff">
+						1. Will the Representative cosponsor the STOP Act – HR 2218?
+					</ion-item>
+
+					<ion-item>
+						<ion-label>Yes</ion-label>
+						<ion-radio mode="md" color="secondary" checked="false" value="Yes"></ion-radio>
+					</ion-item>
+		
+					<ion-item>
+						<ion-label>Leans Yes</ion-label>
+						<ion-radio mode="md" color="secondary" checked="false" value="Leans Yes"></ion-radio>
+					</ion-item>
+		
+					<ion-item>
+						<ion-label>Neutral</ion-label>
+						<ion-radio mode="md" color="secondary" checked="false" value="Neutral"></ion-radio>
+					</ion-item>
+		
+					<ion-item>
+						<ion-label>Leans No</ion-label>
+						<ion-radio mode="md" color="secondary" checked="false" value="Leans No"></ion-radio>
+					</ion-item>
+
+					<ion-item>
+						<ion-label>No</ion-label>
+						<ion-radio mode="md" color="secondary" checked="false" value="No"></ion-radio>
+					</ion-item>
+					
+				</ion-card>
+			</ion-list>
+			
+			<ion-card>
+				<ion-item text-wrap style="background:#2c3e50; color:#fff">
+					2. Please provide any additional highlights from this meeting, and/or detail specific follow-up information requested by the office.
+				</ion-item>
+				<ion-card-content>
+					<ion-textarea (input)='SurveyQ2 = $event.target.value' 
+						name="SurveyQ2"
+						[value]="SurveyQ2" 
+						id="SurveyQ2"
+						autocomplete="true" 
+						autocorrect="on" 
+						placeholder="Enter text" rows="4"></ion-textarea>
+				</ion-card-content>
+			</ion-card>
+		</div>
+	
+		<div *ngSwitchCase="'senate'">
+			<ion-list radio-group [(ngModel)]="SurveyQ1" name="SurveyQ1" (ionChange)="mcqAnswer($event)">
+				<ion-card>
+		
+					<ion-item text-wrap style="background:#2c3e50; color:#fff">
+						1. Will the Senator cosponsor the STOP Act?
+					</ion-item>
+		
+					<ion-item>
+						<ion-label>Yes</ion-label>
+						<ion-radio mode="md" color="secondary" checked="false" value="Yes"></ion-radio>
+					</ion-item>
+		
+					<ion-item>
+						<ion-label>Leans Yes</ion-label>
+						<ion-radio mode="md" color="secondary" checked="false" value="Leans Yes"></ion-radio>
+					</ion-item>
+		
+					<ion-item>
+						<ion-label>Neutral</ion-label>
+						<ion-radio mode="md" color="secondary" checked="false" value="Neutral"></ion-radio>
+					</ion-item>
+		
+					<ion-item>
+						<ion-label>Leans No</ion-label>
+						<ion-radio mode="md" color="secondary" checked="false" value="Leans No"></ion-radio>
+					</ion-item>
+
+					<ion-item>
+						<ion-label>No</ion-label>
+						<ion-radio mode="md" color="secondary" checked="false" value="No"></ion-radio>
+					</ion-item>
+					
+				</ion-card>
+			</ion-list>
+			
+			<ion-card>
+				<ion-item text-wrap style="background:#2c3e50; color:#fff">
+					2. Please provide any additional highlights from this meeting, and/or detail specific follow-up information requested by the office.
+				</ion-item>
+				<ion-card-content>
+					<ion-textarea (input)='SurveyQ2 = $event.target.value' 
+						name="SurveyQ2"
+						[value]="SurveyQ2" 
+						id="SurveyQ2"
+						autocomplete="true" 
+						autocorrect="on" 
+						placeholder="Enter text" rows="4"></ion-textarea>
+				</ion-card-content>
+			</ion-card>
+
+		</div>
+
+	</div>
+
+</div>
+
+<!-- ADA Fly-in Question -->
+<div *ngIf=ADAFlyin>
+
+	<ion-list>
+		<ion-card>
+			<ion-item text-wrap style="background:#2c3e50; color:#fff">
+				1. Please provide any important information you learned from this meeting.
+			</ion-item>
+			<ion-card-content>
+				<ion-textarea (input)='SurveyQ1 = $event.target.value' 
+					name="SurveyQ1"
+					[value]="SurveyQ1" 
+					id="SurveyQ1"
+					autocomplete="true" 
+					autocorrect="on" 
+					placeholder="Enter text" rows="4"></ion-textarea>
+			</ion-card-content>
+			
+		</ion-card>
+
+	</ion-list>
+
+</div>
+
+
+
+			<!--
+
+	<ion-list radio-group [(ngModel)]="SurveyQ1" name="SurveyQ1" (ionChange)="mcqAnswer($event)">
+		<ion-card>
+		
+			<ion-item text-wrap style="background:#2c3e50; color:#fff">
+				1. Does the Member support returning motorcoaches to a full federal fuel tax exemption as originally envisioned by Congress?
+			</ion-item>
+
+			<ion-item>
+				<ion-label>Yes</ion-label>
+				<ion-radio mode="md"  color="secondary" checked="false" value="Yes"></ion-radio>
+			</ion-item>
+
+			<ion-item>
+				<ion-label>Neutral</ion-label>
+				<ion-radio mode="md"  color="secondary" checked="false" value="Neutral"></ion-radio>
+			</ion-item>
+
+			<ion-item>
+				<ion-label>No</ion-label>
+				<ion-radio mode="md"  color="secondary" checked="false" value="No"></ion-radio>
+			</ion-item>
+
+		</ion-card>
+	</ion-list>
+        
+  
+	<ion-list radio-group [(ngModel)]="SurveyQ2" name="SurveyQ2" (ionChange)="mcqAnswer($event)">
+		<ion-card>
+
+			<ion-item text-wrap style="background:#2c3e50; color:#fff">
+				2. Absent a return to zero, does the Member support retention of the current partial fuel tax exemption?
+			</ion-item>
+
+			<ion-item>
+					<ion-label>Yes</ion-label>
+					<ion-radio mode="md"  color="secondary" checked="false" value="Yes"></ion-radio>
+				</ion-item>
+	
+				<ion-item>
+					<ion-label>Neutral</ion-label>
+					<ion-radio mode="md"  color="secondary" checked="false" value="Likely"></ion-radio>
+				</ion-item>
+	
+				<ion-item>
+					<ion-label>No</ion-label>
+					<ion-radio mode="md"  color="secondary" checked="false" value="No"></ion-radio>
+				</ion-item>
+				
+		</ion-card>
+	</ion-list>
+              
+
+	<ion-list radio-group [(ngModel)]="SurveyQ3" name="SurveyQ3" (ionChange)="mcqAnswer($event)">
+		<ion-card>
+		
+			<ion-item text-wrap style="background:#2c3e50; color:#fff">
+				3. If Congress decides to increase the federal fuel tax, does the Member support a full exemption for motorcoaches from any increase?
+			</ion-item>
+
+			<ion-item>
+					<ion-label>Yes</ion-label>
+					<ion-radio mode="md"  color="secondary" checked="false" value="Yes"></ion-radio>
+				</ion-item>
+	
+				<ion-item>
+					<ion-label>Neutral</ion-label>
+					<ion-radio mode="md"  color="secondary" checked="false" value="Likely"></ion-radio>
+				</ion-item>
+	
+				<ion-item>
+					<ion-label>No</ion-label>
+					<ion-radio mode="md"  color="secondary" checked="false" value="No"></ion-radio>
+				</ion-item>
+	
+		</ion-card>
+	</ion-list>
+
+
+	<ion-list radio-group [(ngModel)]="SurveyQ4" name="SurveyQ4" (ionChange)="mcqAnswer($event)">
+		<ion-card>
+
+			<ion-item text-wrap style="background:#2c3e50; color:#fff">
+				4. If Congress chooses to ultimately transition to a Vehicle Miles Traveled (VMT) tax, does the Member support full parity in treatment with municipal transit systems?
+			</ion-item>
+
+			<ion-item>
+				<ion-label>Yes</ion-label>
+				<ion-radio mode="md" color="secondary" checked="false" value="Yes"></ion-radio>
+			</ion-item>
+
+			<ion-item>
+				<ion-label>Neutral</ion-label>
+				<ion-radio mode="md"  color="secondary" checked="false" value="Likely"></ion-radio>
+			</ion-item>
+	
+			<ion-item>
+				<ion-label>No</ion-label>
+				<ion-radio mode="md" color="secondary" checked="false" value="No"></ion-radio>
+			</ion-item>
+
+		</ion-card>
+	</ion-list>
+
+
+	<ion-list>
+
+		<ion-card>
+			<ion-item text-wrap style="background:#2c3e50; color:#fff">
+				5. Please provide any other important highlights from this meeting, and/or detail specific follow-up information requested by the office.
+			</ion-item>
+			<ion-card-content>
+				<ion-textarea (input)='SurveyQ5 = $event.target.value' 
+					name="SurveyQ5"
+					[value]="SurveyQ5" 
+					id="SurveyQ5"
+					autocomplete="true" 
+					autocorrect="on" 
+					placeholder="Enter text" rows="4"></ion-textarea>
+			</ion-card-content>
+		</ion-card>
+	</ion-list>
+
+
+<!--
+	<ion-list>
+		<ion-card>
+			<ion-item text-wrap style="background:#2c3e50; color:#fff">
+				6. Please include any additional information you gleaned from the meeting.
+			</ion-item>
+			<ion-card-content>
+				<ion-textarea autocomplete="true" autocorrect="on" (input)='SurveyQ6 = $event.target.value' 
+					name="SurveyQ6"
+					[value]="SurveyQ6" 
+					id="SurveyQ6"
+					autocomplete="true" 
+					autocorrect="on" 
+					placeholder="Enter text" rows="4"></ion-textarea>
+			</ion-card-content>
+		</ion-card>
+
+	</ion-list>
+-->
+
+	<div text-center>
+		<button ion-button style="background:#e74c3c" (click)="SubmitSurvey()">
+			SUBMIT
+		</button>
+	</div>
+
+	<div class="spacer" style="width:320px; height: 16px;"></div>
+ 
+
+
+
+	
+									
+
+
+
+
+
+  
