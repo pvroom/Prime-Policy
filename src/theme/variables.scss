@@ -114,18 +114,17 @@ $select-md-icon-color: #fff!important;
 
 
 //Select range slider height
-$range-ios-slider-height: 60px;
-$range-md-slider-height:	60px;
-
-
+$range-ios-slider-height: 40px;
+$range-md-slider-height:	40px;
 
 $range-md-bar-height:	5px;
-
+$range-ios-bar-height:	5px;
 
 $range-md-pin-font-size: 20px;
+$range-ios-pin-font-size: 20px;
 
+$range-ios-knob-width:  30px;
+$range-md-knob-width:  30px;
 
-
-
-$range-ios-knob-width:  40px;
-$range-md-knob-width:  40px;
+$range-ios-knob-background:  #e74c3c;
+$range-md-knob-background:  #e74c3c;
