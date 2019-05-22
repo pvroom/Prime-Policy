@@ -1,0 +1,87 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      Washington DC
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+    <div class="">
+            <img src="assets/img/dcBanner.jpg" width="100%" height="auto" style="display: block; margin-left: auto; margin-right: auto;">
+        </div>
+
+
+  <ion-list id="lasvegas-list11" class=" ">
+            <ion-item tappable class="item-avatar item-icon-right  " id="lasvegas-list-item30" href="#" onclick="window.open('http://flyreagan.com/dca/reagan-national-airport', '_system', 'location=yes'); return false;">
+  <ion-thumbnail item-left>
+                <img src="assets/img/reaganAP.jpg">
+                    </ion-thumbnail>
+                <h2>Reagan National Airport</h2>
+                <i class="icon ion-ios-arrow-right"></i>
+            </ion-item>
+           
+           
+            <ion-item tappable class="item-avatar item-icon-right  " id="anaheim-list-item54" href="#" 
+            onclick="window.open('https://www.mandarinoriental.com/washington/national-mall/luxury-hotel', '_system', 'location=yes'); return false;">
+            <ion-thumbnail item-left>
+                <img src="assets/img/mandarin.jpg">
+                      </ion-thumbnail>
+                <h2>Mandarin Oriental Hotel</h2>
+                <i class="icon ion-ios-arrow-right"></i>
+            </ion-item>
+
+ 
+
+
+            <ion-item tappable class="item-avatar item-icon-right  " id="anaheim-list-item33" href="#" 
+            onclick="window.open('https://www2.zagat.com/washington-dc', '_system', 'location=yes'); return false;">
+  <ion-thumbnail item-left>
+                <img src="assets/img/Zagat_Logo.jpeg">
+                      </ion-thumbnail>
+                <h2>DC Restaurants</h2>
+                <i class="icon ion-ios-arrow-right"></i>
+            </ion-item>
+           
+        
+
+            <ion-item tappable class="item-avatar item-icon-right  " id="anaheim-list-item54" href="#" 
+            onclick="window.open('https://washington.org/DC-guide-to/getting-around-washington-dc', '_system', 'location=yes'); return false;">
+  <ion-thumbnail item-left>
+                <img src="assets/img/dcMetro.jpg">
+                      </ion-thumbnail>
+                <h2>Transportation</h2>
+                <i class="icon ion-ios-arrow-right"></i>
+            </ion-item>
+
+
+
+            <ion-item tappable class="item-avatar item-icon-right  " id="anaheim-list-item55" href="#" 
+            onclick="window.open('https://weather.com/weather/tenday/l/Washington+DC+USDC0001:1:US', '_system', 'location=yes'); return false;">
+  <ion-thumbnail item-left>
+                <img src="assets/img/nicubunu-Weather-Symbols-Sun.png">
+                      </ion-thumbnail>
+                <h2>Weather</h2>
+                <i class="icon ion-ios-arrow-right"></i>
+            </ion-item>
+           
+           
+
+            
+            <ion-item tappable class="item-avatar item-icon-right  " id="anaheim-list-item57" href="#" onclick="window.open('https://www.uber.com/', '_system', 'location=yes'); return false;">
+  <ion-thumbnail item-left>
+                <img src="assets/img/Uber_Logo_1.png">
+                      </ion-thumbnail>
+                <h2>Uber</h2>
+                <i class="icon ion-ios-arrow-right"></i>
+            </ion-item>
+
+        </ion-list>
+
+
+
+    </ion-content>
