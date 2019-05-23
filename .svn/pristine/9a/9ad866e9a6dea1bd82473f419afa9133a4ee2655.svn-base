@@ -76,22 +76,21 @@ export class SurveyPage {
 		
 		var FlyinID = this.localstorage.getLocalValue('FlyinMeetingID');
 		
-		// Blank survey questions
-		this.SurveyQ1 = "10";	// Set default value for range control
+		this.SurveyQ1 = "";
 		this.SurveyQ1C = "";
 		this.SurveyQ2 = "";
 		this.SurveyQ2C = "";
-		this.SurveyQ3 = "10";	// Set default value for range control
+		this.SurveyQ3 = "";
 		this.SurveyQ3C = "";
-		this.SurveyQ4 = "10";	// Set default value for range control
+		this.SurveyQ4 = "";
 		this.SurveyQ4C = "";
-		this.SurveyQ5 = "10";	// Set default value for range control
+		this.SurveyQ5 = "";
 		this.SurveyQ5C = "";
-		this.SurveyQ6 = "10";	// Set default value for range control
+		this.SurveyQ6 = "";
 		this.SurveyQ6C = "";
-		this.SurveyQ7 = "10";	// Set default value for range control
+		this.SurveyQ7 = "";
 		this.SurveyQ7C = "";
-		this.SurveyQ8 = "10";	// Set default value for range control
+		this.SurveyQ8 = "";
 		this.SurveyQ8C = "";
 		this.SurveyQ9 = "";
 		this.SurveyQ9C = "";

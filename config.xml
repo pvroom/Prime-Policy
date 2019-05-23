@@ -38,11 +38,7 @@
     <preference name="ShowSplashScreenSpinner" value="true" />
     <preference name="SplashScreenDelay" value="2000" />
     <preference name="SplashScreenSpinnerColor" value="#ffffff" />
-<<<<<<< HEAD
-    <preference name="DisableDeploy" value="true" />
-=======
     <preference name="DisableDeploy" value="false" />
->>>>>>> 30a45641bd4b9baf360d9709fdf0363c2f62c55d
     <preference name="loadUrlTimeoutValue" value="60000" />
     <preference name="StatusBarOverlaysWebView" value="false" />
     <preference name="StatusBarBackgroundColor" value="#2c3e50" />
