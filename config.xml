@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.convergenceus.flyin.primepolicy" version="4.2.10" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.convergenceus.flyin.primepolicy" version="4.2.11" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>PrimePolicy Fly-in</name>
     <description>A Congressional agenda app for Prime Policy's Fly-in events</description>
     <author email="pvroom@convergence-us.com" href="http://convergence-us.com/">Convergence</author>

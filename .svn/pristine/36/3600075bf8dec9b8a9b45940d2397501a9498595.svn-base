@@ -1,0 +1,384 @@
+<ion-header>
+	<ion-navbar color="primary">
+		<button ion-button menuToggle>
+			<ion-icon name="menu"></ion-icon>
+		</button>
+		<ion-title>Feedback</ion-title>
+	</ion-navbar>
+</ion-header>
+  
+<ion-content>
+
+
+	<ion-card>
+		<ion-card-header text-wrap style="background:#2c3e50; color:#fff">
+
+			1. How satisfied were you overall with IMPACT Washington, D.C. 2019?<br/>  
+			(1 = not satisfied; 10 = very satisfied)
+
+		</ion-card-header>
+		<ion-card-content>
+			<ion-item>
+				<ion-range [(ngModel)]="SurveyQ1" color="secondary" pin="true" step="1" min="1" max="10" step="1" snaps="true" >
+			
+					<ion-label range-right bold >10</ion-label>
+					<ion-icon large range-left color="secondary" name="remove-circle"></ion-icon>
+					<ion-label range-left>1</ion-label>
+					<ion-icon large range-right color="secondary" name="add-circle"></ion-icon>
+				</ion-range>
+		
+			</ion-item>
+			<ion-item>
+				<ion-textarea (input)='SurveyQ1C = $event.target.value' 
+					name="SurveyQ1C"
+					[value]="SurveyQ1C" 
+					id="SurveyQ1C"
+					autocomplete="true" 
+					autocorrect="on" 
+					placeholder="Additional comments" rows="4"></ion-textarea>
+			</ion-item>
+
+		</ion-card-content>
+	</ion-card>
+
+	<ion-card>
+		<ion-list radio-group [(ngModel)]="SurveyQ2" name="SurveyQ2" (ionChange)="mcqAnswer($event)">
+
+			<ion-item text-wrap style="background:#2c3e50; color:#fff">
+				2. Were you satisfied with the timing of this year's IMPACT?
+			</ion-item>
+
+			<ion-item>
+				<ion-label>Yes</ion-label>
+				<ion-radio mode="md" color="secondary" checked="false" value="Yes"></ion-radio>
+			</ion-item>
+
+			<ion-item>
+				<ion-label>No</ion-label>
+				<ion-radio mode="md" color="secondary" checked="false" value="No"></ion-radio>
+			</ion-item>
+
+		</ion-list>
+
+		<ion-item>
+			<ion-textarea (input)='SurveyQ2C = $event.target.value' 
+				name="SurveyQ2C"
+				[value]="SurveyQ2C" 
+				id="SurveyQ2C"
+				autocomplete="true" 
+				autocorrect="on" 
+				placeholder="Additional comments" rows="4"></ion-textarea>
+		</ion-item>
+		
+	</ion-card>
+
+
+	<ion-card>
+		<ion-card-header text-wrap style="background:#2c3e50; color:#fff">
+
+			3. Please rate your level of satisfaction regarding the IMPACT App.<br/> 
+			(1 = not satisfied; 10 = very satisfied)
+
+		</ion-card-header>
+		<ion-card-content>
+			<ion-item>
+				<ion-range [(ngModel)]="SurveyQ3" color="secondary" pin="true" step="1" min="1" max="10" step="1" snaps="true" >
+						<ion-label range-right bold >10</ion-label>
+					<ion-icon large range-left color="secondary" name="remove-circle"></ion-icon>
+					<ion-label range-left>1</ion-label>
+					<ion-icon large range-right color="secondary" name="add-circle"></ion-icon>
+				</ion-range>
+			</ion-item>
+
+			<ion-item>
+				<ion-textarea (input)='SurveyQ3C = $event.target.value' 
+					name="SurveyQ3C"
+					[value]="SurveyQ3C" 
+					id="SurveyQ3C"
+					autocomplete="true" 
+					autocorrect="on" 
+					placeholder="Additional comments" rows="4"></ion-textarea>
+			</ion-item>
+
+		</ion-card-content>
+	</ion-card>
+
+	<ion-card>
+		<ion-card-header text-wrap style="background:#2c3e50; color:#fff">
+
+			4. How did you feel about the Executive/ Issue Briefs?<br/>
+			(1 = not helpful; 10 = very helpful)
+
+		</ion-card-header>
+		<ion-card-content>
+			<ion-item>
+				<ion-range [(ngModel)]="SurveyQ4" color="secondary" pin="true" step="1" min="1" max="10" step="1" snaps="true" >
+						<ion-label range-right bold >10</ion-label>
+						<ion-icon large range-left color="secondary" name="remove-circle"></ion-icon>
+						<ion-label range-left>1</ion-label>
+						<ion-icon large range-right color="secondary" name="add-circle"></ion-icon>
+				</ion-range>
+			</ion-item>
+
+			<ion-item>
+				<ion-textarea (input)='SurveyQ4C = $event.target.value' 
+					name="SurveyQ4C"
+					[value]="SurveyQ4C" 
+					id="SurveyQ4C"
+					autocomplete="true" 
+					autocorrect="on" 
+					placeholder="Additional comments" rows="4"></ion-textarea>
+			</ion-item>
+
+		</ion-card-content>
+	</ion-card>
+
+
+	<ion-card>
+		<ion-card-header text-wrap style="background:#2c3e50; color:#fff">
+
+			5. How satisfied were you with Administration/Congressional group meetings?<br/>
+			(1 = not satisfied; 10 = very satisfied)
+
+		</ion-card-header>
+		<ion-card-content>
+			<ion-item>
+				<ion-range [(ngModel)]="SurveyQ5" color="secondary" pin="true" step="1" min="1" max="10" step="1" snaps="true" >
+						<ion-label range-right bold >10</ion-label>
+					<ion-icon large range-left color="secondary" name="remove-circle"></ion-icon>
+					<ion-label range-left>1</ion-label>
+					<ion-icon large range-right color="secondary" name="add-circle"></ion-icon>
+				</ion-range>
+			</ion-item>
+
+			<ion-item>
+				<ion-textarea (input)='SurveyQ5C = $event.target.value' 
+					name="SurveyQ5C"
+					[value]="SurveyQ5C" 
+					id="SurveyQ5C"
+					autocomplete="true" 
+					autocorrect="on" 
+					placeholder="Additional comments" rows="4"></ion-textarea>
+			</ion-item>
+
+		</ion-card-content>
+	</ion-card>
+
+
+
+	<ion-card>
+		<ion-card-header text-wrap style="background:#2c3e50; color:#fff">
+
+			6. How satisfied were you with your individual meetings?<br/>
+			(1 = not satisfied; 10 = very satisfied)
+
+		</ion-card-header>
+		<ion-card-content>
+			<ion-item>
+				<ion-range [(ngModel)]="SurveyQ6" color="secondary" pin="true" step="1" min="1" max="10" step="1" snaps="true" >
+						<ion-label range-right bold >10</ion-label>
+					<ion-icon large range-left color="secondary" name="remove-circle"></ion-icon>
+					<ion-label range-left>1</ion-label>
+					<ion-icon large range-right color="secondary" name="add-circle"></ion-icon>
+				</ion-range>
+			</ion-item>
+
+			<ion-item>
+				<ion-textarea (input)='SurveyQ6C = $event.target.value' 
+					name="SurveyQ6C"
+					[value]="SurveyQ6C" 
+					id="SurveyQ6C"
+					autocomplete="true" 
+					autocorrect="on" 
+					placeholder="Additional comments" rows="4"></ion-textarea>
+			</ion-item>
+
+		</ion-card-content>
+	</ion-card>
+
+
+
+	<ion-card>
+		<ion-card-header text-wrap style="background:#2c3e50; color:#fff">
+
+			7. How satisfied were you with staff and logistics?<br/>
+			(1 = not satisfied; 10 = very satisfied)
+
+		</ion-card-header>
+		<ion-card-content>
+			<ion-item>
+				<ion-range [(ngModel)]="SurveyQ7" color="secondary" pin="true" step="1" min="1" max="10" step="1" snaps="true" >
+						<ion-label range-right bold >10</ion-label>
+						<ion-icon large range-left color="secondary" name="remove-circle"></ion-icon>
+						<ion-label range-left>1</ion-label>
+						<ion-icon large range-right color="secondary" name="add-circle"></ion-icon>
+				</ion-range>
+			</ion-item>
+
+			<ion-item>
+				<ion-textarea (input)='SurveyQ7C = $event.target.value' 
+					name="SurveyQ7C"
+					[value]="SurveyQ7C" 
+					id="SurveyQ7C"
+					autocomplete="true" 
+					autocorrect="on" 
+					placeholder="Additional comments" rows="4"></ion-textarea>
+			</ion-item>
+
+		</ion-card-content>
+	</ion-card>
+
+
+	<ion-card>
+		<ion-card-header text-wrap style="background:#2c3e50; color:#fff">
+
+			8. Please rate the ease of event registration<br/>
+			(1=difficult 10=easy)
+
+		</ion-card-header>
+		<ion-card-content>
+			<ion-item>
+				<ion-range [(ngModel)]="SurveyQ8" color="secondary" pin="true" step="1" min="1" max="10" step="1" snaps="true" >
+						<ion-label range-right bold >10</ion-label>
+						<ion-icon large range-left color="secondary" name="remove-circle"></ion-icon>
+						<ion-label range-left>1</ion-label>
+						<ion-icon large range-right color="secondary" name="add-circle"></ion-icon>
+				</ion-range>
+			</ion-item>
+			
+			<ion-item>
+				<ion-textarea (input)='SurveyQ8C = $event.target.value' 
+					name="SurveyQ8C"
+					[value]="SurveyQ8C" 
+					id="SurveyQ8C"
+					autocomplete="true" 
+					autocorrect="on" 
+					placeholder="Additional comments" rows="4"></ion-textarea>
+			</ion-item>
+
+		</ion-card-content>
+	</ion-card>
+
+
+	<ion-card>
+		<ion-list radio-group [(ngModel)]="SurveyQ9" name="SurveyQ9" (ionChange)="mcqAnswer($event)">
+
+			<ion-item text-wrap style="background:#2c3e50; color:#fff">
+				9. How did you feel about the time that was required to attend IMPACT?
+			</ion-item>
+
+			<ion-item>
+				<ion-label>Just right</ion-label>
+				<ion-radio mode="md" color="secondary" checked="false" value="Just right"></ion-radio>
+			</ion-item>
+
+			<ion-item>
+				<ion-label>Required too much time</ion-label>
+				<ion-radio mode="md" color="secondary" checked="false" value="Required too much time"></ion-radio>
+			</ion-item>
+
+			<ion-item>
+				<ion-label>Didn't require much of my time</ion-label>
+				<ion-radio mode="md" color="secondary" checked="false" value="Didn't require much of my time"></ion-radio>
+			</ion-item>
+		</ion-list>
+
+		<ion-item>
+			<ion-textarea (input)='SurveyQ9C = $event.target.value' 
+				name="SurveyQ9C"
+				[value]="SurveyQ9C" 
+				id="SurveyQ9C"
+				autocomplete="true" 
+				autocorrect="on" 
+				placeholder="Additional comments" rows="4"></ion-textarea>
+		</ion-item>
+		
+	</ion-card>
+
+	<ion-card>
+		<ion-list radio-group [(ngModel)]="SurveyQ10" name="SurveyQ10" (ionChange)="mcqAnswer($event)">
+
+			<ion-item text-wrap style="background:#2c3e50; color:#fff">
+				10. Would you recommend IMPACT to other IPC member-company executives and ask them to attend next year? If yes, what you tell them?
+			</ion-item>
+
+			<ion-item>
+				<ion-label>Yes</ion-label>
+				<ion-radio mode="md" color="secondary" checked="false" value="Yes"></ion-radio>
+			</ion-item>
+
+			<ion-item>
+				<ion-label>No</ion-label>
+				<ion-radio mode="md" color="secondary" checked="false" value="No"></ion-radio>
+			</ion-item>
+
+			<ion-item>
+				<ion-label>Not sure</ion-label>
+				<ion-radio mode="md" color="secondary" checked="false" value="Not sure"></ion-radio>
+			</ion-item>
+
+		</ion-list>
+		
+		<ion-item>
+			<ion-textarea (input)='SurveyQ10C = $event.target.value' 
+				name="SurveyQ10C"
+				[value]="SurveyQ10C" 
+				id="SurveyQ10C"
+				autocomplete="true" 
+				autocorrect="on" 
+				placeholder="Additional comments" rows="4"></ion-textarea>
+		</ion-item>
+		
+	</ion-card>
+
+	<ion-card>
+		<ion-item text-wrap style="background:#2c3e50; color:#fff">
+			11. Do you have any other suggestions for how IMPACT Washington, D. C. could be improved in 2020?
+		</ion-item>
+		<ion-card-content>
+			<ion-textarea (input)='SurveyQ11 = $event.target.value' 
+				name="SurveyQ11"
+				[value]="SurveyQ11" 
+				id="SurveyQ11"
+				autocomplete="true" 
+				autocorrect="on" 
+				placeholder="Enter text" rows="4"></ion-textarea>
+		</ion-card-content>
+	</ion-card>
+
+	<ion-card>
+		<ion-item text-wrap style="background:#2c3e50; color:#fff">
+			12. How else can IPC connect you with U.S. policymakers?
+		</ion-item>
+		<ion-card-content>
+			<ion-textarea (input)='SurveyQ12 = $event.target.value' 
+				name="SurveyQ12"
+				[value]="SurveyQ12" 
+				id="SurveyQ12"
+				autocomplete="true" 
+				autocorrect="on" 
+				placeholder="Enter text" rows="4"></ion-textarea>
+		</ion-card-content>
+	</ion-card>
+
+
+	<div text-center>
+		<button ion-button style="background:#e74c3c" (click)="SubmitSurvey()">
+			SUBMIT
+		</button>
+	</div>
+
+	<div class="spacer" style="width:320px; height: 16px;"></div>
+ 
+</ion-content>
+
+
+
+	
+									
+
+
+
+
+
+  

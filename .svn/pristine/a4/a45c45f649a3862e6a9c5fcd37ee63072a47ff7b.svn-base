@@ -178,12 +178,12 @@ export class MyApp {
 			console.log('Selected fly-in: ' + this.selectedFlyin);
 			
 			// Spinner for switch
-			//let loading = this.loadingCtrl.create({
-			//	spinner: 'crescent',
-			//	content: 'Switching fly-ins...'
-			//});
+			let loading = this.loadingCtrl.create({
+				spinner: 'crescent',
+				content: 'Switching fly-ins...'
+			});
 
-			//loading.present();
+			loading.present();
 			
 			var flags = "";
 			var AttendeeID = this.localstorage.getLocalValue('AttendeeID');
@@ -220,7 +220,7 @@ export class MyApp {
 				console.log("AppComponents, SetFlyin: Promise Rejected");
 			});
 
-			//loading.dismiss();
+			loading.dismiss();
 
 		}
 		
@@ -290,7 +290,7 @@ export class MyApp {
 						this.localstorage.setLocalValue('AttendeeID', '');
 						this.localstorage.setLocalValue("loginUsername", '');
 						this.localstorage.setLocalValue("loginPassword", '');
-						this.localstorage.setLocalValue('LastUserSync', '');
+						this.localstorage.setLocalValue('LastSync', '');
 						this.localstorage.setLocalValue("LoginNameInitials", '');
 						this.localstorage.setLocalValue("FlyinBanner", '');
 						this.localstorage.setLocalValue("FlyinMeetingID", '');
@@ -621,12 +621,6 @@ export class MyApp {
 			// Set default sync starting point here.  Update this value each time the database
 			// is refreshed or syncs get too big and slow down the app
 			this.localstorage.setLocalValue('DefaultSyncStart','2019-08-27T22:45:01Z');
-			// Set user sync starting point here.
-			this.localstorage.setLocalValue('UserSyncStart','2019-08-27T22:45:01Z');
-
-			// Set current database version here.  Update this value each time the database
-			// is refreshed or syncs get too big and slow down the app
-			this.localstorage.setLocalValue('databaseVersion','4.0');
 			
 			console.log('AppComponents: initializeApp accessed');
 
@@ -634,12 +628,6 @@ export class MyApp {
 			// Disabled 2019-03-03 John Black since no area is accessible 
 			// until after a login, which kicks off its own sync.
 			//this.GetInitialDatabaseSync();
-			this.staffFlyins.push({
-				DisplayName: "",
-				flyinID: 0
-			});
-			this.selectedFlyin = this.staffFlyins[0];
-			this.cd.markForCheck();
 
 			// Set default value
 			this.DevicePlatform = "Browser";
@@ -672,52 +660,8 @@ export class MyApp {
 				
 			}
 
-/*
-			// Current work in progress by John Black
 
-			// If running on a device, validate local SQLite database version
-			console.log('AppComponents: Validate local SQLite database version');
-			if (this.DevicePlatform == "iOS" || this.DevicePlatform == "Android") {
 
-				console.log('AppComponents: Running on a device, performing local SQLite database version check');
-				
-				var dbVersion = this.localstorage.getLocalValue('databaseVersion');
-
-				// Check for current database version
-				this.databaseprovider.getDatabaseStats("vr|0|0|0|0", "0").then(data3 => {
-					console.log("AppComponents: getDatabaseStats: " + JSON.stringify(data3));
-					
-					//if version doesn't match code set value, then update local SQLite database
-					if (dbVersion != data3[0].databaseVersion) {
-						// Close current SQLite database
-						this.databaseprovider.getDatabaseStats("cl|0|0|0|0", "0").then(data4 => {
-							// Delete current SQLite database
-							this.databaseprovider.getDatabaseStats("dl|0|0|0|0", "0").then(data5 => {
-								// Create new SQLite database from package version
-								this.databaseprovider.getDatabaseStats("cr|0|0|0|0", "0").then(data6 => {
-
-								}).catch(function () {
-									console.log("AppComponents: Local SQLite database create Promise Rejected");
-								});
-							}).catch(function () {
-								console.log("AppComponents: Local SQLite database delete Promise Rejected");
-							});
-						}).catch(function () {
-							console.log("AppComponents: Local SQLite database close Promise Rejected");
-						});
-						
-					}
-					
-				}).catch(function () {
-					console.log("AppComponents: Local SQLite database version check Promise Rejected");
-				});
-
-			} else {
-				
-				console.log('AppComponents: Running in a browser, skipping local SQLite database version check');
-				
-			}
-*/
 
 		
 			// Network connectivity monitoring
