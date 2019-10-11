@@ -1,0 +1,380 @@
+// Components, functions, plugins
+import { Component, ChangeDetectionStrategy, ChangeDetectorRef, NgModule } from '@angular/core';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
+import { Http } from '@angular/http';
+import { AlertController } from 'ionic-angular';
+import 'rxjs/add/operator/map';
+import { Database } from './../../providers/database/database';
+import { Localstorage } from './../../providers/localstorage/localstorage';
+
+// Pages
+import { CongressionalStaffDetailsPage } from '../congressionalstaffdetails/congressionalstaffdetails';
+
+@IonicPage()
+@Component({
+  selector: 'page-congressionalstaffsearch',
+  templateUrl: 'congressionalstaffsearch.html',
+})
+export class CongressionalStaffSearchPage {
+
+	public issueareaList: any[] = [];
+	public staffstateList: any[] = [];
+	public stafftitleList: any[] = [];
+	public staffcongressionalmemberList: any[] = [];
+	public SearchResults: any[] = [];
+
+	public IssueAreasChoice: string;
+	public StaffStateChoice: string;
+	public StaffTitleChoice: string;
+	public StaffCongressionalMemberChoice: string;
+	
+	public searchResultsCounter: string;
+	
+	constructor(public navCtrl: NavController, 
+				public navParams: NavParams,
+				private storage: Storage,
+				private alertCtrl: AlertController, 
+				private databaseprovider: Database,
+				private cd: ChangeDetectorRef,
+				public loadingCtrl: LoadingController,
+				private localstorage: Localstorage) {
+	}
+
+	ionViewDidLoad() {
+		console.log('ionViewDidLoad CongressionalStaffSearchPage');
+		this.LoadData();
+	}
+
+	ionViewDidEnter() {
+		console.log('ionViewDidEnter: CongressionalStaffSearchPage');
+		
+		// Load / refresh data when coming to this page
+		//this.LoadData();
+	}
+
+    CongressionalStaffDetails(cmsID) {
+			
+		console.log('cmsID: ' + cmsID);
+		this.navCtrl.push(CongressionalStaffDetailsPage, {cmsID: cmsID}, {animate: true, direction: 'forward'});
+
+    };
+
+	LoadData() {
+		
+		let loading = this.loadingCtrl.create({
+			spinner: 'crescent',
+			content: 'Please wait...'
+		});
+
+		loading.present();
+		
+		this.cd.markForCheck();
+		
+		var DisplayName;
+		var visDisplayPartyState;
+		var visDisplayCityState;
+		
+		this.issueareaList = [];
+		this.staffstateList = [];
+		this.stafftitleList = [];
+		this.staffcongressionalmemberList = [];
+		this.SearchResults = [];
+		
+		var CongressionalChamber = "";
+		this.searchResultsCounter = "(0 found)";
+		
+		var flags = "li2|Alpha|0";
+		console.log('CongressionalStaffSearchPage: Load dropdown for Office');
+		
+		// Get records for dropdowns
+		this.databaseprovider.getCongressionalData(flags, "0").then(data => {
+			
+			if (data['length']>0) {
+				
+				console.log('Congressional Member records returned: ' + data['length']);
+				
+				// Process returned records to display
+				for (var i = 0; i < data['length']; i++) {
+
+					DisplayName = "";
+					
+					// Concatenate fields to build displayable name
+					DisplayName = DisplayName + data[i].LastName;
+										
+					if (data[i].Suffix != "" && data[i].Suffix != null) {
+						DisplayName = DisplayName + " " + data[i].Suffix;
+					}
+
+					// If available, use Nickname field for First Name
+					if (data[i].Nickname != "" && data[i].Nickname != null) {
+						DisplayName = DisplayName + ", " + data[i].Nickname;
+					} else {
+						DisplayName = DisplayName + ", " + data[i].FirstName;
+					}
+										
+					if (data[i].MiddleInitial != "" && data[i].MiddleInitial != null) {
+						DisplayName = DisplayName + " " + data[i].MiddleInitial;
+					}
+					
+					var imageAvatar = "";
+					var navArrow = "";
+					
+					visDisplayPartyState = data[i].Party.charAt(0) + " - " + data[i].State;
+					imageAvatar = data[i].imageFilename;
+					imageAvatar = "assets/img/CongressionalMembers/" + imageAvatar;
+					navArrow = "arrow-dropright";
+
+					DisplayName = DisplayName + ' (' + visDisplayPartyState + ')';
+					
+					this.staffcongressionalmemberList.push({
+						Avatar: imageAvatar,
+						navigationArrow: navArrow,
+						cmID: data[i].congressionalMemberID,
+						DisplayNameLastFirst: DisplayName,
+						DisplayPartyState: visDisplayPartyState
+					});
+
+					//console.log("Congressional Member, Added entry to Congressional Member array: " + DisplayName);
+
+				}
+
+				flags = "li3|Alpha|0";
+				console.log('CongressionalStaffSearchPage: Load dropdown for Issue Areas');
+				
+				// Get records for dropdowns
+				this.databaseprovider.getCongressionalData(flags, "0").then(data2 => {
+					
+					if (data2['length']>0) {
+						
+						console.log('Issue Area records returned: ' + data2['length']);
+						
+						// Process returned records to display
+						for (var i = 0; i < data2['length']; i++) {
+							
+							this.issueareaList.push({
+								id: data2[i].liaID,
+								Name: data2[i].IssueArea
+							});
+
+						}
+
+						flags = "li4|Alpha|0";
+						console.log('CongressionalStaffSearchPage: Load dropdown for States');
+						
+						// Get records for dropdowns
+						this.databaseprovider.getCongressionalData(flags, "0").then(data3 => {
+							
+							if (data3['length']>0) {
+								
+								console.log('State records returned: ' + data3['length']);
+								console.log('State records returned: ' + JSON.stringify(data3));
+								
+								// Process returned records to display
+								for (var i = 0; i < data3['length']; i++) {
+									
+									this.staffstateList.push({
+										StateLetter: data3[i].StateLetter,
+										StateFullName: data3[i].StateFullName
+									});
+
+								}
+
+								flags = "li5|Alpha|0";
+								console.log('CongressionalStaffSearchPage: Load dropdown for Staff Titles');
+								
+								// Get records for dropdowns
+								this.databaseprovider.getCongressionalData(flags, "0").then(data4 => {
+									
+									if (data4['length']>0) {
+										
+										console.log('Title records returned: ' + data4['length']);
+										
+										// Process returned records to display
+										for (var i = 0; i < data4['length']; i++) {
+											
+											this.stafftitleList.push({
+												Title: data4[i].Title
+											});
+
+										}
+
+										this.cd.markForCheck();
+
+										loading.dismiss();
+																		
+									}
+
+								}).catch(function () {
+									console.log("Title Promise Rejected");
+									this.cd.markForCheck();
+									loading.dismiss();
+								});
+																
+							}
+
+						}).catch(function () {
+							console.log("State Promise Rejected");
+							this.cd.markForCheck();
+							loading.dismiss();
+						});
+						
+					}
+
+				}).catch(function () {
+					console.log("Issue Area Promise Rejected");
+					this.cd.markForCheck();
+					loading.dismiss();
+				});
+						
+			}
+
+		}).catch(function () {
+			console.log("Congressional Member Promise Rejected");
+			this.cd.markForCheck();
+			loading.dismiss();
+		});
+
+	}
+
+	GetSearchResults() {
+		
+		console.log('Search parameters:');
+		console.log('Issue Area: ' + this.IssueAreasChoice);
+		console.log('State: ' + this.StaffStateChoice);
+		console.log('Title: ' + this.StaffTitleChoice);
+		console.log('Congressional Member: ' + this.StaffCongressionalMemberChoice);
+		
+		this.SearchResults = [];
+		this.cd.markForCheck();
+		
+		if ((this.IssueAreasChoice == undefined || this.IssueAreasChoice == "")
+			&& (this.StaffStateChoice == undefined || this.StaffStateChoice == "")
+			&& (this.StaffTitleChoice == undefined || this.StaffTitleChoice == "")
+			&& (this.StaffCongressionalMemberChoice == undefined || this.StaffCongressionalMemberChoice == "")) {
+					console.log('Nothing selected to search on');
+		} else {
+			
+			var ia = this.IssueAreasChoice;
+			var st = this.StaffStateChoice;
+			var ti = this.StaffTitleChoice;
+			var cm = this.StaffCongressionalMemberChoice;
+			
+			if (ia == undefined) {
+				ia = "";
+			}
+			if (st == undefined) {
+				st = "";
+			}
+			if (ti == undefined) {
+				ti = "";
+			}
+			if (cm == undefined) {
+				cm = "";
+			}
+			
+			// Perform search
+			var flags = "sr2|Alpha|0|" + ia + '~' + st + '~' + ti + '~' + cm + '|0';
+			
+			// Get records for dropdowns
+			this.databaseprovider.getCongressionalData(flags, "0").then(data => {
+				
+				if (data['length']>0) {
+					
+					console.log('Staff Search records returned: ' + data['length']);
+					
+					this.searchResultsCounter = "(" + data['length'] + " found)";
+					
+					// Process returned records to display
+					for (var i = 0; i < data['length']; i++) {
+
+						var DisplayName = "";
+						
+						// Concatenate fields to build displayable name
+						DisplayName = DisplayName + data[i].LastName;
+											
+						DisplayName = DisplayName + ", " + data[i].FirstName;
+																	
+						var imageAvatar = "";
+						var navArrow = "";
+						
+						if (data[i].Chamber == 'Senate') {
+							var visDisplayPartyState = 'for Sen. ' + data[i].cmLastName + ', ' + data[i].cmFirstName + ' (' + data[i].Party.charAt(0) + " - " + data[i].State + ')';
+						} else {
+							var visDisplayPartyState = 'for Rep. ' + data[i].cmLastName + ', ' + data[i].cmFirstName + ' (' + data[i].Party.charAt(0) + " - " + data[i].State + ')';
+						}
+						var imageAvatar = "assets/img/personIcon.png";
+						var navArrow = "arrow-dropright";
+						
+						this.SearchResults.push({
+							Avatar: imageAvatar,
+							navigationArrow: navArrow,
+							cmsID: data[i].cmsID,
+							DisplayNameLastFirst: DisplayName,
+							Title: data[i].Title,
+							DisplayPartyState: visDisplayPartyState
+						});
+						
+					}
+					
+					this.cd.markForCheck();
+					
+				} else {
+					
+					this.searchResultsCounter = "(0 found)";
+					this.cd.markForCheck();
+					
+					let alert = this.alertCtrl.create({
+						title: 'Congressional Staff',
+						subTitle: 'No results found that match given criteria',
+						cssClass: 'alertStyle',
+						buttons: ['OK']
+					});
+					
+					alert.present();
+				
+				}
+
+			}).catch(function () {
+				console.log("Search Promise Rejected");
+			});
+			
+		}
+			
+	}
+
+	ResetDropdowns() {
+		
+		this.IssueAreasChoice = null;
+		this.StaffStateChoice = null;
+		this.StaffTitleChoice = null;
+		this.StaffCongressionalMemberChoice = null;
+		this.SearchResults = [];
+		this.searchResultsCounter = "(0 found)";
+		
+		this.mcqAnswer1('Reset');
+		this.mcqAnswer2('Reset');
+		this.mcqAnswer3('Reset');
+		this.mcqAnswer4('Reset');
+		
+		this.cd.markForCheck();
+
+		console.log('Data cleared');
+
+
+	}
+
+	mcqAnswer1(value){
+	   console.log('ResetDropdowns, mcqAnswer: ' + value);
+	}
+	mcqAnswer2(value){
+	   console.log('ResetDropdowns, mcqAnswer: ' + value);
+	}
+	mcqAnswer3(value){
+	   console.log('ResetDropdowns, mcqAnswer: ' + value);
+	}
+	mcqAnswer4(value){
+	   console.log('ResetDropdowns, mcqAnswer: ' + value);
+	}
+	
+}

@@ -46,6 +46,9 @@ yellow:     #ffc900,
 // --------------------------------------------------
 // iOS only Sass variables can go here
 
+$radio-md-color-on: #e74c3c;
+$radio-md-icon-width:24px;
+$radio-md-icon-height:24px;
 
 
 // App Material Design Variables
@@ -98,49 +101,42 @@ $ionicons-font-path: "../assets/fonts";
 
 
 //Select Dropdown Component
+
 $select-ios-icon-color: #fff!important;
 $select-md-icon-color: #fff!important;
 
-//SURVEY RADIO BUTTONS
+
+
 //Select range slider height
 $range-ios-slider-height: 40px;
 $range-md-slider-height:	40px;
 
-//Select slider bar height
 $range-md-bar-height:	5px;
 $range-ios-bar-height:	5px;
 
-//Select pin size
 $range-md-pin-font-size: 20px;
 $range-ios-pin-font-size: 20px;
 
-//Select knob size
 $range-ios-knob-width:  30px;
 $range-md-knob-width:  30px;
 
-//Select knob background
 $range-ios-knob-background:  #e74c3c;
 $range-md-knob-background:  #e74c3c;
 
-//Alert Message Styling
-$alert-md-background-color: #2c3e50; //makes “black” the background
-$alert-ios-background-color: #2c3e50; //makes “black” the background
-$alert-md-button-text-color: #fff; //makes "white" buttons, and the selected element
-$alert-ios-button-text-color: #fff; //makes "white" buttons, and the selected element
-$alert-md-message-text-color:#fff!important;
-$alert-ios-message-text-color:#fff!important;
-$alert-md-title-text-color: #fff!important;
-$alert-ios-title-text-color: #fff!important;
-$alert-md-sub-title-text-color:#fff;
-$alert-ios-sub-title-text-color:#fff;
-
-//Alert with radio buttons
-$alert-md-radio-label-text-color:#fff;
-$alert-ios-radio-label-text-color:#ffffff;
-$radio-md-color-on: #e74c3c;
-$radio-ios-color-on: #e74c3c;
-$radio-md-icon-width:24px;
-$radio-ios-icon-height:24px;
+$alert-md-background-color: rgba(192, 192, 192, 0.767); //makes “black” the background
+$alert-md-button-text-color: #444; //makes "white" buttons, and the selected element
+$alert-md-radio-label-text-color:#444;
 //$alert-md-radio-label-text-color-checked: #800000;
+$alert-md-message-text-color:#fff;
+$alert-md-title-text-color: #fff;
+
+$alert-ios-background: #2c3e50; //makes “black” the background
+$alert-ios-button-text-color: #fff; //makes "white" buttons, and the selected element
+$alert-ios-radio-label-text-color:#ffffff;
+$alert-ios-sub-title-text-color:#fff;
+$alert-ios-title-color:#fff;
+
+
+
 //$alert-ios-radio-label-text-color-checked: #800000;
 

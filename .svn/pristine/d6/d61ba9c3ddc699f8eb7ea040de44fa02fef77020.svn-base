@@ -39,7 +39,6 @@ import { ConferenceCityPage } from '../pages/conferencecity/conferencecity';
 import { CongressionalDetailsPage } from '../pages/congressionaldetails/congressionaldetails';
 import { CongressionalMembersPage } from '../pages/congressionalmembers/congressionalmembers';
 import { CongressionalStaffDetailsPage } from '../pages/congressionalstaffdetails/congressionalstaffdetails';
-import { CongressionalStaffSearchPage } from '../pages/congressionalstaffsearch/congressionalstaffsearch';
 import { DatabasePage } from '../pages/database/database';
 import { HelpPage } from '../pages/help/help';
 import { HomePage } from '../pages/home/home';
@@ -60,6 +59,7 @@ import { SocialPage } from '../pages/social/social';
 import { SplashPage } from '../pages/splash/splash';
 import { IssuesPage } from '../pages/issues/issues';
 import { SurveyPage } from '../pages/survey/survey';
+import { StaffPage } from '../pages/staff/staff';
 
 // Temporary Support Pages
 //import { FloorplanMappingPage } from '../pages/floorplanmapping/floorplanmapping';
@@ -92,11 +92,11 @@ export class MyErrorHandler implements ErrorHandler {
 	CongressionalDetailsPage,
 	CongressionalMembersPage,
 	CongressionalStaffDetailsPage,
-    CongressionalStaffSearchPage,
     DatabasePage,
 	//FloorplanMappingPage,
     HelpPage,
     HomePage,
+    StaffPage,
     LoginPage,
     MapPage,
 	MeetingDetailsPage,
@@ -141,7 +141,6 @@ export class MyErrorHandler implements ErrorHandler {
 	CongressionalDetailsPage,
 	CongressionalMembersPage,
 	CongressionalStaffDetailsPage,
-    CongressionalStaffSearchPage,
     DatabasePage,
 	//FloorplanMappingPage,
     HelpPage,
@@ -154,6 +153,7 @@ export class MyErrorHandler implements ErrorHandler {
     MyAgendaFull,
     MyApp,
     NotesPage,
+    StaffPage,
 	NotesDetailsPage,
     SurveyPage,
     IssuesPage,

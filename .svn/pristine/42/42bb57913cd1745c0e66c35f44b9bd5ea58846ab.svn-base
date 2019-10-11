@@ -20,7 +20,6 @@ import { CongressionalMembersPage } from '../pages/congressionalmembers/congress
 import { MapPage } from '../pages/map/map';
 import { LoginPage } from '../pages/login/login';
 import { NotesPage } from '../pages/notes/notes';
-import { CongressionalStaffSearchPage } from '../pages/congressionalstaffsearch/congressionalstaffsearch';
 import { MyAgenda } from '../pages/myagenda/myagenda';
 import { MyAgendaFull } from '../pages/myagendafull/myagendafull';
 import { IssuesPage } from '../pages/issues/issues';
@@ -92,7 +91,6 @@ export class MyApp {
 		  { title: 'My Agenda', icon: 'calendar', component: MyAgenda, naventry: 'MyAgenda' },
 		  { title: 'Senators', icon: 'people', component: CongressionalMembersPage, naventry: 'Senators' },
 		  { title: 'Representatives', icon: 'people', component: CongressionalMembersPage, naventry: 'Representatives' },
-		  { title: 'Congressional Staff', icon: 'people', component: CongressionalStaffSearchPage, naventry: 'CongressionalStaffSearch' },
 		  { title: MenuOptionTitle, icon: 'folder-open', component: IssuesPage, naventry: 'Issues' },
 		  { title: 'Maps', icon: 'map', component: MapPage, naventry: 'Maps' },
 		  { title: 'Washington DC', icon: 'compass', component: ConferenceCityPage, naventry: 'ConferenceCity' },
@@ -153,7 +151,6 @@ export class MyApp {
 		  { title: 'My Agenda', icon: 'calendar', component: MyAgenda, naventry: 'MyAgenda' },
 		  { title: 'Senators', icon: 'people', component: CongressionalMembersPage, naventry: 'Senators' },
 		  { title: 'Representatives', icon: 'people', component: CongressionalMembersPage, naventry: 'Representatives' },
-		  { title: 'Congressional Staff', icon: 'people', component: CongressionalStaffSearchPage, naventry: 'CongressionalStaffSearch' },
 		  { title: MenuOptionTitle, icon: 'folder-open', component: IssuesPage, naventry: 'Issues' },
 		  { title: 'Maps', icon: 'map', component: MapPage, naventry: 'Maps' },
 		  { title: 'Washington DC', icon: 'compass', component: ConferenceCityPage, naventry: 'ConferenceCity' },
@@ -943,9 +940,6 @@ export class MyApp {
 					this.localstorage.setLocalValue('CongressionalChamber', 'House of Representatives');
 					this.navCtrl.push(CongressionalMembersPage, {}, {animate: true, direction: 'forward'});
 					break;
-				case "CongressionalStaffSearch":
-					this.navCtrl.push(CongressionalStaffSearchPage, {}, {animate: true, direction: 'forward'});
-					break;
 				default:
 					this.navCtrl.setRoot(page.component);
 					this.activePage = page;
@@ -991,10 +985,6 @@ export class MyApp {
 					break;
 				case "Representatives":
 					this.localstorage.setLocalValue('CongressionalChamber', 'House of Representatives');
-					this.localstorage.setLocalValue('LoginWarning', '1');
-					this.navCtrl.push(LoginPage, {}, {animate: true, direction: 'forward'});
-					break;
-				case "CongressionalStaffSearch":
 					this.localstorage.setLocalValue('LoginWarning', '1');
 					this.navCtrl.push(LoginPage, {}, {animate: true, direction: 'forward'});
 					break;

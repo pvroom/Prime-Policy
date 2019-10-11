@@ -231,38 +231,6 @@ export class Database {
 				SQLquery = SQLquery + "WHERE cms.cmsID = " + congressionalMemberID + " ";
 			}
 			
-			if (listingType == "sr2") {	// Search for specific staff
-
-				var searchValues = QueryParam.split("~");	// Split concatenated values
-
-				SQLquery = "SELECT DISTINCT cms.cmsID, cms.LastName, cms.FirstName, cms.Title, cm.Party, cm.State, ";
-				SQLquery = SQLquery + "cm.LastName AS cmLastName, cm.FirstName AS cmFirstName, cm.Chamber ";
-				SQLquery = SQLquery + "FROM congressional_members_staff cms ";
-				SQLquery = SQLquery + "INNER JOIN congressional_members cm ON cm.congressionalMemberID = cms.congressionalMemberID ";
-				SQLquery = SQLquery + "INNER JOIN congressional_members_staff_issue_areas cmsia ON cmsia.cmsID = cms.cmsID ";
-				SQLquery = SQLquery + "INNER JOIN lookup_issue_areas lia ON lia.liaID = cmsia.liaID ";
-				SQLquery = SQLquery + "WHERE cms.ActiveYN = 'Y' ";
-				SQLquery = SQLquery + "AND cm.ActiveYN = 'Y' ";
-				
-				if (searchValues[0].length>0) {
-					SQLquery = SQLquery + "AND lia.liaID = " + searchValues[0] + " ";
-				}
-				if (searchValues[1].length>0) {
-					SQLquery = SQLquery + "AND cm.State = '" + searchValues[1] + "' ";
-				}
-				if (searchValues[2].length>0) {
-					SQLquery = SQLquery + "AND cms.Title = '" + searchValues[2] + "' ";
-				}
-				if (searchValues[3].length>0) {
-					SQLquery = SQLquery + "AND cm.congressionalMemberID = " + searchValues[3] + " ";
-				}
-				
-				if (sortOrder == "Alpha") {
-					SQLquery = SQLquery + "ORDER BY cms.LastName, cms.FirstName";
-				}
-				
-			}
-
 			console.log("Congressional Members Query: " + SQLquery);
 
 			// Perform query against local SQLite database
@@ -298,19 +266,6 @@ export class Database {
 										CongressionalMember: data.rows.item(i).CongressionalMember
 									});
 								}
-								if (listingType == "sr2") {
-									DatabaseResponse.push({
-										cmsID: data.rows.item(i).cmsID,
-										LastName: data.rows.item(i).LastName,
-										FirstName: data.rows.item(i).FirstName,
-										cmLastName: data.rows.item(i).cmLastName,
-										cmFirstName: data.rows.item(i).cmFirstName,
-										Chamber: data.rows.item(i).Chamber,
-										Title: data.rows.item(i).Title,
-										Party: data.rows.item(i).Party,
-										State: data.rows.item(i).State
-									});
-								}
 								if (listingType == "li3") {
 									DatabaseResponse.push({
 										liaID: data.rows.item(i).liaID,
@@ -320,7 +275,7 @@ export class Database {
 								if (listingType == "li4") {
 									DatabaseResponse.push({
 										StateLetter: data.rows.item(i).StateLetter,
-										StateFullName: data.rows.item(i).StateFullname
+										StateFullName: data.rows.item(i).StateFullName
 									});
 								}
 								if (listingType == "li5") {

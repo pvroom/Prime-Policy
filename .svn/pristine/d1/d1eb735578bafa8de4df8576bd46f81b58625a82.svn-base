@@ -66,74 +66,28 @@ export class Database {
 
 			if (listingType == "li" || listingType == "sr") {	// List of speakers
 			
-				if (chamberID == 'Staff') {
-					
-					SQLquery = SQLquery + "SELECT '0' AS congressionalMemberID, cm.cmsID AS staffID, cm.FirstName, cm.LastName, '' AS MiddleInitial, '' AS Nickname, ";
-					SQLquery = SQLquery + "'' AS Suffix, '' AS Party, '' AS State, '' AS imageFilename, '0' AS CongressionalMember, ";
-					SQLquery = SQLquery + "'' AS CongressionalMemberName, cm.Title, ";
-					SQLquery = SQLquery + "(SELECT CASE cm2.Chamber ";
-					SQLquery = SQLquery + "  WHEN 'Senate' THEN 'Senator' ";
-					SQLquery = SQLquery + "  ELSE 'Representative' ";
-					SQLquery = SQLquery + "  END AS Title ";
-					SQLquery = SQLquery + "FROM congressional_members cm2 ";
-					SQLquery = SQLquery + "INNER JOIN congressional_members_staff cms2 ON cms2.congressionalMemberID = cm2.congressionalMemberID ";
-					SQLquery = SQLquery + "WHERE cms2.cmsID = cm.cmsID) AS RepresentingType, ";
-					SQLquery = SQLquery + "(SELECT cm3.congressionalMemberID ";
-					SQLquery = SQLquery + "FROM congressional_members cm3 ";
-					SQLquery = SQLquery + "INNER JOIN congressional_members_staff cms3 ON cms3.congressionalMemberID = cm3.congressionalMemberID ";
-					SQLquery = SQLquery + "WHERE cms3.cmsID = cm.cmsID) AS RepresentingID, ";
-					SQLquery = SQLquery + "(SELECT cm4.LastName ";
-					SQLquery = SQLquery + "FROM congressional_members cm4 ";
-					SQLquery = SQLquery + "INNER JOIN congressional_members_staff cms4 ON cms4.congressionalMemberID = cm4.congressionalMemberID ";
-					SQLquery = SQLquery + "WHERE cms4.cmsID = cm.cmsID) AS RepresentingLastName, ";
-					SQLquery = SQLquery + "(SELECT cm1.State ";
-					SQLquery = SQLquery + "FROM congressional_members cm1 ";
-					SQLquery = SQLquery + "INNER JOIN congressional_members_staff cms1 ON cms1.congressionalMemberID = cm1.congressionalMemberID ";
-					SQLquery = SQLquery + "WHERE cms1.cmsID = cm.cmsID) AS RepresentingState ";
-					SQLquery = SQLquery + "FROM congressional_members_staff cm ";
-					SQLquery = SQLquery + "WHERE cm.DeletedYN = 'N' ";
-					SQLquery = SQLquery + "AND cm.ActiveYN = 'Y' ";
+				// Split search terms by space to create WHERE clause
+				SQLquery = "SELECT DISTINCT cm.congressionalMemberID, cm.FirstName, cm.LastName, cm.MiddleInitial, cm.Nickname, ";
+				SQLquery = SQLquery + "cm.Suffix, cm.Party, cm.State, ls.StateFullname, cm.imageFilename, '1' AS CongressionalMember, ";
+				SQLquery = SQLquery + "cm.District, CAST(cm.District AS UNSIGNED) AS SortNum ";
+				SQLquery = SQLquery + "FROM congressional_members cm ";
+				SQLquery = SQLquery + "INNER JOIN lookup_state ls ON ls.StateLetter = cm.State ";
+				SQLquery = SQLquery + "WHERE cm.ActiveYN LIKE 'Y%' ";
+				SQLquery = SQLquery + "AND Chamber = '" + chamberID + "' ";
 
-					if (listingType == "sr") {		// If searching, then add where clause criteria
-						// Split search terms by space to create WHERE clause
-						var whereClause = 'AND (';
-						var searchTerms = QueryParam.split(" ");
-						
-						for (var i = 0; i < searchTerms.length; i++){
-							whereClause = whereClause + 'cm.SearchField LIKE "%' + searchTerms[i] + '%" AND ';
-						}
-						// Remove last AND from where clause
-						whereClause = whereClause.substring(0, whereClause.length-5);        
-						whereClause = whereClause + ') ';
-						SQLquery = SQLquery + whereClause ;
+				if (listingType == "sr") {		// If searching, then add where clause criteria
+					// Split search terms by space to create WHERE clause
+					var whereClause = 'AND (';
+					var searchTerms = QueryParam.split(" ");
+					
+					for (var i = 0; i < searchTerms.length; i++){
+						whereClause = whereClause + 'cm.SearchField LIKE "%' + searchTerms[i] + '%" AND ';
 					}
-					
-				} else {
-					
-					SQLquery = "SELECT DISTINCT cm.congressionalMemberID, cm.FirstName, cm.LastName, cm.MiddleInitial, cm.Nickname, ";
-					SQLquery = SQLquery + "cm.Suffix, cm.Party, cm.State, ls.StateFullname, cm.imageFilename, '1' AS CongressionalMember, ";
-					SQLquery = SQLquery + "cm.District, CAST(cm.District AS UNSIGNED) AS SortNum ";
-					SQLquery = SQLquery + "FROM congressional_members cm ";
-					SQLquery = SQLquery + "INNER JOIN lookup_state ls ON ls.StateLetter = cm.State ";
-					SQLquery = SQLquery + "WHERE cm.ActiveYN LIKE 'Y%' ";
-					SQLquery = SQLquery + "AND Chamber = '" + chamberID + "' ";
-								
-					if (listingType == "sr") {		// If searching, then add where clause criteria
-						// Split search terms by space to create WHERE clause
-						var whereClause = 'AND (';
-						var searchTerms = QueryParam.split(" ");
-						
-						for (var i = 0; i < searchTerms.length; i++){
-							whereClause = whereClause + 'cm.SearchField LIKE "%' + searchTerms[i] + '%" AND ';
-						}
-						// Remove last AND from where clause
-						whereClause = whereClause.substring(0, whereClause.length-5);        
-						whereClause = whereClause + ') ';
-						SQLquery = SQLquery + whereClause ;
-					}
-					
+					// Remove last AND from where clause
+					whereClause = whereClause.substring(0, whereClause.length-5);        
+					whereClause = whereClause + ') ';
+					SQLquery = SQLquery + whereClause ;
 				}
-				
 				if (sortOrder == "Alpha") {
 					SQLquery = SQLquery + "ORDER BY LastName, FirstName";
 				}
@@ -144,38 +98,6 @@ export class Database {
 						SQLquery = SQLquery + "ORDER BY StateFullname, SortNum, LastName, FirstName";
 					}
 				}
-			}
-
-			if (listingType == "li2") {	// List of Congressional Members for staff searching
-				SQLquery = "SELECT DISTINCT cm.congressionalMemberID, cm.FirstName, cm.LastName, cm.MiddleInitial, cm.Nickname, ";
-				SQLquery = SQLquery + "cm.Suffix, cm.Party, cm.State, ls.StateFullname, cm.imageFilename, '1' AS CongressionalMember, ";
-				SQLquery = SQLquery + "cm.District, CAST(cm.District AS UNSIGNED) AS SortNum ";
-				SQLquery = SQLquery + "FROM congressional_members cm ";
-				SQLquery = SQLquery + "INNER JOIN lookup_state ls ON ls.StateLetter = cm.State ";
-				SQLquery = SQLquery + "WHERE cm.ActiveYN LIKE 'Y%' ";
-				if (sortOrder == "Alpha") {
-					SQLquery = SQLquery + "ORDER BY LastName, FirstName";
-				}
-			}
-
-			if (listingType == "li3") {	// List of Issue Areas for staff searching
-				SQLquery = "SELECT DISTINCT liaID, IssueArea ";
-				SQLquery = SQLquery + "FROM lookup_issue_areas ";
-				SQLquery = SQLquery + "WHERE ActiveYN = 'Y' ";
-				SQLquery = SQLquery + "ORDER BY IssueArea ";
-			}
-
-			if (listingType == "li4") {	// List of States for staff searching
-				SQLquery = "SELECT DISTINCT StateLetter, StateFullName ";
-				SQLquery = SQLquery + "FROM lookup_state ";
-				SQLquery = SQLquery + "ORDER BY StateFullName ";
-			}
-
-			if (listingType == "li5") {	// List of Staff Titles for staff searching
-				SQLquery = "SELECT DISTINCT Title ";
-				SQLquery = SQLquery + "FROM lookup_titles ";
-				SQLquery = SQLquery + "WHERE ActiveYN = 'Y' ";
-				SQLquery = SQLquery + "ORDER BY Title ";
 			}
 
 			if (listingType == "dt") {	// Details of Congressional Member
@@ -231,38 +153,6 @@ export class Database {
 				SQLquery = SQLquery + "WHERE cms.cmsID = " + congressionalMemberID + " ";
 			}
 			
-			if (listingType == "sr2") {	// Search for specific staff
-
-				var searchValues = QueryParam.split("~");	// Split concatenated values
-
-				SQLquery = "SELECT DISTINCT cms.cmsID, cms.LastName, cms.FirstName, cms.Title, cm.Party, cm.State, ";
-				SQLquery = SQLquery + "cm.LastName AS cmLastName, cm.FirstName AS cmFirstName, cm.Chamber ";
-				SQLquery = SQLquery + "FROM congressional_members_staff cms ";
-				SQLquery = SQLquery + "INNER JOIN congressional_members cm ON cm.congressionalMemberID = cms.congressionalMemberID ";
-				SQLquery = SQLquery + "INNER JOIN congressional_members_staff_issue_areas cmsia ON cmsia.cmsID = cms.cmsID ";
-				SQLquery = SQLquery + "INNER JOIN lookup_issue_areas lia ON lia.liaID = cmsia.liaID ";
-				SQLquery = SQLquery + "WHERE cms.ActiveYN = 'Y' ";
-				SQLquery = SQLquery + "AND cm.ActiveYN = 'Y' ";
-				
-				if (searchValues[0].length>0) {
-					SQLquery = SQLquery + "AND lia.liaID = " + searchValues[0] + " ";
-				}
-				if (searchValues[1].length>0) {
-					SQLquery = SQLquery + "AND cm.State = '" + searchValues[1] + "' ";
-				}
-				if (searchValues[2].length>0) {
-					SQLquery = SQLquery + "AND cms.Title = '" + searchValues[2] + "' ";
-				}
-				if (searchValues[3].length>0) {
-					SQLquery = SQLquery + "AND cm.congressionalMemberID = " + searchValues[3] + " ";
-				}
-				
-				if (sortOrder == "Alpha") {
-					SQLquery = SQLquery + "ORDER BY cms.LastName, cms.FirstName";
-				}
-				
-			}
-
 			console.log("Congressional Members Query: " + SQLquery);
 
 			// Perform query against local SQLite database
@@ -282,7 +172,7 @@ export class Database {
 						let DatabaseResponse = [];
 						if(data.rows.length > 0) {
 							for(let i = 0; i < data.rows.length; i++) {
-								if (listingType == "li" || listingType == "li2" || listingType == "sr") {
+								if (listingType == "li" || listingType == "sr") {
 									DatabaseResponse.push({
 										congressionalMemberID: data.rows.item(i).congressionalMemberID,
 										LastName: data.rows.item(i).LastName,
@@ -296,36 +186,6 @@ export class Database {
 										StateFullname: data.rows.item(i).StateFullname,
 										imageFilename: data.rows.item(i).imageFilename,
 										CongressionalMember: data.rows.item(i).CongressionalMember
-									});
-								}
-								if (listingType == "sr2") {
-									DatabaseResponse.push({
-										cmsID: data.rows.item(i).cmsID,
-										LastName: data.rows.item(i).LastName,
-										FirstName: data.rows.item(i).FirstName,
-										cmLastName: data.rows.item(i).cmLastName,
-										cmFirstName: data.rows.item(i).cmFirstName,
-										Chamber: data.rows.item(i).Chamber,
-										Title: data.rows.item(i).Title,
-										Party: data.rows.item(i).Party,
-										State: data.rows.item(i).State
-									});
-								}
-								if (listingType == "li3") {
-									DatabaseResponse.push({
-										liaID: data.rows.item(i).liaID,
-										IssueArea: data.rows.item(i).IssueArea
-									});
-								}
-								if (listingType == "li4") {
-									DatabaseResponse.push({
-										StateLetter: data.rows.item(i).StateLetter,
-										StateFullName: data.rows.item(i).StateFullname
-									});
-								}
-								if (listingType == "li5") {
-									DatabaseResponse.push({
-										Title: data.rows.item(i).Title
 									});
 								}
 								if (listingType == "dt") {
@@ -359,7 +219,7 @@ export class Database {
 								if (listingType == "cl") {
 									DatabaseResponse.push({
 										CommitteeName: data.rows.item(i).CommitteeName,
-										Website: data.rows.item(i).Website
+										Website: data.rows.item(i).Website,
 									});
 								}
 								if (listingType == "ia") {
@@ -798,7 +658,7 @@ export class Database {
 				SQLquery = SQLquery + "ORDER BY LastName, FirstName ";
 			}
 			
-			if (listingType == "cs") {	// List of congressional members and staff for specific meeting
+			if (listingType == "cs") {	// List of congressional members for specific meeting
 				SQLquery = "SELECT cm.congressionalMemberID, '0' AS staffID, cm.FirstName, cm.LastName, cm.MiddleInitial, cm.Nickname, ";
 				SQLquery = SQLquery + "cm.Suffix, cm.Party, cm.State, cm.imageFilename, '1' AS CongressionalMember, ";
 				SQLquery = SQLquery + "'' AS CongressionalMemberName, ";

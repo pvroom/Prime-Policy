@@ -1,0 +1,118 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Congressional Staff</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  	<!-- Floating button menu for sorting -->
+	<!--
+    <ion-fab bottom right #fab>
+        <button ion-fab color="secondary" ion-fab>
+          <ion-icon name="funnel"></ion-icon>
+        </button>
+        <ion-fab-list side="top">
+          <button ion-fab (click)="LoadDataAlphabetical(fab)">
+            <ion-icon name="list"></ion-icon>
+            <div class="fabdivbutton">Sort by Name</div>
+          </button>
+          <button ion-fab (click)="LoadDataState(fab)">
+            <ion-icon name="locate"></ion-icon>
+            <div class="fabdivbutton">Sort by State</div>
+          </button>
+        </ion-fab-list>
+        </ion-fab>
+    -->
+	<ion-card >
+	<ion-card-header style="background:#2c3e50; color:#fff">Search Options</ion-card-header>
+	</ion-card>
+
+
+<ion-grid>
+<ion-row>
+	<ion-col size="6">
+	<ion-select class="full-width-select" name="IssueAreas" 
+				placeholder="Issue Area"
+				style="background:#2c3e50; color:#fff; width:100%"
+				[(ngModel)]="IssueAreasChoice">
+
+		<ion-option *ngFor="let issuearea of issueareaList" [value]="issuearea.id">{{issuearea.Name}}</ion-option>
+    
+	</ion-select>
+</ion-col>
+	
+
+	
+	<ion-col size="6">
+	<ion-select class="full-width-select" name="StaffState" 
+				placeholder="State"
+				style="background:#2c3e50; color:#fff; width:100%"
+				[(ngModel)]="StaffStateChoice">
+
+		<ion-option *ngFor="let staffstate of staffstateList" [value]="staffstate.StateLetter">{{staffstate.StateFullName}}</ion-option>
+    
+	</ion-select>
+</ion-col>
+</ion-row>
+
+
+<ion-row>
+	<ion-col size="6">
+	<ion-select class="full-width-select" name="StaffTitle" 
+				placeholder="Job Title"
+				style="background:#2c3e50; color:#fff; width:100%"
+				[(ngModel)]="StaffTitleChoice">
+
+		<ion-option *ngFor="let stafftitle of stafftitleList" [value]="stafftitle.Title">{{stafftitle.Title}}</ion-option>
+	</ion-select>
+</ion-col>
+
+	<ion-col size="6">
+	<ion-select class="full-width-select" name="StaffCongressionalMember" 
+				placeholder="Office"
+				style="background:#2c3e50; color:#fff; width:100%"
+				[(ngModel)]="StaffCongressionalMemberChoice">
+
+		<ion-option *ngFor="let staffcongressionalmember of staffcongressionalmemberList" [value]="staffcongressionalmember.cmID">{{staffcongressionalmember.DisplayNameLastFirst}}</ion-option>
+	</ion-select>
+	</ion-col>
+</ion-row>
+
+
+</ion-grid>
+
+	
+
+<ion-card>
+	<button ion-button full style="background:#e74c3c; margin:0" (tap)="GetSearchResults()">Begin Search</button>
+<br>
+	<button ion-button full style="background:#e74c3c; margin:0" (tap)="ResetDropdowns()">Clear Selections</button>
+</ion-card>
+
+
+	
+	<ion-card>
+
+		<ion-card-header class="mutedBlue">
+			Search Results
+		</ion-card-header>
+
+		<ion-card-content style="margin-top:5px; margin-left:-15px">
+
+			<ion-list id="author-list3">
+				<ion-item (click)="CongressionalStaffDetails(SearchResultsEntry.cmsID)" *ngFor="let SearchResultsEntry of SearchResults" id="congressional-list-item19">
+				
+					<ion-avatar item-start>
+						<img src="{{SearchResultsEntry.Avatar}}" onerror="this.src='assets/img/personIcon.png'">
+					</ion-avatar>
+					<ion-icon item-right name="{{SearchResultsEntry.navigationArrow}}"></ion-icon>
+					<h2><b>{{SearchResultsEntry.DisplayNameLastFirst}}</b></h2>
+					{{SearchResultsEntry.Title}}<p>
+					{{SearchResultsEntry.DisplayPartyState}}
+				</ion-item>
+			</ion-list>
+		</ion-card-content>
+
+	</ion-card>
+
