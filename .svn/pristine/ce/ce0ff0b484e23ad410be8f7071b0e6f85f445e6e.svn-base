@@ -182,11 +182,10 @@ export class Database {
 				SQLquery = "SELECT DISTINCT cm.congressionalMemberID, cm.FirstName, cm.LastName, cm.MiddleInitial, cm.Nickname, ";
 				SQLquery = SQLquery + "cm.Suffix, cm.Party, ls.StateFullname, cm.imageFilename, cm.Chamber, cm.District, cm.Bio, cm.Website, ";
 				SQLquery = SQLquery + "cm.Email, cm.Phone, cm.Address, cm.City, cm.AddressState, cm.Zipcode, cm.TwitterAccount, cm.FacebookURL, ";
-				SQLquery = SQLquery + "fm.mapX AS OfficeX, fm.mapY AS OfficeY, fm.RoomID AS RoomNumber, lb.BuildingName ";
+				SQLquery = SQLquery + "fm.mapX AS OfficeX, fm.mapY AS OfficeY, fm.RoomID AS RoomNumber ";
 				SQLquery = SQLquery + "FROM congressional_members cm ";
 				SQLquery = SQLquery + "INNER JOIN lookup_state ls ON ls.StateLetter = cm.State ";
 				SQLquery = SQLquery + "LEFT OUTER JOIN floorplan_mapping fm ON fm.mappingID = cm.mappingID ";
-				SQLquery = SQLquery + "LEFT OUTER JOIN lookup_buildings lb ON lb.BuildingID = fm.BuildingID ";
 				SQLquery = SQLquery + "WHERE cm.ActiveYN = 'Y' ";
 				SQLquery = SQLquery + "AND cm.congressionalMemberID = " + congressionalMemberID + " ";
 			}
@@ -354,8 +353,7 @@ export class Database {
 										FacebookURL: data.rows.item(i).FacebookURL,
 										OfficeX: data.rows.item(i).OfficeX,
 										OfficeY: data.rows.item(i).OfficeY,
-										RoomNumber: data.rows.item(i).RoomNumber,
-										BuildingName: data.rows.item(i).BuildingName
+										RoomNumber: data.rows.item(i).RoomNumber
 									});
 								}
 								if (listingType == "cl") {
