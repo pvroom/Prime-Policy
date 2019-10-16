@@ -626,9 +626,9 @@ export class MyApp {
 			
 			// Set default sync starting point here.  Update this value each time the database
 			// is refreshed or syncs get too big and slow down the app
-			this.localstorage.setLocalValue('DefaultSyncStart','2019-09-10T13:30:01Z');
+			this.localstorage.setLocalValue('DefaultSyncStart','2019-10-15T06:00:01Z');
 			// Set user sync starting point here.
-			this.localstorage.setLocalValue('UserSyncStart','2019-09-10T13:30:01Z');
+			this.localstorage.setLocalValue('UserSyncStart','2019-10-15T06:00:01Z');
 
 			// Set current database version here.  Update this value each time the database
 			// is refreshed or syncs get too big and slow down the app

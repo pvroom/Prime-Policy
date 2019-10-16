@@ -65,6 +65,69 @@ export class CongressionalStaffDetailsPage {
 	//	document.getElementById("map2").outerHTML = "";
 	//}
 	
+    navToWeb(WebsiteURL) {
+
+        if (WebsiteURL === undefined || WebsiteURL === null) {
+			let alert = this.alertCtrl.create({
+				title: 'Committee Links',
+				subTitle: 'That committee does not have an external website link assigned to it.',
+				cssClass: 'alertStyle',
+				buttons: ['OK']
+			});
+			alert.present();
+        } else {
+            // Initiate web browser
+            if ((WebsiteURL.substring(0, 7) != "http://") && (WebsiteURL.substring(0, 8) != "https://")) {
+                WebsiteURL = "http://" + WebsiteURL;
+            }
+			
+			console.log('Congressional Details: Navigating to: ' + WebsiteURL);
+            window.open(WebsiteURL, '_system');
+        }
+
+    };
+
+    navToEmail(EmailAddress) {
+        if (EmailAddress === undefined) {
+            // Do nothing
+        } else {
+            // Initiate mail program
+            //window.open('mailto:' + EmailAddress + '?subject=Question via Prime Policy', '_system', 'location=yes');
+            window.open('mailto:' + EmailAddress, '_system', 'location=yes');
+        }
+
+    };
+
+	callPhone2(phoneNumber) {
+        console.log("Dialer version 2");
+		var DevicePlatform = this.localstorage.getLocalValue('DevicePlatform');
+		
+		if (DevicePlatform!='Browser') {
+			if ((phoneNumber === undefined) || (phoneNumber == '')) {
+				console.log('No phone number defined');
+				// Do nothing
+			} else {
+				// remove all other characters from phone number string
+				// phoneNumber = phoneNumber.replace(/-/g, '');
+				phoneNumber = phoneNumber.replace('(', '');
+				phoneNumber = phoneNumber.replace(')', '');
+				phoneNumber = phoneNumber.replace(' ', '-');
+
+				console.log('Dialer: tel:' + phoneNumber);
+
+				window.open(`tel:${phoneNumber}`, '_system');
+				
+				//window['plugins'].CallNumber.callNumber(function onSuccess(result){
+				//	console.log("Dialer Success:" + JSON.stringify(result));
+				//},
+				//function onError(result) {
+				//	console.log("Dialer Error:" + JSON.stringify(result));
+				//}, phoneNumber, false);
+
+			}
+		}
+    }
+
 	ngOnInit() {
 
 		// Load initial data set here

@@ -1,0 +1,100 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Congressional Staff Details</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+	<ion-grid style="margin:0;padding:0; background:#2c3e50">
+		<ion-row>
+			<ion-col>
+				<img class="avatar" [src]="visualImageURL" onerror="this.src='assets/img/personIcon.png'"
+					src="assets/img/personIcon.png" alt="Image error">
+					</ion-col>
+
+				</ion-row>
+				<ion-row>
+
+					<ion-col style="margin-top:-15px; text-align: center!important; color:#fff">
+						<h4>{{visualDisplayName}}</h4>
+						<h6>{{visualTitle}}<br></h6>
+					</ion-col>
+			</ion-row>
+
+	</ion-grid>
+
+	<ion-card>
+
+		<ion-card-header class="mutedBlue" >
+			Works For
+		</ion-card-header>
+
+		<ion-card-content style="margin-top:5px; margin-left:-15px">
+
+			<ion-list id="author-list3">
+				<ion-item (click)="CongressionalMemberDetails(congressional.cmID)" *ngFor="let congressional of CongressionalMemberList" id="congressional-list-item19">
+				
+					<ion-avatar item-start>
+						<img src="{{congressional.Avatar}}" onerror="this.src='assets/img/personIcon.png'">
+					</ion-avatar>
+					<ion-icon item-right class="invertedRed" name="{{congressional.navigationArrow}}"></ion-icon>
+					<h2><b>{{congressional.DisplayNameLastFirst}}</b></h2>
+					{{congressional.DisplayPartyState}}
+				</ion-item>
+			</ion-list>
+		</ion-card-content>
+
+	</ion-card>
+	
+	<ion-card>
+		<ion-card-header class="mutedBlue">
+			Contact Information
+		</ion-card-header>
+
+		<ion-card-content style="margin-top:5px">
+			<ion-list>
+				<button ion-item *ngIf=showContactEmail (click)="navToEmail(visEmail)">
+					<ion-icon name="mail" class="invertedRed" item-start></ion-icon>
+					<ion-icon name="arrow-dropright" class="invertedRed" item-end></ion-icon>
+					{{visEmail}}
+				</button>
+				<button ion-item *ngIf=showContactPhone (click)="callPhone2(visPhone)">
+					<ion-icon name="phone-portrait" class="invertedRed" item-start></ion-icon>
+					<ion-icon name="arrow-dropright" class="invertedRed" item-end></ion-icon>
+					{{visPhone}}
+				</button>
+				<button ion-item *ngIf=showContactFax>
+					<ion-icon name="print" class="invertedRed" item-start></ion-icon>
+					<ion-icon name="arrow-dropright" class="invertedRed" item-end></ion-icon>
+
+					{{visFax}}
+				</button>
+			</ion-list>
+		</ion-card-content>
+	</ion-card>
+
+	<ion-card>
+		<ion-card-header class="mutedBlue">
+			Issue Areas
+		</ion-card-header>
+		<ion-card-content>
+			<ion-list id="committees-list3" style="margin-top:5px">
+				<ion-item class="item-icon-left item-icon-right" 
+					*ngFor="let issuearea of IssueAreaListing" 
+					id="issuearea-list-item19">
+					<ion-icon item-left name="copy" class="invertedRed"></ion-icon>
+					<ion-icon name="arrow-dropright" class="invertedRed" item-end></ion-icon>
+					<h2 text-wrap> {{issuearea.DisplayIssueAreaName}}</h2>
+				</ion-item>
+			</ion-list>
+		</ion-card-content>
+	</ion-card>
+
+</ion-content>
