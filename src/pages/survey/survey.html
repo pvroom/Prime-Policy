@@ -9,7 +9,7 @@
   
 <ion-content>
 
-
+<!--
 	<ion-card>
 		<ion-card-header text-wrap style="background:#2c3e50; color:#fff">
 
@@ -259,27 +259,32 @@
 		</ion-card-content>
 	</ion-card>
 
-
+-->
 	<ion-card>
 		<ion-list radio-group [(ngModel)]="SurveyQ9" name="SurveyQ9" (ionChange)="mcqAnswer($event)">
 
 			<ion-item text-wrap style="background:#2c3e50; color:#fff">
-				9. How did you feel about the time that was required to attend IMPACT?
+				1. Staff and/or Member appear to be (select one):
 			</ion-item>
 
 			<ion-item>
-				<ion-label>Just right</ion-label>
-				<ion-radio mode="md" color="secondary" checked="false" value="Just right"></ion-radio>
+				<ion-label>Unlikely to cosponsor</ion-label>
+				<ion-radio mode="md" color="secondary" checked="false" value="Unlikely to cosponsor"></ion-radio>
 			</ion-item>
 
 			<ion-item>
-				<ion-label>Required too much time</ion-label>
-				<ion-radio mode="md" color="secondary" checked="false" value="Required too much time"></ion-radio>
+				<ion-label>Open to cosponsor</ion-label>
+				<ion-radio mode="md" color="secondary" checked="false" value="Open to cosponsor"></ion-radio>
 			</ion-item>
 
 			<ion-item>
-				<ion-label>Didn't require much of my time</ion-label>
-				<ion-radio mode="md" color="secondary" checked="false" value="Didn't require much of my time"></ion-radio>
+				<ion-label>Likely to cosponsor</ion-label>
+				<ion-radio mode="md" color="secondary" checked="false" value="Likely to cosponsor"></ion-radio>
+			</ion-item>
+
+			<ion-item>
+				<ion-label>Agreed to cosponsor</ion-label>
+				<ion-radio mode="md" color="secondary" checked="false" value="Agreed to cosponsor"></ion-radio>
 			</ion-item>
 		</ion-list>
 
@@ -299,7 +304,7 @@
 		<ion-list radio-group [(ngModel)]="SurveyQ10" name="SurveyQ10" (ionChange)="mcqAnswer($event)">
 
 			<ion-item text-wrap style="background:#2c3e50; color:#fff">
-				10. Would you recommend IMPACT to other IPC member-company executives and ask them to attend next year? If yes, what you tell them?
+				2. Is the staff and/or Member interested in setting up a practice tour in state?
 			</ion-item>
 
 			<ion-item>
@@ -311,12 +316,12 @@
 				<ion-label>No</ion-label>
 				<ion-radio mode="md" color="secondary" checked="false" value="No"></ion-radio>
 			</ion-item>
-
+<!--
 			<ion-item>
 				<ion-label>Not sure</ion-label>
 				<ion-radio mode="md" color="secondary" checked="false" value="Not sure"></ion-radio>
 			</ion-item>
-
+-->
 		</ion-list>
 		
 		<ion-item>
@@ -330,7 +335,7 @@
 		</ion-item>
 		
 	</ion-card>
-
+<!--
 	<ion-card>
 		<ion-item text-wrap style="background:#2c3e50; color:#fff">
 			11. Do you have any other suggestions for how IMPACT Washington, D. C. could be improved in 2020?
@@ -360,7 +365,7 @@
 				placeholder="Enter text" rows="4"></ion-textarea>
 		</ion-card-content>
 	</ion-card>
-
+-->
 
 	<div text-center>
 		<button ion-button style="background:#e74c3c" (click)="SubmitSurvey()">
