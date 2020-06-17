@@ -57,6 +57,7 @@ export class MyApp {
 	public staffFlyins: any[] = [];
 	public staffFlyinsDropdown = false;
 	public selectedFlyin: string;
+
 	
 	constructor(
 		public pltfrm: Platform,

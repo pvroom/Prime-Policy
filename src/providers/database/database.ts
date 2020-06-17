@@ -481,7 +481,7 @@ export class Database {
 				// Personal agenda items
 				SQLquery = "SELECT DISTINCT itID AS meetingID, EventID, mtgID, Date_Start || ' ' || Time_Start AS StartDateTime, Date_End || ' ' || Time_End AS EndDateTime, Location, Description AS EventDescription, ";
 				SQLquery = SQLquery + "SUBJECT AS MeetingTitle, ";
-				SQLquery = SQLquery + "'' AS FirstName, '' AS LastName, '' AS Nickname, '' AS Party, '' AS State, '' AS Address, '' AS imageFilename ";
+				SQLquery = SQLquery + "'' AS FirstName, '' AS LastName, '' AS Nickname, '' AS Party, '' AS State, '' AS Address, '' AS imageFilename, '' AS OnlineYN, 'Personal' AS meetingLocationType ";
 				SQLquery = SQLquery + "FROM itinerary WHERE Date_Start = '" + selectedDay + "' AND AttendeeID = '" + AttendeeID + "' ";
 				SQLquery = SQLquery + "AND EventID = '0' ";
 				SQLquery = SQLquery + "AND UpdateType != 'Delete' "; 
@@ -490,8 +490,9 @@ export class Database {
 
 				// Regular client member agenda items
 				SQLquery = SQLquery + "SELECT DISTINCT m.meetingID, m.meetingID AS EventID, '0' AS mtgID, StartDateTime, EndDateTime, Location, EventDescription, MeetingTitle, ";
-				SQLquery = SQLquery + "con.FirstName, con.LastName, con.Nickname, con.Party, con.State, con.Address, con.imageFilename ";
+				SQLquery = SQLquery + "con.FirstName, con.LastName, con.Nickname, con.Party, con.State, con.Address, con.imageFilename, m.OnlineYN, lmlt.meetingLocationType ";
 				SQLquery = SQLquery + "FROM meetings m ";
+				SQLquery = SQLquery + "LEFT OUTER JOIN lookup_meeting_location_types lmlt ON m.lmltID = lmlt.lmltID ";
 				SQLquery = SQLquery + "INNER JOIN meetings_clients mc ON mc.meetingID = m.meetingID ";
 				SQLquery = SQLquery + "LEFT OUTER JOIN congressional_members con ON m.congressionalMemberID = con.congressionalMemberID ";
 				SQLquery = SQLquery + "INNER JOIN clients_members cm ON cm.clientmemberID = mc.clientmemberID ";
@@ -511,8 +512,9 @@ export class Database {
 
 				// Staff member agenda items
 				SQLquery = SQLquery + "SELECT DISTINCT m.meetingID, m.meetingID AS EventID, '0' AS mtgID, StartDateTime, EndDateTime, Location, EventDescription, MeetingTitle, ";
-				SQLquery = SQLquery + "con.FirstName, con.LastName, con.Nickname, con.Party, con.State, con.Address, con.imageFilename ";
+				SQLquery = SQLquery + "con.FirstName, con.LastName, con.Nickname, con.Party, con.State, con.Address, con.imageFilename, m.OnlineYN, lmlt.meetingLocationType ";
 				SQLquery = SQLquery + "FROM meetings m ";
+				SQLquery = SQLquery + "LEFT OUTER JOIN lookup_meeting_location_types lmlt ON m.lmltID = lmlt.lmltID ";
 				SQLquery = SQLquery + "INNER JOIN meetings_clients mc ON mc.meetingID = m.meetingID ";
 				SQLquery = SQLquery + "LEFT OUTER JOIN congressional_members con ON m.congressionalMemberID = con.congressionalMemberID ";
 				//SQLquery = SQLquery + "INNER JOIN flyins_staff fs ON fs.staffID = mc.clientmemberID ";
@@ -708,6 +710,7 @@ export class Database {
 
 				SQLquery = "SELECT DISTINCT m.*, cm.FirstName, cm.LastName, cm.Nickname, cm.Party, cm.State, ";
 				SQLquery = SQLquery + "cm.Address, cm.City, cm.AddressState, cm.Zipcode, cm.imageFilename, ";
+				SQLquery = SQLquery + "lmlt.meetingLocationType, loa.OnlineAppName, ";
 
 				SQLquery = SQLquery + "(SELECT DISTINCT fm.mapX ";
 				SQLquery = SQLquery + "FROM meetings_congressionals mc ";
@@ -770,6 +773,8 @@ export class Database {
 
 				SQLquery = SQLquery + "FROM meetings m ";
 				SQLquery = SQLquery + "INNER JOIN meetings_clients mc ON m.meetingID = mc.meetingID ";
+				SQLquery = SQLquery + "LEFT OUTER JOIN lookup_online_apps loa ON loa.loaID = m.loaID ";
+				SQLquery = SQLquery + "LEFT OUTER JOIN lookup_meeting_location_types lmlt ON lmlt.lmltID = m.lmltID ";
 				SQLquery = SQLquery + "LEFT OUTER JOIN congressional_members cm ON m.congressionalMemberID = cm.congressionalMemberID ";
 				SQLquery = SQLquery + "LEFT OUTER JOIN floorplan_mapping fm ON fm.mappingID = cm.mappingID ";
 				SQLquery = SQLquery + "WHERE m.meetingID = " + EventID + " ";
@@ -929,7 +934,9 @@ export class Database {
 										Party: data.rows.item(i).Party,
 										State: data.rows.item(i).State,
 										Address: data.rows.item(i).Address,
-										imageFilename: data.rows.item(i).imageFilename
+										imageFilename: data.rows.item(i).imageFilename,
+										OnlineYN: data.rows.item(i).OnlineYN,
+										meetingLocationType: data.rows.item(i).meetingLocationType
 									});
 									resolve(DatabaseResponse);
 									
@@ -1039,7 +1046,16 @@ export class Database {
 										OfficeX: data.rows.item(i).OfficeX,
 										OfficeY: data.rows.item(i).OfficeY,
 										RoomNumber: data.rows.item(i).RoomNumber,
-										Chamber: data.rows.item(i).Chamber
+										Chamber: data.rows.item(i).Chamber,
+										lmltID: data.rows.item(i).lmltID,
+										loaID: data.rows.item(i).loaID,
+										OnlineYN: data.rows.item(i).OnlineYN,
+										OnlineURL: data.rows.item(i).OnlineURL,
+										OnlinePhoneNumber: data.rows.item(i).OnlinePhoneNumber,
+										OnlineMeetingID: data.rows.item(i).OnlineMeetingID,
+										OnlinePinPassword: data.rows.item(i).OnlinePinPassword,
+										OnlineAppName: data.rows.item(i).OnlineAppName,
+										meetingLocationType: data.rows.item(i).meetingLocationType
 									});
 									resolve(DatabaseResponse);
 									

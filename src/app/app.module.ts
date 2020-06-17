@@ -19,9 +19,13 @@ import { Ionic2RatingModule } from 'ionic2-rating';
 import { IonicImageLoader } from 'ionic-image-loader';
 import { ChartsModule } from 'ng2-charts';
 import { IonAlphaScrollModule } from 'ionic2-alpha-scroll';
+//import { Zoom } from '@ionic-native/zoom';
+import { AngularAgoraRtcModule, AgoraConfig } from 'angular-agora-rtc';
+
 //import { CallNumber } from '@ionic-native/call-number';
 import { SMS } from '@ionic-native/sms';
 //import { Network } from '@ionic-native/network'
+
 
 // Providers
 import { Database } from '../providers/database/database';
@@ -49,7 +53,7 @@ import { MeetingDetailsPage } from '../pages/meetingdetails/meetingdetails';
 import { MorePage } from '../pages/more/more';
 import { MyAgenda } from '../pages/myagenda/myagenda';
 import { MyAgendaFull } from '../pages/myagendafull/myagendafull';
-import { NotesPage } from '../pages/notes/notes';
+//import { NotesPage } from '../pages/notes/notes';
 import { NotesDetailsPage } from '../pages/notesdetails/notesdetails';
 import { NotificationsPage } from '../pages/notifications/notifications';
 import { NetworkingPage } from '../pages/networking/networking';
@@ -78,6 +82,12 @@ export class MyErrorHandler implements ErrorHandler {
     }
   }
 
+
+
+
+
+
+
   handleError(err: any): void {
     //Pro.monitoring.handleNewError(err);
     // Remove this if you want to disable Ionic's auto exception handling
@@ -85,6 +95,14 @@ export class MyErrorHandler implements ErrorHandler {
     this.ionicErrorHandler && this.ionicErrorHandler.handleError(err);
   }
 }
+
+
+
+
+const agoraConfig: AgoraConfig = { AppID: '3076a12a1aa242359ad38b2180c01f01' };
+
+
+
 
 @NgModule({
   declarations: [
@@ -104,7 +122,6 @@ export class MyErrorHandler implements ErrorHandler {
 	MyAgenda,
 	MyAgendaFull,
     MyApp,
-    NotesPage,
     NotesDetailsPage,
     MeetingDetailsPage,
     NotificationsPage,
@@ -122,6 +139,7 @@ export class MyErrorHandler implements ErrorHandler {
   imports: [
   BrowserModule,
     FormsModule,
+    AngularAgoraRtcModule.forRoot(agoraConfig),
     HttpModule,
 	ChartsModule,
 	FileUploadModule,
@@ -153,7 +171,7 @@ export class MyErrorHandler implements ErrorHandler {
 	MyAgenda,
     MyAgendaFull,
     MyApp,
-    NotesPage,
+  //  NotesPage,
 	NotesDetailsPage,
     SurveyPage,
     IssuesPage,
@@ -180,7 +198,8 @@ export class MyErrorHandler implements ErrorHandler {
     SplashScreen,
     IonTextAvatar,
 	SQLite,
-	Synchronization,
+  Synchronization,
+  //Zoom,
 	IonicErrorHandler,
         [{ provide: ErrorHandler, useClass: MyErrorHandler }]
 	//	{provide: ErrorHandler, useClass: IonicErrorHandler},

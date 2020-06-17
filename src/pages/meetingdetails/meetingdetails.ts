@@ -38,6 +38,12 @@ export class MeetingDetailsPage {
 	public EventTypeName: string;
 	public EventDetails: string;
 	public sessionAbstract: string;
+	public VirtualURL: string;
+	
+	public vOnlineProvider: string;
+	public vOnlinePhoneNumber: string;
+	public vOnlineMeetingID: string;
+	public vOnelineMeetingPassword: string;
 
 	surveyPage = SurveyPage;
 	
@@ -50,12 +56,16 @@ export class MeetingDetailsPage {
 	public btnNotes = true;
 	public btnPrint = true;
 	public btnEval = false;
+	public btnVirtualMeeting = false;
+	public btnConferenceCall = false;
 	
 	// SubSection Control
 	public CongressionalMemberDisplay = false;
 	public DescriptionDisplay = true;
 	public MeetingAttendeesDisplay = true;
 	public MeetingLocationDisplay = true;
+	public VirtualMeetingDisplay = false;
+	public OnlineMeetingDisplay = true;
 
 	public CongressionalMemberList: any[] = [];
 	public MeetingAttendeesList: any[] = [];
@@ -170,6 +180,31 @@ export class MeetingDetailsPage {
 					UpdatedEventDescription2 = UpdatedEventDescription2.replace(/\\/g, '');
 					this.sessionAbstract = UpdatedEventDescription2;
                     this.DescriptionDisplay = true;
+				}
+				
+				// --------------------------------------
+				// Button control: Virtual meeting
+				// --------------------------------------
+                if (data[0].meetingLocationType == "Virtual / Online") {
+					
+					this.VirtualURL = data[0].OnlineURL;
+					this.VirtualMeetingDisplay = true;
+					this.MeetingLocationDisplay = false;
+					this.vOnlineProvider = data[0].OnlineAppName;
+					this.vOnlinePhoneNumber = data[0].OnlinePhoneNumber;
+					this.vOnlineMeetingID = data[0].OnlineMeetingID;
+					this.vOnelineMeetingPassword = data[0].OnlinePinPassword;
+					
+					if (data[0].OnlineAppName == "Phone Conference Call") {
+						this.OnlineMeetingDisplay = false;
+						this.btnConferenceCall = true;
+						this.btnVirtualMeeting = false;
+					} else {
+						this.OnlineMeetingDisplay = true;
+						this.btnConferenceCall = false;
+						this.btnVirtualMeeting = true;
+					}
+					
 				}
 				
 				// --------------------------------------
@@ -491,6 +526,10 @@ export class MeetingDetailsPage {
         var ref = window.open(PDFURL, '_system');
     };
 
+	navToVirtual(MeetingURL) {
+		window.open(MeetingURL, '_system', 'location=yes');
+	};
+	
     navToMyAgenda() {
 
 		var AttendeeID = this.localstorage.getLocalValue('AttendeeID');
@@ -524,6 +563,35 @@ export class MeetingDetailsPage {
 
 	};
 	
+	callPhone3(phoneNumber) {
+        console.log("Dialer version 3");
+        console.log("Dialer: Phone number passed: " + phoneNumber);
+		
+		var DevicePlatform = this.localstorage.getLocalValue('DevicePlatform');
+		
+		if (DevicePlatform!='Browser') {
+			if ((phoneNumber === undefined) || (phoneNumber == '')) {
+				console.log('No phone number defined');
+				// Do nothing
+			} else {
+
+				var ConferenceCallNumber = phoneNumber;
+				
+				// Remove characters from phone number string and format accordingly
+				//phoneNumber = phoneNumber.replace(/-/g, '');
+				//ConferenceCallNumber = ConferenceCallNumber.replace(/./g, '-');
+				ConferenceCallNumber = ConferenceCallNumber.replace('(', '');
+				ConferenceCallNumber = ConferenceCallNumber.replace(')', '');
+				ConferenceCallNumber = ConferenceCallNumber.replace(' ', '-');
+				
+				console.log('Dialer: Corrected number:' + ConferenceCallNumber);
+				
+				window.open(`tel:${ConferenceCallNumber}`, '_system');
+  
+			}
+		}
+    }
+
 
 	// --------------------------------------
     // Navigate to the Survey Page

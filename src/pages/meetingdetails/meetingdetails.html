@@ -21,6 +21,20 @@
 
 	<div class="button-bar" style="margin:10px!important">
 
+		<button ion-button expand="full" color=secondary *ngIf="btnVirtualMeeting" (click)="navToVirtual(VirtualURL)">
+			<div>
+				<ion-icon name="videocam"></ion-icon>
+				<label> Join Meeting</label>
+			</div>
+		</button>
+
+		<button ion-button expand="full" color=secondary *ngIf="btnConferenceCall" (click)="callPhone3(vOnlinePhoneNumber)">
+			<div>
+				<ion-icon name="call"></ion-icon>
+				<label> Join Meeting</label>
+			</div>
+		</button>
+
 		<button ion-button color=secondary  *ngIf="btnNotes" (click)="navToNotes(EventID)">
 			<div>
 				<ion-icon name="create"></ion-icon>
@@ -115,6 +129,50 @@
 
 		<ion-card-content>
 			<div id="map1" style="width:100%; height:400px;"></div>
+		</ion-card-content>
+
+	</ion-card>
+
+	<ion-card *ngIf="VirtualMeetingDisplay">
+
+		<ion-card-header class="mutedBlue">
+			Virtual Meeting Information
+		</ion-card-header>
+
+		<ion-card-content>
+			<div class="myMarginTopBottom">
+				<ion-row>
+					<ion-col>
+						<ion-item no-lines>
+							<ion-label style="white-space: pre-wrap;"><b>Provider</b><br/>{{vOnlineProvider}}</ion-label>
+						</ion-item>
+					</ion-col>
+					<ion-col>
+						<ion-item no-lines>
+							<ion-label style="white-space: pre-wrap;"><b>Phone Number</b><br/>{{vOnlinePhoneNumber}}</ion-label>
+						</ion-item>
+					</ion-col>
+				</ion-row>
+				<ion-row *ngIf="OnlineMeetingDisplay">
+					<ion-col>
+						<ion-item no-lines>
+							<ion-label style="white-space: pre-wrap;"><b>Meeting ID</b><br/>{{vOnlineMeetingID}}</ion-label>
+						</ion-item>
+					</ion-col>
+					<ion-col>
+						<ion-item no-lines>
+							<ion-label style="white-space: pre-wrap;"><b>Password</b><br/>{{vOnelineMeetingPassword}}</ion-label>
+						</ion-item>
+					</ion-col>
+				</ion-row>
+				<ion-row *ngIf="OnlineMeetingDisplay">
+					<ion-col>
+						<ion-item no-lines>
+							<ion-label style="white-space: pre-wrap;"><b>URL</b><br/>{{VirtualURL}}</ion-label>
+						</ion-item>
+					</ion-col>
+				</ion-row>
+			</div>
 		</ion-card-content>
 
 	</ion-card>

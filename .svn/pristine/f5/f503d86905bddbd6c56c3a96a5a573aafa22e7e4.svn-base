@@ -1,0 +1,180 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Meeting / Event Details</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+
+	<div style="margin-left:20px!important">
+		<h4>{{EventName}}</h4>
+		<h6>{{DisplayEventTimeDate}}<br>
+		    {{DisplayEventLocation}}</h6>
+	</div>
+
+
+
+	<div class="button-bar" style="margin:10px!important">
+
+		<button ion-button expand="full" color=secondary *ngIf="btnVirtualMeeting" (click)="navToVirtual(VirtualURL)">
+			<div>
+				<ion-icon name="videocam"></ion-icon>
+				<label> Join Meeting</label>
+			</div>
+		</button>
+
+		<button ion-button expand="full" color=secondary *ngIf="btnConferenceCall" (click)="callPhone3(vOnlinePhoneNumber)">
+			<div>
+				<ion-icon name="call"></ion-icon>
+				<label> Join Meeting</label>
+			</div>
+		</button>
+
+		<button ion-button color=secondary  *ngIf="btnNotes" (click)="navToNotes(EventID)">
+			<div>
+				<ion-icon name="create"></ion-icon>
+				<label>Notes</label>
+			</div>
+		</button>
+
+		<button ion-button color=secondary  (click)="goSurvey()">
+				<div>
+					<ion-icon name="list"></ion-icon>
+					<label>Feedback</label>
+				</div>
+			</button>
+
+	</div>
+
+
+
+
+
+
+
+
+	<ion-card>
+
+		<ion-card-header class="mutedBlue" *ngIf="CongressionalMemberDisplay">
+			Congressional Member/Staff
+		</ion-card-header>
+
+		<ion-card-content style="margin-top:5px; margin-left:-15px" *ngIf="CongressionalMemberDisplay">
+
+			<ion-list id="author-list3">
+				<ion-item no-lines (click)="CongressionalMemberDetails(congressional.cmID)" *ngFor="let congressional of CongressionalMemberList" id="congressional-list-item19">
+				
+					<ion-avatar item-start>
+						<img src="{{congressional.Avatar}}" onerror="this.src='assets/img/personIcon.png'">
+					</ion-avatar>
+					<ion-icon item-right name="{{congressional.navigationArrow}}"></ion-icon>
+					<h2><b>{{congressional.DisplayNameLastFirst}}</b></h2>
+					{{congressional.DisplayPartyState}}
+				</ion-item>
+			</ion-list>
+		</ion-card-content>
+
+	</ion-card>
+
+	<ion-card *ngIf=DescriptionDisplay>
+
+		<ion-card-header class="mutedBlue">
+			<div style="color:#fff">
+				Description
+			</div>
+		</ion-card-header>
+
+		<ion-card-content>
+
+			<div [innerHTML]="sessionAbstract" class="myMarginTopBottom">
+				{{EventDetails}}
+			</div>
+		</ion-card-content>
+
+	</ion-card>
+
+	<ion-card>
+
+		<ion-card-header class="mutedBlue" *ngIf="MeetingAttendeesDisplay">
+			Meeting Attendees
+		</ion-card-header>
+
+		<ion-card-content style="margin-top:5px; margin-left:-15px" *ngIf="MeetingAttendeesDisplay">
+
+			<ion-list id="MeetingAttendee-list3">
+				<ion-item *ngFor="let MeetingAttendee of MeetingAttendeesList" id="MeetingAttendees-list-item19">
+					<ion-avatar item-start>
+						<ion-text-avatar *ngIf=MeetingAttendee.AttendeeTextAvatar class="avatar" color="danger">{{MeetingAttendee.AttendeeInitials}}</ion-text-avatar>
+						<img *ngIf=!MeetingAttendee.AttendeeTextAvatar src="assets/img/ppg-logo-transparent.png">
+					</ion-avatar>
+					<h2><b>{{MeetingAttendee.DisplayNameLastFirst}}</b></h2>
+					{{MeetingAttendee.DisplayCityState}}
+				</ion-item>
+			</ion-list>
+			
+		</ion-card-content>
+
+	</ion-card>
+
+	<ion-card *ngIf="MeetingLocationDisplay">
+
+		<ion-card-header class="mutedBlue">
+			Locator
+		</ion-card-header>
+
+		<ion-card-content>
+			<div id="map1" style="width:100%; height:400px;"></div>
+		</ion-card-content>
+
+	</ion-card>
+
+	<ion-card *ngIf="VirtualMeetingDisplay">
+
+		<ion-card-header class="mutedBlue">
+			Virtual Meeting Information
+		</ion-card-header>
+
+		<ion-card-content>
+			<div class="myMarginTopBottom">
+				<ion-row>
+					<ion-col>
+						<ion-item no-lines>
+							<ion-label style="white-space: pre-wrap;"><b>Provider</b><br/>{{vOnlineProvider}}</ion-label>
+						</ion-item>
+					</ion-col>
+					<ion-col>
+						<ion-item no-lines>
+							<ion-label style="white-space: pre-wrap;"><b>Phone Number</b><br/>{{vOnlinePhoneNumber}}</ion-label>
+						</ion-item>
+					</ion-col>
+				</ion-row>
+				<ion-row *ngIf="OnlineMeetingDisplay">
+					<ion-col>
+						<ion-item no-lines>
+							<ion-label style="white-space: pre-wrap;"><b>Meeting ID</b><br/>{{vOnlineMeetingID}}</ion-label>
+						</ion-item>
+					</ion-col>
+					<ion-col>
+						<ion-item no-lines>
+							<ion-label style="white-space: pre-wrap;"><b>Password</b><br/>{{vOnelineMeetingPassword}}</ion-label>
+						</ion-item>
+					</ion-col>
+				</ion-row>
+				<ion-row *ngIf="OnlineMeetingDisplay">
+					<ion-col>
+						<ion-item no-lines>
+							<ion-label style="white-space: pre-wrap;"><b>URL</b><br/>{{VirtualURL}}</ion-label>
+						</ion-item>
+					</ion-col>
+				</ion-row>
+			</div>
+		</ion-card-content>
+
+	</ion-card>
+
+</ion-content>
